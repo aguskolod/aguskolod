@@ -39,12 +39,18 @@ Botones y CTAs **rectangulares** (`border-radius: 0`). Sin pills.
 
 ## Typography
 
-1. **Syne** (600–800) — display, wordmark, titulares.
+1. **Saira** (500–800) — display, wordmark, titulares. Industrial/automotriz, legible en español (reemplaza Syne).
 2. **Inter Tight** — UI, body, ticker.
 
 ## Logo
 
-**Solo wordmark tipográfico:** `BATERÍAS` + `CABA` (CABA en signal) + subtítulo `Viamonte · 24 hs`. Sin monograma BC, sin isotipo de batería.
+**Solo wordmark tipográfico:** `BATERÍAS` + `CABA` (CABA en signal) + meta con presencia **`24 hs`** (signal) + **`Viamonte 2031`**. Sin monograma BC, sin isotipo de batería. Sin barrios (Recoleta/Balvanera) en hero.
+
+## CTAs
+
+- **Hero:** botones huecos (borde fuerte), mismo ancho; al hover se rellenan con animación de fill vertical.
+- **Sticky mobile:** oculto mientras se ven los CTAs del hero; aparece al scrollear. Rellenos sólidos (Llamar / WhatsApp).
+- **Nav desktop:** CTAs sólidos compactos.
 
 ## Landing structure
 
@@ -53,12 +59,13 @@ CTA: **Llamar** primario (signal), WhatsApp secundario (verde).
 
 ## Motion
 
-Ticker continuo. Reveals suaves al scroll. Respetar `prefers-reduced-motion`.
+Ticker continuo. Fill de botones huecos. Sticky slide-in. Reveals al scroll. Respetar `prefers-reduced-motion`.
 
 ## Descartado
 
 - Borne amarillo `#FFCC33` como identidad
 - Isotipo / monograma de batería
-- Archivo como display de marca
+- Archivo / Syne como display de marca
 - Fondos paper/cream claros como base
 - Pills, neón cursiva, glow genérico
+- Kicker “Recoleta / Balvanera”
