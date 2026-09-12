@@ -391,34 +391,39 @@
       .nav-toggle-bars span { transition: none; }
     }
     .nav-panel {
-      display: grid;
-      grid-template-rows: 0fr;
-      border-top: 1px solid transparent;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: 45;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      background: rgba(14, 15, 16, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
       opacity: 0;
+      visibility: hidden;
+      transform: translateY(-0.35rem);
       pointer-events: none;
       transition:
-        grid-template-rows 280ms var(--ease),
-        opacity 220ms var(--ease),
-        border-color 220ms var(--ease);
+        opacity 200ms var(--ease),
+        transform 200ms var(--ease),
+        visibility 200ms var(--ease);
     }
     .nav-panel.is-open {
-      grid-template-rows: 1fr;
-      border-top-color: var(--line);
       opacity: 1;
+      visibility: visible;
+      transform: none;
       pointer-events: auto;
     }
     .nav-panel-inner {
-      overflow: hidden;
-      min-height: 0;
-      padding: 0;
-      transition: padding 280ms var(--ease);
-    }
-    .nav-panel.is-open .nav-panel-inner {
       padding: var(--space-3) 0 var(--space-4);
     }
     @media (prefers-reduced-motion: reduce) {
-      .nav-panel,
-      .nav-panel-inner { transition: none; }
+      .nav-panel { transition: none; transform: none; }
     }
     .nav-panel ul { list-style: none; margin: 0; padding: 0; }
     .nav-panel a {
@@ -1032,8 +1037,8 @@
         </span>
       </button>
     </div>
-    <div class="wrap nav-panel" id="nav-panel" aria-hidden="true">
-      <div class="nav-panel-inner">
+    <div class="nav-panel" id="nav-panel" aria-hidden="true" inert>
+      <div class="wrap nav-panel-inner">
         <ul>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#reseñas">Reseñas</a></li>
@@ -1339,29 +1344,20 @@
     /* Mobile nav */
     const toggle = document.getElementById("navToggle");
     const panel = document.getElementById("nav-panel");
-    let navTimer = null;
 
     function openNav() {
-      if (navTimer) {
-        clearTimeout(navTimer);
-        navTimer = null;
-      }
+      panel.classList.add("is-open");
       panel.setAttribute("aria-hidden", "false");
       panel.removeAttribute("inert");
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          panel.classList.add("is-open");
-          toggle.setAttribute("aria-expanded", "true");
-        });
-      });
+      toggle.setAttribute("aria-expanded", "true");
     }
 
     function closeNav() {
       if (!panel.classList.contains("is-open")) return;
       panel.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
       panel.setAttribute("aria-hidden", "true");
       panel.setAttribute("inert", "");
+      toggle.setAttribute("aria-expanded", "false");
     }
 
     toggle.addEventListener("click", () => {
