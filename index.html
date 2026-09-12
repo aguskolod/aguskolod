@@ -391,31 +391,34 @@
       .nav-toggle-bars span { transition: none; }
     }
     .nav-panel {
-      display: none;
-      border-top: 1px solid var(--line);
-      padding: var(--space-3) 0 var(--space-4);
-    }
-    .nav-panel.is-open,
-    .nav-panel.is-closing {
-      display: block;
+      display: grid;
+      grid-template-rows: 0fr;
+      border-top: 1px solid transparent;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        grid-template-rows 280ms var(--ease),
+        opacity 220ms var(--ease),
+        border-color 220ms var(--ease);
     }
     .nav-panel.is-open {
-      animation: nav-panel-in 220ms var(--ease) both;
+      grid-template-rows: 1fr;
+      border-top-color: var(--line);
+      opacity: 1;
+      pointer-events: auto;
     }
-    .nav-panel.is-closing {
-      animation: nav-panel-out 200ms var(--ease) both;
+    .nav-panel-inner {
+      overflow: hidden;
+      min-height: 0;
+      padding: 0;
+      transition: padding 280ms var(--ease);
     }
-    @keyframes nav-panel-in {
-      from { opacity: 0; transform: translateY(-0.4rem); }
-      to { opacity: 1; transform: none; }
-    }
-    @keyframes nav-panel-out {
-      from { opacity: 1; transform: none; }
-      to { opacity: 0; transform: translateY(-0.4rem); }
+    .nav-panel.is-open .nav-panel-inner {
+      padding: var(--space-3) 0 var(--space-4);
     }
     @media (prefers-reduced-motion: reduce) {
-      .nav-panel.is-open,
-      .nav-panel.is-closing { animation: none; }
+      .nav-panel,
+      .nav-panel-inner { transition: none; }
     }
     .nav-panel ul { list-style: none; margin: 0; padding: 0; }
     .nav-panel a {
@@ -432,7 +435,8 @@
     .nav-panel .cta-row { flex-direction: column; }
     @media (min-width: 900px) {
       .nav-links, .nav-cta { display: flex; }
-      .nav-toggle, .nav-panel { display: none !important; }
+      .nav-toggle { display: none !important; }
+      .nav-panel { display: none !important; }
     }
 
     /* —— Hero —— */
@@ -1028,12 +1032,14 @@
         </span>
       </button>
     </div>
-    <div class="wrap nav-panel" id="nav-panel" hidden>
-      <ul>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#reseñas">Reseñas</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+    <div class="wrap nav-panel" id="nav-panel" aria-hidden="true">
+      <div class="nav-panel-inner">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -1333,39 +1339,29 @@
     /* Mobile nav */
     const toggle = document.getElementById("navToggle");
     const panel = document.getElementById("nav-panel");
-    let panelClosing = false;
+    let navTimer = null;
 
     function openNav() {
-      panelClosing = false;
-      panel.classList.remove("is-closing");
-      panel.hidden = false;
-      // restart open animation if re-clicked quickly
-      panel.classList.remove("is-open");
-      void panel.offsetWidth;
-      panel.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
+      if (navTimer) {
+        clearTimeout(navTimer);
+        navTimer = null;
+      }
+      panel.setAttribute("aria-hidden", "false");
+      panel.removeAttribute("inert");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          panel.classList.add("is-open");
+          toggle.setAttribute("aria-expanded", "true");
+        });
+      });
     }
 
     function closeNav() {
-      if (panel.hidden || panelClosing) return;
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        panel.classList.remove("is-open", "is-closing");
-        panel.hidden = true;
-        toggle.setAttribute("aria-expanded", "false");
-        return;
-      }
-      panelClosing = true;
+      if (!panel.classList.contains("is-open")) return;
       panel.classList.remove("is-open");
-      panel.classList.add("is-closing");
       toggle.setAttribute("aria-expanded", "false");
-      const finish = (e) => {
-        if (e && e.target !== panel) return;
-        panel.classList.remove("is-closing");
-        panel.hidden = true;
-        panelClosing = false;
-        panel.removeEventListener("animationend", finish);
-      };
-      panel.addEventListener("animationend", finish);
+      panel.setAttribute("aria-hidden", "true");
+      panel.setAttribute("inert", "");
     }
 
     toggle.addEventListener("click", () => {
