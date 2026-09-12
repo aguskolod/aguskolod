@@ -5,15 +5,21 @@ Working draft — identidad mínima para mock / landing. Dirección visual en ma
 
 ## Visual Intent
 
-Comercio de barrio que resuelve YA: carbón + papel + acento de borne. Tipografía industrial argentina para la voz del negocio. El **24 hs** no es un chip: es un **cartel de neón de tubos** (SVG) con glow, parpadeo e interacción (prender/apagar). Sin look startup, sin violeta AI, sin cards de más.
+Comercio de barrio que resuelve YA: carbón + papel + acento borne eléctrico. Tipografía industrial argentina (Archivo) para UI/marca. Signature del **24 hs**: **cartel neón tradicional** (cursiva + bloque + ícono), no chip ni letras geométricas.
 
-## Signature: neón 24 hs
+## Signature: cartel neón
 
-- **Formato:** SVG (tubos = strokes: vidrio + glow + núcleo caliente). No Lottie obligatorio; SVG + CSS es liviano e interactivo.
-- **Comportamiento:** hum continuo, flicker irregular tipo tubo real, tap/click enciende/apaga, “parpadeo fuerte” opcional.
-- **Contenido:** “ABIERTO” en rojo neón + “24 HS” en amarillo borne.
-- **Prototype:** `brand/neon-24.html`
-- **Accesible:** el SVG es decorativo; texto equivalente “Abierto 24 horas” en Archivo junto al cartel.
+Refs del cliente en `brand/refs/`:
+- `neon-electric-cinema.jpg` — cursiva “Electric” + bloque “CINEMA”; tubo rojo con núcleo amarillo.
+- `neon-tonys.jpg` — tipografía de tubo + ícono (vaso) como pieza del cartel.
+
+Traducción a Baterías CABA:
+- **Script:** “Abierto” / “Baterías” / “Siempre” (Great Vibes u otra cursiva de tubo).
+- **Bloque caps:** “24 HS” o “CABA” (Archivo Black), tracking amplio.
+- **Ícono neón:** batería outline (análogo al vaso de Tony’s).
+- **Color de tubo:** envelope rojo + núcleo **borne** `#FFCC33` / hot `#FFE566`.
+- **Prototype:** `brand/neon-sign.html` (glow, flicker, on/off).
+- **Accesible:** texto equivalente en Archivo (“Abierto 24 horas”).
 
 ## Color
 
@@ -23,39 +29,23 @@ Comercio de barrio que resuelve YA: carbón + papel + acento de borne. Tipograf�
 | `--paper` | `#F6F6F4` | Fondo claro |
 | `--smoke` | `#5C5C5A` | Texto secundario |
 | `--line` | `#D8D8D4` | Bordes |
-| `--accent` | `#FFCC33` | Acento / CTA / neón “24 HS” (**borne eléctrico**, menos mostaza) |
-| `--accent-hot` | `#FFE566` | Núcleo del tubo amarillo |
-| `--urgent` | `#FF3B3B` | Neón “ABIERTO” |
-| `--urgent-soft` | `#FF6B6B` | Núcleo del tubo rojo |
+| `--accent` / borne | `#FFCC33` | CTA + núcleo amarillo del neón |
+| `--accent-hot` | `#FFE566` | Núcleo más caliente |
+| `--tube-red` | `#FF1E1E` | Envelope del tubo |
+| `--glow-red` | `#FF3B3B` | Bloom |
 
-**Decisión abierta (usuario dudando):** el viejo `--accent-dark` `#C99800` (mostaza) queda **descartado como hover**. Hover del CTA = mismo `#FFCC33` un poco más brillante (`filter: brightness(1.08)`) o carbón invertido, no mostaza.
-
-Alternativas vistas en el prototype: `#E8B40A` (anterior), `#F5C518` (safety). Default provisional: `#FFCC33`.
-
-Preview: `brand/palette-mobile.png`, `brand/preview.html`, `brand/neon-24.html`.
+Hover CTA: brightness del borne. Mostaza `#C99800` descartada.
 
 ## Typography
 
-### 1. Archivo (Omnibus-Type, BA) — voz de marca + UI
+1. **Archivo** — voz de marca + UI + bloque del neón (“24 HS”).
+2. **Script neón** (Great Vibes u equivalente) — solo la cursiva del cartel.
+3. DSEG7 queda opcional si más adelante hay reloj LED aparte; no es el signature.
 
-- Wordmark, headlines, nav, body, botones.
-- Black / Bold títulos; Regular / Medium cuerpo.
+## Logo direction
 
-### 2. Neón SVG (no font) — pieza 24 hs
-
-- Las letras del cartel son **paths de tubo**, no DSEG7.
-- DSEG7 queda como opción secundaria solo si más adelante queremos un reloj LED aparte (idea A); no es el signature ahora.
-
-### Qué no usamos
-
-Inter, Roboto, system-ui como voz de marca; Orbitron “racing”; script/cursive; chips/badges para el 24 hs.
-
-## Logo direction (pendiente de mock)
-
-Mark mínimo + wordmark Archivo Black. El neón puede vivir en el hero como pieza, no necesariamente dentro del logo.
+Mark mínimo + Archivo Black. El neón vive en el hero como pieza, no dentro del logo.
 
 ## Motion
 
-- Neón: `hum` + `flicker` irregulares; off state = tubos fríos.
-- CTA: hover brightness, sin bounce.
-- Respetar `prefers-reduced-motion` (apagar flicker, dejar glow estático).
+Hum + flicker de tubo; off = tubos fríos. Respetar `prefers-reduced-motion`.
