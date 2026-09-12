@@ -49,7 +49,12 @@ Hover CTA: brightness del borne. Mostaza `#C99800` descartada. Neón rojo/multic
 
 ## Logo direction
 
-Mark mínimo + Archivo Black. El “24 hs” vive en el ticker, no en un cartel luminoso.
+Wordmark **Baterías CABA** (Archivo Black) + **isotipo simple** (batería / borne geométrico, sin neón). El “24 hs” vive en el ticker.
+
+## Landing structure
+
+Ver [`LANDING.md`](LANDING.md): ticker → hero → servicios → cómo funciona → nosotros → reseñas Google → contacto/mapa → footer.  
+CTA: **Llamar** primario, WhatsApp secundario.
 
 ## Motion
 
@@ -57,4 +62,4 @@ Ticker continuo suave. CTAs: brightness. Respetar `prefers-reduced-motion` (tick
 
 ## Descartado
 
-Cartel neón cursiva/tubos como pieza principal (refs quedan en `brand/refs/` solo como archivo histórico).
+Cartel neón cursiva/tubos como pieza principal (refs en `brand/refs/` solo histórico).

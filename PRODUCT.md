@@ -24,42 +24,40 @@ Comercio de barrio en CABA: **venta y carga de baterías para auto**, atención 
 ## Operating Context
 
 - Google Business Profile / Maps como canal fuerte de descubrimiento.
-- WhatsApp como canal principal de conversión (`wa.me/541140618555`).
+- **CTA primario: llamar**; WhatsApp como secundario (`wa.me/541140618555`).
 - Local físico: Viamonte 2031, CABA.
 - Horario comunicado: 24 horas.
 - Competencia local saturada de sites genéricos “baterías a domicilio”.
+- Entrega actual: **mock de landing** para mostrar y obtener buy-in (“sí, está bueno”).
 
 ## Capabilities and Constraints
 
-- Confirmed: venta y carga de baterías para auto; CABA; 24 hs; WhatsApp; dirección del local.
+- Confirmed: venta y carga de baterías para auto; CABA; 24 hs; WhatsApp; dirección del local; reseñas Google a mostrar; logo wordmark + isotipo simple.
 - Open: marcas exactas en stock, precios públicos vs. consulta, envío/instalación a domicilio (sí/no/alcance), fotos reales del local/servicio, razón social / CUIT si hace falta en footer.
-- Scope del mock: identidad simple + landing persuasiva; no inventar claims no confirmados.
+- Scope del mock: identidad simple + landing persuasiva; fotos genéricas de calidad OK con nota de reemplazo; no inventar claims no confirmados.
 
 ## Brand Commitments
 
 - Nombre de trabajo: **Baterías CABA** (alineado al listing de Maps: “Baterias CABA Venta y carga de baterias para auto”).
 - Identidad deliberadamente **simple y minimalista** (no brand book elaborado).
+- Logo: wordmark **Baterías CABA** + isotipo simple.
 - Tagline de trabajo: “Venta y carga para tu auto”.
 - Promesa de trabajo: solución rápida en CABA, las 24 hs.
 - Tono: claro, útil, urgente-sin-histeria, porteño neutro (vos), sin marketing vacío.
-- Tipografía: **Archivo** (Omnibus-Type). El “24 hs” vive en un **ticker fino** arriba de la página (no neón).
+- Tipografía: **Archivo** (Omnibus-Type). El “24 hs” vive en un **ticker fino** arriba (borne + texto carbón).
 - Color: carbón `#141414`, papel `#F6F6F4`, humo `#5C5C5A`, línea `#D8D8D4`, acento borne `#FFCC33` (hover = brightness; sin mostaza).
-- El “24 hs” se comunica en un ticker superior fino, no con cartel neón.
-
-## Evidence on Hand
-
-- Google Maps listing: Baterias CABA Venta y carga de baterias para auto — Viamonte 2031, CABA; +54 11 4061-8555; rating ~4.9 / ~85 reviews; 24 hs; website actual = link de WhatsApp.
-- No hay logo/sistema visual propio fuerte hoy.
-- No fabricar testimonios, precios ni garantías no confirmadas.
 
 ## Product Principles
 
-1. **Urgencia útil** — la página existe para resolver un problema ahora (WhatsApp / local), no para decorar.
-2. **24 hs visible** — la continuidad horaria es un diferenciador; tiene que estar presente sin gritar.
+1. **Urgencia útil** — la página existe para resolver un problema ahora (**llamar** / WhatsApp / local), no para decorar.
+2. **24 hs visible** — la continuidad horaria es un diferenciador; ticker + copy, sin gritar.
 3. **Local y simple** — identidad de comercio porteño, no de plataforma tech.
-4. **Verdad primero** — no inventar stock, envíos ni claims; lo no confirmado queda open.
-5. **Una acción clara** — cada vista empuja a contactar o llegar al local.
+4. **Verdad primero** — no inventar stock, envíos ni claims; lo no confirmado queda open o “consultar”.
+5. **Acción clara** — CTA primario = llamada; secundario = WhatsApp.
+
+Ver estructura de secciones y opciones de hero en [`LANDING.md`](LANDING.md).
+
 
 ## Accessibility & Inclusion
 
-WCAG AA como piso en el sitio web (contraste, foco, tipografía legible en mobile). El cartelito 24 hs en fuente digital no reemplaza texto accesible equivalente.
+WCAG AA como piso (contraste, foco, tipografía legible en mobile). El ticker debe seguir siendo legible con `prefers-reduced-motion`.
