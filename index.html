@@ -454,35 +454,35 @@
     }
     .section-head p { color: var(--ink-dim); }
 
-    /* —— Services (typographic rows/cols — no card panels) —— */
+    /* —— Services: lateral-border boxes + icons (no 01/02/03) —— */
     .services-list {
       display: grid;
-      gap: 0;
+      gap: var(--space-4);
     }
     @media (min-width: 768px) {
       .services-list {
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-6);
+        gap: var(--space-5);
       }
     }
     .service {
-      padding: var(--space-5) 0;
-      border-top: 1px solid var(--line);
+      padding: var(--space-4) var(--space-4) var(--space-5);
+      border-top: 0;
+      border-left: 2px solid var(--signal);
+      border-right: 2px solid rgba(242, 241, 236, 0.16);
+      background: transparent;
     }
-    @media (min-width: 768px) {
-      .service {
-        padding: var(--space-4) 0 0;
-        border-top: 2px solid var(--signal);
-      }
-    }
-    .service-num {
+    .service-icon {
       display: block;
+      width: 1.85rem;
+      height: 1.85rem;
       margin-bottom: var(--space-3);
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
       color: var(--signal);
+    }
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .service h3 { margin-bottom: var(--space-2); }
     .service p { color: var(--ink-dim); font-size: var(--text-sm); }
@@ -495,32 +495,49 @@
       max-width: none;
     }
 
-    /* —— Steps (numbered columns — signal top rule, no boxes) —— */
+    /* —— Steps: vertical process rail (distinct from services grid) —— */
     .steps {
       display: grid;
-      gap: var(--space-5);
-      counter-reset: step;
-    }
-    @media (min-width: 768px) {
-      .steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+      gap: 0;
+      max-width: 38rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-left: 2px solid rgba(242, 241, 236, 0.16);
+      counter-reset: none;
     }
     .step {
-      padding-top: var(--space-3);
-      border-top: 2px solid var(--signal);
-      counter-increment: step;
+      position: relative;
+      padding: 0 0 var(--space-5) var(--space-5);
+      border-top: 0;
+      background: transparent;
+    }
+    .step:last-child {
+      padding-bottom: 0;
     }
     .step::before {
-      content: counter(step, decimal-leading-zero);
+      content: "";
+      position: absolute;
+      left: -0.4rem;
+      top: 0.35rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      background: var(--signal);
+      border: 2px solid var(--asphalt);
+      box-sizing: border-box;
+    }
+    .step-label {
       display: block;
-      margin-bottom: var(--space-2);
+      margin-bottom: 0.35rem;
       font-family: var(--font-display);
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--signal);
     }
-    .step h3 { font-size: 1.15rem; }
-    .step p { color: var(--ink-dim); font-size: var(--text-sm); }
+    .step h3 { font-size: 1.15rem; margin-bottom: var(--space-2); }
+    .step p { color: var(--ink-dim); font-size: var(--text-sm); max-width: 42ch; }
 
     /* —— About —— */
     .about-grid {
@@ -985,7 +1002,7 @@
         <p class="hero-lead">Viamonte 2031. Llamá o escribinos: te decimos qué traer y si hay stock.</p>
         <div class="hero-trust">
           <span class="hero-stars" aria-hidden="true">★★★★★</span>
-          <span><strong style="color:var(--ink)">4.9</strong> · +85 reseñas en Google</span>
+          <span><strong style="color:var(--ink)">4.9</strong> · 85 reseñas en Google</span>
         </div>
         <div class="cta-row hero-ctas">
           <a class="btn btn--hollow btn--hollow-call" href="tel:+541140618555">
@@ -1008,17 +1025,32 @@
         </div>
         <div class="services-list reveal">
           <article class="service">
-            <span class="service-num">01</span>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="9" width="20" height="16" stroke="currentColor" stroke-width="2"/>
+                <path d="M11 9V6h4v3M17 9V6h4v3" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 17h8" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
             <h3>Venta de baterías</h3>
             <p>Stock para autos y utilitarios. Te armamos según amperaje y modelo.</p>
           </article>
           <article class="service">
-            <span class="service-num">02</span>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 4l-6 14h6l-2 10 12-16h-7l3-8H14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
             <h3>Carga de baterías</h3>
             <p>La medimos: si carga, la dejamos; si no agarra, te lo decimos y cambiás.</p>
           </article>
           <article class="service">
-            <span class="service-num">03</span>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/>
+                <path d="M16 9v8l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+              </svg>
+            </span>
             <h3>Atención 24 horas</h3>
             <p>Madrugada, domingo o feriado: el local está abierto. Llamá o escribinos.</p>
           </article>
@@ -1033,20 +1065,23 @@
           <h2>Cómo es</h2>
           <p>Llamás, pasás por el local, salís con batería.</p>
         </div>
-        <div class="steps">
-          <article class="step reveal">
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-label">Primero</span>
             <h3>Llamás o escribís</h3>
             <p>Marca, modelo y si no arranca. Te decimos si hay stock y qué traer.</p>
-          </article>
-          <article class="step reveal">
+          </li>
+          <li class="step reveal">
+            <span class="step-label">Después</span>
             <h3>Pasás por Viamonte</h3>
             <p>Viamonte 2031. Probamos la batería y te armamos venta o carga.</p>
-          </article>
-          <article class="step reveal">
+          </li>
+          <li class="step reveal">
+            <span class="step-label">Listo</span>
             <h3>Salís andando</h3>
             <p>Nueva o cargada. Listo para arrancar.</p>
-          </article>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -1058,7 +1093,7 @@
           <ul class="about-facts">
             <li>Local físico en Viamonte — no es un número virtual</li>
             <li>Teléfono y WhatsApp: 11 4061-8555</li>
-            <li>+85 reseñas en Google · promedio 4.9</li>
+            <li>85 reseñas en Google · promedio 4.9</li>
           </ul>
         </div>
         <aside class="about-quote reveal">
@@ -1073,7 +1108,7 @@
         <div class="reviews-head reveal">
           <a
             class="google-brand"
-            href="https://www.google.com/maps/search/?api=1&amp;query=Viamonte+2031+CABA"
+            href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Google reviews — Ver en Google"
@@ -1094,7 +1129,7 @@
             <strong>4.9</strong>
             <div class="reviews-score-meta">
               <span class="reviews-score-stars" aria-label="4.9 de 5">★★★★★</span>
-              <span class="reviews-score-count">Basado en +85 reseñas</span>
+              <span class="reviews-score-count">Basado en 85 reseñas</span>
             </div>
           </div>
         </div>
@@ -1105,50 +1140,66 @@
               <article class="review">
                 <div class="review-top">
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
-                  <div class="review-author">Martín R.</div>
-                  <div class="review-meta">hace 2 semanas</div>
+                  <div class="review-author">Aydee Huallpa Flores</div>
+                  <div class="review-meta">Hace un mes</div>
                 </div>
-                <p>Llegué a las 2 AM con la batería muerta. Me atendieron al toque, me vendieron una y salí.</p>
+                <p>Excelente atención. Me ayudó con la batería de mi auto cuando lo necesitaba y fue muy amable, rápido y responsable. ¡Muchas gracias por la ayuda! Nacho ,Super recomendable.</p>
               </article>
               <article class="review">
                 <div class="review-top">
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
-                  <div class="review-author">Laura G.</div>
-                  <div class="review-meta">hace 1 mes</div>
+                  <div class="review-author">Lucas Álvarez</div>
+                  <div class="review-meta">Hace 9 meses</div>
                 </div>
-                <p>Me midieron la batería y me dijeron que no valía la pena cargar. Cambié y listo.</p>
+                <p>Me quedé en una YPF, sospechaba que podía ser la batería. Nacho me contestó el Whatsapp en 1 minuto y vino en 15. Hizo el diagnóstico y me colocó una batería nueva, todo a muy buen precio. Lo recomiendo.</p>
               </article>
               <article class="review">
                 <div class="review-top">
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
-                  <div class="review-author">Diego P.</div>
-                  <div class="review-meta">hace 3 semanas</div>
+                  <div class="review-author">Mariángeles Misuraca</div>
+                  <div class="review-meta">Hace 7 meses</div>
                 </div>
-                <p>Escribí por WhatsApp, me pasaron el amperaje y pasé por Viamonte. Rápido.</p>
+                <p>Excelente atención de Nacho. Se acercó rapidísimo al lugar que tuve el problema con el auto. (domingo). Precio razonable, muy amable y también me asesoró. Muchas gracias! Lo recomiendo muchísimo!</p>
               </article>
               <article class="review">
                 <div class="review-top">
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
-                  <div class="review-author">Valentina S.</div>
-                  <div class="review-meta">hace 1 mes</div>
+                  <div class="review-author">luis angel parodi</div>
+                  <div class="review-meta">Hace 7 meses</div>
                 </div>
-                <p>Domingo a la noche y estaban abiertos. Cambié la batería y arranqué.</p>
-              </article>
-              <article class="review">
-                <div class="review-top">
-                  <div class="review-stars" aria-label="4 de 5">★★★★☆</div>
-                  <div class="review-author">Hernán C.</div>
-                  <div class="review-meta">hace 2 meses</div>
-                </div>
-                <p>Carga en un rato. El local es chico, pero te atienden y no te dan vueltas.</p>
+                <p>Excelente atención, nos quedamos varados en medio de un viaje, el Nacho llegó en menos de 30 minutos, y en 10 minutos ya me había cambiado la batería y mi problema estaba solucionado! Super recomendable!! Muchas gracias</p>
               </article>
               <article class="review">
                 <div class="review-top">
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
-                  <div class="review-author">Camila F.</div>
-                  <div class="review-meta">hace 3 meses</div>
+                  <div class="review-author">Adriana Iglesias</div>
+                  <div class="review-meta">Hace 8 meses</div>
                 </div>
-                <p>Llamé, me dijeron que había stock, pasé y en media hora estaba de nuevo en la calle.</p>
+                <p>Los super recomiendo. Me contestó en seguida, vino enntiempo record a dónde me habia quedado varada y tienen buenos precios. Excelente servicio!</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">hugo mancini</div>
+                  <div class="review-meta">Hace 4 meses</div>
+                </div>
+                <p>Excelente servicio, no lo para ni la hora ni el frío al toque vinieron. Muchas gracias...gracias por el mate😀🫂</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Diego Salas</div>
+                  <div class="review-meta">Hace un año</div>
+                </div>
+                <p>Gracias por la atención de el dia domingo por  la noche  te acercarte a auxiliarme cuando se rompió el electro  y gracias a dios lo pudiste solucionar y pudimos seguir a nuestro destino.  gracias</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Lara Melina Romero</div>
+                  <div class="review-meta">Hace un año</div>
+                </div>
+                <p>Exelente servicio!!! ya es la segunda vez que nos asiste y en esta ocasión tuvo que sacar la tuerca de seguridad, nos pudo resolver el problema y que podamos seguir nuestro viaje. Súper recomendable y viene en el horario pactado</p>
               </article>
             </div>
           </div>
@@ -1160,7 +1211,7 @@
             </div>
           </div>
         </div>
-        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&amp;query=Viamonte+2031+CABA" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
+        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
       </div>
     </section>
 
