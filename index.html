@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Baterías CABA — Venta y carga de baterías, las 24 hs.</title>
+  <meta name="description" content="Venta y carga de baterías para auto en CABA. Abierto 24 hs. Viamonte 2031." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --carbon: #141414;
+      --paper: #F6F6F4;
+      --smoke: #5C5C5A;
+      --line: #D8D8D4;
+      --borne: #FFCC33;
+      --borne-hot: #FFE566;
+      --max: 1120px;
+      --header-h: 64px;
+      --ticker-h: 36px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Archivo, system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--carbon);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* —— Ticker —— */
+    .ticker {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      height: var(--ticker-h);
+      background: var(--borne);
+      color: var(--carbon);
+      overflow: hidden;
+      border-bottom: 1px solid color-mix(in srgb, var(--carbon) 12%, var(--borne));
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      height: 100%;
+      align-items: center;
+      animation: marquee 32s linear infinite;
+    }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    .ticker a,
+    .ticker .item {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 1.05rem;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .ticker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .ticker .dot { opacity: .4; padding: 0; letter-spacing: 0; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: var(--ticker-h);
+      z-index: 55;
+      height: var(--header-h);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: -.02em;
+    }
+    .brand svg { flex-shrink: 0; }
+    .nav {
+      display: none;
+      gap: 1.35rem;
+      font-size: .88rem;
+      font-weight: 650;
+    }
+    .nav a {
+      text-decoration: none;
+      color: var(--smoke);
+    }
+    .nav a:hover { color: var(--carbon); }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--carbon);
+      color: var(--paper);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .82rem;
+      letter-spacing: .04em;
+      padding: .65rem .95rem;
+      border-radius: .45rem;
+    }
+    .header-cta:hover { background: #000; }
+    @media (min-width: 860px) {
+      .nav { display: flex; }
+    }
+
+    /* —— Buttons —— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-height: 3.1rem;
+      padding: .85rem 1.25rem;
+      border-radius: .5rem;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: filter .15s ease, transform .15s ease, background .15s ease;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary {
+      background: var(--borne);
+      color: var(--carbon);
+    }
+    .btn-primary:hover { filter: brightness(1.06); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--paper);
+      border-color: color-mix(in srgb, var(--paper) 45%, transparent);
+    }
+    .btn-secondary:hover {
+      background: color-mix(in srgb, var(--paper) 12%, transparent);
+    }
+    .btn-dark {
+      background: var(--carbon);
+      color: var(--paper);
+    }
+    .btn-dark:hover { filter: brightness(1.15); }
+    .btn-outline {
+      background: transparent;
+      color: var(--carbon);
+      border-color: var(--carbon);
+    }
+    .btn-outline:hover { background: var(--carbon); color: var(--paper); }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: calc(100dvh - var(--ticker-h) - var(--header-h));
+      display: grid;
+      align-items: end;
+      color: var(--paper);
+      overflow: hidden;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20,20,20,.35) 0%, rgba(20,20,20,.55) 40%, rgba(20,20,20,.88) 100%),
+        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 3.5rem 0 3.25rem;
+      max-width: 38rem;
+    }
+    .hero-trust {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--paper) 82%, transparent);
+      margin-bottom: 1rem;
+    }
+    .hero-trust .stars { color: var(--borne); letter-spacing: .08em; }
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.15rem, 6.5vw, 3.6rem);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+    .hero-lead {
+      margin: 0 0 1.6rem;
+      font-size: 1.08rem;
+      color: color-mix(in srgb, var(--paper) 78%, transparent);
+      max-width: 30rem;
+    }
+    .hero-note {
+      margin-top: 1.1rem;
+      font-size: .75rem;
+      color: color-mix(in srgb, var(--paper) 45%, transparent);
+    }
+
+    /* —— Sections —— */
+    section { padding: 4.25rem 0; }
+    .section-kicker {
+      margin: 0 0 .55rem;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+    .section-title {
+      margin: 0 0 .75rem;
+      font-size: clamp(1.7rem, 3.5vw, 2.35rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      max-width: 18ch;
+    }
+    .section-lead {
+      margin: 0 0 2rem;
+      color: var(--smoke);
+      max-width: 38rem;
+      font-size: 1.05rem;
+    }
+
+    /* Services — no card chrome, just divided rows */
+    .services-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .service {
+      display: grid;
+      gap: .35rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    @media (min-width: 720px) {
+      .service {
+        grid-template-columns: 11rem 1fr auto;
+        align-items: baseline;
+        gap: 1.5rem;
+      }
+    }
+    .service h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .service p {
+      margin: 0;
+      color: var(--smoke);
+    }
+    .service .tag {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      gap: 1.75rem;
+    }
+    @media (min-width: 800px) {
+      .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    }
+    .step-num {
+      display: block;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: var(--smoke);
+      margin-bottom: .55rem;
+    }
+    .step h3 {
+      margin: 0 0 .4rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .step p { margin: 0; color: var(--smoke); }
+
+    /* Nosotros */
+    .about {
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 860px) {
+      .about {
+        grid-template-columns: 1.05fr .95fr;
+        align-items: center;
+        gap: 3rem;
+      }
+    }
+    .about-media {
+      position: relative;
+      min-height: 280px;
+      border-radius: .35rem;
+      overflow: hidden;
+      background:
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+    .about-media::after {
+      content: "Imagen ilustrativa";
+      position: absolute;
+      left: .75rem;
+      bottom: .75rem;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: rgba(20,20,20,.55);
+      padding: .3rem .5rem;
+      border-radius: .25rem;
+    }
+    .about-points {
+      margin: 1.5rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .7rem;
+    }
+    .about-points li {
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      font-weight: 650;
+    }
+    .about-points li::before {
+      content: "";
+      width: .55rem;
+      height: .55rem;
+      margin-top: .45rem;
+      flex-shrink: 0;
+      background: var(--borne);
+      border-radius: 1px;
+    }
+
+    /* Reviews */
+    .reviews-band {
+      background: var(--carbon);
+      color: var(--paper);
+    }
+    .reviews-band .section-kicker { color: color-mix(in srgb, var(--paper) 55%, transparent); }
+    .reviews-band .section-lead { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+    .rating-big {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: .75rem 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .rating-big .score {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1;
+      color: var(--borne);
+    }
+    .rating-big .meta { color: color-mix(in srgb, var(--paper) 70%, transparent); }
+    .review-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 800px) {
+      .review-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    }
+    .review {
+      padding-top: 1.1rem;
+      border-top: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+    }
+    .review .who {
+      margin: 0 0 .45rem;
+      font-weight: 800;
+      font-size: .92rem;
+    }
+    .review p {
+      margin: 0;
+      color: color-mix(in srgb, var(--paper) 72%, transparent);
+      font-size: .95rem;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 860px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 2.5rem;
+        align-items: start;
+      }
+    }
+    .contact-list {
+      display: grid;
+      gap: 1.15rem;
+      margin: 0 0 1.5rem;
+    }
+    .contact-list a,
+    .contact-list span {
+      display: block;
+      text-decoration: none;
+    }
+    .contact-list strong {
+      display: block;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-bottom: .2rem;
+    }
+    .contact-list .value {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .map {
+      min-height: 280px;
+      border-radius: .35rem;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #ddd;
+    }
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      border: 0;
+      filter: grayscale(.15) contrast(1.05);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 2.25rem 0 6.5rem;
+      border-top: 1px solid var(--line);
+      color: var(--smoke);
+      font-size: .9rem;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand {
+      font-weight: 900;
+      color: var(--carbon);
+      letter-spacing: -.02em;
+    }
+
+    /* Sticky mobile call */
+    .sticky-call {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 70;
+      padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: .55rem;
+    }
+    @media (min-width: 860px) {
+      .sticky-call { display: none; }
+      .site-footer { padding-bottom: 2.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ticker -->
+  <div class="ticker" aria-label="Información rápida">
+    <div class="ticker-track" id="tickerTrack">
+      <div class="ticker-group" id="tickerGroup">
+        <span class="item">Abierto 24 hs</span>
+        <span class="item dot" aria-hidden="true">·</span>
+        <a class="item" href="tel:+541140618555">11 4061-8555</a>
+        <span class="item dot" aria-hidden="true">·</span>
+        <a class="item" href="https://wa.me/541140618555">WhatsApp · te respondemos ya</a>
+        <span class="item dot" aria-hidden="true">·</span>
+        <span class="item">Viamonte 2031, CABA</span>
+        <span class="item dot" aria-hidden="true">·</span>
+        <span class="item">Venta y carga de baterías</span>
+        <span class="item dot" aria-hidden="true">·</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#inicio" aria-label="Baterías CABA">
+        <!-- Simple battery isotype -->
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="3" y="9" width="22" height="14" rx="2.5" stroke="#141414" stroke-width="2.4"/>
+          <path d="M25 13h3.5v6H25" stroke="#141414" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M9 13.5v5M14 13.5v5M19 13.5v5" stroke="#FFCC33" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        Baterías CABA
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#reseñas">Reseñas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="header-cta" href="tel:+541140618555">Llamar</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="hero-media" role="img" aria-label="Taller automotor — imagen ilustrativa"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-trust">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>4.9 Google · +85 reseñas · 24 hs</span>
+        </div>
+        <h1>Venta y carga de baterías, las 24 hs.</h1>
+        <p class="hero-lead">En Viamonte 2031, CABA. Te asesoramos, vendemos o cargamos — y seguís viaje.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:+541140618555">Llamar 11 4061-8555</a>
+          <a class="btn btn-secondary" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <p class="hero-note">Imagen ilustrativa — reemplazar con fotos del local</p>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios">
+      <div class="wrap">
+        <p class="section-kicker">Servicios</p>
+        <h2 class="section-title">Lo que resolvemos</h2>
+        <p class="section-lead">Todo el set visible por ahora. Ajustamos lo que no aplique cuando lo confirmemos.</p>
+        <div class="services-list">
+          <article class="service">
+            <h3>Venta de baterías</h3>
+            <p>Para auto, con asesoramiento según tu vehículo.</p>
+            <span class="tag">En local</span>
+          </article>
+          <article class="service">
+            <h3>Carga de baterías</h3>
+            <p>Cuando no hace falta cambiar: recuperamos la que tenés.</p>
+            <span class="tag">En local</span>
+          </article>
+          <article class="service">
+            <h3>Diagnóstico</h3>
+            <p>Te decimos si es la batería u otra cosa del sistema eléctrico.</p>
+            <span class="tag">Asesoramiento</span>
+          </article>
+          <article class="service">
+            <h3>Atención 24 hs</h3>
+            <p>Abiertos siempre. Ideal cuando el auto no arranca de madrugada.</p>
+            <span class="tag">Siempre</span>
+          </article>
+          <article class="service">
+            <h3>Instalación</h3>
+            <p>Colocación en el momento, según el caso.</p>
+            <span class="tag">Consultar</span>
+          </article>
+          <article class="service">
+            <h3>A domicilio</h3>
+            <p>Si necesitás que vayamos nosotros.</p>
+            <span class="tag">Consultar</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section id="como" style="background:#efeef0">
+      <div class="wrap">
+        <p class="section-kicker">Cómo funciona</p>
+        <h2 class="section-title">Tres pasos</h2>
+        <p class="section-lead">Sin vueltas: del problema al auto andando.</p>
+        <div class="steps">
+          <article class="step">
+            <span class="step-num">01</span>
+            <h3>Llamá o escribí</h3>
+            <p>Contanos marca, modelo y qué pasó. Te orientamos al toque.</p>
+          </article>
+          <article class="step">
+            <span class="step-num">02</span>
+            <h3>Venís al local</h3>
+            <p>Viamonte 2031. Revisamos y te proponemos venta o carga.</p>
+          </article>
+          <article class="step">
+            <span class="step-num">03</span>
+            <h3>Arrancás</h3>
+            <p>Salís con la batería lista. Las 24 hs, todos los días.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros">
+      <div class="wrap about">
+        <div>
+          <p class="section-kicker">Nosotros</p>
+          <h2 class="section-title">Local de barrio, abierto siempre</h2>
+          <p class="section-lead" style="margin-bottom:0">
+            Somos un comercio de CABA dedicado a baterías para auto: venta, carga y consejo claro.
+            La idea es simple — que no te quedes a pie.
+          </p>
+          <ul class="about-points">
+            <li>Atención presencial en Balvanera</li>
+            <li>Más de 85 reseñas en Google</li>
+            <li>Respuesta rápida por teléfono y WhatsApp</li>
+          </ul>
+        </div>
+        <div class="about-media" role="img" aria-label="Automóvil — imagen ilustrativa"></div>
+      </div>
+    </section>
+
+    <!-- Reseñas -->
+    <section class="reviews-band" id="reseñas">
+      <div class="wrap">
+        <p class="section-kicker">Reseñas</p>
+        <h2 class="section-title" style="color:var(--paper)">Lo que dicen en Google</h2>
+        <p class="section-lead">Rating real del local. Los textos de abajo son placeholders de tono hasta conectar el feed.</p>
+        <div class="rating-big">
+          <div class="score">4.9</div>
+          <div class="meta">
+            <div aria-hidden="true" style="color:var(--borne);letter-spacing:.12em;font-weight:800">★★★★★</div>
+            <div>+85 reseñas en Google</div>
+          </div>
+        </div>
+        <div class="review-grid">
+          <blockquote class="review">
+            <p class="who">Cliente de Maps</p>
+            <p>“Fui de madrugada y estaban. Me cambiaron la batería sin vueltas.”</p>
+          </blockquote>
+          <blockquote class="review">
+            <p class="who">Cliente de Maps</p>
+            <p>“Buen precio y me explicaron si convenía cargar o comprar nueva.”</p>
+          </blockquote>
+          <blockquote class="review">
+            <p class="who">Cliente de Maps</p>
+            <p>“Queda en Viamonte, fácil de llegar. Atención rápida.”</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="section-kicker">Contacto</p>
+          <h2 class="section-title">Estamos en Viamonte</h2>
+          <p class="section-lead">Llamá primero. Si preferís, escribinos por WhatsApp.</p>
+          <div class="contact-list">
+            <a href="tel:+541140618555">
+              <strong>Teléfono</strong>
+              <span class="value">11 4061-8555</span>
+            </a>
+            <a href="https://wa.me/541140618555" target="_blank" rel="noopener">
+              <strong>WhatsApp</strong>
+              <span class="value">Enviar mensaje</span>
+            </a>
+            <span>
+              <strong>Dirección</strong>
+              <span class="value">Viamonte 2031, CABA</span>
+            </span>
+            <span>
+              <strong>Horario</strong>
+              <span class="value">Abierto 24 hs</span>
+            </span>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="tel:+541140618555">Llamar ahora</a>
+            <a class="btn btn-outline" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe
+            title="Mapa Baterías CABA — Viamonte 2031"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Viamonte%202031%2C%20CABA&z=16&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">Baterías CABA</div>
+      <div>Viamonte 2031 · 11 4061-8555 · Abierto 24 hs</div>
+    </div>
+  </footer>
+
+  <div class="sticky-call" role="region" aria-label="Acciones rápidas">
+    <a class="btn btn-primary" href="tel:+541140618555">Llamar</a>
+    <a class="btn btn-dark" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <script>
+    const track = document.getElementById('tickerTrack');
+    const group = document.getElementById('tickerGroup');
+    track.appendChild(group.cloneNode(true));
+  </script>
+</body>
+</html>

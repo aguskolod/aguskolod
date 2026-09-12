@@ -5,6 +5,10 @@
 
 Composición visual para **mostrar y cerrar un sí**: que se sienta profesional, urgente-útil y local. No hace falta que el contenido operativo esté 100% confirmado; sí hace falta que se vea creíble.
 
+## Headline (definido)
+
+**Venta y carga de baterías, las 24 hs.**
+
 ## Locked decisions
 
 | Tema | Decisión |
