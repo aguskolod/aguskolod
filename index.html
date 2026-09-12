@@ -368,7 +368,7 @@
       background:
         linear-gradient(105deg, rgba(14, 15, 16, 0.92) 0%, rgba(14, 15, 16, 0.55) 48%, rgba(14, 15, 16, 0.35) 100%),
         linear-gradient(to top, var(--asphalt) 0%, transparent 42%),
-        url("https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=2000&q=80") center / cover no-repeat;
+        url("assets/photos/hero.jpg") center / cover no-repeat;
     }
     .hero-bg::after {
       content: "";
@@ -454,10 +454,10 @@
     }
     .section-head p { color: var(--ink-dim); }
 
-    /* —— Services: centered icons, orange column dividers only —— */
+        /* —— Services: photo panels + centered titles —— */
     .services-list {
       display: grid;
-      gap: var(--space-5);
+      gap: var(--space-3);
     }
     @media (min-width: 768px) {
       .services-list {
@@ -466,15 +466,16 @@
       }
     }
     .service {
-      padding: var(--space-4) 0 0;
-      text-align: center;
+      position: relative;
+      min-height: clamp(14rem, 28vw, 18rem);
+      margin: 0;
+      padding: 0;
       border: 0;
-      background: transparent;
+      overflow: hidden;
+      background: var(--asphalt-2);
+      text-align: center;
     }
     @media (min-width: 768px) {
-      .service {
-        padding: var(--space-2) var(--space-5) 0;
-      }
       .service + .service {
         border-left: 2px solid var(--signal);
       }
@@ -482,16 +483,47 @@
     @media (max-width: 767px) {
       .service + .service {
         border-top: 2px solid var(--signal);
-        padding-top: var(--space-5);
       }
+    }
+    .service-media {
+      position: absolute;
+      inset: 0;
+    }
+    .service-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.25) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .service-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(14, 15, 16, 0.35), rgba(14, 15, 16, 0.82) 70%, rgba(14, 15, 16, 0.92)),
+        linear-gradient(90deg, rgba(255, 90, 31, 0.08), transparent 40%);
+    }
+    .service-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--space-3);
+      height: 100%;
+      min-height: inherit;
+      padding: var(--space-5) var(--space-4);
+      box-sizing: border-box;
     }
     .service-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 2.25rem;
-      height: 2.25rem;
-      margin: 0 auto var(--space-3);
+      width: 2.5rem;
+      height: 2.5rem;
       color: var(--signal);
     }
     .service-icon svg {
@@ -502,32 +534,29 @@
     .service h3 {
       margin: 0;
       text-wrap: balance;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
     }
 
 
-    /* —— About —— */
-    .about-grid--solo {
-      grid-template-columns: 1fr;
-      max-width: 40rem;
-    }
+        /* —— About: facts + workshop photo —— */
     .about-grid {
       display: grid;
-      gap: var(--space-6);
+      gap: var(--space-5);
+      align-items: stretch;
     }
     @media (min-width: 800px) {
       .about-grid {
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: start;
-        gap: var(--space-7);
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: var(--space-6);
       }
     }
-    .about-copy p { color: var(--ink-dim); }
+    .about-copy h2 { margin-bottom: var(--space-4); }
     .about-facts {
       list-style: none;
-      margin: var(--space-4) 0 0;
+      margin: 0;
       padding: 0;
       display: grid;
-      gap: var(--space-2);
+      gap: var(--space-3);
     }
     .about-facts li {
       display: flex;
@@ -543,6 +572,20 @@
       flex-shrink: 0;
       background: var(--signal);
     }
+    .about-media {
+      margin: 0;
+      min-height: clamp(16rem, 36vw, 22rem);
+      overflow: hidden;
+      background: var(--asphalt-2);
+    }
+    .about-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+
 
     /* —— Reviews —— */
     .reviews-band {
@@ -968,35 +1011,49 @@
       <div class="wrap">
         <div class="section-head reveal">
           <h2>Servicios</h2>
-          <p>Venta, carga y atención las 24 horas en el local.</p>
         </div>
         <div class="services-list reveal">
           <article class="service">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="9" width="20" height="16" stroke="currentColor" stroke-width="2"/>
-                <path d="M11 9V6h4v3M17 9V6h4v3" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 17h8" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </span>
-            <h3>Venta de baterías</h3>
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/venta.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="5" y="9" width="20" height="16" stroke="currentColor" stroke-width="2"/>
+                  <path d="M11 9V6h4v3M17 9V6h4v3" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 17h8" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </span>
+              <h3>Venta de baterías</h3>
+            </div>
           </article>
           <article class="service">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 4l-6 14h6l-2 10 12-16h-7l3-8H14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <h3>Carga de baterías</h3>
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/carga.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 4l-6 14h6l-2 10 12-16h-7l3-8H14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3>Carga de baterías</h3>
+            </div>
           </article>
           <article class="service">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/>
-                <path d="M16 9v8l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-              </svg>
-            </span>
-            <h3>Atención 24 horas</h3>
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/horas.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/>
+                  <path d="M16 9v8l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+                </svg>
+              </span>
+              <h3>Atención 24 horas</h3>
+            </div>
           </article>
         </div>
       </div>
@@ -1004,16 +1061,18 @@
 
 
     <section class="section" id="nosotros">
-      <div class="wrap about-grid about-grid--solo">
+      <div class="wrap about-grid">
         <div class="about-copy reveal">
           <h2>Taller en Viamonte 2031</h2>
-          <p>Local de baterías en CABA. Abrimos las 24 horas: si se te quedó el auto de madrugada, acá estamos.</p>
           <ul class="about-facts">
             <li>Local físico en Viamonte — no es un número virtual</li>
             <li>Teléfono y WhatsApp: 11 4061-8555</li>
             <li>85 reseñas en Google · promedio 4.9</li>
           </ul>
         </div>
+        <figure class="about-media reveal">
+          <img src="assets/photos/taller.jpg" alt="Taller automotor — mecánico trabajando en el motor" width="900" height="600" loading="lazy" decoding="async" />
+        </figure>
       </div>
     </section>
 
