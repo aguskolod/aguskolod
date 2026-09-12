@@ -1,0 +1,1911 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<style>
+    :root {
+      --asphalt: #0e0f10;
+      --asphalt-2: #16181a;
+      --ink: #f2f1ec;
+      --ink-dim: rgba(242, 241, 236, 0.62);
+      --ink-faint: rgba(242, 241, 236, 0.38);
+      --line: rgba(242, 241, 236, 0.12);
+      --signal: #ff5a1f;
+      --signal-press: #e04a14;
+      --wa: #25d366;
+      --wa-press: #1ebe57;
+      --font-display: "Saira", system-ui, sans-serif;
+      --font-body: "Inter Tight", system-ui, sans-serif;
+      --space-1: 0.5rem;
+      --space-2: 0.75rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 3rem;
+      --space-7: 4.5rem;
+      --space-8: 7rem;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1.0625rem;
+      --text-lg: 1.25rem;
+      --text-xl: clamp(1.75rem, 4vw, 2.75rem);
+      --text-display: clamp(2.75rem, 8vw, 5.5rem);
+      --leading-tight: 1.05;
+      --leading-snug: 1.25;
+      --leading-normal: 1.55;
+      --measure: 36rem;
+      --radius: 0;
+      --header-h: 4.25rem;
+      --sticky-cta-h: 4.5rem;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --duration: 220ms;
+      --max: 72rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--ink);
+      background: var(--asphalt);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: var(--leading-tight);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-3);
+      text-wrap: balance;
+    }
+    h1 { font-size: var(--text-display); }
+    h2 { font-size: var(--text-xl); }
+    h3 { font-size: var(--text-lg); letter-spacing: -0.02em; }
+    p { margin: 0 0 var(--space-3); max-width: var(--measure); text-wrap: pretty; }
+    p:last-child { margin-bottom: 0; }
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: var(--signal);
+      color: #fff;
+      padding: var(--space-2) var(--space-3);
+      z-index: 100;
+    }
+    .skip:focus { left: var(--space-3); top: var(--space-3); }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* —— Wordmark —— */
+    .wordmark {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      text-decoration: none;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .wordmark-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    .wordmark-name span { color: var(--signal); }
+    .wordmark-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.55rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+    .wordmark-hours {
+      color: var(--signal);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+    .wordmark-hours::after {
+      content: "·";
+      margin-left: 0.55rem;
+      color: var(--ink-faint);
+      font-weight: 700;
+    }
+    .wordmark-addr {
+      color: var(--ink-dim);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.78rem;
+    }
+    .wordmark--lg .wordmark-name { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+    .wordmark--lg .wordmark-meta { font-size: 0.9rem; }
+    .wordmark--lg .wordmark-hours { font-size: 1.05rem; }
+    .wordmark--footer .wordmark-name { font-size: 1.5rem; }
+
+    /* —— Buttons —— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.75rem 1.35rem;
+      border: 2px solid transparent;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn--call {
+      background: var(--signal);
+      color: #fff;
+      border-color: var(--signal);
+    }
+    .btn--call:hover { background: var(--signal-press); border-color: var(--signal-press); }
+    .btn--wa {
+      background: var(--wa);
+      color: #fff;
+      border-color: var(--wa);
+    }
+    .btn--wa:hover { background: var(--wa-press); border-color: var(--wa-press); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .btn--ghost:hover { border-color: var(--ink); }
+    .btn--block { width: 100%; }
+    .btn-icon { width: 1.15rem; height: 1.15rem; flex-shrink: 0; position: relative; z-index: 1; }
+
+    /* Hollow CTAs (hero): strong border, fill on hover */
+    .btn--hollow {
+      --hollow-fill: currentColor;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      z-index: 0;
+    }
+    .btn--hollow > * { position: relative; z-index: 1; }
+    .btn--hollow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill));
+      background-repeat: no-repeat;
+      background-position:
+        top center,
+        bottom center,
+        center left,
+        center right;
+      background-size:
+        100% 0,
+        100% 0,
+        0 100%,
+        0 100%;
+      transition: background-size 360ms var(--ease);
+    }
+    .btn--hollow:hover,
+    .btn--hollow:focus-visible { color: #fff; }
+    .btn--hollow:hover::before,
+    .btn--hollow:focus-visible::before {
+      background-size:
+        100% 50%,
+        100% 50%,
+        50% 100%,
+        50% 100%;
+    }
+    .btn--hollow-call {
+      color: var(--signal);
+      border-color: var(--signal);
+      border-width: 2px;
+      --hollow-fill: var(--signal);
+    }
+    .btn--hollow-wa {
+      color: var(--wa);
+      border-color: var(--wa);
+      border-width: 2px;
+      --hollow-fill: var(--wa);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn--hollow::before { transition: none; }
+      .btn--hollow:hover::before,
+      .btn--hollow:focus-visible::before {
+        background-size: 100% 50%, 100% 50%, 50% 100%, 50% 100%;
+      }
+      .btn--hollow-call:hover,
+      .btn--hollow-call:focus-visible { background: var(--signal); }
+      .btn--hollow-wa:hover,
+      .btn--hollow-wa:focus-visible { background: var(--wa); }
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* —— Borne strip —— */
+    .borne {
+      background: var(--signal);
+      color: #fff;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .borne-track {
+      display: flex;
+      width: max-content;
+      animation: borne-scroll 28s linear infinite;
+    }
+    .borne-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.55rem 0;
+      white-space: nowrap;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .borne-group span::after {
+      content: "·";
+      margin-left: 1.5rem;
+      opacity: 0.55;
+    }
+    @keyframes borne-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .borne-track { animation: none; }
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(14, 15, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--header-h);
+      gap: var(--space-3);
+    }
+    .nav-links {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: var(--space-4);
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { display: none; gap: var(--space-2); }
+    .nav-cta .btn { min-height: 2.5rem; padding: 0.5rem 1rem; font-size: 0.85rem; }
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .nav-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+    .nav-toggle-bars {
+      position: relative;
+      display: block;
+      width: 1.15rem;
+      height: 0.85rem;
+    }
+    .nav-toggle-bars span {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transition: transform 240ms var(--ease), opacity 180ms var(--ease), top 240ms var(--ease);
+    }
+    .nav-toggle-bars span:nth-child(1) { top: 0; }
+    .nav-toggle-bars span:nth-child(2) { top: 50%; margin-top: -1px; }
+    .nav-toggle-bars span:nth-child(3) { bottom: 0; top: auto; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(1) {
+      top: 50%;
+      margin-top: -1px;
+      transform: rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(3) {
+      top: 50%;
+      bottom: auto;
+      margin-top: -1px;
+      transform: rotate(-45deg);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-toggle-bars span { transition: none; }
+    }
+    .nav-panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: 45;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      background: rgba(14, 15, 16, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-0.35rem);
+      pointer-events: none;
+      transition:
+        opacity 200ms var(--ease),
+        transform 200ms var(--ease),
+        visibility 200ms var(--ease);
+    }
+    .nav-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+    }
+    .nav-panel-inner {
+      padding: var(--space-3) 0 var(--space-4);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-panel { transition: none; transform: none; }
+    }
+    .nav-panel ul { list-style: none; margin: 0; padding: 0; }
+    .nav-panel a {
+      display: block;
+      padding: var(--space-2) 0;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .nav-panel .cta-row { flex-direction: column; }
+    @media (min-width: 900px) {
+      .nav-links, .nav-cta { display: flex; }
+      .nav-toggle { display: none !important; }
+      .nav-panel { display: none !important; }
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 52rem);
+      display: grid;
+      align-items: end;
+      padding: var(--space-6) 0 var(--space-7);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(14, 15, 16, 0.92) 0%, rgba(14, 15, 16, 0.55) 48%, rgba(14, 15, 16, 0.35) 100%),
+        linear-gradient(to top, var(--asphalt) 0%, transparent 42%),
+        url("assets/photos/hero.jpg") center / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -12deg,
+        transparent,
+        transparent 11px,
+        rgba(255, 90, 31, 0.03) 11px,
+        rgba(255, 90, 31, 0.03) 12px
+      );
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 40rem;
+    }
+    .hero-kicker {
+      display: inline-block;
+      margin: 0 0 var(--space-3);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--signal);
+    }
+    .hero h1 {
+      margin-bottom: var(--space-3);
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+    }
+    .hero-lead {
+      color: var(--ink-dim);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+      max-width: 28rem;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1rem;
+      margin-bottom: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--ink-dim);
+    }
+    .hero-stars { color: var(--signal); letter-spacing: 0.08em; }
+    .hero-ctas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2);
+      max-width: 32rem;
+      width: 100%;
+    }
+    .hero-ctas .btn {
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+    }
+    @media (max-width: 420px) {
+      .hero-ctas { grid-template-columns: 1fr; }
+    }
+
+    /* —— Sections —— */
+    .section {
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--line);
+    }
+    .section--tight { padding: var(--space-6) 0; }
+    .section-head {
+      margin-bottom: var(--space-5);
+      max-width: 36rem;
+    }
+    .section-kicker {
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--signal);
+    }
+    .section-head p { color: var(--ink-dim); }
+
+        /* —— Services: photo panels + centered titles —— */
+    .services-list {
+      display: grid;
+      gap: var(--space-3);
+    }
+    @media (min-width: 768px) {
+      .services-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+    }
+    @media (min-width: 1100px) {
+      .services-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .service {
+      position: relative;
+      min-height: clamp(14rem, 28vw, 18rem);
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      background: var(--asphalt-2);
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .service + .service {
+        border-left: 2px solid var(--signal);
+      }
+      .service:nth-child(2n+1) {
+        border-left: 0;
+      }
+      .service:nth-child(n+3) {
+        border-top: 2px solid var(--signal);
+      }
+    }
+    @media (min-width: 1100px) {
+      .service:nth-child(2n+1) {
+        border-left: 2px solid var(--signal);
+      }
+      .service:first-child {
+        border-left: 0;
+      }
+      .service:nth-child(n+3) {
+        border-top: 0;
+      }
+    }
+    @media (max-width: 767px) {
+      .service + .service {
+        border-top: 2px solid var(--signal);
+      }
+    }
+    .service-media {
+      position: absolute;
+      inset: 0;
+    }
+    .service-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.25) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .service-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(14, 15, 16, 0.35), rgba(14, 15, 16, 0.82) 70%, rgba(14, 15, 16, 0.92)),
+        linear-gradient(90deg, rgba(255, 90, 31, 0.08), transparent 40%);
+    }
+    .service-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      height: 100%;
+      min-height: inherit;
+      padding: var(--space-5) var(--space-4);
+      box-sizing: border-box;
+    }
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      color: var(--signal);
+    }
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .service h3 {
+      margin: 0;
+      text-wrap: balance;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+    }
+
+    /* —— Reviews
+
+
+    /* —— Reviews —— */
+    .reviews-band {
+      background: var(--asphalt-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: var(--space-7) 0;
+    }
+    .reviews-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--line);
+    }
+    .google-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .google-brand svg {
+      display: block;
+      flex-shrink: 0;
+    }
+    .google-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      line-height: 1.15;
+    }
+    .google-brand-word {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+    .google-brand-sub {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .reviews-score {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem 1rem;
+    }
+    .reviews-score strong {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .reviews-score-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .reviews-score-stars {
+      color: #fbbc04;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+    .reviews-score-count {
+      color: var(--ink-dim);
+      font-size: var(--text-sm);
+    }
+    .carousel {
+      position: relative;
+    }
+    .carousel-viewport {
+      overflow: hidden;
+      /* No boxed chrome — open strip */
+      border: none;
+      background: transparent;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 320ms var(--ease);
+    }
+    .review {
+      flex: 0 0 100%;
+      padding: var(--space-4) var(--space-4) var(--space-4) 0;
+      min-height: 11rem;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+    @media (min-width: 720px) {
+      .review {
+        flex-basis: 50%;
+        padding-right: var(--space-5);
+      }
+    }
+    @media (min-width: 1100px) {
+      .review { flex-basis: 33.333%; }
+    }
+    .review-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      margin-bottom: var(--space-3);
+    }
+    .review-author {
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+    .review-meta {
+      font-size: var(--text-xs);
+      color: var(--ink-faint);
+    }
+    .review-stars {
+      color: #fbbc04;
+      letter-spacing: 0.06em;
+      font-size: var(--text-sm);
+      line-height: 1;
+    }
+    .review p {
+      font-size: var(--text-sm);
+      color: var(--ink-dim);
+      max-width: none;
+      font-style: italic;
+      quotes: "“" "”";
+    }
+    .review p::before { content: open-quote; }
+    .review p::after { content: close-quote; }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--line);
+    }
+    .carousel-btns { display: flex; gap: var(--space-2); }
+    .carousel-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0;
+    }
+    .carousel-btn:hover { border-bottom-color: var(--ink); color: #fff; }
+    .carousel-btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+    .carousel-dots {
+      display: flex;
+      gap: 0.4rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .carousel-dots button {
+      width: 0.5rem;
+      height: 0.5rem;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: var(--ink-faint);
+      cursor: pointer;
+    }
+    .carousel-dots button[aria-current="true"] { background: #fbbc04; width: 1.25rem; }
+    .reviews-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.15rem;
+    }
+    .reviews-link:hover {
+      border-bottom-color: var(--ink);
+      color: #fff;
+    }
+
+    /* —— Contact —— */
+    .contact-grid {
+      display: grid;
+      gap: var(--space-5);
+    }
+    @media (min-width: 800px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1.1fr;
+        gap: var(--space-6);
+        align-items: start;
+      }
+    }
+    .contact-list {
+      list-style: none;
+      margin: 0 0 var(--space-4);
+      padding: 0;
+      display: grid;
+      gap: var(--space-3);
+    }
+    .contact-list li {
+      display: grid;
+      gap: 0.15rem;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--line);
+    }
+    .contact-list span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .contact-list a,
+    .contact-list strong {
+      font-weight: 700;
+      text-decoration: none;
+      font-size: var(--text-lg);
+    }
+    .contact-list a:hover { color: var(--signal); }
+    .map-frame {
+      border: 1px solid var(--line);
+      background: var(--asphalt-2);
+      min-height: 18rem;
+      overflow: hidden;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 18rem;
+      border: 0;
+      filter: grayscale(1) contrast(1.05) brightness(0.85);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      padding: var(--space-6) 0 var(--space-6);
+      border-top: 1px solid var(--line);
+      background: #0a0b0c;
+    }
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3) var(--space-4);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links a {
+      text-decoration: none;
+      font-size: var(--text-sm);
+      color: var(--ink-dim);
+    }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-legal {
+      font-size: var(--text-xs);
+      color: var(--ink-faint);
+      max-width: none;
+    }
+
+    /* —— Sticky CTAs —— */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--asphalt);
+      border-top: 1px solid var(--line);
+      padding: env(safe-area-inset-bottom, 0);
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 280ms var(--ease), opacity 220ms var(--ease);
+    }
+    .sticky-cta.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.has-sticky-cta {
+      padding-bottom: calc(var(--sticky-cta-h) + env(safe-area-inset-bottom, 0px));
+    }
+    .sticky-cta .btn {
+      border-radius: 0;
+      min-height: var(--sticky-cta-h);
+      border: none;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .sticky-cta .btn:last-child { border-right: none; }
+    @media (min-width: 900px) {
+      .sticky-cta { display: none; }
+      .site-footer { padding-bottom: var(--space-6); }
+      .hero { padding-bottom: var(--space-7); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+    }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+<style id="impeccable-live-edit-badge-focus-style">#impeccable-live-edit-badge button { outline: none !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; }#impeccable-live-edit-badge button:focus { outline: none !important; }#impeccable-live-edit-badge button:focus-visible { outline: none !important; }[data-impeccable-editable="true"] { outline: none !important; box-shadow: none !important; }[data-impeccable-editable="true"]:focus { outline: none !important; box-shadow: none !important; }[data-impeccable-editable="true"]:focus-visible { outline: none !important; box-shadow: none !important; }</style>
+<style id="impeccable-live-bar-focus-style">#impeccable-live-global-bar button:focus { outline: none; }#impeccable-live-global-bar button:focus-visible {  outline: none;  box-shadow: 0 0 0 2px oklch(84% 0.19 80.46 / 0.18), 0 0 0 3px oklch(84% 0.19 80.46);}@keyframes impeccable-agent-dot { 0%, 100% { opacity: 0.45; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }#impeccable-live-global-bar-brand[data-agent-connected="false"] [data-agent-dot] { animation: impeccable-agent-dot 1.4s ease-in-out infinite; }@media (prefers-reduced-motion: reduce) { #impeccable-live-global-bar-brand[data-agent-connected="false"] [data-agent-dot] { animation: none; opacity: 0.9; } }</style>
+<style id="impeccable-live-page-chat-style">@keyframes impeccable-steer-dot { 0%, 70%, 100% { opacity: 0.28; transform: scale(0.82); } 35% { opacity: 1; transform: scale(1); } }@keyframes impeccable-steer-processing { 0%, 100% { border-color: oklch(70% 0.12 188 / 0.28); box-shadow: 0 0 0 0 oklch(70% 0.12 188 / 0); } 50% { border-color: oklch(82% 0.07 188 / 0.55); box-shadow: 0 0 14px oklch(70% 0.12 188 / 0.18); } }@keyframes impeccable-voice-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }#impeccable-live-page-chat[data-processing="true"] { animation: impeccable-steer-processing 1.6s ease-in-out infinite; }@media (prefers-reduced-motion: reduce) { #impeccable-live-page-chat[data-processing="true"] { animation: none; border-color: oklch(70% 0.12 188 / 0.45); } #impeccable-live-page-chat[data-processing="true"] [aria-hidden="true"] span { animation: none; opacity: 0.85; } }#impeccable-live-page-chat[data-voice-listening="true"] { border-color: oklch(70% 0.12 188 / 0.45); }#impeccable-live-page-chat-voice[data-listening="true"] svg { animation: impeccable-voice-pulse 1.1s ease-in-out infinite; }@media (prefers-reduced-motion: reduce) { #impeccable-live-page-chat-voice[data-listening="true"] svg { animation: none; opacity: 1; } }#impeccable-live-page-chat-input::placeholder { color: oklch(72% 0 0); opacity: 1; }#impeccable-live-page-chat-input { caret-color: oklch(84% 0.19 80.46); }#impeccable-live-page-chat[data-input-focused="true"]:not([data-expanded="true"]) #impeccable-live-page-chat-input::placeholder { color: oklch(72% 0 0); }#impeccable-live-page-chat-voice:hover { background: oklch(78% 0.12 82 / 0.12); }</style>
+<style id="impeccable-live-keyframes">@keyframes impeccable-spin { to { transform: rotate(360deg); } }</style>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5diKs2O-i4OrMNEg.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5UiKs2O-i4OrMNEg.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5ciKs2O-i4OrMNEg.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5TiKs2O-i4OrMNEg.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5fiKs2O-i4OrMNEg.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5eiKs2O-i4OrMNEg.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGShv5HMAFg6IuGlBNMjxLsC66ZMtb8hyW62x0xCHx5QiKs2O-i4OrM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsK8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsD8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsL8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsE8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsI8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsJ8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ahuQ2e8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsK8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsD8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsL8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsE8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsI8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsJ8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ahuQ2e8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsK8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsD8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsL8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsE8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsI8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsJ8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ahuQ2e8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsK8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsD8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsL8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsE8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsI8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/NGSwv5HMAFg6IuGlBNMjxLsJ8ahuQ2e8Smg.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ahuQ2e8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLh4vSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLhovSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLiIvSdyqOvg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLh4vSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLhovSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLiIvSdyqOvg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLh4vSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLhovSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLiIvSdyqOvg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLh4vSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLhovSdyqOvlaB.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/memjYa2wxmKQyPMrZX79wwYZQMhsyuSLiIvSdyqOvg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+</head>
+<body>
+
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <div class="borne" aria-hidden="true">
+    <div class="borne-track">
+      <div class="borne-group">
+        <span>Abierto 24 hs</span>
+        <span>Viamonte 2031 · CABA</span>
+        <span>Venta y carga de baterías</span>
+        <span>11 4061-8555</span>
+        <span>Autos y utilitarios</span>
+      </div>
+      <div class="borne-group">
+        <span>Abierto 24 hs</span>
+        <span>Viamonte 2031 · CABA</span>
+        <span>Venta y carga de baterías</span>
+        <span>11 4061-8555</span>
+        <span>Autos y utilitarios</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" style="">
+    <div class="wrap nav">
+      <a class="wordmark" href="#inicio" aria-label="Baterías CABA, inicio">
+        <span class="wordmark-name">Baterías <span>CABA</span></span>
+        <span class="wordmark-meta"><span class="wordmark-hours">24 hs</span><span class="wordmark-addr">Viamonte 2031</span></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn--call" href="tel:+541140618555">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"></path></svg>
+          Llamar
+        </a>
+        <a class="btn btn--wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"></path></svg>
+          WhatsApp
+        </a>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" id="navToggle">
+        <span class="visually-hidden">Menú</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+    <div class="nav-panel" id="nav-panel" aria-hidden="true" inert="">
+      <div class="wrap nav-panel-inner">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="wrap hero-inner reveal is-in">
+        <h1>Venta y carga de baterías · 24 hs</h1>
+        <p class="hero-lead">Emergencia o en el local: llamá y te asistimos. Si hace falta, vamos a donde estás.</p>
+        <div class="hero-trust">
+          <span class="hero-stars" aria-hidden="true">★★★★★</span>
+          <span><strong style="color:var(--ink)">4.9</strong> · 85 reseñas en Google</span>
+        </div>
+        <div class="cta-row hero-ctas">
+          <a class="btn btn--hollow btn--hollow-call" href="tel:+541140618555">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"></path></svg>
+            <span>Llamar</span>
+          </a>
+          <a class="btn btn--hollow btn--hollow-wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"></path></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <div class="section-head reveal is-in">
+          <h2>Servicios</h2>
+        </div>
+        <div class="services-list reveal is-in">
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="http://127.0.0.1:8765/assets/photos/venta.jpg" alt="" width="700" height="500" loading="lazy" decoding="async">
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="5" y="9" width="20" height="16" stroke="currentColor" stroke-width="2"></rect>
+                  <path d="M11 9V6h4v3M17 9V6h4v3" stroke="currentColor" stroke-width="2"></path>
+                  <path d="M12 17h8" stroke="currentColor" stroke-width="2"></path>
+                </svg>
+              </span>
+              <h3>Venta de baterías</h3>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="http://127.0.0.1:8765/assets/photos/carga.jpg" alt="" width="700" height="500" loading="lazy" decoding="async">
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 4l-6 14h6l-2 10 12-16h-7l3-8H14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+              <h3>Carga de baterías</h3>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="http://127.0.0.1:8765/assets/photos/horas.jpg" alt="" width="700" height="500" loading="lazy" decoding="async">
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"></circle>
+                  <path d="M16 9v8l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="square"></path>
+                </svg>
+              </span>
+              <h3>Atención 24 horas</h3>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="http://127.0.0.1:8765/assets/photos/asistencia.jpg" alt="" width="700" height="500" loading="lazy" decoding="async">
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 4c-5 0-9 4-9 9 0 7 9 15 9 15s9-8 9-15c0-5-4-9-9-9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                  <circle cx="16" cy="13" r="3" stroke="currentColor" stroke-width="2"></circle>
+                </svg>
+              </span>
+              <h3>Asistencia en el lugar</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="reviews-band" id="reseñas" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <div class="reviews-head reveal is-in">
+          <a class="google-brand" href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY" target="_blank" rel="noopener noreferrer" aria-label="Google reviews: Ver en Google">
+            <!-- Official multicolor Google “G” mark (inline SVG) -->
+            <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+            </svg>
+            <span class="google-brand-text">
+              <h2 class="google-brand-word" id="reviews-title">Google</h2>
+              <span class="google-brand-sub">Reviews</span>
+            </span>
+          </a>
+          <div class="reviews-score">
+            <strong>4.9</strong>
+            <div class="reviews-score-meta">
+              <span class="reviews-score-stars" aria-label="4.9 de 5">★★★★★</span>
+              <span class="reviews-score-count">Basado en 85 reseñas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel reveal is-in" data-carousel="">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack" style="transform: translateX(0%);">
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Aydee Huallpa Flores</div>
+                  <div class="review-meta">Hace un mes</div>
+                </div>
+                <p>Excelente atención. Me ayudó con la batería de mi auto cuando lo necesitaba y fue muy amable, rápido y responsable. ¡Muchas gracias por la ayuda! Nacho ,Super recomendable.</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Lucas Álvarez</div>
+                  <div class="review-meta">Hace 9 meses</div>
+                </div>
+                <p>Me quedé en una YPF, sospechaba que podía ser la batería. Nacho me contestó el Whatsapp en 1 minuto y vino en 15. Hizo el diagnóstico y me colocó una batería nueva, todo a muy buen precio. Lo recomiendo.</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Mariángeles Misuraca</div>
+                  <div class="review-meta">Hace 7 meses</div>
+                </div>
+                <p>Excelente atención de Nacho. Se acercó rapidísimo al lugar que tuve el problema con el auto. (domingo). Precio razonable, muy amable y también me asesoró. Muchas gracias! Lo recomiendo muchísimo!</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">luis angel parodi</div>
+                  <div class="review-meta">Hace 7 meses</div>
+                </div>
+                <p>Excelente atención, nos quedamos varados en medio de un viaje, el Nacho llegó en menos de 30 minutos, y en 10 minutos ya me había cambiado la batería y mi problema estaba solucionado! Super recomendable!! Muchas gracias</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Adriana Iglesias</div>
+                  <div class="review-meta">Hace 8 meses</div>
+                </div>
+                <p>Los super recomiendo. Me contestó en seguida, vino enntiempo record a dónde me habia quedado varada y tienen buenos precios. Excelente servicio!</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">hugo mancini</div>
+                  <div class="review-meta">Hace 4 meses</div>
+                </div>
+                <p>Excelente servicio, no lo para ni la hora ni el frío al toque vinieron. Muchas gracias...gracias por el mate😀🫂</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Diego Salas</div>
+                  <div class="review-meta">Hace un año</div>
+                </div>
+                <p>Gracias por la atención de el dia domingo por  la noche  te acercarte a auxiliarme cuando se rompió el electro  y gracias a dios lo pudiste solucionar y pudimos seguir a nuestro destino.  gracias</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Lara Melina Romero</div>
+                  <div class="review-meta">Hace un año</div>
+                </div>
+                <p>Exelente servicio!!! ya es la segunda vez que nos asiste y en esta ocasión tuvo que sacar la tuerca de seguridad, nos pudo resolver el problema y que podamos seguir nuestro viaje. Súper recomendable y viene en el horario pactado</p>
+              </article>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <ul class="carousel-dots" id="carouselDots" aria-label="Páginas de reseñas"><li><button type="button" aria-label="Ir a página 1" aria-current="true"></button></li><li><button type="button" aria-label="Ir a página 2"></button></li><li><button type="button" aria-label="Ir a página 3"></button></li></ul>
+            <div class="carousel-btns">
+              <button type="button" class="carousel-btn" id="carouselPrev" aria-label="Reseñas anteriores">‹</button>
+              <button type="button" class="carousel-btn" id="carouselNext" aria-label="Reseñas siguientes">›</button>
+            </div>
+          </div>
+        </div>
+        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="wrap contact-grid">
+        <div class="reveal is-in">
+          <h2>Contacto</h2>
+          <p style="color:var(--ink-dim)">Viamonte 2031. Llamá, escribinos o pasá. Abrimos las 24 hs.</p>
+          <ul class="contact-list">
+            <li>
+              <span>Teléfono</span>
+              <a href="tel:+541140618555">11 4061-8555</a>
+            </li>
+            <li>
+              <span>WhatsApp</span>
+              <a href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">11 4061-8555</a>
+            </li>
+            <li>
+              <span>Dirección</span>
+              <strong>Viamonte 2031, CABA</strong>
+            </li>
+            <li>
+              <span>Horario</span>
+              <strong>24 horas, todos los días</strong>
+            </li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn--call" href="tel:+541140618555">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"></path></svg>
+              <span>Llamar ahora</span>
+            </a>
+            <a class="btn btn--wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"></path></svg>
+              <span>Abrir WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        <div class="map-frame reveal is-in">
+          <iframe title="Mapa: Viamonte 2031, CABA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Viamonte%202031%2C%20CABA&amp;z=15&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-row">
+        <a class="wordmark wordmark--footer" href="#inicio">
+          <span class="wordmark-name">Baterías <span>CABA</span></span>
+          <span class="wordmark-meta"><span class="wordmark-hours">24 hs</span><span class="wordmark-addr">Viamonte 2031</span></span>
+        </a>
+        <ul class="footer-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="tel:+541140618555">11 4061-8555</a></li>
+        </ul>
+      </div>
+      <p class="footer-legal">© <span id="year">2026</span> Baterías CABA. Mock de pitch. Viamonte 2031, Ciudad Autónoma de Buenos Aires.</p>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" role="group" aria-label="Contacto rápido" style="">
+    <a class="btn btn--call" href="tel:+541140618555">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"></path></svg>
+      Llamar
+    </a>
+    <a class="btn btn--wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"></path></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* Mobile nav */
+    const toggle = document.getElementById("navToggle");
+    const panel = document.getElementById("nav-panel");
+
+    function openNav() {
+      panel.classList.add("is-open");
+      panel.setAttribute("aria-hidden", "false");
+      panel.removeAttribute("inert");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    function closeNav() {
+      if (!panel.classList.contains("is-open")) return;
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+      panel.setAttribute("inert", "");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      if (expanded) closeNav();
+      else openNav();
+    });
+    panel.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => closeNav());
+    });
+
+    /* Reveal */
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+    }
+
+    /* Reviews carousel */
+    (function initCarousel() {
+      const track = document.getElementById("carouselTrack");
+      const dotsWrap = document.getElementById("carouselDots");
+      const prev = document.getElementById("carouselPrev");
+      const next = document.getElementById("carouselNext");
+      if (!track) return;
+
+      let page = 0;
+      let perView = 1;
+
+      function measure() {
+        const w = track.parentElement.clientWidth;
+        if (w >= 1100) perView = 3;
+        else if (w >= 720) perView = 2;
+        else perView = 1;
+      }
+
+      function pageCount() {
+        return Math.max(1, Math.ceil(track.children.length / perView));
+      }
+
+      function renderDots() {
+        dotsWrap.innerHTML = "";
+        const n = pageCount();
+        for (let i = 0; i < n; i++) {
+          const li = document.createElement("li");
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.setAttribute("aria-label", "Ir a página " + (i + 1));
+          if (i === page) btn.setAttribute("aria-current", "true");
+          btn.addEventListener("click", () => go(i));
+          li.appendChild(btn);
+          dotsWrap.appendChild(li);
+        }
+      }
+
+      function go(i) {
+        measure();
+        const max = pageCount() - 1;
+        page = Math.max(0, Math.min(i, max));
+        const offset = page * perView * (100 / perView);
+        track.style.transform = "translateX(-" + offset + "%)";
+        renderDots();
+      }
+
+      prev.addEventListener("click", () => {
+        const max = pageCount() - 1;
+        go(page <= 0 ? max : page - 1);
+      });
+      next.addEventListener("click", () => {
+        const max = pageCount() - 1;
+        go(page >= max ? 0 : page + 1);
+      });
+      window.addEventListener("resize", () => go(page));
+      measure();
+      go(0);
+    })();
+
+
+    /* Sticky CTAs: show after hero CTAs leave viewport */
+    (function () {
+      const sticky = document.querySelector(".sticky-cta");
+      const heroCtas = document.querySelector(".hero-ctas");
+      if (!sticky || !heroCtas) return;
+      const sync = (visible) => {
+        sticky.classList.toggle("is-visible", visible);
+        document.body.classList.toggle("has-sticky-cta", visible);
+      };
+      if (!("IntersectionObserver" in window)) {
+        sync(true);
+        return;
+      }
+      const io = new IntersectionObserver(
+        ([entry]) => sync(!entry.isIntersecting),
+        { threshold: 0, rootMargin: "0px 0px -8% 0px" }
+      );
+      io.observe(heroCtas);
+    })();
+
+  </script>
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=2876524b-a361-49aa-ad80-a9df9d8e9e5c"></script>
+<!-- impeccable-live-end -->
+
+
+<div id="impeccable-live-highlight" style="position: fixed; top: 0px; left: 0px; width: 0px; height: 0px; border: 2px solid oklch(0.84 0.19 80.46); border-radius: 3px; pointer-events: none; z-index: 100001; box-sizing: border-box; transition: top 140ms cubic-bezier(0.22, 1, 0.36, 1), left 140ms cubic-bezier(0.22, 1, 0.36, 1), width 140ms cubic-bezier(0.22, 1, 0.36, 1), height 140ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms; display: none; opacity: 0;"></div><div id="impeccable-live-tooltip" style="position: fixed; background: oklch(0.04 0.004 95); color: oklch(0.99 0 0); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 3px; z-index: 100002; pointer-events: none; white-space: nowrap; display: none; letter-spacing: 0.02em; transition: top 140ms cubic-bezier(0.22, 1, 0.36, 1), left 140ms cubic-bezier(0.22, 1, 0.36, 1), opacity 150ms;"></div><div id="impeccable-live-edit-badge" style="position: fixed; z-index: 100002; cursor: default; display: none; user-select: none;"></div><div id="impeccable-live-annot" style="position: fixed; top: 0px; left: 0px; width: 0px; height: 0px; pointer-events: auto; z-index: 100003; display: none; overflow: visible; cursor: crosshair; touch-action: none;"><svg id="impeccable-live-annot-svg" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; pointer-events: none; overflow: visible;"></svg><div id="impeccable-live-annot-pins" style="position: absolute; inset: 0px; pointer-events: none;"></div><div id="impeccable-live-annot-clear" data-annot-clear="true" style="position: absolute; top: 8px; right: 8px; background: oklch(0.04 0.004 95); color: oklch(0.99 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; cursor: pointer; pointer-events: auto; display: none; user-select: none; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;">Clear</div><div id="impeccable-live-placeholder-resize" style="position: absolute; inset: 0px; pointer-events: none; display: none; z-index: 2;"></div></div><div id="impeccable-live-bar" style="position: fixed; z-index: 100005; display: none; opacity: 0; transform: translateY(6px); transition: box-shadow 0.2s, opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); background: oklch(0.04 0.004 95); border: 1px solid oklch(0.92 0 0 / 0.13); border-radius: 8px; box-shadow: oklch(0 0 0 / 0.6) 0px 16px 36px -12px; font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: oklch(0.91 0 0); padding: 5px; max-width: 560px; min-width: 340px; pointer-events: auto !important;"></div><div id="impeccable-live-picker" style="position: fixed; z-index: 100007; display: none; opacity: 0; transform: scale(0.96) translateY(4px); transform-origin: right bottom; transition: opacity 0.18s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); background: oklch(0.04 0.004 95); border: 1px solid oklch(0.92 0 0 / 0.13); border-radius: 8px; box-shadow: oklch(0 0 0 / 0.6) 0px 16px 36px -12px; padding: 6px; font-family: system-ui, -apple-system, sans-serif; pointer-events: auto !important;"><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px;"><button type="button" data-action="impeccable" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: oklch(0.84 0.19 80.46 / 0.18); color: oklch(0.84 0.19 80.46); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M4 20l4-1L18 9l-3-3L5 16z"></path><path d="M14 7l3 3"></path></svg></span><span style="line-height: 1;">Freeform</span></button><button type="button" data-action="bolder" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><rect x="6" y="12" width="4" height="7" rx="0.5"></rect><rect x="14" y="5" width="4" height="14" rx="0.5"></rect></svg></span><span style="line-height: 1;">Bolder</span></button><button type="button" data-action="quieter" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><rect x="6" y="5" width="4" height="14" rx="0.5"></rect><rect x="14" y="12" width="4" height="7" rx="0.5"></rect></svg></span><span style="line-height: 1;">Quieter</span></button><button type="button" data-action="distill" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M4 5h16l-6 8v7l-4-2v-5z"></path></svg></span><span style="line-height: 1;">Distill</span></button><button type="button" data-action="polish" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 3l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"></path><path d="M7 13l0.6 1.8 1.8 0.6-1.8 0.6-0.6 1.8-0.6-1.8-1.8-0.6 1.8-0.6z"></path></svg></span><span style="line-height: 1;">Polish</span></button><button type="button" data-action="typeset" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M5 6h14" stroke-width="2.6"></path><path d="M5 12h9" stroke-width="1.9"></path><path d="M5 18h5" stroke-width="1.3"></path></svg></span><span style="line-height: 1;">Typeset</span></button><button type="button" data-action="colorize" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><circle cx="9" cy="10" r="5"></circle><circle cx="15" cy="10" r="5"></circle><circle cx="12" cy="15" r="5"></circle></svg></span><span style="line-height: 1;">Colorize</span></button><button type="button" data-action="layout" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><rect x="3" y="4" width="8" height="16" rx="0.5"></rect><rect x="13" y="4" width="8" height="7" rx="0.5"></rect><rect x="13" y="13" width="8" height="7" rx="0.5"></rect></svg></span><span style="line-height: 1;">Layout</span></button><button type="button" data-action="adapt" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><rect x="2.5" y="5" width="12" height="11" rx="1"></rect><line x1="2.5" y1="19" x2="14.5" y2="19"></line><rect x="16.5" y="8" width="5" height="11" rx="1"></rect></svg></span><span style="line-height: 1;">Adapt</span></button><button type="button" data-action="animate" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M3 18c4-4 6-10 10-10"></path><path d="M13 8c3 0 5 5 8 10"></path><circle cx="13" cy="8" r="1.6" fill="currentColor" stroke="none"></circle></svg></span><span style="line-height: 1;">Animate</span></button><button type="button" data-action="delight" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"></path></svg></span><span style="line-height: 1;">Delight</span></button><button type="button" data-action="overdrive" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 6px; border-radius: 6px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center; white-space: nowrap;"><span style="display: flex; align-items: center; justify-content: center; height: 20px; opacity: 0.9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M13 3L5 13h5l-1 8 9-12h-6z"></path></svg></span><span style="line-height: 1;">Overdrive</span></button></div></div><div id="impeccable-live-params-panel" style="position: fixed; z-index: 100004; background: oklch(0.04 0.004 95); color: oklch(0.91 0 0); font-family: system-ui, -apple-system, sans-serif; padding: 14px 18px; box-sizing: border-box; border-radius: 0px 0px 10px 10px; pointer-events: none; clip-path: inset(0px 0px 100%); transition: clip-path 0.44s cubic-bezier(0.22, 1, 0.36, 1); top: -9999px; left: -9999px; width: 0px;"><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px 16px;"></div></div><div id="impeccable-live-pending-dock" style="position: fixed; left: 780px; bottom: 33px; transform: translate(-100%, 50%); z-index: 100011; display: none; align-items: center; gap: 6px; font-family: system-ui, -apple-system, sans-serif; pointer-events: auto !important; top: auto;"><button type="button" title="Apply copy edits to source" style="display: none; align-items: center; gap: 8px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0px; color: oklch(0.04 0.004 95); background: oklch(0.84 0.19 80.46); padding: 7px 12px 7px 14px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; white-space: nowrap; cursor: pointer; box-shadow: oklch(0 0 0 / 0.16) 0px 4px 16px, oklch(0 0 0 / 0.1) 0px 1px 3px; transition: filter 0.12s, transform 0.1s, box-shadow 0.18s; filter: none; transform: scale(1);" data-count="0" aria-busy="false" aria-label="Apply copy edits to source"><span style="display: none; width: 12px; height: 12px; border-radius: 50%; border-width: 2px; border-style: solid; border-color: transparent currentcolor currentcolor; border-image: none; color: oklch(0.04 0.004 95); opacity: 0.9; animation: 0.6s linear 0s infinite normal none running impeccable-spin; flex: 0 0 auto; box-sizing: border-box;"></span><span style="line-height: 1; white-space: nowrap;">Apply copy edits</span><span style="display: inline-flex; align-items: center; justify-content: center; min-width: 17px; height: 17px; padding: 0px 5px; border-radius: 999px; background: oklch(0.04 0.004 95 / 0.18); color: oklch(0.04 0.004 95); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 700; line-height: 1;">0</span></button><button type="button" style="position: relative; display: none; align-items: center; justify-content: center; padding: 0px; box-sizing: border-box; width: 30px; height: 30px; border-radius: 999px; border: 1px solid oklch(0.92 0 0 / 0.12); background: oklch(0.22 0.012 82); color: oklch(0.72 0 0); overflow: visible; box-shadow: oklch(0 0 0 / 0.12) 0px 4px 16px, oklch(0 0 0 / 0.08) 0px 1px 3px; cursor: pointer; transition: color 0.12s, background 0.12s, box-shadow 0.18s; opacity: 1;" aria-label="Discard copy edits on this page"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto"><path d="M3 4h8"></path><path d="M5 4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1"></path><path d="M4 4l.5 7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1L10 4"></path></svg><span role="tooltip" style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); opacity: 0; pointer-events: none; padding: 8px 16px; border-radius: 8px; background: oklch(0.04 0.004 95); color: oklch(0.99 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 400; line-height: 1; white-space: nowrap; text-align: center; transition: opacity 0.16s, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);">Discard copy edits</span></button><button type="button" aria-label="Ask the agent to keep fixing Apply errors" style="display: none; align-items: center; justify-content: center; height: 30px; padding: 0px 12px; border-radius: 999px; border: 1px solid oklch(0.84 0.19 80.46); background: oklch(0.84 0.19 80.46); color: oklch(0.04 0.004 95); font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0px; cursor: pointer; white-space: nowrap; box-shadow: oklch(0 0 0 / 0.12) 0px 4px 16px, oklch(0 0 0 / 0.08) 0px 1px 3px;">Keep fixing</button><button type="button" aria-label="Rollback source and keep copy edits staged" style="display: none; align-items: center; justify-content: center; height: 30px; padding: 0px 12px; border-radius: 999px; border: 1px solid oklch(0.92 0 0 / 0.12); background: oklch(0.22 0.012 82); color: oklch(0.72 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0px; cursor: pointer; white-space: nowrap; box-shadow: oklch(0 0 0 / 0.12) 0px 4px 16px, oklch(0 0 0 / 0.08) 0px 1px 3px;">Rollback</button></div><div id="impeccable-live-global-bar" data-theme="dark" style="position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%) translateY(0px); z-index: 100010; display: flex; align-items: stretch; gap: 0px; width: max-content; background: oklch(0.04 0.004 95); border: 1px solid oklch(0.92 0 0 / 0.13); border-radius: 8px; box-shadow: oklch(0 0 0 / 0.6) 0px 16px 36px -12px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; line-height: 1; opacity: 1; overflow: hidden; max-width: calc(-16px + 100vw); box-sizing: border-box; transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); pointer-events: auto !important;"><span id="impeccable-live-global-bar-brand" data-agent-connected="false" role="img" aria-label="Impeccable live mode - agent not polling" style="display: inline-flex; align-items: center; justify-content: center; align-self: stretch; position: relative; padding: 0px 6px 0px 14px; background: transparent; color: oklch(0.84 0.19 80.46); flex-shrink: 0; cursor: help;"><span data-brand-mark="true" style="display: inline-flex; align-items: center; justify-content: center; position: relative; opacity: 1;"><svg width="18" height="18" viewBox="0 0 24 24" fill="oklch(62% 0 0 / 0.78)" aria-hidden="true">
+      <path d="M5 2.5 L13.5 2.5 L5.5 21.5 L5 21.5 Q2.5 21.5 2.5 19 L2.5 5 Q2.5 2.5 5 2.5 Z"></path>
+      <path d="M16.5 2.5 L19 2.5 Q21.5 2.5 21.5 5 L21.5 19 Q21.5 21.5 19 21.5 L8.5 21.5 Z"></path>
+    </svg></span></span><div id="impeccable-live-global-bar-inner" style="display: flex; align-items: center; padding: 4px 5px 4px 2px; gap: 2px; flex: 0 0 auto;"><button type="button" id="impeccable-live-pick-toggle" title="Pick element" aria-label="Pick element" style="position: relative; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex: 0 0 auto; min-width: 30px; padding: 6px 8px; border-radius: 7px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.72 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; white-space: nowrap; overflow: hidden; opacity: 1;" data-active="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg><span class="icon-btn-label" style="display:inline-block;max-width:0;opacity:0;margin-left:0;overflow:hidden;font-family:system-ui, -apple-system, sans-serif;transform:translateX(-4px);transition:opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);">Pick</span></button><button type="button" id="impeccable-live-insert-toggle" title="Insert new element" aria-label="Insert new element" style="position: relative; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex: 0 0 auto; min-width: 30px; padding: 6px 8px; border-radius: 7px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.72 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; white-space: nowrap; overflow: hidden; opacity: 1;" data-active="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg><span class="icon-btn-label" style="display:inline-block;max-width:0;opacity:0;margin-left:0;overflow:hidden;font-family:system-ui, -apple-system, sans-serif;transform:translateX(-4px);transition:opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);">Insert</span></button><button type="button" id="impeccable-live-detect-toggle" title="Detect anti-patterns" aria-label="Detect anti-patterns" style="position: relative; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex: 0 0 auto; min-width: 30px; padding: 6px 8px; border-radius: 7px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.72 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; white-space: nowrap; overflow: hidden; opacity: 1;" data-active="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg><span class="icon-btn-label" style="display:inline-block;max-width:0;opacity:0;margin-left:0;overflow:hidden;font-family:system-ui, -apple-system, sans-serif;transform:translateX(-4px);transition:opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);">Detect</span><span id="impeccable-live-detect-badge" style="font-size: 10px; font-weight: 600; padding: 0px 5px; border-radius: 7px; line-height: 16px; background: oklch(0.84 0.19 80.46); color: oklch(0.04 0.004 95); display: none; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin-left: 4px;">0</span></button><button type="button" id="impeccable-live-design-toggle" title="Toggle DESIGN.md panel" aria-label="Toggle DESIGN.md panel" data-active="false" style="position: relative; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; flex: 0 0 auto; min-width: 30px; padding: 6px 8px; border-radius: 7px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.72 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; white-space: nowrap; overflow: hidden; opacity: 1;"><span style="display:inline-grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;width:14px;height:14px;border-radius:3px;overflow:hidden;box-shadow:inset 0 0 0 1px oklch(92% 0 0 / 0.13);flex-shrink:0">
+        <span style="background:oklch(84% 0.19 80.46)"></span>
+        <span style="background:oklch(70% 0.12 188)"></span>
+        <span style="background:oklch(91% 0 0)"></span>
+        <span style="background:oklch(34% 0 0)"></span>
+      </span><span class="icon-btn-label" style="display:inline-block;max-width:0;opacity:0;margin-left:0;overflow:hidden;font-family:ui-monospace, SFMono-Regular, Menlo, monospace;transform:translateX(-4px);transition:opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);">DESIGN.md</span></button><div id="impeccable-live-page-chat" data-expanded="false" title="Steer the page" data-input-focused="true" style="display: inline-flex; align-items: center; height: 28px; margin: 0px 4px 0px 6px; border-radius: 7px; background: oklch(0.22 0.012 82); border: 1px solid transparent; overflow: hidden; cursor: pointer; flex-shrink: 0; width: 104px; transition: border-color 0.15s; box-shadow: none;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; color: oklch(0.91 0 0); pointer-events: none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span><span style="font-size: 11.5px; font-weight: 500; color: oklch(0.72 0 0); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1 1 0%; min-width: 0px; pointer-events: none; transition: opacity 0.15s; display: none; opacity: 0;">Steer</span><input id="impeccable-live-page-chat-input" type="text" placeholder="Steer…" aria-label="Steer the page" style="flex: 1 1 0%; min-width: 0px; padding: 0px 4px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; font-family: system-ui, -apple-system, sans-serif; font-size: 11.5px; color: oklch(0.91 0 0); outline: none; opacity: 1; pointer-events: auto; caret-color: oklch(0.84 0.19 80.46); transition: opacity 0.15s;"><button type="button" id="impeccable-live-page-chat-voice" aria-label="Voice input" style="display: inline-flex; align-items: center; justify-content: center; padding: 0px; box-sizing: border-box; width: 28px; height: 28px; flex-shrink: 0; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.72 0 0); cursor: pointer; transition: color 0.12s, background 0.12s;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button><button type="button" id="impeccable-live-page-chat-send" aria-label="Send steer message" style="display: inline-flex; align-items: center; justify-content: center; padding: 0px; box-sizing: border-box; width: 28px; height: 28px; flex-shrink: 0; border-width: medium medium medium 1px; border-style: none none none solid; border-color: currentcolor currentcolor currentcolor oklch(0.92 0 0 / 0.12); border-image: none; border-radius: 0px; background: oklch(0.84 0.19 80.46); color: oklch(0.04 0.004 95); cursor: not-allowed; transition: filter 0.12s, opacity 0.12s; opacity: 0.42;" disabled="" title="Type what to change first"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></div><span style="width: 1px; height: 18px; background: oklch(0.92 0 0 / 0.12); margin: 0px 4px 0px 2px; flex-shrink: 0;"></span><button type="button" id="impeccable-live-exit" style="display: inline-flex; align-items: center; justify-content: center; padding: 0px; box-sizing: border-box; width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: oklch(0.72 0 0); font-family: system-ui, -apple-system, sans-serif; font-size: 0px; line-height: 0; cursor: pointer; transition: color 0.12s, background 0.12s;" title="Exit live mode"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="3" y1="3" x2="11" y2="11"></line><line x1="11" y1="3" x2="3" y2="11"></line></svg></button></div></div><div id="impeccable-live-design-host" style="position: fixed; top: 0px; left: 0px; width: 0px; height: 0px; z-index: 100015; pointer-events: none;"></div>
+</body>
+</html>

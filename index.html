@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baterías CABA · Venta y carga 24 hs | Viamonte 2031</title>
+  <meta name="description" content="Baterías CABA en Viamonte 2031. Venta y carga de baterías las 24 horas. Llamá al 11 4061-8555." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Saira:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --asphalt: #0e0f10;
+      --asphalt-2: #16181a;
+      --ink: #f2f1ec;
+      --ink-dim: rgba(242, 241, 236, 0.62);
+      --ink-faint: rgba(242, 241, 236, 0.38);
+      --line: rgba(242, 241, 236, 0.12);
+      --signal: #ff5a1f;
+      --signal-press: #e04a14;
+      --wa: #25d366;
+      --wa-press: #1ebe57;
+      --font-display: "Saira", system-ui, sans-serif;
+      --font-body: "Inter Tight", system-ui, sans-serif;
+      --space-1: 0.5rem;
+      --space-2: 0.75rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 3rem;
+      --space-7: 4.5rem;
+      --space-8: 7rem;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1.0625rem;
+      --text-lg: 1.25rem;
+      --text-xl: clamp(1.75rem, 4vw, 2.75rem);
+      --text-display: clamp(2.75rem, 8vw, 5.5rem);
+      --leading-tight: 1.05;
+      --leading-snug: 1.25;
+      --leading-normal: 1.55;
+      --measure: 36rem;
+      --radius: 0;
+      --header-h: 4.25rem;
+      --sticky-cta-h: 4.5rem;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --duration: 220ms;
+      --max: 72rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--ink);
+      background: var(--asphalt);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: var(--leading-tight);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-3);
+      text-wrap: balance;
+    }
+    h1 { font-size: var(--text-display); }
+    h2 { font-size: var(--text-xl); }
+    h3 { font-size: var(--text-lg); letter-spacing: -0.02em; }
+    p { margin: 0 0 var(--space-3); max-width: var(--measure); text-wrap: pretty; }
+    p:last-child { margin-bottom: 0; }
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: var(--signal);
+      color: #fff;
+      padding: var(--space-2) var(--space-3);
+      z-index: 100;
+    }
+    .skip:focus { left: var(--space-3); top: var(--space-3); }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* —— Wordmark —— */
+    .wordmark {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      text-decoration: none;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .wordmark-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    .wordmark-name span { color: var(--signal); }
+    .wordmark-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.55rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+    .wordmark-hours {
+      color: var(--signal);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+    .wordmark-hours::after {
+      content: "·";
+      margin-left: 0.55rem;
+      color: var(--ink-faint);
+      font-weight: 700;
+    }
+    .wordmark-addr {
+      color: var(--ink-dim);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.78rem;
+    }
+    .wordmark--lg .wordmark-name { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+    .wordmark--lg .wordmark-meta { font-size: 0.9rem; }
+    .wordmark--lg .wordmark-hours { font-size: 1.05rem; }
+    .wordmark--footer .wordmark-name { font-size: 1.5rem; }
+
+    /* —— Buttons —— */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.75rem 1.35rem;
+      border: 2px solid transparent;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn--call {
+      background: var(--signal);
+      color: #fff;
+      border-color: var(--signal);
+    }
+    .btn--call:hover { background: var(--signal-press); border-color: var(--signal-press); }
+    .btn--wa {
+      background: var(--wa);
+      color: #fff;
+      border-color: var(--wa);
+    }
+    .btn--wa:hover { background: var(--wa-press); border-color: var(--wa-press); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .btn--ghost:hover { border-color: var(--ink); }
+    .btn--block { width: 100%; }
+    .btn-icon { width: 1.15rem; height: 1.15rem; flex-shrink: 0; position: relative; z-index: 1; }
+
+    /* Hollow CTAs (hero): strong border, fill on hover */
+    .btn--hollow {
+      --hollow-fill: currentColor;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      z-index: 0;
+    }
+    .btn--hollow > * { position: relative; z-index: 1; }
+    .btn--hollow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill));
+      background-repeat: no-repeat;
+      background-position:
+        top center,
+        bottom center,
+        center left,
+        center right;
+      background-size:
+        100% 0,
+        100% 0,
+        0 100%,
+        0 100%;
+      transition: background-size 360ms var(--ease);
+    }
+    .btn--hollow:hover,
+    .btn--hollow:focus-visible { color: #fff; }
+    .btn--hollow:hover::before,
+    .btn--hollow:focus-visible::before {
+      background-size:
+        100% 50%,
+        100% 50%,
+        50% 100%,
+        50% 100%;
+    }
+    .btn--hollow-call {
+      color: var(--signal);
+      border-color: var(--signal);
+      border-width: 2px;
+      --hollow-fill: var(--signal);
+    }
+    .btn--hollow-wa {
+      color: var(--wa);
+      border-color: var(--wa);
+      border-width: 2px;
+      --hollow-fill: var(--wa);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn--hollow::before { transition: none; }
+      .btn--hollow:hover::before,
+      .btn--hollow:focus-visible::before {
+        background-size: 100% 50%, 100% 50%, 50% 100%, 50% 100%;
+      }
+      .btn--hollow-call:hover,
+      .btn--hollow-call:focus-visible { background: var(--signal); }
+      .btn--hollow-wa:hover,
+      .btn--hollow-wa:focus-visible { background: var(--wa); }
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* —— Borne strip —— */
+    .borne {
+      background: var(--signal);
+      color: #fff;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .borne-track {
+      display: flex;
+      width: max-content;
+      animation: borne-scroll 28s linear infinite;
+    }
+    .borne-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.55rem 0;
+      white-space: nowrap;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .borne-group span::after {
+      content: "·";
+      margin-left: 1.5rem;
+      opacity: 0.55;
+    }
+    @keyframes borne-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .borne-track { animation: none; }
+    }
+
+    /* —— Header —— */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(14, 15, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--header-h);
+      gap: var(--space-3);
+    }
+    .nav-links {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: var(--space-4);
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { display: none; gap: var(--space-2); }
+    .nav-cta .btn { min-height: 2.5rem; padding: 0.5rem 1rem; font-size: 0.85rem; }
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .nav-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+    .nav-toggle-bars {
+      position: relative;
+      display: block;
+      width: 1.15rem;
+      height: 0.85rem;
+    }
+    .nav-toggle-bars span {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transition: transform 240ms var(--ease), opacity 180ms var(--ease), top 240ms var(--ease);
+    }
+    .nav-toggle-bars span:nth-child(1) { top: 0; }
+    .nav-toggle-bars span:nth-child(2) { top: 50%; margin-top: -1px; }
+    .nav-toggle-bars span:nth-child(3) { bottom: 0; top: auto; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(1) {
+      top: 50%;
+      margin-top: -1px;
+      transform: rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(3) {
+      top: 50%;
+      bottom: auto;
+      margin-top: -1px;
+      transform: rotate(-45deg);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-toggle-bars span { transition: none; }
+    }
+    .nav-panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: 45;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      background: rgba(14, 15, 16, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-0.35rem);
+      pointer-events: none;
+      transition:
+        opacity 200ms var(--ease),
+        transform 200ms var(--ease),
+        visibility 200ms var(--ease);
+    }
+    .nav-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+    }
+    .nav-panel-inner {
+      padding: var(--space-3) 0 var(--space-4);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-panel { transition: none; transform: none; }
+    }
+    .nav-panel ul { list-style: none; margin: 0; padding: 0; }
+    .nav-panel a {
+      display: block;
+      padding: var(--space-2) 0;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .nav-panel .cta-row { flex-direction: column; }
+    @media (min-width: 900px) {
+      .nav-links, .nav-cta { display: flex; }
+      .nav-toggle { display: none !important; }
+      .nav-panel { display: none !important; }
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: min(92vh, 52rem);
+      display: grid;
+      align-items: end;
+      padding: var(--space-6) 0 var(--space-7);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(14, 15, 16, 0.92) 0%, rgba(14, 15, 16, 0.55) 48%, rgba(14, 15, 16, 0.35) 100%),
+        linear-gradient(to top, var(--asphalt) 0%, transparent 42%),
+        url("assets/photos/hero.jpg") center / cover no-repeat;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -12deg,
+        transparent,
+        transparent 11px,
+        rgba(255, 90, 31, 0.03) 11px,
+        rgba(255, 90, 31, 0.03) 12px
+      );
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 40rem;
+    }
+    .hero-kicker {
+      display: inline-block;
+      margin: 0 0 var(--space-3);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--signal);
+    }
+    .hero h1 {
+      margin-bottom: var(--space-3);
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+    }
+    .hero-lead {
+      color: var(--ink-dim);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+      max-width: 28rem;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1rem;
+      margin-bottom: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--ink-dim);
+    }
+    .hero-stars { color: var(--signal); letter-spacing: 0.08em; }
+    .hero-ctas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2);
+      max-width: 32rem;
+      width: 100%;
+    }
+    .hero-ctas .btn {
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+    }
+    @media (max-width: 420px) {
+      .hero-ctas { grid-template-columns: 1fr; }
+    }
+
+    /* —— Sections —— */
+    .section {
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--line);
+    }
+    .section--tight { padding: var(--space-6) 0; }
+    .section-head {
+      margin-bottom: var(--space-5);
+      max-width: 36rem;
+    }
+    .section-kicker {
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--signal);
+    }
+    .section-head p { color: var(--ink-dim); }
+
+        /* —— Services: photo panels + centered titles —— */
+    .services-list {
+      display: grid;
+      gap: var(--space-3);
+    }
+    @media (min-width: 768px) {
+      .services-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+    }
+    @media (min-width: 1100px) {
+      .services-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .service {
+      position: relative;
+      min-height: clamp(14rem, 28vw, 18rem);
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      background: var(--asphalt-2);
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .service + .service {
+        border-left: 2px solid var(--signal);
+      }
+      .service:nth-child(2n+1) {
+        border-left: 0;
+      }
+      .service:nth-child(n+3) {
+        border-top: 2px solid var(--signal);
+      }
+    }
+    @media (min-width: 1100px) {
+      .service:nth-child(2n+1) {
+        border-left: 2px solid var(--signal);
+      }
+      .service:first-child {
+        border-left: 0;
+      }
+      .service:nth-child(n+3) {
+        border-top: 0;
+      }
+    }
+    @media (max-width: 767px) {
+      .service + .service {
+        border-top: 2px solid var(--signal);
+      }
+    }
+    .service-media {
+      position: absolute;
+      inset: 0;
+    }
+    .service-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.25) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .service-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(14, 15, 16, 0.35), rgba(14, 15, 16, 0.82) 70%, rgba(14, 15, 16, 0.92)),
+        linear-gradient(90deg, rgba(255, 90, 31, 0.08), transparent 40%);
+    }
+    .service-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      height: 100%;
+      min-height: inherit;
+      padding: var(--space-5) var(--space-4);
+      box-sizing: border-box;
+    }
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      color: var(--signal);
+    }
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .service h3 {
+      margin: 0;
+      text-wrap: balance;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+    }
+
+    /* —— Reviews
+
+
+    /* —— Reviews —— */
+    .reviews-band {
+      background: var(--asphalt-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: var(--space-7) 0;
+    }
+    .reviews-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--line);
+    }
+    .google-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .google-brand svg {
+      display: block;
+      flex-shrink: 0;
+    }
+    .google-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      line-height: 1.15;
+    }
+    .google-brand-word {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+    .google-brand-sub {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .reviews-score {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem 1rem;
+    }
+    .reviews-score strong {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .reviews-score-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .reviews-score-stars {
+      color: #fbbc04;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+    .reviews-score-count {
+      color: var(--ink-dim);
+      font-size: var(--text-sm);
+    }
+    .carousel {
+      position: relative;
+    }
+    .carousel-viewport {
+      overflow: hidden;
+      /* No boxed chrome — open strip */
+      border: none;
+      background: transparent;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 320ms var(--ease);
+    }
+    .review {
+      flex: 0 0 100%;
+      padding: var(--space-4) var(--space-4) var(--space-4) 0;
+      min-height: 11rem;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+    @media (min-width: 720px) {
+      .review {
+        flex-basis: 50%;
+        padding-right: var(--space-5);
+      }
+    }
+    @media (min-width: 1100px) {
+      .review { flex-basis: 33.333%; }
+    }
+    .review-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      margin-bottom: var(--space-3);
+    }
+    .review-author {
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+    .review-meta {
+      font-size: var(--text-xs);
+      color: var(--ink-faint);
+    }
+    .review-stars {
+      color: #fbbc04;
+      letter-spacing: 0.06em;
+      font-size: var(--text-sm);
+      line-height: 1;
+    }
+    .review p {
+      font-size: var(--text-sm);
+      color: var(--ink-dim);
+      max-width: none;
+      font-style: italic;
+      quotes: "“" "”";
+    }
+    .review p::before { content: open-quote; }
+    .review p::after { content: close-quote; }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--line);
+    }
+    .carousel-btns { display: flex; gap: var(--space-2); }
+    .carousel-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0;
+    }
+    .carousel-btn:hover { border-bottom-color: var(--ink); color: #fff; }
+    .carousel-btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+    .carousel-dots {
+      display: flex;
+      gap: 0.4rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .carousel-dots button {
+      width: 0.5rem;
+      height: 0.5rem;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: var(--ink-faint);
+      cursor: pointer;
+    }
+    .carousel-dots button[aria-current="true"] { background: #fbbc04; width: 1.25rem; }
+    .reviews-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.15rem;
+    }
+    .reviews-link:hover {
+      border-bottom-color: var(--ink);
+      color: #fff;
+    }
+
+    /* —— Contact —— */
+    .contact-grid {
+      display: grid;
+      gap: var(--space-5);
+    }
+    @media (min-width: 800px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1.1fr;
+        gap: var(--space-6);
+        align-items: start;
+      }
+    }
+    .contact-list {
+      list-style: none;
+      margin: 0 0 var(--space-4);
+      padding: 0;
+      display: grid;
+      gap: var(--space-3);
+    }
+    .contact-list li {
+      display: grid;
+      gap: 0.15rem;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--line);
+    }
+    .contact-list span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .contact-list a,
+    .contact-list strong {
+      font-weight: 700;
+      text-decoration: none;
+      font-size: var(--text-lg);
+    }
+    .contact-list a:hover { color: var(--signal); }
+    .map-frame {
+      border: 1px solid var(--line);
+      background: var(--asphalt-2);
+      min-height: 18rem;
+      overflow: hidden;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 18rem;
+      border: 0;
+      filter: grayscale(1) contrast(1.05) brightness(0.85);
+    }
+
+    /* —— Footer —— */
+    .site-footer {
+      padding: var(--space-6) 0 var(--space-6);
+      border-top: 1px solid var(--line);
+      background: #0a0b0c;
+    }
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3) var(--space-4);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links a {
+      text-decoration: none;
+      font-size: var(--text-sm);
+      color: var(--ink-dim);
+    }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-legal {
+      font-size: var(--text-xs);
+      color: var(--ink-faint);
+      max-width: none;
+    }
+
+    /* —— Sticky CTAs —— */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--asphalt);
+      border-top: 1px solid var(--line);
+      padding: env(safe-area-inset-bottom, 0);
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 -12px 32px rgba(0, 0, 0, 0);
+      transition:
+        transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 420ms ease,
+        box-shadow 560ms ease;
+    }
+    .sticky-cta.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+      box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.45);
+    }
+    .sticky-cta .btn {
+      border-radius: 0;
+      min-height: var(--sticky-cta-h);
+      border: none;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      transform: translateY(10px);
+      opacity: 0.55;
+      transition:
+        transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 420ms ease;
+    }
+    .sticky-cta .btn:last-child { border-right: none; }
+    .sticky-cta .btn:nth-child(1) { transition-delay: 40ms; }
+    .sticky-cta .btn:nth-child(2) { transition-delay: 110ms; }
+    .sticky-cta.is-visible .btn {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    body {
+      transition: padding-bottom 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    body.has-sticky-cta {
+      padding-bottom: calc(var(--sticky-cta-h) + env(safe-area-inset-bottom, 0px));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sticky-cta,
+      .sticky-cta .btn,
+      body {
+        transition: none;
+      }
+      .sticky-cta {
+        transform: translateY(0);
+      }
+      .sticky-cta:not(.is-visible) {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .sticky-cta .btn {
+        transform: none;
+        opacity: 1;
+      }
+    }
+    @media (min-width: 900px) {
+      .sticky-cta { display: none; }
+      .site-footer { padding-bottom: var(--space-6); }
+      .hero { padding-bottom: var(--space-7); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+    }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <div class="borne" aria-hidden="true">
+    <div class="borne-track">
+      <div class="borne-group">
+        <span>Abierto 24 hs</span>
+        <span>Viamonte 2031 · CABA</span>
+        <span>Venta y carga de baterías</span>
+        <span>11 4061-8555</span>
+        <span>Autos y utilitarios</span>
+      </div>
+      <div class="borne-group">
+        <span>Abierto 24 hs</span>
+        <span>Viamonte 2031 · CABA</span>
+        <span>Venta y carga de baterías</span>
+        <span>11 4061-8555</span>
+        <span>Autos y utilitarios</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="wordmark" href="#inicio" aria-label="Baterías CABA, inicio">
+        <span class="wordmark-name">Baterías <span>CABA</span></span>
+        <span class="wordmark-meta"><span class="wordmark-hours">24 hs</span><span class="wordmark-addr">Viamonte 2031</span></span>
+      </a>
+      <nav aria-label="Principal">
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn--call" href="tel:+541140618555">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+          Llamar
+        </a>
+        <a class="btn btn--wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" id="navToggle">
+        <span class="visually-hidden">Menú</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+    <div class="nav-panel" id="nav-panel" aria-hidden="true" inert>
+      <div class="wrap nav-panel-inner">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reseñas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="wrap hero-inner reveal">
+        <h1>Venta y carga de baterías · 24 hs</h1>
+        <p class="hero-lead">Emergencia o en el local: llamá y te asistimos. Si hace falta, vamos a donde estás.</p>
+        <div class="hero-trust">
+          <span class="hero-stars" aria-hidden="true">★★★★★</span>
+          <span><strong style="color:var(--ink)">4.9</strong> · 85 reseñas en Google</span>
+        </div>
+        <div class="cta-row hero-ctas">
+          <a class="btn btn--hollow btn--hollow-call" href="tel:+541140618555">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+            <span>Llamar</span>
+          </a>
+          <a class="btn btn--hollow btn--hollow-wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Servicios</h2>
+        </div>
+        <div class="services-list reveal">
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/venta.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="5" y="9" width="20" height="16" stroke="currentColor" stroke-width="2"/>
+                  <path d="M11 9V6h4v3M17 9V6h4v3" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 17h8" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </span>
+              <h3>Venta de baterías</h3>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/carga.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 4l-6 14h6l-2 10 12-16h-7l3-8H14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3>Carga de baterías</h3>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/horas.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/>
+                  <path d="M16 9v8l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+                </svg>
+              </span>
+              <h3>Atención 24 horas</h3>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service-media" aria-hidden="true">
+              <img src="assets/photos/asistencia.jpg" alt="" width="700" height="500" loading="lazy" decoding="async" />
+            </div>
+            <div class="service-body">
+              <span class="service-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 4c-5 0-9 4-9 9 0 7 9 15 9 15s9-8 9-15c0-5-4-9-9-9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="16" cy="13" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </span>
+              <h3>Asistencia en el lugar</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="reviews-band" id="reseñas" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <div class="reviews-head reveal">
+          <a
+            class="google-brand"
+            href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google reviews: Ver en Google"
+          >
+            <!-- Official multicolor Google “G” mark (inline SVG) -->
+            <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span class="google-brand-text">
+              <h2 class="google-brand-word" id="reviews-title">Google</h2>
+              <span class="google-brand-sub">Reviews</span>
+            </span>
+          </a>
+          <div class="reviews-score">
+            <strong>4.9</strong>
+            <div class="reviews-score-meta">
+              <span class="reviews-score-stars" aria-label="4.9 de 5">★★★★★</span>
+              <span class="reviews-score-count">Basado en 85 reseñas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel reveal" data-carousel>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Aydee Huallpa Flores</div>
+                  <div class="review-meta">Hace un mes</div>
+                </div>
+                <p>Excelente atención. Me ayudó con la batería de mi auto cuando lo necesitaba y fue muy amable, rápido y responsable. ¡Muchas gracias por la ayuda! Nacho ,Super recomendable.</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Lucas Álvarez</div>
+                  <div class="review-meta">Hace 9 meses</div>
+                </div>
+                <p>Me quedé en una YPF, sospechaba que podía ser la batería. Nacho me contestó el Whatsapp en 1 minuto y vino en 15. Hizo el diagnóstico y me colocó una batería nueva, todo a muy buen precio. Lo recomiendo.</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Mariángeles Misuraca</div>
+                  <div class="review-meta">Hace 7 meses</div>
+                </div>
+                <p>Excelente atención de Nacho. Se acercó rapidísimo al lugar que tuve el problema con el auto. (domingo). Precio razonable, muy amable y también me asesoró. Muchas gracias! Lo recomiendo muchísimo!</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">luis angel parodi</div>
+                  <div class="review-meta">Hace 7 meses</div>
+                </div>
+                <p>Excelente atención, nos quedamos varados en medio de un viaje, el Nacho llegó en menos de 30 minutos, y en 10 minutos ya me había cambiado la batería y mi problema estaba solucionado! Super recomendable!! Muchas gracias</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Adriana Iglesias</div>
+                  <div class="review-meta">Hace 8 meses</div>
+                </div>
+                <p>Los super recomiendo. Me contestó en seguida, vino enntiempo record a dónde me habia quedado varada y tienen buenos precios. Excelente servicio!</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">hugo mancini</div>
+                  <div class="review-meta">Hace 4 meses</div>
+                </div>
+                <p>Excelente servicio, no lo para ni la hora ni el frío al toque vinieron. Muchas gracias...gracias por el mate😀🫂</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Diego Salas</div>
+                  <div class="review-meta">Hace un año</div>
+                </div>
+                <p>Gracias por la atención de el dia domingo por  la noche  te acercarte a auxiliarme cuando se rompió el electro  y gracias a dios lo pudiste solucionar y pudimos seguir a nuestro destino.  gracias</p>
+              </article>
+              <article class="review">
+                <div class="review-top">
+                  <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Lara Melina Romero</div>
+                  <div class="review-meta">Hace un año</div>
+                </div>
+                <p>Exelente servicio!!! ya es la segunda vez que nos asiste y en esta ocasión tuvo que sacar la tuerca de seguridad, nos pudo resolver el problema y que podamos seguir nuestro viaje. Súper recomendable y viene en el horario pactado</p>
+              </article>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <ul class="carousel-dots" id="carouselDots" aria-label="Páginas de reseñas"></ul>
+            <div class="carousel-btns">
+              <button type="button" class="carousel-btn" id="carouselPrev" aria-label="Reseñas anteriores">‹</button>
+              <button type="button" class="carousel-btn" id="carouselNext" aria-label="Reseñas siguientes">›</button>
+            </div>
+          </div>
+        </div>
+        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <h2>Contacto</h2>
+          <p style="color:var(--ink-dim)">Viamonte 2031. Llamá, escribinos o pasá. Abrimos las 24 hs.</p>
+          <ul class="contact-list">
+            <li>
+              <span>Teléfono</span>
+              <a href="tel:+541140618555">11 4061-8555</a>
+            </li>
+            <li>
+              <span>WhatsApp</span>
+              <a href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">11 4061-8555</a>
+            </li>
+            <li>
+              <span>Dirección</span>
+              <strong>Viamonte 2031, CABA</strong>
+            </li>
+            <li>
+              <span>Horario</span>
+              <strong>24 horas, todos los días</strong>
+            </li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn--call" href="tel:+541140618555">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+              <span>Llamar ahora</span>
+            </a>
+            <a class="btn btn--wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"/></svg>
+              <span>Abrir WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        <div class="map-frame reveal">
+          <iframe
+            title="Mapa: Viamonte 2031, CABA"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Viamonte%202031%2C%20CABA&z=15&output=embed"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-row">
+        <a class="wordmark wordmark--footer" href="#inicio">
+          <span class="wordmark-name">Baterías <span>CABA</span></span>
+          <span class="wordmark-meta"><span class="wordmark-hours">24 hs</span><span class="wordmark-addr">Viamonte 2031</span></span>
+        </a>
+        <ul class="footer-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="tel:+541140618555">11 4061-8555</a></li>
+        </ul>
+      </div>
+      <p class="footer-legal">© <span id="year"></span> Baterías CABA. Mock de pitch. Viamonte 2031, Ciudad Autónoma de Buenos Aires.</p>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" role="group" aria-label="Contacto rápido">
+    <a class="btn btn--call" href="tel:+541140618555">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+      Llamar
+    </a>
+    <a class="btn btn--wa" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.3 4.4-1.1A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.2-2.1 1.4-.6.1-1.3.2-3.8-.8-3.1-1.3-5.1-4.5-5.3-4.7-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.5 1-.5h.7c.2 0 .5 0 .7.6.2.7.8 2.5.9 2.7.1.2.1.4 0 .7-.1.2-.2.4-.4.6-.2.2-.4.4-.6.6-.2.2-.4.4-.2.7.2.4.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.4.2.6.1.8-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1.1.3.2.5.3.6.4.1.2.1.7-.1 1.4z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* Mobile nav */
+    const toggle = document.getElementById("navToggle");
+    const panel = document.getElementById("nav-panel");
+
+    function openNav() {
+      panel.classList.add("is-open");
+      panel.setAttribute("aria-hidden", "false");
+      panel.removeAttribute("inert");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    function closeNav() {
+      if (!panel.classList.contains("is-open")) return;
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+      panel.setAttribute("inert", "");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      if (expanded) closeNav();
+      else openNav();
+    });
+    panel.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => closeNav());
+    });
+
+    /* Reveal */
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+    }
+
+    /* Reviews carousel */
+    (function initCarousel() {
+      const track = document.getElementById("carouselTrack");
+      const dotsWrap = document.getElementById("carouselDots");
+      const prev = document.getElementById("carouselPrev");
+      const next = document.getElementById("carouselNext");
+      if (!track) return;
+
+      let page = 0;
+      let perView = 1;
+
+      function measure() {
+        const w = track.parentElement.clientWidth;
+        if (w >= 1100) perView = 3;
+        else if (w >= 720) perView = 2;
+        else perView = 1;
+      }
+
+      function pageCount() {
+        return Math.max(1, Math.ceil(track.children.length / perView));
+      }
+
+      function renderDots() {
+        dotsWrap.innerHTML = "";
+        const n = pageCount();
+        for (let i = 0; i < n; i++) {
+          const li = document.createElement("li");
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.setAttribute("aria-label", "Ir a página " + (i + 1));
+          if (i === page) btn.setAttribute("aria-current", "true");
+          btn.addEventListener("click", () => go(i));
+          li.appendChild(btn);
+          dotsWrap.appendChild(li);
+        }
+      }
+
+      function go(i) {
+        measure();
+        const max = pageCount() - 1;
+        page = Math.max(0, Math.min(i, max));
+        const offset = page * perView * (100 / perView);
+        track.style.transform = "translateX(-" + offset + "%)";
+        renderDots();
+      }
+
+      prev.addEventListener("click", () => {
+        const max = pageCount() - 1;
+        go(page <= 0 ? max : page - 1);
+      });
+      next.addEventListener("click", () => {
+        const max = pageCount() - 1;
+        go(page >= max ? 0 : page + 1);
+      });
+      window.addEventListener("resize", () => go(page));
+      measure();
+      go(0);
+    })();
+
+
+    /* Sticky CTAs: show after hero CTAs leave viewport */
+    (function () {
+      const sticky = document.querySelector(".sticky-cta");
+      const heroCtas = document.querySelector(".hero-ctas");
+      if (!sticky || !heroCtas) return;
+      const sync = (visible) => {
+        sticky.classList.toggle("is-visible", visible);
+        document.body.classList.toggle("has-sticky-cta", visible);
+      };
+      if (!("IntersectionObserver" in window)) {
+        sync(true);
+        return;
+      }
+      const io = new IntersectionObserver(
+        ([entry]) => sync(!entry.isIntersecting),
+        { threshold: 0, rootMargin: "0px 0px -8% 0px" }
+      );
+      io.observe(heroCtas);
+    })();
+
+  </script>
+</body>
+</html>

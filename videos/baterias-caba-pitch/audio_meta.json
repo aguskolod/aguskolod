@@ -1,0 +1,46 @@
+{
+  "provider": "kokoro",
+  "voice": "ef_dora",
+  "sampleRate": 24000,
+  "totalDuration": 42.0,
+  "lines": [
+    {
+      "frame": 1,
+      "start": 0.0,
+      "duration": 3.52,
+      "file": "audio/takes/line-01.wav"
+    },
+    {
+      "frame": 2,
+      "start": 5.0,
+      "duration": 3.904,
+      "file": "audio/takes/line-02.wav"
+    },
+    {
+      "frame": 3,
+      "start": 13.0,
+      "duration": 4.309333333333333,
+      "file": "audio/takes/line-03.wav"
+    },
+    {
+      "frame": 4,
+      "start": 20.0,
+      "duration": 4.181333333333333,
+      "file": "audio/takes/line-04.wav"
+    },
+    {
+      "frame": 5,
+      "start": 27.0,
+      "duration": 4.010666666666666,
+      "file": "audio/takes/line-05.wav"
+    },
+    {
+      "frame": 6,
+      "start": 35.0,
+      "duration": 3.7973333333333334,
+      "file": "audio/takes/line-06.wav"
+    }
+  ],
+  "narration": "audio/narration.wav",
+  "music": null
+}

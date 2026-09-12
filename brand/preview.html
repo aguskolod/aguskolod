@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Baterías CABA — colores + ideas 24 hs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --carbon: #141414;
+      --paper: #F6F6F4;
+      --smoke: #5C5C5A;
+      --line: #D8D8D4;
+      --accent: #FFCC33;
+      --accent-dark: #FFCC33;
+      --urgent: #C62828;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Archivo, system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--carbon);
+      line-height: 1.35;
+      padding: 1.1rem 1rem 3rem;
+    }
+    h1 { font-size: 1.55rem; margin: 0 0 .2rem; font-weight: 900; letter-spacing: -.02em; }
+    h2 { font-size: 1.15rem; margin: 2rem 0 .6rem; font-weight: 800; }
+    .lead { color: var(--smoke); margin: 0 0 1.2rem; font-size: .98rem; }
+    .note {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: .9rem;
+      padding: .85rem 1rem;
+      color: var(--smoke);
+      font-size: .92rem;
+      margin-bottom: 1.25rem;
+    }
+    .swatch {
+      display: grid;
+      grid-template-columns: 4.6rem 1fr;
+      gap: .85rem;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: .9rem;
+      padding: .75rem;
+      margin-bottom: .65rem;
+    }
+    .chip-color {
+      width: 4.6rem; height: 4.6rem; border-radius: .7rem;
+      border: 1px solid rgba(0,0,0,.1);
+    }
+    code { font-weight: 800; letter-spacing: .02em; }
+    .use { color: var(--smoke); font-size: .88rem; margin-top: .15rem; }
+
+    .idea {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .idea-meta { padding: .9rem 1rem .2rem; }
+    .idea-meta .tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-bottom: .35rem;
+    }
+    .idea-meta h3 { margin: 0 0 .35rem; font-size: 1.05rem; font-weight: 800; }
+    .idea-meta p { margin: 0 0 .85rem; color: var(--smoke); font-size: .9rem; }
+
+    .stage {
+      min-height: 180px;
+      display: grid;
+      place-items: center;
+      padding: 1.4rem 1rem;
+      position: relative;
+    }
+
+    /* A — LED wall clock */
+    .a-stage { background: #0a0a0a; }
+    .led-panel {
+      background: #111;
+      border: 2px solid #2a2a2a;
+      border-radius: .5rem;
+      padding: 1rem 1.25rem .85rem;
+      box-shadow: inset 0 0 40px rgba(232,180,10,.08), 0 10px 30px rgba(0,0,0,.45);
+      text-align: center;
+    }
+    .led-time {
+      font-family: "Share Tech Mono", ui-monospace, monospace;
+      font-size: clamp(3.2rem, 18vw, 4.6rem);
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(232,180,10,.55), 0 0 28px rgba(232,180,10,.25);
+      letter-spacing: .08em;
+      line-height: 1;
+    }
+    .led-sub {
+      margin-top: .45rem;
+      font-family: "Share Tech Mono", monospace;
+      color: rgba(232,180,10,.75);
+      font-size: .85rem;
+      letter-spacing: .28em;
+    }
+    .blink { animation: blink 1.2s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: .25; } }
+
+    /* B — Neon storefront */
+    .b-stage {
+      background:
+        radial-gradient(ellipse at 50% 30%, #2a1010 0%, #0d0d0d 70%);
+    }
+    .neon {
+      font-family: Archivo, sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 8vw, 2.2rem);
+      letter-spacing: .12em;
+      color: #ff6b6b;
+      text-shadow:
+        0 0 6px #ff3b3b,
+        0 0 18px #ff3b3b,
+        0 0 36px rgba(198,40,40,.7);
+      transform: rotate(-2deg);
+    }
+    .neon small {
+      display: block;
+      margin-top: .35rem;
+      font-size: .55em;
+      letter-spacing: .35em;
+      color: #ffe08a;
+      text-shadow: 0 0 8px rgba(232,180,10,.8), 0 0 22px rgba(232,180,10,.4);
+    }
+
+    /* C — Station LCD */
+    .c-stage { background: #1b2420; }
+    .lcd {
+      width: min(100%, 340px);
+      background: #9aa889;
+      color: #1a2218;
+      border: 6px solid #3d4638;
+      border-radius: .25rem;
+      padding: .7rem .85rem;
+      font-family: VT323, monospace;
+      box-shadow: inset 0 0 20px rgba(0,0,0,.18);
+    }
+    .lcd .row1 { font-size: 1.55rem; letter-spacing: .04em; }
+    .lcd .row2 { font-size: 2.4rem; line-height: 1; margin-top: .15rem; }
+    .lcd .row3 { font-size: 1.15rem; opacity: .8; margin-top: .25rem; }
+
+    /* D — Monumental 24 */
+    .d-stage {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      padding-block: 1.6rem;
+    }
+    .monument {
+      text-align: left;
+      width: min(100%, 340px);
+    }
+    .monument .big {
+      font-weight: 900;
+      font-size: clamp(5.5rem, 28vw, 7rem);
+      line-height: .82;
+      letter-spacing: -.06em;
+      color: var(--carbon);
+    }
+    .monument .big span {
+      color: var(--accent);
+    }
+    .monument .caption {
+      margin-top: .4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--smoke);
+      max-width: 16ch;
+    }
+
+    /* E — Flip clock */
+    .e-stage { background: #222; }
+    .flip {
+      display: flex;
+      gap: .35rem;
+      align-items: center;
+    }
+    .flip-digit {
+      background: linear-gradient(#2c2c2c 49%, #1a1a1a 50%);
+      color: #f2f2f0;
+      font-weight: 900;
+      font-size: 3rem;
+      width: 2.4rem;
+      height: 3.4rem;
+      display: grid;
+      place-items: center;
+      border-radius: .35rem;
+      box-shadow: 0 6px 0 #0d0d0d;
+      position: relative;
+    }
+    .flip-digit::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 50%;
+      height: 1px;
+      background: rgba(0,0,0,.55);
+    }
+    .flip-label {
+      margin-top: .7rem;
+      text-align: center;
+      color: #bbb;
+      font-size: .8rem;
+      letter-spacing: .2em;
+      font-weight: 700;
+    }
+
+    /* F — Workshop metal sign */
+    .f-stage {
+      background: #3a3a38;
+      background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 6px 6px;
+    }
+    .metal {
+      background: #c7c4b8;
+      color: #1c1c1a;
+      border: 4px solid #8e8b7f;
+      padding: .75rem 1rem;
+      text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 8px 18px rgba(0,0,0,.35);
+      transform: rotate(-1deg);
+      max-width: 280px;
+    }
+    .metal .top {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .metal .mid {
+      font-size: 2.4rem;
+      font-weight: 900;
+      line-height: 1;
+      margin: .15rem 0;
+      letter-spacing: .04em;
+    }
+    .metal .bot {
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .refs {
+      font-size: .88rem;
+      color: var(--smoke);
+      padding: 0 1rem 1rem;
+    }
+    .refs a { color: var(--carbon); font-weight: 700; }
+
+    .pick {
+      position: sticky;
+      bottom: 0;
+      background: rgba(246,246,244,.92);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+      padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+      margin: 1.5rem -1rem -3rem;
+      font-size: .92rem;
+      color: var(--smoke);
+    }
+    .pick strong { color: var(--carbon); }
+  </style>
+</head>
+<body>
+  <h1>Baterías CABA</h1>
+  <p class="lead">Colores + 6 ideas para mostrar <strong>24 horas</strong> (sin chip).</p>
+  <div class="note">
+    Dirección actual: <strong>ticker fino arriba</strong> (neón descartado).
+    Prototype → <a href="./marquee.html"><strong>Carrusel ABIERTO 24 HS</strong></a>.
+  </div>
+
+  <h2>1. Colores</h2>
+  <div class="swatch"><div class="chip-color" style="background:#141414"></div><div><strong>Carbón</strong><div><code>#141414</code></div><div class="use">Logo, títulos</div></div></div>
+  <div class="swatch"><div class="chip-color" style="background:#F6F6F4"></div><div><strong>Papel</strong><div><code>#F6F6F4</code></div><div class="use">Fondo</div></div></div>
+  <div class="swatch"><div class="chip-color" style="background:#5C5C5A"></div><div><strong>Humo</strong><div><code>#5C5C5A</code></div><div class="use">Secundario</div></div></div>
+  <div class="swatch"><div class="chip-color" style="background:#D8D8D4"></div><div><strong>Línea</strong><div><code>#D8D8D4</code></div><div class="use">Bordes</div></div></div>
+  <div class="swatch"><div class="chip-color" style="background:#FFCC33"></div><div><strong>Amarillo borne</strong><div><code>#FFCC33</code></div><div class="use">CTA</div></div></div>
+  <div class="swatch"><div class="chip-color" style="background:#FFCC33"></div><div><strong>Amarillo hover (sin mostaza)</strong><div><code>#FFCC33</code></div><div class="use">mismo acento + brightness (ya no mostaza)</div></div></div>
+  <div class="swatch"><div class="chip-color" style="background:#C62828"></div><div><strong>Rojo 24 hs</strong><div><code>#C62828</code></div><div class="use">Urgencia / neón</div></div></div>
+
+  <h2>2. Ideas para el “24 hs”</h2>
+
+  <article class="idea" id="a">
+    <div class="idea-meta">
+      <div class="tag">Idea A</div>
+      <h3>Reloj LED de pared</h3>
+      <p>Como esos relojes digitales grandes de taller o living: el número <em>es</em> el mensaje. Colon que parpadea.</p>
+    </div>
+    <div class="stage a-stage">
+      <div class="led-panel">
+        <div class="led-time">24<span class="blink">:</span>00</div>
+        <div class="led-sub">ABIERTO</div>
+      </div>
+    </div>
+    <div class="refs">Ref vibe: <a href="https://uk.pinterest.com/pin/ivation-large-digital-wall-clock-24inch-big-led-display-white--137289488888511876/" target="_blank" rel="noopener">LED wall clock (Pinterest)</a> · <a href="https://www.shadcn.io/text/clock-text" target="_blank" rel="noopener">Clock text UI</a></div>
+  </article>
+
+  <article class="idea" id="b">
+    <div class="idea-meta">
+      <div class="tag">Idea B</div>
+      <h3>Neón de vidriera</h3>
+      <p>Cartel de local de noche: “ABIERTO” + “24 HS” con glow. Más nocturno / calle.</p>
+    </div>
+    <div class="stage b-stage">
+      <div class="neon">ABIERTO<small>24 HS</small></div>
+    </div>
+    <div class="refs">Ref vibe: <a href="https://www.pinterest.com/pin/custom-neon-signs--834151162266701356/" target="_blank" rel="noopener">Custom neon signs</a> · midnight shop / always open</div>
+  </article>
+
+  <article class="idea" id="c">
+    <div class="idea-meta">
+      <div class="tag">Idea C</div>
+      <h3>Pantalla LCD de estación</h3>
+      <p>Display verde-gris tipo surtidor / tablero técnico. Texto de sistema, no marketing.</p>
+    </div>
+    <div class="stage c-stage">
+      <div class="lcd">
+        <div class="row1">BATERÍAS CABA</div>
+        <div class="row2">24:00 HS</div>
+        <div class="row3">SERVICIO CONTINUO</div>
+      </div>
+    </div>
+    <div class="refs">Ref vibe: displays industriales / surtidor — tipografía mono segmentada</div>
+  </article>
+
+  <article class="idea" id="d">
+    <div class="idea-meta">
+      <div class="tag">Idea D</div>
+      <h3>Tipografía monumental</h3>
+      <p>Un “24” enorme como pieza de marca en el hero. No parece reloj: parece afiche.</p>
+    </div>
+    <div class="stage d-stage">
+      <div class="monument">
+        <div class="big">2<span>4</span></div>
+        <div class="caption">horas · todos los días · Viamonte 2031</div>
+      </div>
+    </div>
+    <div class="refs">Ref vibe: editorial / afiche tipográfico — el número como imagen</div>
+  </article>
+
+  <article class="idea" id="e">
+    <div class="idea-meta">
+      <div class="tag">Idea E</div>
+      <h3>Flip clock (solapa)</h3>
+      <p>Estilo aeropuerto / reloj de mesa: dígitos que “caen”. Muy objeto, poco web-genérico.</p>
+    </div>
+    <div class="stage e-stage">
+      <div>
+        <div class="flip" aria-hidden="true">
+          <div class="flip-digit">2</div>
+          <div class="flip-digit">4</div>
+          <div style="color:#888;font-weight:900;font-size:2rem;padding:0 .15rem">:</div>
+          <div class="flip-digit">0</div>
+          <div class="flip-digit">0</div>
+        </div>
+        <div class="flip-label">HORAS</div>
+      </div>
+    </div>
+    <div class="refs">Ref vibe: flip clocks / split-flap — objeto físico en la UI</div>
+  </article>
+
+  <article class="idea" id="f">
+    <div class="idea-meta">
+      <div class="tag">Idea F</div>
+      <h3>Chapa de taller</h3>
+      <p>Cartel metálico estampado, un poco torcido. Más “local de Balvanera” que tech.</p>
+    </div>
+    <div class="stage f-stage">
+      <div class="metal">
+        <div class="top">Atención</div>
+        <div class="mid">24 HS</div>
+        <div class="bot">VENTA Y CARGA</div>
+      </div>
+    </div>
+    <div class="refs">Ref vibe: signalética industrial / chapa de depósito</div>
+  </article>
+
+  <div class="pick">
+    Contame: <strong>¿A, B, C, D, E o F?</strong> (o mezcla: ej. “A pero con rojo”)
+  </div>
+</body>
+</html>

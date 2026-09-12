@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Baterías CABA — neón 24 hs (tubos)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --carbon: #141414;
+      --paper: #F6F6F4;
+      --smoke: #5C5C5A;
+      --line: #D8D8D4;
+      --accent: #E8B40A;
+      --accent-alt: #FFCC33; /* menos mostaza, más borne eléctrico */
+      --urgent: #FF3B3B;
+      --urgent-soft: #FF6B6B;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: Archivo, system-ui, sans-serif;
+      background: #070707;
+      color: var(--paper);
+      padding: 1rem 1rem 2.5rem;
+    }
+    h1 { font-size: 1.25rem; font-weight: 900; margin: 0 0 .35rem; letter-spacing: -.02em; }
+    .lead { color: #9a9a96; font-size: .92rem; margin: 0 0 1rem; line-height: 1.4; }
+    .lead strong { color: #ddd; }
+
+    .stage {
+      position: relative;
+      border: 1px solid #222;
+      border-radius: 1rem;
+      background:
+        radial-gradient(ellipse at 50% 40%, #1a1010 0%, #0a0a0a 55%, #050505 100%);
+      overflow: hidden;
+      padding: 1.5rem .5rem 1.25rem;
+    }
+    .stage::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 5px 5px;
+      opacity: .35;
+      pointer-events: none;
+    }
+
+    .neon-wrap {
+      width: min(100%, 420px);
+      margin: 0 auto;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .neon-wrap svg { width: 100%; height: auto; display: block; }
+
+    /* Tube glow layers */
+    .tube-glow {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: url(#glow);
+      opacity: .9;
+    }
+    .tube-glass {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: rgba(40,40,40,.9);
+      stroke-width: 10;
+    }
+    .tube-core {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3.2;
+    }
+
+    .on .tube-core.red { stroke: var(--urgent-soft); animation: hum 2.8s ease-in-out infinite, flicker 7s linear infinite; }
+    .on .tube-glow.red { stroke: var(--urgent); stroke-width: 8; animation: hum 2.8s ease-in-out infinite, flicker 7s linear infinite; }
+    .on .tube-core.amber { stroke: #FFE566; animation: hum 3.1s ease-in-out infinite .4s, flicker 9s linear infinite 1s; }
+    .on .tube-glow.amber { stroke: var(--accent-alt); stroke-width: 8; animation: hum 3.1s ease-in-out infinite .4s, flicker 9s linear infinite 1s; }
+
+    .off .tube-core { stroke: #2a2a2a; animation: none; }
+    .off .tube-glow { stroke: transparent; animation: none; filter: none; }
+
+    @keyframes hum {
+      0%, 100% { opacity: .88; }
+      50% { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .on .tube-core, .on .tube-glow { animation: none !important; opacity: 1 !important; }
+    }
+    @keyframes flicker {
+      0%, 92%, 100% { opacity: 1; }
+      93% { opacity: .35; }
+      94% { opacity: 1; }
+      96% { opacity: .45; }
+      97% { opacity: 1; }
+    }
+
+    .hint {
+      text-align: center;
+      margin-top: .85rem;
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin: 1rem 0 1.25rem;
+    }
+    button {
+      font: inherit;
+      font-weight: 700;
+      font-size: .9rem;
+      border-radius: .7rem;
+      border: 1px solid #333;
+      background: #151515;
+      color: var(--paper);
+      padding: .75rem .6rem;
+      cursor: pointer;
+    }
+    button:active { transform: scale(.98); }
+    button.active {
+      border-color: var(--accent-alt);
+      box-shadow: 0 0 0 1px rgba(255,204,51,.25);
+    }
+
+    h2 { font-size: 1rem; margin: 1.4rem 0 .65rem; font-weight: 800; }
+    .swatches { display: grid; gap: .55rem; }
+    .swatch {
+      display: grid;
+      grid-template-columns: 3.4rem 1fr auto;
+      gap: .7rem;
+      align-items: center;
+      background: #121212;
+      border: 1px solid #2a2a2a;
+      border-radius: .75rem;
+      padding: .55rem .65rem;
+    }
+    .swatch i {
+      display: block; width: 3.4rem; height: 3.4rem; border-radius: .55rem;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .swatch code { font-size: .85rem; color: #bbb; }
+    .swatch .lab { font-size: .72rem; color: #777; }
+    .pick {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent-alt);
+      opacity: 0;
+    }
+    .swatch.selected .pick { opacity: 1; }
+    .swatch.selected { border-color: #555; }
+
+    .back {
+      display: inline-block;
+      margin-bottom: .85rem;
+      color: #aaa;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <a class="back" href="./preview.html">← Ideas A–F + paleta</a>
+  <h1>Neón de tubos · 24 hs</h1>
+  <p class="lead">
+    SVG de <strong>tubos de neón</strong> (no chip): glow, parpadeo irregular, y podés
+    <strong>tocar el cartel</strong> para prender/apagar. Abajo, el tema del amarillo mostaza.
+  </p>
+
+  <div class="controls">
+    <button type="button" id="btnToggle" class="active">Prender / apagar</button>
+    <button type="button" id="btnBuzz">Parpadeo fuerte</button>
+  </div>
+
+  <div class="stage">
+    <div class="neon-wrap on" id="neon" role="button" tabindex="0" aria-pressed="true" aria-label="Cartel neón ABIERTO 24 HS. Tocar para prender o apagar.">
+      <!-- Interactive neon sign: tube strokes = glass + glow + hot core -->
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="4.5" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <!-- Path templates for letterforms as continuous tubes -->
+        </defs>
+
+        <!-- Wall plate -->
+        <rect x="18" y="22" width="324" height="156" rx="10" fill="#101010" stroke="#2a2a2a" stroke-width="2" />
+        <rect x="28" y="32" width="304" height="136" rx="6" fill="#0c0c0c" stroke="#1a1a1a" />
+
+        <!-- Mounting dots -->
+        <circle cx="40" cy="44" r="3" fill="#333" />
+        <circle cx="320" cy="44" r="3" fill="#333" />
+        <circle cx="40" cy="156" r="3" fill="#333" />
+        <circle cx="320" cy="156" r="3" fill="#333" />
+
+        <!-- ABIERTO (red tubes) — simplified tube letter paths -->
+        <g id="word-abierto">
+          <!-- A -->
+          <path class="tube-glass" d="M48 92 L60 52 L72 92 M52 78 H68" />
+          <path class="tube-glow red" d="M48 92 L60 52 L72 92 M52 78 H68" />
+          <path class="tube-core red" d="M48 92 L60 52 L72 92 M52 78 H68" />
+          <!-- B -->
+          <path class="tube-glass" d="M84 52 V92 H100 Q112 92 112 82 Q112 74 100 72 Q110 70 110 60 Q110 52 98 52 Z" />
+          <path class="tube-glow red" d="M84 52 V92 H100 Q112 92 112 82 Q112 74 100 72 Q110 70 110 60 Q110 52 98 52 Z" />
+          <path class="tube-core red" d="M84 52 V92 H100 Q112 92 112 82 Q112 74 100 72 Q110 70 110 60 Q110 52 98 52 Z" />
+          <!-- I -->
+          <path class="tube-glass" d="M124 52 V92" />
+          <path class="tube-glow red" d="M124 52 V92" />
+          <path class="tube-core red" d="M124 52 V92" />
+          <!-- E -->
+          <path class="tube-glass" d="M138 52 H162 M138 52 V92 H162 M138 72 H156" />
+          <path class="tube-glow red" d="M138 52 H162 M138 52 V92 H162 M138 72 H156" />
+          <path class="tube-core red" d="M138 52 H162 M138 52 V92 H162 M138 72 H156" />
+          <!-- R -->
+          <path class="tube-glass" d="M176 92 V52 H196 Q210 52 210 64 Q210 76 196 76 H176 M190 76 L210 92" />
+          <path class="tube-glow red" d="M176 92 V52 H196 Q210 52 210 64 Q210 76 196 76 H176 M190 76 L210 92" />
+          <path class="tube-core red" d="M176 92 V52 H196 Q210 52 210 64 Q210 76 196 76 H176 M190 76 L210 92" />
+          <!-- T -->
+          <path class="tube-glass" d="M224 52 H256 M240 52 V92" />
+          <path class="tube-glow red" d="M224 52 H256 M240 52 V92" />
+          <path class="tube-core red" d="M224 52 H256 M240 52 V92" />
+          <!-- O -->
+          <path class="tube-glass" d="M278 72 Q278 52 298 52 Q318 52 318 72 Q318 92 298 92 Q278 92 278 72 Z" />
+          <path class="tube-glow red" d="M278 72 Q278 52 298 52 Q318 52 318 72 Q318 92 298 92 Q278 92 278 72 Z" />
+          <path class="tube-core red" d="M278 72 Q278 52 298 52 Q318 52 318 72 Q318 92 298 92 Q278 92 278 72 Z" />
+        </g>
+
+        <!-- 24 HS (amber tubes) -->
+        <g id="word-24">
+          <!-- 2 -->
+          <path class="tube-glass" d="M78 118 Q78 108 92 108 Q108 108 108 118 Q108 128 90 132 L78 148 H110" />
+          <path class="tube-glow amber" d="M78 118 Q78 108 92 108 Q108 108 108 118 Q108 128 90 132 L78 148 H110" />
+          <path class="tube-core amber" d="M78 118 Q78 108 92 108 Q108 108 108 118 Q108 128 90 132 L78 148 H110" />
+          <!-- 4 -->
+          <path class="tube-glass" d="M128 148 V118 L148 108 V148 M128 132 H152" />
+          <path class="tube-glow amber" d="M128 148 V118 L148 108 V148 M128 132 H152" />
+          <path class="tube-core amber" d="M128 148 V118 L148 108 V148 M128 132 H152" />
+          <!-- H -->
+          <path class="tube-glass" d="M188 108 V148 M212 108 V148 M188 128 H212" />
+          <path class="tube-glow amber" d="M188 108 V148 M212 108 V148 M188 128 H212" />
+          <path class="tube-core amber" d="M188 108 V148 M212 108 V148 M188 128 H212" />
+          <!-- S -->
+          <path class="tube-glass" d="M250 118 Q250 108 264 108 Q278 108 278 116 Q278 128 250 128 Q278 128 278 140 Q278 148 264 148 Q250 148 250 138" />
+          <path class="tube-glow amber" d="M250 118 Q250 108 264 108 Q278 108 278 116 Q278 128 250 128 Q278 128 278 140 Q278 148 264 148 Q250 148 250 138" />
+          <path class="tube-core amber" d="M250 118 Q250 108 264 108 Q278 108 278 116 Q278 128 250 128 Q278 128 278 140 Q278 148 264 148 Q250 148 250 138" />
+        </g>
+      </svg>
+      <div class="hint" id="hint">Tocá el cartel · neón encendido</div>
+    </div>
+  </div>
+
+  <h2>Amarillo: ¿mostaza o borne?</h2>
+  <p class="lead" style="margin-bottom:.75rem">Tocá una opción. El neón de abajo usa la que elijas para “24 HS”.</p>
+  <div class="swatches" id="swatches">
+    <div class="swatch selected" data-amber="#FFCC33" data-core="#FFE566">
+      <i style="background:#FFCC33"></i>
+      <div>
+        <strong>Borne eléctrico</strong>
+        <div><code>#FFCC33</code></div>
+        <div class="lab">Más vivo, menos mostaza — recomendado</div>
+      </div>
+      <span class="pick">Elegido</span>
+    </div>
+    <div class="swatch" data-amber="#E8B40A" data-core="#F0C84A">
+      <i style="background:#E8B40A"></i>
+      <div>
+        <strong>Amarillo actual</strong>
+        <div><code>#E8B40A</code></div>
+        <div class="lab">El que veníamos usando</div>
+      </div>
+      <span class="pick">Elegido</span>
+    </div>
+    <div class="swatch" data-amber="#F5C518" data-core="#FFE66D">
+      <i style="background:#F5C518"></i>
+      <div>
+        <strong>Safety yellow</strong>
+        <div><code>#F5C518</code></div>
+        <div class="lab">Tipo señal / obra</div>
+      </div>
+      <span class="pick">Elegido</span>
+    </div>
+    <div class="swatch" data-amber="#C99800" data-core="#E0B122">
+      <i style="background:#C99800"></i>
+      <div>
+        <strong>Mostaza (hover viejo)</strong>
+        <div><code>#C99800</code></div>
+        <div class="lab">El que te genera duda — candidato a sacar</div>
+      </div>
+      <span class="pick">Elegido</span>
+    </div>
+  </div>
+
+  <script>
+    const neon = document.getElementById('neon');
+    const hint = document.getElementById('hint');
+    const btnToggle = document.getElementById('btnToggle');
+    const btnBuzz = document.getElementById('btnBuzz');
+    const root = document.documentElement;
+
+    function setOn(on) {
+      neon.classList.toggle('on', on);
+      neon.classList.toggle('off', !on);
+      neon.setAttribute('aria-pressed', on ? 'true' : 'false');
+      hint.textContent = on ? 'Tocá el cartel · neón encendido' : 'Tocá el cartel · neón apagado';
+      btnToggle.classList.toggle('active', on);
+    }
+
+    function toggle() { setOn(!neon.classList.contains('on')); }
+
+    neon.addEventListener('click', toggle);
+    neon.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    btnToggle.addEventListener('click', toggle);
+
+    btnBuzz.addEventListener('click', () => {
+      setOn(true);
+      neon.style.animation = 'none';
+      const cores = neon.querySelectorAll('.tube-core, .tube-glow');
+      cores.forEach((el) => {
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = 'flicker .35s linear 4, hum 2.8s ease-in-out infinite';
+      });
+      setTimeout(() => cores.forEach((el) => { el.style.animation = ''; }), 1600);
+    });
+
+    document.getElementById('swatches').addEventListener('click', (e) => {
+      const sw = e.target.closest('.swatch');
+      if (!sw) return;
+      document.querySelectorAll('.swatch').forEach((s) => s.classList.remove('selected'));
+      sw.classList.add('selected');
+      root.style.setProperty('--accent-alt', sw.dataset.amber);
+      // Update amber cores via CSS variables already wired; also set a brighter core if needed
+      root.style.setProperty('--urgent-soft', getComputedStyle(root).getPropertyValue('--urgent-soft'));
+      // paint amber strokes from data-core by injecting a style tag
+      let tag = document.getElementById('amber-dyn');
+      if (!tag) {
+        tag = document.createElement('style');
+        tag.id = 'amber-dyn';
+        document.head.appendChild(tag);
+      }
+      tag.textContent = `
+        .on .tube-core.amber { stroke: ${sw.dataset.core}; }
+        .on .tube-glow.amber { stroke: ${sw.dataset.amber}; }
+      `;
+    });
+  </script>
+</body>
+</html>

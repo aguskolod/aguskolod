@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "webAnimations": 1,
+    "cssDeclarations": 58,
+    "scrollTargets": 8,
+    "cdpAnimations": 27,
+    "canvases": 0
+  },
+  "namedAnimations": [
+    "borne-scroll",
+    "impeccable-spin"
+  ],
+  "scrollTriggeredElements": 8,
+  "representativeAnimations": [
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "borne-scroll",
+      "targetSelector": "div.borne-track",
+      "targetRect": {
+        "x": -378.55120849609375,
+        "y": 0,
+        "width": 1936.03125,
+        "height": 35.4375,
+        "top": 0,
+        "right": 1557.4800415039062,
+        "bottom": 35.4375,
+        "left": -378.55120849609375
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "transform": "translateX(0px)",
+          "computedOffset": 0
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "transform": "translateX(-50%)",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 28000,
+        "delay": 0,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    }
+  ]
+}

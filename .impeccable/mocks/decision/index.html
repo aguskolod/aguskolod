@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baterías CABA — Direction board (Impeccable)</title>
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --panel: #141416;
+      --ink: #f3f3f0;
+      --muted: #9a9a94;
+      --line: #2a2a2e;
+      --pick: #ff5a1f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header, footer, .board, .canon-wrap {
+      max-width: 1180px;
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+    header { padding-block: 2rem 1rem; border-bottom: 1px solid var(--line); margin-bottom: 1.25rem; }
+    .kicker {
+      margin: 0 0 .35rem;
+      font-size: .7rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    h1 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.03em; }
+    .lede { margin: 0; color: var(--muted); max-width: 44rem; }
+    .board {
+      display: grid;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    @media (min-width: 960px) {
+      .board { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .card.is-selected { outline: 2px solid var(--pick); outline-offset: 2px; }
+    .card.canon { opacity: .82; border-style: dashed; }
+    .meta { padding: 1rem 1rem .75rem; }
+    .meta h2 { margin: 0 0 .4rem; font-size: 1.15rem; letter-spacing: -.02em; }
+    .thesis { margin: 0 0 .8rem; color: var(--muted); font-size: .92rem; }
+    .swatches { display: flex; gap: .35rem; margin-bottom: .8rem; }
+    .swatch { width: 1.55rem; height: 1.55rem; border: 1px solid rgb(255 255 255 / 18%); }
+    .facts { margin: 0; padding: 0; list-style: none; display: grid; gap: .3rem; font-size: .82rem; color: var(--muted); }
+    .facts strong { color: var(--ink); }
+    .comps { display: grid; gap: .5rem; padding: 0 1rem 1rem; }
+    .comps figure { margin: 0; border: 1px solid var(--line); background: #000; }
+    .comps img { display: block; width: 100%; height: auto; }
+    .comps .phone { max-width: 46%; }
+    .comps figcaption {
+      padding: .35rem .5rem;
+      font-size: .65rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .pick { margin-top: auto; padding: 0 1rem 1rem; }
+    .pick button {
+      width: 100%;
+      min-height: 2.75rem;
+      border: 0;
+      background: var(--ink);
+      color: var(--bg);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .card.canon .pick button {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    .canon-wrap { padding-block: 1.25rem 2rem; border-top: 1px solid var(--line); }
+    .canon-wrap > .kicker { margin-bottom: .75rem; }
+    .choice {
+      max-width: 1180px;
+      margin: 0 auto 1rem;
+      padding: .85rem 1.25rem;
+      color: var(--pick);
+      font-weight: 700;
+      display: none;
+    }
+    .choice.show { display: block; }
+    footer { padding-bottom: 2.5rem; color: var(--muted); font-size: .85rem; }
+    footer code { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="kicker">Impeccable · new-work · visualize</p>
+    <h1>Direcciones visuales — Baterías CABA</h1>
+    <p class="lede">
+      Tres mundos candidatos + la salida canónica del rubro. Desktop y mobile del primer viewport.
+      Elegí uno acá y confirmalo en el chat para implementarlo en la landing.
+    </p>
+  </header>
+
+  <p class="choice" id="choice" aria-live="polite"></p>
+
+  <section class="board" aria-label="Direcciones candidatas">
+    <article class="card" data-id="urgencia">
+      <div class="meta">
+        <p class="kicker">Dirección</p>
+        <h2>Urgencia sharp</h2>
+        <p class="thesis">Noche de CABA + señal vial. Urgencia legible sin cliché de batería amarilla.</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#0E0F10"></span>
+          <span class="swatch" style="background:#F2F1EC"></span>
+          <span class="swatch" style="background:#FF5A1F"></span>
+          <span class="swatch" style="background:#25D366"></span>
+        </div>
+        <ul class="facts">
+          <li><strong>Type:</strong> Syne + Geist</li>
+          <li><strong>Marca:</strong> Monograma BC</li>
+          <li><strong>Riesgo:</strong> Naranja que grita si satura</li>
+        </ul>
+      </div>
+      <div class="comps">
+        <figure>
+          <img src="urgencia-desktop.png" alt="Urgencia sharp desktop" />
+          <figcaption>Desktop · primer viewport</figcaption>
+        </figure>
+        <figure class="phone">
+          <img src="urgencia-mobile.png" alt="Urgencia sharp mobile" />
+          <figcaption>Mobile</figcaption>
+        </figure>
+      </div>
+      <div class="pick"><button type="button">Elegir Urgencia sharp</button></div>
+    </article>
+
+    <article class="card" data-id="barrio">
+      <div class="meta">
+        <p class="kicker">Dirección</p>
+        <h2>Barrio elegante</h2>
+        <p class="thesis">Balvanera de noche: hueso, cobre, metal. Confianza local con corte editorial.</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#1A1410"></span>
+          <span class="swatch" style="background:#EDE6DA"></span>
+          <span class="swatch" style="background:#C45C26"></span>
+          <span class="swatch" style="background:#25D366"></span>
+        </div>
+        <ul class="facts">
+          <li><strong>Type:</strong> Instrument Sans</li>
+          <li><strong>Marca:</strong> Wordmark solo</li>
+          <li><strong>Riesgo:</strong> Menos urgencia flash</li>
+        </ul>
+      </div>
+      <div class="comps">
+        <figure>
+          <img src="barrio-desktop.png" alt="Barrio elegante desktop" />
+          <figcaption>Desktop · primer viewport</figcaption>
+        </figure>
+        <figure class="phone">
+          <img src="barrio-mobile.png" alt="Barrio elegante mobile" />
+          <figcaption>Mobile</figcaption>
+        </figure>
+      </div>
+      <div class="pick"><button type="button">Elegir Barrio elegante</button></div>
+    </article>
+
+    <article class="card" data-id="tecnico">
+      <div class="meta">
+        <p class="kicker">Dirección</p>
+        <h2>Técnico frío</h2>
+        <p class="thesis">Acero + cyan. Polaridad abstracta en lugar de objeto batería.</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#101418"></span>
+          <span class="swatch" style="background:#C8CDD4"></span>
+          <span class="swatch" style="background:#3DDCFF"></span>
+          <span class="swatch" style="background:#25D366"></span>
+        </div>
+        <ul class="facts">
+          <li><strong>Type:</strong> Space Grotesk</li>
+          <li><strong>Marca:</strong> Barras de polaridad</li>
+          <li><strong>Riesgo:</strong> Puede leerse startup</li>
+        </ul>
+      </div>
+      <div class="comps">
+        <figure>
+          <img src="tecnico-desktop.png" alt="Técnico frío desktop" />
+          <figcaption>Desktop · primer viewport</figcaption>
+        </figure>
+        <figure class="phone">
+          <img src="tecnico-mobile.png" alt="Técnico frío mobile" />
+          <figcaption>Mobile</figcaption>
+        </figure>
+      </div>
+      <div class="pick"><button type="button">Elegir Técnico frío</button></div>
+    </article>
+  </section>
+
+  <section class="canon-wrap">
+    <p class="kicker">Standing exit · estándar del rubro</p>
+    <article class="card canon" data-id="canon">
+      <div class="meta">
+        <h2>Estándar del rubro</h2>
+        <p class="thesis">Carbón + papel + borne #FFCC33 + Archivo. El camino familiar — el que ya sentiste genérico.</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background:#141414"></span>
+          <span class="swatch" style="background:#F6F6F4"></span>
+          <span class="swatch" style="background:#FFCC33"></span>
+        </div>
+        <ul class="facts">
+          <li><strong>Type:</strong> Archivo</li>
+          <li><strong>Marca:</strong> Wordmark + batería</li>
+        </ul>
+      </div>
+      <div class="comps">
+        <figure>
+          <img src="canon-desktop.png" alt="Canon del rubro desktop" />
+          <figcaption>Desktop · camino familiar</figcaption>
+        </figure>
+      </div>
+      <div class="pick"><button type="button">Quedarme con el estándar</button></div>
+    </article>
+  </section>
+
+  <footer>
+    <p>
+      Artefactos: <code>.impeccable/mocks/decision/</code> ·
+      metadata: <code>directions.json</code>.
+      Confirmá en el chat: <strong>urgencia</strong>, <strong>barrio</strong>, <strong>tecnico</strong> o <strong>canon</strong>.
+    </p>
+  </footer>
+
+  <script>
+    const choice = document.getElementById('choice');
+    const labels = {
+      urgencia: 'Urgencia sharp',
+      barrio: 'Barrio elegante',
+      tecnico: 'Técnico frío',
+      canon: 'Estándar del rubro'
+    };
+    document.querySelectorAll('.pick button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        const id = card.dataset.id;
+        document.querySelectorAll('.card').forEach((c) => c.classList.toggle('is-selected', c === card));
+        choice.textContent = `Selección local: ${labels[id]}. Escribí “${id}” en el chat para implementarlo.`;
+        choice.classList.add('show');
+        history.replaceHash = true;
+        location.hash = id;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Baterías CABA — cartel neón (refs)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --carbon: #0a0a0a;
+      --paper: #F6F6F4;
+      --borne: #FFCC33;
+      --borne-hot: #FFE566;
+      --tube-red: #FF1E1E;
+      --tube-red-deep: #C40000;
+      --glow-red: #FF3B3B;
+      /* aliases used in text-shadow stacks */
+      --glow: var(--glow-red);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: Archivo, system-ui, sans-serif;
+      color: var(--paper);
+      background: #050505;
+      padding: 1rem 1rem 2.5rem;
+    }
+    a.back { color: #aaa; font-size: .88rem; font-weight: 700; text-decoration: none; }
+    h1 { font-size: 1.2rem; font-weight: 900; margin: .7rem 0 .35rem; letter-spacing: -.02em; }
+    .lead { color: #9a9a96; font-size: .92rem; line-height: 1.4; margin: 0 0 1rem; }
+    .lead strong { color: #e8e8e4; }
+
+    .refs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .refs figure {
+      margin: 0;
+      border-radius: .7rem;
+      overflow: hidden;
+      border: 1px solid #222;
+      background: #111;
+    }
+    .refs img { width: 100%; height: 88px; object-fit: cover; display: block; }
+    .refs figcaption {
+      font-size: .65rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #777;
+      padding: .35rem .45rem .45rem;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-bottom: .85rem;
+    }
+    button {
+      font: inherit;
+      font-weight: 700;
+      border-radius: .7rem;
+      border: 1px solid #333;
+      background: #151515;
+      color: var(--paper);
+      padding: .75rem .5rem;
+      cursor: pointer;
+    }
+    button.active { border-color: var(--borne); }
+
+    .stage {
+      position: relative;
+      border-radius: 1rem;
+      border: 1px solid #222;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 35%, #2a1010 0%, #120808 42%, #070707 100%);
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem 1rem 1.25rem;
+    }
+    .stage::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,40,40,.07), transparent 40%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23000000' width='60' height='60'/%3E%3Cpath d='M0 0h2v2H0zm10 10h1v1h-1z' fill='%23181818'/%3E%3C/svg%3E");
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .sign {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 380px);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      text-align: center;
+      transform: rotate(-2.5deg);
+      transition: filter .25s ease;
+    }
+    .sign.off { filter: grayscale(.35) brightness(.35); }
+    .sign.off .script,
+    .sign.off .block,
+    .sign.off .battery { animation: none !important; }
+
+    /* === Script word (Electric-style) === */
+    .script {
+      position: relative;
+      display: inline-block;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(3.4rem, 16vw, 4.6rem);
+      line-height: .95;
+      font-weight: 400;
+      color: var(--borne-hot);
+      letter-spacing: .02em;
+      /* layered tube: yellow core + red envelope + bloom */
+      text-shadow:
+        0 0 2px #fff6c8,
+        0 0 4px var(--borne-hot),
+        0 0 8px var(--borne),
+        0 0 2px var(--tube-red),
+        0 0 6px var(--tube-red),
+        0 0 14px var(--glow-red),
+        0 0 28px var(--glow-red),
+        0 0 48px rgba(255,30,30,.55),
+        1px 0 0 var(--tube-red-deep),
+        -1px 0 0 var(--tube-red-deep),
+        0 1px 0 var(--tube-red-deep),
+        0 -1px 0 var(--tube-red-deep),
+        2px 0 0 rgba(180,0,0,.65),
+        -2px 0 0 rgba(180,0,0,.65);
+      animation: hum 2.6s ease-in-out infinite, flicker 8s linear infinite;
+    }
+
+    .block {
+      margin-top: .15rem;
+      font-family: Archivo, sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.35rem, 6.5vw, 1.85rem);
+      letter-spacing: .42em;
+      text-indent: .42em;
+      color: var(--borne-hot);
+      text-shadow:
+        0 0 2px #fff6c8,
+        0 0 6px var(--borne),
+        0 0 4px var(--tube-red),
+        0 0 12px var(--glow-red),
+        0 0 26px rgba(255,30,30,.5),
+        1px 0 0 var(--tube-red-deep),
+        -1px 0 0 var(--tube-red-deep),
+        0 1px 0 var(--tube-red-deep),
+        0 -1px 0 var(--tube-red-deep);
+      animation: hum 3s ease-in-out infinite .3s, flicker 9.5s linear infinite 1.2s;
+    }
+
+    .battery-wrap {
+      margin: 1rem auto 0;
+      width: 92px;
+      height: 52px;
+    }
+    .battery {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      animation: hum 2.8s ease-in-out infinite .6s, flicker 7.5s linear infinite .8s;
+    }
+    .battery .glass {
+      fill: none;
+      stroke: #2a2a2a;
+      stroke-width: 7;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    .battery .glow {
+      fill: none;
+      stroke: var(--tube-red);
+      stroke-width: 5;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      filter: url(#neonGlow);
+    }
+    .battery .core {
+      fill: none;
+      stroke: var(--borne-hot);
+      stroke-width: 2.4;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    .battery .cell-glow {
+      fill: none;
+      stroke: var(--borne);
+      stroke-width: 4;
+      stroke-linecap: round;
+      filter: url(#neonGlow);
+    }
+    .battery .cell-core {
+      fill: none;
+      stroke: #fff3b0;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    .sign.off .battery .glow,
+    .sign.off .battery .cell-glow { stroke: #333; filter: none; }
+    .sign.off .battery .core,
+    .sign.off .battery .cell-core { stroke: #2a2a2a; }
+
+    .hint {
+      margin-top: .9rem;
+      text-align: center;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #666;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes hum {
+      0%, 100% { opacity: .92; }
+      50% { opacity: 1; }
+    }
+    @keyframes flicker {
+      0%, 91%, 100% { opacity: 1; }
+      92% { opacity: .55; }
+      93% { opacity: 1; }
+      96% { opacity: .4; }
+      97% { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .script, .block, .battery { animation: none !important; }
+    }
+
+    .variants {
+      display: grid;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .variants button { text-align: left; padding: .7rem .85rem; }
+    .variants button small { display: block; color: #888; font-weight: 500; margin-top: .15rem; }
+  </style>
+</head>
+<body>
+  <a class="back" href="./preview.html">← Paleta e ideas</a>
+  <h1>Cartel neón (estilo de tus refs)</h1>
+  <p class="lead">
+    Como <strong>Electric Cinema</strong>: cursiva linda + bloque abajo + ícono
+    (acá una <strong>batería</strong>, tipo el vaso de Tony’s). Tubo rojo con núcleo
+    <strong>borne eléctrico</strong>. Tocá el cartel para prender/apagar.
+  </p>
+
+  <div class="refs">
+    <figure>
+      <img src="./refs/neon-electric-cinema.jpg" alt="Referencia Electric Cinema" />
+      <figcaption>Tu ref · script</figcaption>
+    </figure>
+    <figure>
+      <img src="./refs/neon-tonys.jpg" alt="Referencia Tony's bar neon" />
+      <figcaption>Tu ref · ícono</figcaption>
+    </figure>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="btnToggle" class="active">Prender / apagar</button>
+    <button type="button" id="btnBuzz">Parpadeo</button>
+  </div>
+
+  <div class="stage">
+    <div class="sign on" id="sign" role="button" tabindex="0" aria-pressed="true" aria-label="Cartel neón. Tocar para prender o apagar.">
+      <div class="script" id="scriptWord">Abierto</div>
+      <div class="block" id="blockWord">24 HS</div>
+      <div class="battery-wrap" aria-hidden="true">
+        <svg class="battery" viewBox="0 0 96 56" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.4" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- battery body -->
+          <rect class="glass" x="8" y="12" width="70" height="32" rx="6" />
+          <rect class="glow" x="8" y="12" width="70" height="32" rx="6" />
+          <rect class="core" x="8" y="12" width="70" height="32" rx="6" />
+          <!-- nub -->
+          <path class="glass" d="M80 20 H88 V36 H80" />
+          <path class="glow" d="M80 20 H88 V36 H80" />
+          <path class="core" d="M80 20 H88 V36 H80" />
+          <!-- charge cells -->
+          <path class="cell-glow" d="M20 20 V36" />
+          <path class="cell-core" d="M20 20 V36" />
+          <path class="cell-glow" d="M34 20 V36" />
+          <path class="cell-core" d="M34 20 V36" />
+          <path class="cell-glow" d="M48 20 V36" />
+          <path class="cell-core" d="M48 20 V36" />
+          <path class="cell-glow" d="M62 20 V36" />
+          <path class="cell-core" d="M62 20 V36" />
+        </svg>
+      </div>
+    </div>
+    <div class="hint" id="hint">Tocá el cartel · encendido</div>
+  </div>
+
+  <div class="variants" id="variants">
+    <button type="button" data-script="Abierto" data-block="24 HS">
+      Abierto / 24 HS
+      <small>Como Electric / CINEMA — la que está ahora</small>
+    </button>
+    <button type="button" data-script="Baterías" data-block="CABA">
+      Baterías / CABA
+      <small>Nombre del local en neón</small>
+    </button>
+    <button type="button" data-script="Siempre" data-block="24 HS">
+      Siempre / 24 HS
+      <small>Más claim, menos horario literal</small>
+    </button>
+  </div>
+
+  <p class="lead" style="margin-top:1.25rem">
+    Si querés, el siguiente paso es meter este cartel en el hero del mock.
+    Decime qué texto te gusta más (o mandá el wording exacto).
+  </p>
+
+  <script>
+    const sign = document.getElementById('sign');
+    const hint = document.getElementById('hint');
+    const btnToggle = document.getElementById('btnToggle');
+    const scriptWord = document.getElementById('scriptWord');
+    const blockWord = document.getElementById('blockWord');
+
+    function setOn(on) {
+      sign.classList.toggle('on', on);
+      sign.classList.toggle('off', !on);
+      sign.setAttribute('aria-pressed', on ? 'true' : 'false');
+      hint.textContent = on ? 'Tocá el cartel · encendido' : 'Tocá el cartel · apagado';
+      btnToggle.classList.toggle('active', on);
+    }
+    function toggle() { setOn(!sign.classList.contains('on')); }
+
+    sign.addEventListener('click', toggle);
+    sign.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    btnToggle.addEventListener('click', toggle);
+
+    document.getElementById('btnBuzz').addEventListener('click', () => {
+      setOn(true);
+      [scriptWord, blockWord, sign.querySelector('.battery')].forEach((el) => {
+        if (!el) return;
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = 'flicker .28s linear 5, hum 2.6s ease-in-out infinite';
+      });
+      setTimeout(() => {
+        [scriptWord, blockWord, sign.querySelector('.battery')].forEach((el) => {
+          if (el) el.style.animation = '';
+        });
+      }, 1600);
+    });
+
+    document.getElementById('variants').addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-script]');
+      if (!b) return;
+      scriptWord.textContent = b.dataset.script;
+      blockWord.textContent = b.dataset.block;
+      setOn(true);
+    });
+  </script>
+</body>
+</html>
