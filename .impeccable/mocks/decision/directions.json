@@ -1,0 +1,96 @@
+{
+  "scope": "direction",
+  "mode": "persuade",
+  "surface": "index.html",
+  "product": "Baterías CABA",
+  "workflow": "impeccable new-work · visualize (manual — concept-seed CLI unavailable in v0.1.5)",
+  "antiGoals": [
+    "Amarillo borne genérico de ferretería",
+    "Isotipo de batería literal",
+    "Archivo como voz por defecto sin carácter",
+    "Pills / soft UI / purple SaaS"
+  ],
+  "directions": [
+    {
+      "id": "urgencia",
+      "kicker": "DIRECCIÓN",
+      "title": "Urgencia sharp",
+      "thesis": "Noche de CABA + señal vial: urgencia legible sin cliché de batería amarilla.",
+      "palette": {
+        "ground": "#0E0F10",
+        "ink": "#F2F1EC",
+        "accent": "#FF5A1F",
+        "wa": "#25D366"
+      },
+      "type": "Syne (display) + Geist/Inter Tight (UI)",
+      "mark": "Monograma geométrico BC (sin batería)",
+      "firstViewport": "Ticker naranja → header BC + Llamar → hero full-bleed asfalto → H1 24 hs → trust 4.9 → CTAs rectangulares",
+      "risk": "Si el naranja satura, grita emergencia genérica.",
+      "comps": {
+        "desktop": "urgencia-desktop.png",
+        "mobile": "urgencia-mobile.png"
+      }
+    },
+    {
+      "id": "barrio",
+      "kicker": "DIRECCIÓN",
+      "title": "Barrio elegante",
+      "thesis": "Local de Balvanera de noche: metal, hueso, cobre. Confianza de barrio con corte editorial.",
+      "palette": {
+        "ground": "#1A1410",
+        "ink": "#EDE6DA",
+        "accent": "#C45C26",
+        "wa": "#25D366"
+      },
+      "type": "Instrument Sans (+ detalle serif opcional)",
+      "mark": "Wordmark solo — tipografía es la marca",
+      "firstViewport": "Ticker cobre → wordmark tipográfico → hero cálido → H1 → trust → CTAs cobre/WA",
+      "risk": "Puede leerse menos 'urgencia flash' y más 'atelier'.",
+      "comps": {
+        "desktop": "barrio-desktop.png",
+        "mobile": "barrio-mobile.png"
+      }
+    },
+    {
+      "id": "tecnico",
+      "kicker": "DIRECCIÓN",
+      "title": "Técnico frío",
+      "thesis": "Sistema eléctrico preciso: acero, plata, cyan. Polaridad abstracta en lugar de objeto batería.",
+      "palette": {
+        "ground": "#101418",
+        "ink": "#C8CDD4",
+        "accent": "#3DDCFF",
+        "wa": "#25D366"
+      },
+      "type": "Space Grotesk",
+      "mark": "Dos barras de polaridad (+/−) abstractas",
+      "firstViewport": "Ticker cyan → marca polaridad + wordmark → hero técnico → H1 → CTAs cyan/WA",
+      "risk": "Cercano a look startup si se ablanda el grid.",
+      "comps": {
+        "desktop": "tecnico-desktop.png",
+        "mobile": "tecnico-mobile.png"
+      }
+    },
+    {
+      "id": "canon",
+      "kicker": "SALIDA CANÓNICA",
+      "title": "Estándar del rubro",
+      "thesis": "Carbón + papel + borne #FFCC33 + Archivo. El camino familiar del listing de Maps.",
+      "palette": {
+        "ground": "#141414",
+        "ink": "#F6F6F4",
+        "accent": "#FFCC33",
+        "wa": "#25D366"
+      },
+      "type": "Archivo",
+      "mark": "Wordmark + isotipo batería (actual)",
+      "firstViewport": "Ticker borne → nav Archivo → hero taller → CTAs borne/WA",
+      "risk": "Es exactamente lo que ya sentiste genérico.",
+      "comps": {
+        "desktop": "canon-desktop.png",
+        "mobile": null
+      },
+      "standingExit": true
+    }
+  ]
+}
