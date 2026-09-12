@@ -1,0 +1,166 @@
+{
+  "files": [
+    {
+      "file": "NGSwv5HMAFg6IuGlBNMjxLsD8ahuQ2e8Smg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "NGSwv5HMAFg6IuGlBNMjxLsE8ahuQ2e8Smg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "NGSwv5HMAFg6IuGlBNMjxLsI8ahuQ2e8Smg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "NGSwv5HMAFg6IuGlBNMjxLsJ8ahuQ2e8Smg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "NGSwv5HMAFg6IuGlBNMjxLsK8ahuQ2e8Smg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "NGSwv5HMAFg6IuGlBNMjxLsL8ahuQ2e8Smg.woff2",
+      "family": "Inter Tight",
+      "rawFamily": "Inter Tight",
+      "subfamily": "Regular",
+      "postscript": "InterTight-Regular",
+      "weight": 400,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "memjYa2wxmKQyPMrZX79wwYZQMhsyuSLh4vSdyqOvlaB.woff2",
+      "family": "Saira",
+      "rawFamily": "Saira Thin",
+      "subfamily": "Regular",
+      "postscript": "SairaThin-Regular",
+      "weight": 100,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "memjYa2wxmKQyPMrZX79wwYZQMhsyuSLhovSdyqOvlaB.woff2",
+      "family": "Saira",
+      "rawFamily": "Saira Thin",
+      "subfamily": "Regular",
+      "postscript": "SairaThin-Regular",
+      "weight": 100,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    },
+    {
+      "file": "memjYa2wxmKQyPMrZX79wwYZQMhsyuSLiIvSdyqOvg.woff2",
+      "family": "Saira",
+      "rawFamily": "Saira Thin",
+      "subfamily": "Regular",
+      "postscript": "SairaThin-Regular",
+      "weight": 100,
+      "style": "normal",
+      "variationAxes": [
+        "wght"
+      ],
+      "identified": true,
+      "isIcon": false
+    }
+  ],
+  "families": [
+    {
+      "family": "Inter Tight",
+      "weights": [
+        400
+      ],
+      "variable": true,
+      "fileCount": 6,
+      "files": [
+        "NGSwv5HMAFg6IuGlBNMjxLsD8ahuQ2e8Smg.woff2",
+        "NGSwv5HMAFg6IuGlBNMjxLsE8ahuQ2e8Smg.woff2",
+        "NGSwv5HMAFg6IuGlBNMjxLsI8ahuQ2e8Smg.woff2",
+        "NGSwv5HMAFg6IuGlBNMjxLsJ8ahuQ2e8Smg.woff2",
+        "NGSwv5HMAFg6IuGlBNMjxLsK8ahuQ2e8Smg.woff2",
+        "NGSwv5HMAFg6IuGlBNMjxLsL8ahuQ2e8Smg.woff2"
+      ]
+    },
+    {
+      "family": "Saira",
+      "weights": [
+        100
+      ],
+      "variable": true,
+      "fileCount": 3,
+      "files": [
+        "memjYa2wxmKQyPMrZX79wwYZQMhsyuSLh4vSdyqOvlaB.woff2",
+        "memjYa2wxmKQyPMrZX79wwYZQMhsyuSLhovSdyqOvlaB.woff2",
+        "memjYa2wxmKQyPMrZX79wwYZQMhsyuSLiIvSdyqOvg.woff2"
+      ]
+    }
+  ],
+  "unidentified": [],
+  "meta": {
+    "generatedAt": "2026-09-12T17:49:42.548Z",
+    "tool": "fontkit"
+  }
+}
