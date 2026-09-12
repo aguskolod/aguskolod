@@ -92,6 +92,9 @@
       0%, 100% { opacity: .88; }
       50% { opacity: 1; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .on .tube-core, .on .tube-glow { animation: none !important; opacity: 1 !important; }
+    }
     @keyframes flicker {
       0%, 92%, 100% { opacity: 1; }
       93% { opacity: .35; }
