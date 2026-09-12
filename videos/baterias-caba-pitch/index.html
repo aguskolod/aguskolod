@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <title>Baterías CABA — Pitch</title>
+    <title>Baterías CABA — Walkthrough UI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Saira:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Saira:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
@@ -17,7 +17,6 @@
         --ink: #f2f1ec;
         --ink-dim: rgba(242, 241, 236, 0.62);
         --signal: #ff5a1f;
-        --wa: #25d366;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html, body {
@@ -44,57 +43,30 @@
         height: 1080px;
         overflow: hidden;
       }
-      .bg {
+      .stage {
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(ellipse 80% 55% at 50% 15%, rgba(255, 90, 31, 0.16), transparent 55%),
-          radial-gradient(ellipse 60% 45% at 85% 85%, rgba(255, 90, 31, 0.07), transparent 50%),
-          linear-gradient(180deg, #141516 0%, #0e0f10 50%, #090a0b 100%);
+          radial-gradient(ellipse 70% 50% at 50% 18%, rgba(255, 90, 31, 0.14), transparent 55%),
+          linear-gradient(180deg, #141516 0%, #0e0f10 55%, #090a0b 100%);
       }
-      .kicker {
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--signal);
-      }
-      .display {
-        font-family: "Saira", sans-serif;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 0.96;
-      }
-      .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 16px;
-        border: 1px solid rgba(242, 241, 236, 0.16);
-        background: rgba(14, 15, 16, 0.72);
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      .chip .dot {
-        width: 8px;
-        height: 8px;
-        background: var(--signal);
-      }
+
       .phone {
         position: absolute;
+        left: 50%;
+        top: 50%;
         width: 390px;
         height: 800px;
-        border-radius: 44px;
+        transform: translate(-50%, -50%);
+        border-radius: 46px;
         background: #1a1b1d;
         border: 3px solid #3a3b3d;
-        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
         overflow: hidden;
       }
       .phone .notch {
         position: absolute;
-        top: 10px;
+        top: 11px;
         left: 50%;
         transform: translateX(-50%);
         width: 120px;
@@ -106,32 +78,36 @@
       .phone .screen {
         position: absolute;
         inset: 12px;
-        border-radius: 34px;
+        border-radius: 36px;
         overflow: hidden;
         background: #000;
       }
-      .phone .screen img {
+      .phone video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: top center;
         display: block;
       }
+
       .laptop {
         position: absolute;
-        width: 1180px;
+        left: 50%;
+        top: 52%;
+        width: 1280px;
+        transform: translate(-50%, -50%);
       }
       .laptop .lid {
-        height: 680px;
-        border-radius: 18px 18px 0 0;
+        height: 720px;
+        border-radius: 16px 16px 0 0;
         background: #222;
         border: 3px solid #3a3b3d;
         border-bottom: none;
         overflow: hidden;
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 36px 90px rgba(0, 0, 0, 0.55);
       }
       .laptop .chrome {
-        height: 36px;
+        height: 34px;
         background: #2a2b2d;
         display: flex;
         align-items: center;
@@ -151,21 +127,21 @@
       .laptop .url {
         margin-left: 12px;
         flex: 1;
-        height: 22px;
-        background: #1a1b1d;
+        height: 20px;
         border-radius: 4px;
-        font-size: 12px;
+        background: #1a1b1d;
         color: var(--ink-dim);
+        font-size: 12px;
         display: flex;
         align-items: center;
         padding: 0 10px;
       }
       .laptop .viewport {
-        height: calc(100% - 36px);
+        height: calc(100% - 34px);
         overflow: hidden;
         background: #000;
       }
-      .laptop .viewport img {
+      .laptop video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -173,68 +149,60 @@
         display: block;
       }
       .laptop .base {
-        height: 28px;
+        height: 26px;
         background: linear-gradient(180deg, #3a3b3d, #2a2b2d);
         border-radius: 0 0 10px 10px;
       }
-      .side h2 {
-        font-family: "Saira", sans-serif;
-        font-size: 60px;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 1.02;
-        margin: 14px 0 18px;
-      }
-      .side p {
-        font-size: 26px;
-        line-height: 1.35;
-        color: var(--ink-dim);
-        max-width: 480px;
-      }
-      .svc {
+
+      .title-card {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 72px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        max-width: 460px;
-        margin-top: 28px;
-      }
-      .svc span {
-        padding: 12px 18px;
-        border: 1px solid rgba(255, 90, 31, 0.45);
-        background: rgba(14, 15, 16, 0.65);
-        font-size: 18px;
-        font-weight: 600;
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 20px;
-        background: rgba(14, 15, 16, 0.8);
-        border: 1px solid rgba(242, 241, 236, 0.14);
-        font-size: 22px;
-        font-weight: 700;
-      }
-      .badge .stars { color: #fbbc04; letter-spacing: 2px; }
-      .cta-row { display: flex; gap: 16px; margin-top: 48px; }
-      .cta {
-        display: inline-flex;
-        align-items: center;
         justify-content: center;
-        min-width: 240px;
-        height: 64px;
-        padding: 0 28px;
+        z-index: 20;
+        pointer-events: none;
+      }
+      .title-card .pill {
+        max-width: 1100px;
+        padding: 18px 32px;
+        background: rgba(14, 15, 16, 0.84);
+        border: 1px solid rgba(242, 241, 236, 0.14);
+        border-left: 4px solid var(--signal);
         font-family: "Saira", sans-serif;
         font-weight: 700;
-        font-size: 22px;
-        border: 2px solid var(--ink);
+        font-size: 34px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        text-align: center;
         color: var(--ink);
       }
-      .cta.wa {
-        border-color: var(--wa);
-        background: var(--wa);
-        color: #04140a;
+
+      .end {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        text-align: center;
       }
+      .end .brand {
+        font-family: "Saira", sans-serif;
+        font-weight: 800;
+        font-size: 96px;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .end .brand span { color: var(--signal); }
+      .end .meta {
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--ink-dim);
+      }
+      .end .meta strong { color: var(--signal); font-weight: 700; }
     </style>
   </head>
   <body>
@@ -242,165 +210,147 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="42"
+      data-duration="44"
       data-width="1920"
       data-height="1080"
     >
-      <audio
-        id="vo"
+      <!-- Mobile scene chrome (timed) -->
+      <section id="mobile-scene" class="clip" data-start="0" data-duration="34" data-track-index="1">
+        <div class="stage"></div>
+        <div class="phone" id="phone">
+          <div class="notch"></div>
+          <div class="screen"></div>
+        </div>
+      </section>
+      <!-- Mobile capture — timed as own clip, positioned into phone screen -->
+      <video
+        id="mobile-vid"
         class="clip"
         data-start="0"
-        data-duration="42"
-        data-track-index="0"
-        src="audio/narration.wav"
+        data-duration="34"
+        data-media-start="0"
+        data-track-index="2"
+        src="assets/recordings/mobile-walkthrough.mp4"
+        muted
+        playsinline
         preload="auto"
-      ></audio>
+        style="
+          left: 50%;
+          top: 50%;
+          width: 366px;
+          height: 776px;
+          margin: 0;
+          transform: translate(-50%, -50%);
+          border-radius: 34px;
+          object-fit: cover;
+          object-position: top center;
+          z-index: 5;
+        "
+      ></video>
 
-      <!-- 1 Hook -->
-      <section id="f1" class="clip" data-start="0" data-duration="5" data-track-index="1">
-        <div class="bg"></div>
-        <div style="position:absolute;left:120px;top:140px;width:1680px;display:flex;flex-direction:column;gap:36px;">
-          <div class="kicker" id="f1-kicker" style="line-height:1.2;">Pitch · posibles clientes</div>
-          <div class="display" id="f1-l1" style="font-size:96px;line-height:1.05;">Te quedaste sin batería.</div>
-          <div class="display" id="f1-l2" style="font-size:64px;line-height:1.1;color:var(--ink-dim);">No abrís la compu.</div>
-          <div class="display" id="f1-l3" style="font-size:80px;line-height:1.08;">Abrís el <span style="color:var(--signal)">celular</span>.</div>
-        </div>
-        <div id="f1-brand" class="display" style="position:absolute;left:120px;bottom:90px;font-size:36px;line-height:1.2;">
-          Baterías <span style="color:var(--signal)">CABA</span>
-        </div>
-      </section>
-
-      <!-- 2 Mobile hero -->
-      <section id="f2" class="clip" data-start="5" data-duration="8" data-track-index="1">
-        <div class="bg"></div>
-        <div class="side" id="f2-copy" style="position:absolute;left:120px;top:220px;max-width:520px;">
-          <div class="chip"><span class="dot"></span> Mobile first</div>
-          <h2>Hecha para el apuro</h2>
-          <p>Si te quedás sin batería, entrás desde el celular. La web está armada alrededor de eso.</p>
-        </div>
-        <div class="phone" id="f2-phone" style="left:1180px;top:120px;">
-          <div class="notch"></div>
-          <div class="screen"><img src="assets/mobile-hero.png" alt="" /></div>
-        </div>
-      </section>
-
-      <!-- 3 Mobile servicios -->
-      <section id="f3" class="clip" data-start="13" data-duration="7" data-track-index="1">
-        <div class="bg"></div>
-        <div class="phone" id="f3-phone" style="left:220px;top:120px;">
-          <div class="notch"></div>
-          <div class="screen"><img src="assets/mobile-servicios.png" alt="" /></div>
-        </div>
-        <div class="side" id="f3-copy" style="position:absolute;left:780px;top:240px;">
-          <div class="kicker">Servicios</div>
-          <h2 style="font-size:56px;">Lo que necesitás, sin vueltas</h2>
-          <div class="svc" id="f3-chips">
-            <span>Venta</span>
-            <span>Carga</span>
-            <span>Atención 24 hs</span>
-            <span>Asistencia en el lugar</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4 Reviews + sticky -->
-      <section id="f4" class="clip" data-start="20" data-duration="7" data-track-index="1">
-        <div class="bg"></div>
-        <div class="phone" id="f4-phone-a" style="left:280px;top:100px;width:360px;height:740px;">
-          <div class="notch"></div>
-          <div class="screen"><img src="assets/mobile-reviews.png" alt="" /></div>
-        </div>
-        <div class="phone" id="f4-phone-b" style="left:700px;top:180px;width:360px;height:740px;">
-          <div class="notch"></div>
-          <div class="screen"><img src="assets/mobile-sticky-cta.png" alt="" /></div>
-        </div>
-        <div class="side" id="f4-copy" style="position:absolute;left:1180px;top:260px;max-width:600px;">
-          <div class="badge" id="f4-badge"><span class="stars">★★★★★</span><span>4.9 · Google</span></div>
-          <h2 style="font-size:52px;">Confianza real. Contacto inmediato.</h2>
-          <p>Reseñas de clientes. Abajo, Llamar y WhatsApp siempre a un toque.</p>
-        </div>
-      </section>
-
-      <!-- 5 Desktop -->
-      <section id="f5" class="clip" data-start="27" data-duration="8" data-track-index="1">
-        <div class="bg"></div>
-        <div class="chip" id="f5-chip" style="position:absolute;left:120px;top:72px;">
-          <span class="dot"></span> También desktop
-        </div>
-        <div class="phone" id="f5-phone" style="left:80px;top:280px;width:280px;height:574px;border-radius:32px;">
-          <div class="notch" style="width:90px;height:22px;"></div>
-          <div class="screen" style="inset:10px;border-radius:24px;">
-            <img src="assets/mobile-sticky-cta.png" alt="" />
-          </div>
-        </div>
-        <div class="laptop" id="f5-laptop" style="left:420px;top:130px;">
+      <!-- Desktop scene chrome -->
+      <section id="desktop-scene" class="clip" data-start="34" data-duration="6" data-track-index="1">
+        <div class="stage"></div>
+        <div class="laptop" id="laptop">
           <div class="lid">
             <div class="chrome">
               <i></i><i></i><i></i>
               <div class="url">bateriascaba · Viamonte 2031</div>
             </div>
-            <div class="viewport">
-              <img id="f5-img" src="assets/desktop-hero.png" alt="" />
-            </div>
+            <div class="viewport"></div>
           </div>
           <div class="base"></div>
         </div>
       </section>
+      <video
+        id="desktop-vid"
+        class="clip"
+        data-start="34"
+        data-duration="6"
+        data-media-start="0"
+        data-track-index="2"
+        src="assets/recordings/desktop-walkthrough.mp4"
+        muted
+        playsinline
+        preload="auto"
+        style="
+          left: 50%;
+          top: calc(52% - 13px);
+          width: 1274px;
+          height: 686px;
+          margin: 0;
+          transform: translate(-50%, -50%);
+          border-radius: 0;
+          object-fit: cover;
+          object-position: top center;
+          z-index: 5;
+        "
+      ></video>
 
-      <!-- 6 Close -->
-      <section id="f6" class="clip" data-start="35" data-duration="7" data-track-index="1">
-        <div class="bg"></div>
-        <div style="position:absolute;left:120px;top:200px;width:1680px;">
-          <div class="display" id="f6-brand" style="font-size:96px;">
-            Baterías <span style="color:var(--signal)">CABA</span>
-          </div>
-          <div id="f6-meta" style="margin-top:28px;font-size:28px;display:flex;gap:18px;color:var(--ink-dim);">
-            <span>Viamonte 2031</span>
-            <span>·</span>
-            <span style="color:var(--signal)">24 hs</span>
-          </div>
-          <div class="cta-row" id="f6-ctas">
-            <div class="cta">11 4061-8555</div>
-            <div class="cta wa">WhatsApp</div>
-          </div>
-          <p id="f6-sub" style="margin-top:40px;color:var(--ink-dim);font-size:24px;max-width:720px;">
-            Landing lista para mandar a clientes. Mobile primero. Desktop incluido.
-          </p>
+      <!-- End card -->
+      <section id="end-scene" class="clip" data-start="40" data-duration="4" data-track-index="1">
+        <div class="stage"></div>
+        <div class="end" id="end-card">
+          <div class="brand">Baterías <span>CABA</span></div>
+          <div class="meta"><strong>24 hs</strong> · Viamonte 2031</div>
         </div>
       </section>
+
+      <!-- Sparse UX titles -->
+      <div id="title-sticky" class="clip title-card" data-start="8" data-duration="4" data-track-index="3">
+        <div class="pill" id="t1">Contacto siempre a mano</div>
+      </div>
+      <div id="title-buttons" class="clip title-card" data-start="12" data-duration="5.5" data-track-index="3">
+        <div class="pill" id="t2">Botones fáciles para contactar en cualquier momento</div>
+      </div>
+      <div id="title-reviews" class="clip title-card" data-start="24" data-duration="4.5" data-track-index="3">
+        <div class="pill" id="t3">Reseñas de Google</div>
+      </div>
+      <div id="title-map" class="clip title-card" data-start="29" data-duration="4.5" data-track-index="3">
+        <div class="pill" id="t4">Dónde estás. Sin buscar.</div>
+      </div>
+      <div id="title-desktop" class="clip title-card" data-start="34" data-duration="5.5" data-track-index="3">
+        <div class="pill" id="t5">También en escritorio</div>
+      </div>
     </div>
 
     <script>
       const tl = gsap.timeline({ paused: true });
 
-      tl.from("#f1-kicker", { autoAlpha: 0, y: 16, duration: 0.4, ease: "power3.out" }, 0.15);
-      tl.from("#f1-l1", { autoAlpha: 0, y: 36, duration: 0.55, ease: "power3.out" }, 0.35);
-      tl.from("#f1-l2", { autoAlpha: 0, y: 28, duration: 0.5, ease: "power3.out" }, 1.35);
-      tl.from("#f1-l3", { autoAlpha: 0, y: 28, duration: 0.55, ease: "power3.out" }, 2.2);
-      tl.from("#f1-brand", { autoAlpha: 0, duration: 0.4 }, 3.4);
+      tl.fromTo(
+        "#phone",
+        { autoAlpha: 0, y: 48, scale: 0.94 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" },
+        0.15
+      );
 
-      tl.from("#f2-phone", { autoAlpha: 0, y: 60, scale: 0.92, duration: 0.8, ease: "power3.out" }, 5.1);
-      tl.from("#f2-copy", { autoAlpha: 0, x: -40, duration: 0.7, ease: "power3.out" }, 5.35);
+      ["#t1", "#t2", "#t3", "#t4", "#t5"].forEach((sel, i) => {
+        const starts = [8, 12, 24, 29, 34];
+        const durs = [4, 5.5, 4.5, 4.5, 5.5];
+        const s = starts[i];
+        const d = durs[i];
+        tl.fromTo(
+          sel,
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          s + 0.1
+        );
+        tl.to(sel, { autoAlpha: 0, y: -10, duration: 0.35, ease: "power2.in" }, s + d - 0.4);
+      });
 
-      tl.from("#f3-phone", { autoAlpha: 0, x: -50, duration: 0.7, ease: "power3.out" }, 13.1);
-      tl.from("#f3-copy", { autoAlpha: 0, x: 40, duration: 0.65, ease: "power3.out" }, 13.3);
-      tl.from("#f3-chips span", { autoAlpha: 0, y: 16, duration: 0.4, stagger: 0.18, ease: "power2.out" }, 13.9);
+      tl.fromTo(
+        "#laptop",
+        { autoAlpha: 0, y: 36, scale: 0.96 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.75, ease: "power3.out" },
+        34.05
+      );
 
-      tl.from("#f4-phone-a", { autoAlpha: 0, y: 40, duration: 0.65, ease: "power3.out" }, 20.1);
-      tl.from("#f4-phone-b", { autoAlpha: 0, y: 50, duration: 0.65, ease: "power3.out" }, 20.35);
-      tl.from("#f4-badge", { autoAlpha: 0, scale: 0.92, duration: 0.45, ease: "power3.out" }, 20.55);
-      tl.from("#f4-copy h2, #f4-copy p", { autoAlpha: 0, y: 20, duration: 0.5, stagger: 0.12, ease: "power2.out" }, 20.8);
-
-      tl.from("#f5-chip", { autoAlpha: 0, duration: 0.35 }, 27.1);
-      tl.from("#f5-phone", { autoAlpha: 0, x: -30, duration: 0.6, ease: "power3.out" }, 27.2);
-      tl.from("#f5-laptop", { autoAlpha: 0, y: 40, scale: 0.96, duration: 0.85, ease: "power3.out" }, 27.35);
-      tl.set("#f5-img", { attr: { src: "assets/desktop-hero.png" } }, 27.0);
-      tl.set("#f5-img", { attr: { src: "assets/desktop-servicios.png" } }, 31.2);
-
-      tl.from("#f6-brand", { autoAlpha: 0, y: 30, duration: 0.6, ease: "power3.out" }, 35.15);
-      tl.from("#f6-meta", { autoAlpha: 0, y: 16, duration: 0.45, ease: "power2.out" }, 35.7);
-      tl.from("#f6-ctas", { autoAlpha: 0, y: 18, duration: 0.5, ease: "power2.out" }, 36.2);
-      tl.from("#f6-sub", { autoAlpha: 0, duration: 0.45 }, 37.0);
+      tl.fromTo(
+        "#end-card",
+        { autoAlpha: 0, y: 24 },
+        { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" },
+        40.1
+      );
 
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
