@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Baterías CABA — Venta y carga 24 hs | Viamonte 2031</title>
+  <title>Baterías CABA · Venta y carga 24 hs | Viamonte 2031</title>
   <meta name="description" content="Baterías CABA en Viamonte 2031. Venta y carga de baterías las 24 horas. Llamá al 11 4061-8555." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -206,34 +206,52 @@
       z-index: 0;
     }
     .btn--hollow > * { position: relative; z-index: 1; }
-    .btn--hollow::before {
+    .btn--hollow::before,
+    .btn--hollow::after {
       content: "";
       position: absolute;
-      inset: 0;
-      transform: translateY(101%);
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      transform: scaleX(0);
       transition: transform 320ms var(--ease);
       z-index: 0;
     }
-    .btn--hollow:hover { color: #fff; }
-    .btn--hollow:hover::before { transform: translateY(0); }
+    .btn--hollow::before {
+      left: 0;
+      transform-origin: left center;
+    }
+    .btn--hollow::after {
+      right: 0;
+      transform-origin: right center;
+    }
+    .btn--hollow:hover,
     .btn--hollow:focus-visible { color: #fff; }
-    .btn--hollow:focus-visible::before { transform: translateY(0); }
+    .btn--hollow:hover::before,
+    .btn--hollow:hover::after,
+    .btn--hollow:focus-visible::before,
+    .btn--hollow:focus-visible::after { transform: scaleX(1); }
     .btn--hollow-call {
       color: var(--signal);
       border-color: var(--signal);
       border-width: 2px;
     }
-    .btn--hollow-call::before { background: var(--signal); }
+    .btn--hollow-call::before,
+    .btn--hollow-call::after { background: var(--signal); }
     .btn--hollow-wa {
       color: var(--wa);
       border-color: var(--wa);
       border-width: 2px;
     }
-    .btn--hollow-wa::before { background: var(--wa); }
+    .btn--hollow-wa::before,
+    .btn--hollow-wa::after { background: var(--wa); }
     @media (prefers-reduced-motion: reduce) {
-      .btn--hollow::before { transition: none; }
+      .btn--hollow::before,
+      .btn--hollow::after { transition: none; }
       .btn--hollow:hover::before,
-      .btn--hollow:focus-visible::before { transform: none; opacity: 1; }
+      .btn--hollow:hover::after,
+      .btn--hollow:focus-visible::before,
+      .btn--hollow:focus-visible::after { transform: none; opacity: 1; width: 50%; }
       .btn--hollow-call:hover,
       .btn--hollow-call:focus-visible { background: var(--signal); }
       .btn--hollow-wa:hover,
@@ -329,13 +347,59 @@
       cursor: pointer;
     }
     .nav-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+    .nav-toggle-bars {
+      position: relative;
+      display: block;
+      width: 1.15rem;
+      height: 0.85rem;
+    }
+    .nav-toggle-bars span {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transition: transform 240ms var(--ease), opacity 180ms var(--ease), top 240ms var(--ease);
+    }
+    .nav-toggle-bars span:nth-child(1) { top: 0; }
+    .nav-toggle-bars span:nth-child(2) { top: 50%; margin-top: -1px; }
+    .nav-toggle-bars span:nth-child(3) { bottom: 0; top: auto; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(1) {
+      top: 50%;
+      margin-top: -1px;
+      transform: rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(3) {
+      top: 50%;
+      bottom: auto;
+      margin-top: -1px;
+      transform: rotate(-45deg);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-toggle-bars span { transition: none; }
+    }
     .nav-panel {
       display: none;
       border-top: 1px solid var(--line);
       padding: var(--space-3) 0 var(--space-4);
     }
-    .nav-panel.is-open { display: block; }
-    .nav-panel ul { list-style: none; margin: 0 0 var(--space-3); padding: 0; }
+    .nav-panel.is-open {
+      display: block;
+      animation: nav-panel-in 220ms var(--ease);
+    }
+    @keyframes nav-panel-in {
+      from { opacity: 0; transform: translateY(-0.4rem); }
+      to { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-panel.is-open { animation: none; }
+    }
+    .nav-panel ul { list-style: none; margin: 0; padding: 0; }
     .nav-panel a {
       display: block;
       padding: var(--space-2) 0;
@@ -559,54 +623,7 @@
       font-size: clamp(1.15rem, 2vw, 1.35rem);
     }
 
-
-        /* —— About: facts + workshop photo —— */
-    .about-grid {
-      display: grid;
-      gap: var(--space-5);
-      align-items: stretch;
-    }
-    @media (min-width: 800px) {
-      .about-grid {
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: var(--space-6);
-      }
-    }
-    .about-copy h2 { margin-bottom: var(--space-4); }
-    .about-facts {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: var(--space-3);
-    }
-    .about-facts li {
-      display: flex;
-      gap: var(--space-2);
-      font-size: var(--text-sm);
-      font-weight: 600;
-    }
-    .about-facts li::before {
-      content: "";
-      width: 0.5rem;
-      height: 0.5rem;
-      margin-top: 0.4rem;
-      flex-shrink: 0;
-      background: var(--signal);
-    }
-    .about-media {
-      margin: 0;
-      min-height: clamp(16rem, 36vw, 22rem);
-      overflow: hidden;
-      background: var(--asphalt-2);
-    }
-    .about-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(0.2) contrast(1.05);
-    }
+    /* —— Reviews
 
 
     /* —— Reviews —— */
@@ -965,14 +982,13 @@
 
   <header class="site-header">
     <div class="wrap nav">
-      <a class="wordmark" href="#inicio" aria-label="Baterías CABA — inicio">
+      <a class="wordmark" href="#inicio" aria-label="Baterías CABA, inicio">
         <span class="wordmark-name">Baterías <span>CABA</span></span>
         <span class="wordmark-meta"><span class="wordmark-hours">24 hs</span><span class="wordmark-addr">Viamonte 2031</span></span>
       </a>
       <nav aria-label="Principal">
         <ul class="nav-links">
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#reseñas">Reseñas</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -989,20 +1005,17 @@
       </div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" id="navToggle">
         <span class="visually-hidden">Menú</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
       </button>
     </div>
     <div class="wrap nav-panel" id="nav-panel" hidden>
       <ul>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#reseñas">Reseñas</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
-      <div class="cta-row">
-        <a class="btn btn--call btn--block" href="tel:+541140618555">Llamar</a>
-        <a class="btn btn--wa btn--block" href="https://wa.me/541140618555" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      </div>
     </div>
   </header>
 
@@ -1088,30 +1101,13 @@
                   <circle cx="16" cy="13" r="3" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </span>
-              <h3>Vamos a donde estás</h3>
+              <h3>Asistencia en el lugar</h3>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-
-    <section class="section" id="nosotros">
-      <div class="wrap about-grid">
-        <div class="about-copy reveal">
-          <h2>Taller en Viamonte 2031</h2>
-          <ul class="about-facts">
-            <li>Local físico en Viamonte — no es un número virtual</li>
-            <li>Si llamás, también podemos ir a donde estás</li>
-            <li>Teléfono y WhatsApp: 11 4061-8555</li>
-            <li>85 reseñas en Google · promedio 4.9</li>
-          </ul>
-        </div>
-        <figure class="about-media reveal">
-          <img src="assets/photos/taller.jpg" alt="Taller automotor — mecánico trabajando en el motor" width="900" height="600" loading="lazy" decoding="async" />
-        </figure>
-      </div>
-    </section>
 
     <section class="reviews-band" id="reseñas" aria-labelledby="reviews-title">
       <div class="wrap">
@@ -1121,7 +1117,7 @@
             href="https://www.google.com/maps/search/?api=1&amp;query=Baterias%20CABA%20Venta%20y%20carga%20de%20baterias%20para%20auto&amp;query_place_id=ChIJbxcDrhTLvJUR-vSkMSSNTFY"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Google reviews — Ver en Google"
+            aria-label="Google reviews: Ver en Google"
           >
             <!-- Official multicolor Google “G” mark (inline SVG) -->
             <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
@@ -1229,7 +1225,7 @@
       <div class="wrap contact-grid">
         <div class="reveal">
           <h2>Contacto</h2>
-          <p style="color:var(--ink-dim)">Viamonte 2031. Llamá, escribinos o pasá — abrimos las 24 hs. Si estás varado, podemos ir.</p>
+          <p style="color:var(--ink-dim)">Viamonte 2031. Llamá, escribinos o pasá. Abrimos las 24 hs.</p>
           <ul class="contact-list">
             <li>
               <span>Teléfono</span>
@@ -1248,7 +1244,7 @@
               <strong>24 horas, todos los días</strong>
             </li>
           </ul>
-                    <div class="cta-row">
+          <div class="cta-row">
             <a class="btn btn--call" href="tel:+541140618555">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>
               <span>Llamar ahora</span>
@@ -1284,7 +1280,7 @@
           <li><a href="tel:+541140618555">11 4061-8555</a></li>
         </ul>
       </div>
-      <p class="footer-legal">© <span id="year"></span> Baterías CABA. Mock de pitch — Viamonte 2031, Ciudad Autónoma de Buenos Aires.</p>
+      <p class="footer-legal">© <span id="year"></span> Baterías CABA. Mock de pitch. Viamonte 2031, Ciudad Autónoma de Buenos Aires.</p>
     </div>
   </footer>
 
@@ -1432,5 +1428,8 @@
     })();
 
   </script>
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=2876524b-a361-49aa-ad80-a9df9d8e9e5c"></script>
+<!-- impeccable-live-end -->
 </body>
 </html>
