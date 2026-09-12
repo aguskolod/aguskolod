@@ -948,26 +948,63 @@
       background: var(--asphalt);
       border-top: 1px solid var(--line);
       padding: env(safe-area-inset-bottom, 0);
-      transform: translateY(110%);
+      transform: translateY(100%);
       opacity: 0;
       pointer-events: none;
-      transition: transform 280ms var(--ease), opacity 220ms var(--ease);
+      box-shadow: 0 -12px 32px rgba(0, 0, 0, 0);
+      transition:
+        transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 420ms ease,
+        box-shadow 560ms ease;
     }
     .sticky-cta.is-visible {
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
-    }
-    body.has-sticky-cta {
-      padding-bottom: calc(var(--sticky-cta-h) + env(safe-area-inset-bottom, 0px));
+      box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.45);
     }
     .sticky-cta .btn {
       border-radius: 0;
       min-height: var(--sticky-cta-h);
       border: none;
       border-right: 1px solid rgba(0, 0, 0, 0.2);
+      transform: translateY(10px);
+      opacity: 0.55;
+      transition:
+        transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 420ms ease;
     }
     .sticky-cta .btn:last-child { border-right: none; }
+    .sticky-cta .btn:nth-child(1) { transition-delay: 40ms; }
+    .sticky-cta .btn:nth-child(2) { transition-delay: 110ms; }
+    .sticky-cta.is-visible .btn {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    body {
+      transition: padding-bottom 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    body.has-sticky-cta {
+      padding-bottom: calc(var(--sticky-cta-h) + env(safe-area-inset-bottom, 0px));
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sticky-cta,
+      .sticky-cta .btn,
+      body {
+        transition: none;
+      }
+      .sticky-cta {
+        transform: translateY(0);
+      }
+      .sticky-cta:not(.is-visible) {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .sticky-cta .btn {
+        transform: none;
+        opacity: 1;
+      }
+    }
     @media (min-width: 900px) {
       .sticky-cta { display: none; }
       .site-footer { padding-bottom: var(--space-6); }
