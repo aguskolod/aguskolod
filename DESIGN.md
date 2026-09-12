@@ -5,7 +5,7 @@ Working draft — identidad mínima para mock / landing. Se refinará al constru
 
 ## Visual Intent
 
-Comercio de barrio que resuelve YA: carbón + papel + un acento de “borne de batería”. Tipografía industrial argentina para la voz del negocio; tipografía de display de 7 segmentos solo para el sello **24 hs**. Sin look startup, sin violeta AI, sin cards de más.
+Comercio de barrio que resuelve YA: carbón + papel + un acento de “borne de batería”. Tipografía industrial argentina para la voz del negocio; tipografía de display digital solo para el tratamiento de **24 hs** (pieza visual, no chip). Sin look startup, sin violeta AI, sin cards de más.
 
 ## Color
 
