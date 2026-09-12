@@ -16,11 +16,12 @@ Composición visual para **mostrar y cerrar un sí**: que se sienta profesional,
 | Tipo | Landing de una página (secciones con anclas) |
 | CTA primario | **Llamar** (`tel:+541140618555`) |
 | CTA secundario | **WhatsApp** |
-| Ticker | Borne `#FFCC33` + texto carbón; mensajes ya definidos |
-| Logo | Wordmark **Baterías CABA** + isotipo simple |
-| Reseñas | Sí — Google (rating ~4.9 / ~85) |
-| Servicios | Mostrar el set completo por ahora (ajustar después) |
-| Fotos en este mock | Genéricas de calidad (taller / auto / batería) + nota de reemplazo; pedir reales en paralelo |
+| Ticker | Signal `#FF5A1F` + texto blanco; mensajes 24 hs / Viamonte / tel |
+| Logo | Wordmark tipográfico **Baterías CABA** (Syne) — sin isotipo |
+| Identidad | Fusión A: asfalto + signal + Syne / Inter Tight |
+| Reseñas | Sí — Google (rating ~4.9 / ~85) carrusel |
+| Servicios | Venta · Carga · 24 hs (+ instalación/domicilio: consultar) |
+| Fotos en este mock | Hero full-bleed genérico + nota de reemplazo; pedir reales en paralelo |
 
 ## Site map (secciones)
 
@@ -46,10 +47,10 @@ Izquierda: marca + copy + CTAs. Derecha: foto del mostrador / fachada (placehold
 *Inspo tip:* oil-change / garage editoriales split.
 
 ### H3 — Tipográfico + confianza
-Poco o nada de foto arriba: Archivo Black grande, ticker ya cuenta 24 hs, debajo estrellas Google + dos botones. Muy limpio para pitch de marca.  
+Poco o nada de foto arriba: Syne display grande, ticker ya cuenta 24 hs, debajo estrellas Google + dos botones. Muy limpio para pitch de marca.  
 *Inspo tip:* manifesto / trade-magazine heroes (type-led).
 
-**Recomendación para el pitch:** **H1** (llama más la atención y vende el “sí, está bueno” en 3 segundos).
+**Implementado:** **H1** (urgencia full-bleed) con identidad Fusión A.
 
 ## Servicios (placeholder set)
 

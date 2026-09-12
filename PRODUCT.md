@@ -40,12 +40,12 @@ Comercio de barrio en CABA: **venta y carga de baterías para auto**, atención 
 
 - Nombre de trabajo: **Baterías CABA** (alineado al listing de Maps: “Baterias CABA Venta y carga de baterias para auto”).
 - Identidad deliberadamente **simple y minimalista** (no brand book elaborado).
-- Logo: wordmark **Baterías CABA** + isotipo simple.
-- Headline / tagline de trabajo: **“Venta y carga de baterías, las 24 hs.”**
+- Logo: **solo wordmark tipográfico** Baterías CABA (Syne) + subtítulo `Viamonte · 24 hs`. Sin isotipo.
+- Headline / tagline de trabajo: urgencia (“Se te agotó la batería…”) + promesa 24 hs.
 - Promesa de trabajo: solución rápida en CABA, las 24 hs.
 - Tono: claro, útil, urgente-sin-histeria, porteño neutro (vos), sin marketing vacío.
-- Tipografía: **Archivo** (Omnibus-Type). El “24 hs” vive en un **ticker fino** arriba (borne + texto carbón).
-- Color: carbón `#141414`, papel `#F6F6F4`, humo `#5C5C5A`, línea `#D8D8D4`, acento borne `#FFCC33` (hover = brightness; sin mostaza).
+- Tipografía: **Syne** (display/marca) + **Inter Tight** (UI). El “24 hs” vive en ticker + wordmark.
+- Color (Fusión A): asfalto `#0E0F10`, ink `#F2F1EC`, signal `#FF5A1F`, WhatsApp `#25D366`. Sin borne amarillo.
 
 ## Product Principles
 
