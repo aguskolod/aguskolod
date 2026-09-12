@@ -199,6 +199,7 @@
 
     /* Hollow CTAs (hero): strong border, fill on hover */
     .btn--hollow {
+      --hollow-fill: currentColor;
       color: inherit;
       position: relative;
       overflow: hidden;
@@ -206,52 +207,58 @@
       z-index: 0;
     }
     .btn--hollow > * { position: relative; z-index: 1; }
-    .btn--hollow::before,
-    .btn--hollow::after {
+    .btn--hollow::before {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 50%;
-      transform: scaleX(0);
-      transition: transform 320ms var(--ease);
+      inset: 0;
       z-index: 0;
-    }
-    .btn--hollow::before {
-      left: 0;
-      transform-origin: left center;
-    }
-    .btn--hollow::after {
-      right: 0;
-      transform-origin: right center;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill)),
+        linear-gradient(var(--hollow-fill), var(--hollow-fill));
+      background-repeat: no-repeat;
+      background-position:
+        top center,
+        bottom center,
+        center left,
+        center right;
+      background-size:
+        100% 0,
+        100% 0,
+        0 100%,
+        0 100%;
+      transition: background-size 360ms var(--ease);
     }
     .btn--hollow:hover,
     .btn--hollow:focus-visible { color: #fff; }
     .btn--hollow:hover::before,
-    .btn--hollow:hover::after,
-    .btn--hollow:focus-visible::before,
-    .btn--hollow:focus-visible::after { transform: scaleX(1); }
+    .btn--hollow:focus-visible::before {
+      background-size:
+        100% 50%,
+        100% 50%,
+        50% 100%,
+        50% 100%;
+    }
     .btn--hollow-call {
       color: var(--signal);
       border-color: var(--signal);
       border-width: 2px;
+      --hollow-fill: var(--signal);
     }
-    .btn--hollow-call::before,
-    .btn--hollow-call::after { background: var(--signal); }
     .btn--hollow-wa {
       color: var(--wa);
       border-color: var(--wa);
       border-width: 2px;
+      --hollow-fill: var(--wa);
     }
-    .btn--hollow-wa::before,
-    .btn--hollow-wa::after { background: var(--wa); }
     @media (prefers-reduced-motion: reduce) {
-      .btn--hollow::before,
-      .btn--hollow::after { transition: none; }
+      .btn--hollow::before { transition: none; }
       .btn--hollow:hover::before,
-      .btn--hollow:hover::after,
-      .btn--hollow:focus-visible::before,
-      .btn--hollow:focus-visible::after { transform: none; opacity: 1; width: 50%; }
+      .btn--hollow:focus-visible::before {
+        background-size: 100% 50%, 100% 50%, 50% 100%, 50% 100%;
+      }
       .btn--hollow-call:hover,
       .btn--hollow-call:focus-visible { background: var(--signal); }
       .btn--hollow-wa:hover,
@@ -388,16 +395,27 @@
       border-top: 1px solid var(--line);
       padding: var(--space-3) 0 var(--space-4);
     }
-    .nav-panel.is-open {
+    .nav-panel.is-open,
+    .nav-panel.is-closing {
       display: block;
-      animation: nav-panel-in 220ms var(--ease);
+    }
+    .nav-panel.is-open {
+      animation: nav-panel-in 220ms var(--ease) both;
+    }
+    .nav-panel.is-closing {
+      animation: nav-panel-out 200ms var(--ease) both;
     }
     @keyframes nav-panel-in {
       from { opacity: 0; transform: translateY(-0.4rem); }
       to { opacity: 1; transform: none; }
     }
+    @keyframes nav-panel-out {
+      from { opacity: 1; transform: none; }
+      to { opacity: 0; transform: translateY(-0.4rem); }
+    }
     @media (prefers-reduced-motion: reduce) {
-      .nav-panel.is-open { animation: none; }
+      .nav-panel.is-open,
+      .nav-panel.is-closing { animation: none; }
     }
     .nav-panel ul { list-style: none; margin: 0; padding: 0; }
     .nav-panel a {
@@ -1315,17 +1333,48 @@
     /* Mobile nav */
     const toggle = document.getElementById("navToggle");
     const panel = document.getElementById("nav-panel");
-    toggle.addEventListener("click", () => {
-      const open = panel.classList.toggle("is-open");
-      panel.hidden = !open;
-      toggle.setAttribute("aria-expanded", String(open));
-    });
-    panel.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => {
-        panel.classList.remove("is-open");
+    let panelClosing = false;
+
+    function openNav() {
+      panelClosing = false;
+      panel.classList.remove("is-closing");
+      panel.hidden = false;
+      // restart open animation if re-clicked quickly
+      panel.classList.remove("is-open");
+      void panel.offsetWidth;
+      panel.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    function closeNav() {
+      if (panel.hidden || panelClosing) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        panel.classList.remove("is-open", "is-closing");
         panel.hidden = true;
         toggle.setAttribute("aria-expanded", "false");
-      });
+        return;
+      }
+      panelClosing = true;
+      panel.classList.remove("is-open");
+      panel.classList.add("is-closing");
+      toggle.setAttribute("aria-expanded", "false");
+      const finish = (e) => {
+        if (e && e.target !== panel) return;
+        panel.classList.remove("is-closing");
+        panel.hidden = true;
+        panelClosing = false;
+        panel.removeEventListener("animationend", finish);
+      };
+      panel.addEventListener("animationend", finish);
+    }
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      if (expanded) closeNav();
+      else openNav();
+    });
+    panel.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => closeNav());
     });
 
     /* Reveal */
