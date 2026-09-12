@@ -454,26 +454,26 @@
     }
     .section-head p { color: var(--ink-dim); }
 
-    /* —— Services —— */
-    .services-grid {
+    /* —— Services (typographic rows/cols — no card panels) —— */
+    .services-list {
       display: grid;
       gap: 0;
-      border: 1px solid var(--line);
     }
     @media (min-width: 768px) {
-      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+      }
     }
     .service {
-      padding: var(--space-5);
-      border-bottom: 1px solid var(--line);
-      background: var(--asphalt-2);
+      padding: var(--space-5) 0;
+      border-top: 1px solid var(--line);
     }
     @media (min-width: 768px) {
       .service {
-        border-bottom: none;
-        border-right: 1px solid var(--line);
+        padding: var(--space-4) 0 0;
+        border-top: 2px solid var(--signal);
       }
-      .service:last-child { border-right: none; }
     }
     .service-num {
       display: block;
@@ -487,19 +487,22 @@
     .service h3 { margin-bottom: var(--space-2); }
     .service p { color: var(--ink-dim); font-size: var(--text-sm); }
     .services-note {
-      margin-top: var(--space-4);
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--line);
       font-size: var(--text-sm);
       color: var(--ink-faint);
+      max-width: none;
     }
 
-    /* —— Steps —— */
+    /* —— Steps (numbered columns — signal top rule, no boxes) —— */
     .steps {
       display: grid;
-      gap: var(--space-4);
+      gap: var(--space-5);
       counter-reset: step;
     }
     @media (min-width: 768px) {
-      .steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+      .steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
     }
     .step {
       padding-top: var(--space-3);
@@ -522,12 +525,12 @@
     /* —— About —— */
     .about-grid {
       display: grid;
-      gap: var(--space-5);
+      gap: var(--space-6);
     }
     @media (min-width: 800px) {
       .about-grid {
         grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
+        align-items: start;
         gap: var(--space-7);
       }
     }
@@ -553,20 +556,21 @@
       flex-shrink: 0;
       background: var(--signal);
     }
-    .about-panel {
-      background: var(--asphalt-2);
-      border: 1px solid var(--line);
-      padding: var(--space-5);
-    }
-    .about-panel blockquote {
+    .about-quote {
       margin: 0;
+      padding: 0;
+    }
+    .about-quote blockquote {
+      margin: 0;
+      padding-top: var(--space-3);
+      border-top: 2px solid var(--signal);
       font-family: var(--font-display);
       font-size: clamp(1.35rem, 3vw, 1.85rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: var(--leading-snug);
     }
-    .about-panel cite {
+    .about-quote cite {
       display: block;
       margin-top: var(--space-3);
       font-style: normal;
@@ -584,30 +588,82 @@
     .reviews-head {
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      gap: var(--space-3);
+      gap: var(--space-4);
       margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--line);
+    }
+    .google-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .google-brand svg {
+      display: block;
+      flex-shrink: 0;
+    }
+    .google-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      line-height: 1.15;
+    }
+    .google-brand-word {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+    .google-brand-sub {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
     .reviews-score {
       display: flex;
-      align-items: baseline;
-      gap: 0.65rem;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem 1rem;
     }
     .reviews-score strong {
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: clamp(2.25rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.04em;
+      line-height: 1;
     }
-    .reviews-score span { color: var(--ink-dim); font-size: var(--text-sm); }
+    .reviews-score-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .reviews-score-stars {
+      color: #fbbc04;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+    .reviews-score-count {
+      color: var(--ink-dim);
+      font-size: var(--text-sm);
+    }
     .carousel {
       position: relative;
     }
     .carousel-viewport {
       overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--asphalt);
+      /* No boxed chrome — open strip */
+      border: none;
+      background: transparent;
     }
     .carousel-track {
       display: flex;
@@ -615,20 +671,26 @@
     }
     .review {
       flex: 0 0 100%;
-      padding: var(--space-5);
-      min-height: 14rem;
+      padding: var(--space-4) var(--space-4) var(--space-4) 0;
+      min-height: 11rem;
+      border: none;
+      background: transparent;
+      box-shadow: none;
     }
     @media (min-width: 720px) {
-      .review { flex-basis: 50%; }
+      .review {
+        flex-basis: 50%;
+        padding-right: var(--space-5);
+      }
     }
     @media (min-width: 1100px) {
       .review { flex-basis: 33.333%; }
     }
     .review-top {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: flex-start;
-      gap: var(--space-2);
+      gap: 0.35rem;
       margin-bottom: var(--space-3);
     }
     .review-author {
@@ -640,34 +702,43 @@
       color: var(--ink-faint);
     }
     .review-stars {
-      color: var(--signal);
+      color: #fbbc04;
       letter-spacing: 0.06em;
       font-size: var(--text-sm);
+      line-height: 1;
     }
     .review p {
       font-size: var(--text-sm);
       color: var(--ink-dim);
       max-width: none;
+      font-style: italic;
+      quotes: "“" "”";
     }
+    .review p::before { content: open-quote; }
+    .review p::after { content: close-quote; }
     .carousel-controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: var(--space-3);
       margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--line);
     }
     .carousel-btns { display: flex; gap: var(--space-2); }
     .carousel-btn {
-      width: 2.75rem;
-      height: 2.75rem;
-      border: 1px solid var(--line);
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-bottom: 1px solid var(--line);
       background: transparent;
       color: var(--ink);
       cursor: pointer;
       font-size: 1.1rem;
       line-height: 1;
+      padding: 0;
     }
-    .carousel-btn:hover { border-color: var(--ink); }
+    .carousel-btn:hover { border-bottom-color: var(--ink); color: #fff; }
     .carousel-btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
     .carousel-dots {
       display: flex;
@@ -685,16 +756,23 @@
       background: var(--ink-faint);
       cursor: pointer;
     }
-    .carousel-dots button[aria-current="true"] { background: var(--signal); width: 1.25rem; }
+    .carousel-dots button[aria-current="true"] { background: #fbbc04; width: 1.25rem; }
     .reviews-link {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       margin-top: var(--space-4);
       font-size: var(--text-sm);
       font-weight: 600;
-      color: var(--signal);
+      color: var(--ink);
       text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.15rem;
     }
-    .reviews-link:hover { text-decoration: underline; }
+    .reviews-link:hover {
+      border-bottom-color: var(--ink);
+      color: #fff;
+    }
 
     /* —— Contact —— */
     .contact-grid {
@@ -838,18 +916,18 @@
   <div class="borne" aria-hidden="true">
     <div class="borne-track">
       <div class="borne-group">
-        <span>Abierto 24 horas</span>
+        <span>Abierto 24 hs</span>
         <span>Viamonte 2031 · CABA</span>
         <span>Venta y carga de baterías</span>
         <span>11 4061-8555</span>
-        <span>Respuesta inmediata</span>
+        <span>Autos y utilitarios</span>
       </div>
       <div class="borne-group">
-        <span>Abierto 24 horas</span>
+        <span>Abierto 24 hs</span>
         <span>Viamonte 2031 · CABA</span>
         <span>Venta y carga de baterías</span>
         <span>11 4061-8555</span>
-        <span>Respuesta inmediata</span>
+        <span>Autos y utilitarios</span>
       </div>
     </div>
   </div>
@@ -903,8 +981,8 @@
     <section class="hero" id="inicio">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="wrap hero-inner reveal">
-        <h1>Se te agotó la batería. Estamos abiertos ahora.</h1>
-        <p class="hero-lead">Venta y carga las 24 horas. Llamá y te atendemos al toque.</p>
+        <h1>Venta y carga de baterías · 24 hs</h1>
+        <p class="hero-lead">Viamonte 2031. Llamá o escribinos: te decimos qué traer y si hay stock.</p>
         <div class="hero-trust">
           <span class="hero-stars" aria-hidden="true">★★★★★</span>
           <span><strong style="color:var(--ink)">4.9</strong> · +85 reseñas en Google</span>
@@ -925,50 +1003,48 @@
     <section class="section" id="servicios">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-kicker">Servicios</span>
-          <h2>Lo que resolvemos</h2>
-          <p>Tres cosas, claras. Sin menú infinito.</p>
+          <h2>Servicios</h2>
+          <p>Venta, carga y atención las 24 horas en el local.</p>
         </div>
-        <div class="services-grid reveal">
+        <div class="services-list reveal">
           <article class="service">
             <span class="service-num">01</span>
             <h3>Venta de baterías</h3>
-            <p>Stock para autos y utilitarios. Te orientamos según vehículo y uso.</p>
+            <p>Stock para autos y utilitarios. Te armamos según amperaje y modelo.</p>
           </article>
           <article class="service">
             <span class="service-num">02</span>
             <h3>Carga de baterías</h3>
-            <p>Si se puede recuperar, la cargamos. Si no, te lo decimos sin vueltas.</p>
+            <p>La medimos: si carga, la dejamos; si no agarra, te lo decimos y cambiás.</p>
           </article>
           <article class="service">
             <span class="service-num">03</span>
             <h3>Atención 24 horas</h3>
-            <p>De madrugada o en feriado: el local está. Llamá o escribí.</p>
+            <p>Madrugada, domingo o feriado: el local está abierto. Llamá o escribinos.</p>
           </article>
         </div>
-        <p class="services-note reveal">Instalación o servicio a domicilio: consultá por teléfono o WhatsApp.</p>
+        <p class="services-note reveal">Instalación o domicilio: consultá por teléfono o WhatsApp.</p>
       </div>
     </section>
 
     <section class="section section--tight" id="como">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-kicker">Proceso</span>
-          <h2>Tres pasos</h2>
-          <p>Del problema al motor en marcha.</p>
+          <h2>Cómo es</h2>
+          <p>Llamás, pasás por el local, salís con batería.</p>
         </div>
         <div class="steps">
           <article class="step reveal">
             <h3>Llamás o escribís</h3>
-            <p>Contanos marca, modelo y qué pasó. Te decimos si conviene pasar o qué traer.</p>
+            <p>Marca, modelo y si no arranca. Te decimos si hay stock y qué traer.</p>
           </article>
           <article class="step reveal">
             <h3>Pasás por Viamonte</h3>
-            <p>Local en Viamonte 2031. Revisamos y te armamos la opción que corresponde.</p>
+            <p>Viamonte 2031. Probamos la batería y te armamos venta o carga.</p>
           </article>
           <article class="step reveal">
             <h3>Salís andando</h3>
-            <p>Batería nueva o cargada. Sin vueltas innecesarias.</p>
+            <p>Nueva o cargada. Listo para arrancar.</p>
           </article>
         </div>
       </div>
@@ -977,17 +1053,16 @@
     <section class="section" id="nosotros">
       <div class="wrap about-grid">
         <div class="about-copy reveal">
-          <span class="section-kicker">Nosotros</span>
-          <h2>Un local de barrio que no cierra</h2>
-          <p>Estamos en Viamonte 2031. Atendemos cuando el resto de la ciudad duerme: eso es el negocio.</p>
+          <h2>Taller en Viamonte 2031</h2>
+          <p>Local de baterías en CABA. Abrimos las 24 horas: si se te quedó el auto de madrugada, acá estamos.</p>
           <ul class="about-facts">
-            <li>Local físico en CABA — no somos un call center</li>
-            <li>Respuesta inmediata por teléfono o WhatsApp</li>
-            <li>Más de 85 reseñas en Google con 4.9 de promedio</li>
+            <li>Local físico en Viamonte — no es un número virtual</li>
+            <li>Teléfono y WhatsApp: 11 4061-8555</li>
+            <li>+85 reseñas en Google · promedio 4.9</li>
           </ul>
         </div>
-        <aside class="about-panel reveal">
-          <blockquote>“Si se te quedó el auto a las 3 de la mañana, alguien tiene que atender. Ese alguien somos nosotros.”</blockquote>
+        <aside class="about-quote reveal">
+          <blockquote>“A las 3 AM también abrimos. Traé el auto o la batería y te atendemos.”</blockquote>
           <cite>Baterías CABA · Viamonte 2031</cite>
         </aside>
       </div>
@@ -996,13 +1071,31 @@
     <section class="reviews-band" id="reseñas" aria-labelledby="reviews-title">
       <div class="wrap">
         <div class="reviews-head reveal">
-          <div>
-            <span class="section-kicker">Google</span>
-            <h2 id="reviews-title">Lo que dicen en Google</h2>
-          </div>
+          <a
+            class="google-brand"
+            href="https://www.google.com/maps/search/?api=1&amp;query=Viamonte+2031+CABA"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google reviews — Ver en Google"
+          >
+            <!-- Official multicolor Google “G” mark (inline SVG) -->
+            <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span class="google-brand-text">
+              <h2 class="google-brand-word" id="reviews-title">Google</h2>
+              <span class="google-brand-sub">Reviews</span>
+            </span>
+          </a>
           <div class="reviews-score">
             <strong>4.9</strong>
-            <span>★★★★★ · +85 reseñas</span>
+            <div class="reviews-score-meta">
+              <span class="reviews-score-stars" aria-label="4.9 de 5">★★★★★</span>
+              <span class="reviews-score-count">Basado en +85 reseñas</span>
+            </div>
           </div>
         </div>
 
@@ -1011,63 +1104,51 @@
             <div class="carousel-track" id="carouselTrack">
               <article class="review">
                 <div class="review-top">
-                  <div>
-                    <div class="review-author">Martín R.</div>
-                    <div class="review-meta">hace 2 semanas · Google</div>
-                  </div>
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Martín R.</div>
+                  <div class="review-meta">hace 2 semanas</div>
                 </div>
-                <p>Llegué a las 2 AM con la batería muerta. Me atendieron al toque, me vendieron una y salí. Impecable.</p>
+                <p>Llegué a las 2 AM con la batería muerta. Me atendieron al toque, me vendieron una y salí.</p>
               </article>
               <article class="review">
                 <div class="review-top">
-                  <div>
-                    <div class="review-author">Laura G.</div>
-                    <div class="review-meta">hace 1 mes · Google</div>
-                  </div>
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Laura G.</div>
+                  <div class="review-meta">hace 1 mes</div>
                 </div>
-                <p>Precios honestos y sin chamuyo. Me explicaron si convenía cargar o cambiar. Volvería.</p>
+                <p>Me midieron la batería y me dijeron que no valía la pena cargar. Cambié y listo.</p>
               </article>
               <article class="review">
                 <div class="review-top">
-                  <div>
-                    <div class="review-author">Diego P.</div>
-                    <div class="review-meta">hace 3 semanas · Google</div>
-                  </div>
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Diego P.</div>
+                  <div class="review-meta">hace 3 semanas</div>
                 </div>
-                <p>WhatsApp rápido, local fácil de encontrar en Viamonte. Lo que necesitás a cualquier hora.</p>
+                <p>Escribí por WhatsApp, me pasaron el amperaje y pasé por Viamonte. Rápido.</p>
               </article>
               <article class="review">
                 <div class="review-top">
-                  <div>
-                    <div class="review-author">Valentina S.</div>
-                    <div class="review-meta">hace 1 mes · Google</div>
-                  </div>
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Valentina S.</div>
+                  <div class="review-meta">hace 1 mes</div>
                 </div>
-                <p>Me salvaron un domingo a la noche. Gente de verdad, no un número que no atiende.</p>
+                <p>Domingo a la noche y estaban abiertos. Cambié la batería y arranqué.</p>
               </article>
               <article class="review">
                 <div class="review-top">
-                  <div>
-                    <div class="review-author">Hernán C.</div>
-                    <div class="review-meta">hace 2 meses · Google</div>
-                  </div>
                   <div class="review-stars" aria-label="4 de 5">★★★★☆</div>
+                  <div class="review-author">Hernán C.</div>
+                  <div class="review-meta">hace 2 meses</div>
                 </div>
-                <p>Buena atención y carga rápida. El local es chico pero eficiente. Recomendado.</p>
+                <p>Carga en un rato. El local es chico, pero te atienden y no te dan vueltas.</p>
               </article>
               <article class="review">
                 <div class="review-top">
-                  <div>
-                    <div class="review-author">Camila F.</div>
-                    <div class="review-meta">hace 3 meses · Google</div>
-                  </div>
                   <div class="review-stars" aria-label="5 de 5">★★★★★</div>
+                  <div class="review-author">Camila F.</div>
+                  <div class="review-meta">hace 3 meses</div>
                 </div>
-                <p>4.9 no es casualidad. Te atienden, te resuelven y listo. Así tiene que ser.</p>
+                <p>Llamé, me dijeron que había stock, pasé y en media hora estaba de nuevo en la calle.</p>
               </article>
             </div>
           </div>
@@ -1079,16 +1160,15 @@
             </div>
           </div>
         </div>
-        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&query=Viamonte+2031+CABA" target="_blank" rel="noopener noreferrer">Ver todas las reseñas en Google →</a>
+        <a class="reviews-link" href="https://www.google.com/maps/search/?api=1&amp;query=Viamonte+2031+CABA" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
       </div>
     </section>
 
     <section class="section" id="contacto">
       <div class="wrap contact-grid">
         <div class="reveal">
-          <span class="section-kicker">Contacto</span>
-          <h2>Estamos en Viamonte</h2>
-          <p style="color:var(--ink-dim)">Pasá, llamá o escribí. El local no cierra.</p>
+          <h2>Contacto</h2>
+          <p style="color:var(--ink-dim)">Viamonte 2031. Llamá, escribinos o pasá — abrimos las 24 hs.</p>
           <ul class="contact-list">
             <li>
               <span>Teléfono</span>
