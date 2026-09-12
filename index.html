@@ -12,6 +12,7 @@
     :root {
       --carbon: #141414;
       --paper: #F6F6F4;
+      --paper-deep: #ECECE8;
       --smoke: #5C5C5A;
       --line: #D8D8D4;
       --borne: #FFCC33;
@@ -25,10 +26,25 @@
     body {
       margin: 0;
       font-family: Archivo, system-ui, sans-serif;
-      background: var(--paper);
+      background:
+        radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--borne) 7%, transparent) 0%, transparent 42%),
+        radial-gradient(90% 60% at 0% 40%, color-mix(in srgb, var(--carbon) 4%, transparent) 0%, transparent 50%),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+      background-attachment: fixed;
       color: var(--carbon);
       line-height: 1.45;
       -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+      mix-blend-mode: multiply;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; }
@@ -88,8 +104,8 @@
       top: var(--ticker-h);
       z-index: 55;
       height: var(--header-h);
-      background: color-mix(in srgb, var(--paper) 92%, transparent);
-      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
     .header-inner {
@@ -132,8 +148,9 @@
       letter-spacing: .04em;
       padding: .65rem .95rem;
       border-radius: .45rem;
+      transition: filter .15s ease;
     }
-    .header-cta:hover { background: #000; }
+    .header-cta:hover { filter: brightness(1.2); }
     @media (min-width: 860px) {
       .nav { display: flex; }
     }
@@ -151,7 +168,7 @@
       font-size: 1rem;
       text-decoration: none;
       border: 2px solid transparent;
-      transition: filter .15s ease, transform .15s ease, background .15s ease;
+      transition: filter .15s ease, transform .15s ease, background .15s ease, border-color .15s ease;
     }
     .btn:active { transform: scale(.98); }
     .btn-primary {
@@ -166,6 +183,7 @@
     }
     .btn-secondary:hover {
       background: color-mix(in srgb, var(--paper) 12%, transparent);
+      border-color: color-mix(in srgb, var(--paper) 70%, transparent);
     }
     .btn-dark {
       background: var(--carbon);
@@ -197,49 +215,79 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(20,20,20,.35) 0%, rgba(20,20,20,.55) 40%, rgba(20,20,20,.88) 100%),
-        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+        linear-gradient(105deg, rgba(20,20,20,.82) 0%, rgba(20,20,20,.55) 48%, rgba(20,20,20,.35) 100%),
+        linear-gradient(180deg, rgba(20,20,20,.25) 0%, rgba(20,20,20,.75) 72%, rgba(20,20,20,.92) 100%),
+        url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+      transform: scale(1.04);
+      animation: hero-zoom 18s ease-out forwards;
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 40% at 70% 30%, color-mix(in srgb, var(--borne) 18%, transparent), transparent 70%);
+      pointer-events: none;
+      animation: borne-pulse 4.5s ease-in-out infinite alternate;
     }
     .hero-inner {
       position: relative;
       z-index: 1;
-      padding: 3.5rem 0 3.25rem;
-      max-width: 38rem;
+      padding: 3.75rem 0 3.5rem;
+      max-width: 40rem;
     }
-    .hero-trust {
-      display: inline-flex;
+    .hero-brand {
+      display: flex;
       align-items: center;
-      gap: .55rem;
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: color-mix(in srgb, var(--paper) 82%, transparent);
-      margin-bottom: 1rem;
+      gap: .85rem;
+      margin: 0 0 1.15rem;
+      font-size: clamp(1.65rem, 4.2vw, 2.35rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1;
+      animation: rise .7s cubic-bezier(.22, 1, .36, 1) both;
     }
-    .hero-trust .stars { color: var(--borne); letter-spacing: .08em; }
+    .hero-brand svg {
+      width: clamp(2.2rem, 5vw, 2.85rem);
+      height: clamp(2.2rem, 5vw, 2.85rem);
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--borne) 45%, transparent));
+    }
     .hero h1 {
       margin: 0 0 1rem;
-      font-size: clamp(2.15rem, 6.5vw, 3.6rem);
-      line-height: 1.02;
-      letter-spacing: -.035em;
-      font-weight: 900;
+      font-size: clamp(1.85rem, 5.2vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      font-weight: 800;
       text-wrap: balance;
+      color: color-mix(in srgb, var(--paper) 94%, var(--borne));
+      animation: rise .75s cubic-bezier(.22, 1, .36, 1) .08s both;
     }
     .hero-lead {
-      margin: 0 0 1.6rem;
+      margin: 0 0 1.65rem;
       font-size: 1.08rem;
-      color: color-mix(in srgb, var(--paper) 78%, transparent);
-      max-width: 30rem;
+      color: color-mix(in srgb, var(--paper) 76%, transparent);
+      max-width: 28rem;
+      animation: rise .8s cubic-bezier(.22, 1, .36, 1) .16s both;
     }
-    .hero-note {
-      margin-top: 1.1rem;
-      font-size: .75rem;
-      color: color-mix(in srgb, var(--paper) 45%, transparent);
+    .hero .btn-row {
+      animation: rise .85s cubic-bezier(.22, 1, .36, 1) .24s both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(1.1rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes hero-zoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1.02); }
+    }
+    @keyframes borne-pulse {
+      from { opacity: .55; }
+      to { opacity: 1; }
     }
 
     /* —— Sections —— */
-    section { padding: 4.25rem 0; }
+    section { padding: 4.5rem 0; }
     .section-kicker {
       margin: 0 0 .55rem;
       font-size: .72rem;
@@ -262,8 +310,17 @@
       max-width: 38rem;
       font-size: 1.05rem;
     }
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.25rem);
+      transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
+    }
+    .reveal.is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    /* Services — no card chrome, just divided rows */
+    /* Services */
     .services-list {
       display: grid;
       gap: 0;
@@ -272,14 +329,19 @@
     .service {
       display: grid;
       gap: .35rem;
-      padding: 1.35rem 0;
+      padding: 1.4rem 0;
       border-bottom: 1px solid var(--line);
+      transition: background .2s ease;
+    }
+    .service:hover {
+      background: linear-gradient(90deg, color-mix(in srgb, var(--borne) 10%, transparent), transparent 55%);
     }
     @media (min-width: 720px) {
       .service {
         grid-template-columns: 11rem 1fr auto;
         align-items: baseline;
         gap: 1.5rem;
+        padding-inline: .35rem;
       }
     }
     .service h3 {
@@ -301,20 +363,29 @@
     }
 
     /* Steps */
+    .section-steps {
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--carbon) 4%, var(--paper)) 0%, var(--paper-deep) 100%);
+      border-block: 1px solid var(--line);
+    }
     .steps {
       display: grid;
       gap: 1.75rem;
     }
     @media (min-width: 800px) {
-      .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+      .steps { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; }
     }
     .step-num {
       display: block;
-      font-size: .75rem;
-      font-weight: 800;
+      font-size: .85rem;
+      font-weight: 900;
       letter-spacing: .14em;
-      color: var(--smoke);
-      margin-bottom: .55rem;
+      color: var(--borne);
+      background: var(--carbon);
+      width: fit-content;
+      padding: .35rem .55rem;
+      margin-bottom: .85rem;
+      border-radius: .2rem;
     }
     .step h3 {
       margin: 0 0 .4rem;
@@ -338,26 +409,15 @@
     }
     .about-media {
       position: relative;
-      min-height: 280px;
-      border-radius: .35rem;
+      min-height: 320px;
+      border-radius: .2rem;
       overflow: hidden;
       background:
-        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80") center/cover;
+        linear-gradient(180deg, transparent 55%, rgba(20,20,20,.35)),
+        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow: 0 24px 48px -28px rgba(20,20,20,.45);
     }
-    .about-media::after {
-      content: "Imagen ilustrativa";
-      position: absolute;
-      left: .75rem;
-      bottom: .75rem;
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--paper);
-      background: rgba(20,20,20,.55);
-      padding: .3rem .5rem;
-      border-radius: .25rem;
-    }
+
     .about-points {
       margin: 1.5rem 0 0;
       padding: 0;
@@ -383,7 +443,9 @@
 
     /* Reviews */
     .reviews-band {
-      background: var(--carbon);
+      background:
+        radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--borne) 14%, transparent), transparent 55%),
+        var(--carbon);
       color: var(--paper);
     }
     .reviews-band .section-kicker { color: color-mix(in srgb, var(--paper) 55%, transparent); }
@@ -447,6 +509,7 @@
       display: block;
       text-decoration: none;
     }
+    .contact-list a:hover .value { color: color-mix(in srgb, var(--carbon) 70%, var(--borne)); }
     .contact-list strong {
       display: block;
       font-size: .72rem;
@@ -459,20 +522,22 @@
       font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: -.02em;
+      transition: color .15s ease;
     }
     .map {
-      min-height: 280px;
-      border-radius: .35rem;
+      min-height: 300px;
+      border-radius: .2rem;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: #ddd;
+      background: var(--paper-deep);
+      box-shadow: 0 20px 40px -30px rgba(20,20,20,.35);
     }
     .map iframe {
       width: 100%;
       height: 100%;
-      min-height: 280px;
+      min-height: 300px;
       border: 0;
-      filter: grayscale(.15) contrast(1.05);
+      filter: grayscale(.2) contrast(1.05);
     }
 
     /* Footer */
@@ -517,7 +582,22 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .ticker-track { animation: none; }
+      .ticker-track,
+      .hero-media,
+      .hero-media::after { animation: none; }
+      .hero-brand,
+      .hero h1,
+      .hero-lead,
+      .hero .btn-row {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -543,7 +623,6 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#inicio" aria-label="Baterías CABA">
-        <!-- Simple battery isotype -->
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <rect x="3" y="9" width="22" height="14" rx="2.5" stroke="#141414" stroke-width="2.4"/>
           <path d="M25 13h3.5v6H25" stroke="#141414" stroke-width="2.4" stroke-linejoin="round"/>
@@ -563,27 +642,30 @@
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- Hero: marca dominante + headline + CTAs + full-bleed -->
     <section class="hero" id="inicio">
       <div class="hero-media" role="img" aria-label="Taller automotor — imagen ilustrativa"></div>
       <div class="wrap hero-inner">
-        <div class="hero-trust">
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <span>4.9 Google · +85 reseñas · 24 hs</span>
-        </div>
+        <p class="hero-brand">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="3" y="9" width="22" height="14" rx="2.5" stroke="#F6F6F4" stroke-width="2.4"/>
+            <path d="M25 13h3.5v6H25" stroke="#F6F6F4" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M9 13.5v5M14 13.5v5M19 13.5v5" stroke="#FFCC33" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          Baterías CABA
+        </p>
         <h1>Venta y carga de baterías, las 24 hs.</h1>
         <p class="hero-lead">En Viamonte 2031, CABA. Te asesoramos, vendemos o cargamos — y seguís viaje.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="tel:+541140618555">Llamar 11 4061-8555</a>
           <a class="btn btn-secondary" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
         </div>
-        <p class="hero-note">Imagen ilustrativa — reemplazar con fotos del local</p>
       </div>
     </section>
 
     <!-- Servicios -->
     <section id="servicios">
-      <div class="wrap">
+      <div class="wrap reveal">
         <p class="section-kicker">Servicios</p>
         <h2 class="section-title">Lo que resolvemos</h2>
         <p class="section-lead">Todo el set visible por ahora. Ajustamos lo que no aplique cuando lo confirmemos.</p>
@@ -623,8 +705,8 @@
     </section>
 
     <!-- Cómo funciona -->
-    <section id="como" style="background:#efeef0">
-      <div class="wrap">
+    <section class="section-steps" id="como">
+      <div class="wrap reveal">
         <p class="section-kicker">Cómo funciona</p>
         <h2 class="section-title">Tres pasos</h2>
         <p class="section-lead">Sin vueltas: del problema al auto andando.</p>
@@ -650,7 +732,7 @@
 
     <!-- Nosotros -->
     <section id="nosotros">
-      <div class="wrap about">
+      <div class="wrap about reveal">
         <div>
           <p class="section-kicker">Nosotros</p>
           <h2 class="section-title">Local de barrio, abierto siempre</h2>
@@ -664,13 +746,13 @@
             <li>Respuesta rápida por teléfono y WhatsApp</li>
           </ul>
         </div>
-        <div class="about-media" role="img" aria-label="Automóvil — imagen ilustrativa"></div>
+        <div class="about-media" role="img" aria-label="Taller — imagen ilustrativa"></div>
       </div>
     </section>
 
     <!-- Reseñas -->
     <section class="reviews-band" id="reseñas">
-      <div class="wrap">
+      <div class="wrap reveal">
         <p class="section-kicker">Reseñas</p>
         <h2 class="section-title" style="color:var(--paper)">Lo que dicen en Google</h2>
         <p class="section-lead">Rating real del local. Los textos de abajo son placeholders de tono hasta conectar el feed.</p>
@@ -700,7 +782,7 @@
 
     <!-- Contacto -->
     <section id="contacto">
-      <div class="wrap contact-grid">
+      <div class="wrap contact-grid reveal">
         <div>
           <p class="section-kicker">Contacto</p>
           <h2 class="section-title">Estamos en Viamonte</h2>
@@ -756,6 +838,21 @@
     const track = document.getElementById('tickerTrack');
     const group = document.getElementById('tickerGroup');
     track.appendChild(group.cloneNode(true));
+
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach((el) => io.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add('is-in'));
+    }
   </script>
 </body>
 </html>
