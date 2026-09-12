@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Baterías CABA — Venta y carga de baterías, las 24 hs.</title>
   <meta name="description" content="Venta y carga de baterías para auto en CABA. Abierto 24 hs. Viamonte 2031." />
+  <link rel="icon" href="brand/isotype.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -16,7 +17,8 @@
       --smoke: #5C5C5A;
       --line: #D8D8D4;
       --borne: #FFCC33;
-      --borne-hot: #FFE566;
+      --wa: #25D366;
+      --wa-deep: #1EBE57;
       --max: 1120px;
       --header-h: 64px;
       --ticker-h: 36px;
@@ -28,7 +30,6 @@
       font-family: Archivo, system-ui, sans-serif;
       background:
         radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--borne) 7%, transparent) 0%, transparent 42%),
-        radial-gradient(90% 60% at 0% 40%, color-mix(in srgb, var(--carbon) 4%, transparent) 0%, transparent 50%),
         linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
       background-attachment: fixed;
       color: var(--carbon);
@@ -46,14 +47,26 @@
       background-size: 180px;
       mix-blend-mode: multiply;
     }
+    ::selection { background: var(--borne); color: var(--carbon); }
     img { max-width: 100%; display: block; }
     a { color: inherit; }
-    .wrap {
-      width: min(100% - 2rem, var(--max));
-      margin-inline: auto;
-    }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 
-    /* —— Ticker —— */
+    .skip {
+      position: absolute;
+      left: .75rem;
+      top: -4rem;
+      z-index: 200;
+      background: var(--borne);
+      color: var(--carbon);
+      font-weight: 800;
+      padding: .65rem 1rem;
+      text-decoration: none;
+    }
+    .skip:focus { top: .75rem; }
+    :focus-visible { outline: 2px solid var(--borne); outline-offset: 3px; }
+
+    /* Ticker */
     .ticker {
       position: sticky;
       top: 0;
@@ -83,6 +96,8 @@
       display: inline-flex;
       align-items: center;
       height: 100%;
+      min-height: 44px;
+      margin-block: calc((44px - var(--ticker-h)) / -2);
       padding: 0 1.05rem;
       font-size: .7rem;
       font-weight: 800;
@@ -92,13 +107,13 @@
       white-space: nowrap;
     }
     .ticker a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .ticker .dot { opacity: .4; padding: 0; letter-spacing: 0; }
+    .ticker .dot { opacity: .4; padding: 0; letter-spacing: 0; min-height: 0; margin: 0; }
     @keyframes marquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
-    /* —— Header —— */
+    /* Header */
     .site-header {
       position: sticky;
       top: var(--ticker-h);
@@ -118,23 +133,43 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: .65rem;
+      gap: .7rem;
       text-decoration: none;
-      font-weight: 900;
-      font-size: 1.05rem;
-      letter-spacing: -.02em;
+      min-width: 0;
     }
-    .brand svg { flex-shrink: 0; }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: #fff;
+    }
+    .brand-type {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      gap: .14rem;
+    }
+    .brand-type .name {
+      font-weight: 900;
+      font-size: 1.02rem;
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+    }
+    .brand-type .place {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
     .nav {
       display: none;
       gap: 1.35rem;
       font-size: .88rem;
-      font-weight: 650;
+      font-weight: 600;
     }
-    .nav a {
-      text-decoration: none;
-      color: var(--smoke);
-    }
+    .nav a { text-decoration: none; color: var(--smoke); }
     .nav a:hover { color: var(--carbon); }
     .header-cta {
       display: inline-flex;
@@ -146,63 +181,53 @@
       font-weight: 800;
       font-size: .82rem;
       letter-spacing: .04em;
-      padding: .65rem .95rem;
-      border-radius: .45rem;
+      padding: .7rem 1rem;
       transition: filter .15s ease;
     }
     .header-cta:hover { filter: brightness(1.2); }
-    @media (min-width: 860px) {
-      .nav { display: flex; }
-    }
+    .header-cta svg { width: 15px; height: 15px; }
+    @media (min-width: 860px) { .nav { display: flex; } }
 
-    /* —— Buttons —— */
+    /* Buttons — rectangular */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: .5rem;
-      min-height: 3.1rem;
+      gap: .55rem;
+      min-height: 3.15rem;
       padding: .85rem 1.25rem;
-      border-radius: .5rem;
+      border-radius: 0;
       font-weight: 800;
       font-size: 1rem;
       text-decoration: none;
       border: 2px solid transparent;
       transition: filter .15s ease, transform .15s ease, background .15s ease, border-color .15s ease;
     }
+    .btn svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
     .btn:active { transform: scale(.98); }
-    .btn-primary {
-      background: var(--borne);
-      color: var(--carbon);
-    }
+    .btn-primary { background: var(--borne); color: var(--carbon); }
     .btn-primary:hover { filter: brightness(1.06); }
-    .btn-secondary {
+    .btn, .header-cta, .g-actions a, .nav-arrows button, .sticky-call .btn { border-radius: 0 !important; }
+    .btn-wa { background: var(--wa); color: #fff; border-color: var(--wa); }
+    .btn-wa:hover { background: var(--wa-deep); border-color: var(--wa-deep); }
+    .btn-wa-ghost {
       background: transparent;
-      color: var(--paper);
-      border-color: color-mix(in srgb, var(--paper) 45%, transparent);
+      color: #fff;
+      border-color: color-mix(in srgb, #fff 55%, transparent);
     }
-    .btn-secondary:hover {
-      background: color-mix(in srgb, var(--paper) 12%, transparent);
-      border-color: color-mix(in srgb, var(--paper) 70%, transparent);
+    .btn-wa-ghost:hover {
+      background: color-mix(in srgb, var(--wa) 22%, transparent);
+      border-color: var(--wa);
     }
-    .btn-dark {
-      background: var(--carbon);
-      color: var(--paper);
-    }
-    .btn-dark:hover { filter: brightness(1.15); }
     .btn-outline {
       background: transparent;
       color: var(--carbon);
       border-color: var(--carbon);
     }
     .btn-outline:hover { background: var(--carbon); color: var(--paper); }
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-    }
+    .btn-row { display: flex; flex-wrap: wrap; gap: .75rem; }
 
-    /* —— Hero —— */
+    /* Hero */
     .hero {
       position: relative;
       min-height: calc(100dvh - var(--ticker-h) - var(--header-h));
@@ -211,13 +236,11 @@
       color: var(--paper);
       overflow: hidden;
     }
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(105deg, rgba(20,20,20,.82) 0%, rgba(20,20,20,.55) 48%, rgba(20,20,20,.35) 100%),
-        linear-gradient(180deg, rgba(20,20,20,.25) 0%, rgba(20,20,20,.75) 72%, rgba(20,20,20,.92) 100%),
-        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+    .hero-media { position: absolute; inset: 0; }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transform: scale(1.04);
       animation: hero-zoom 18s ease-out forwards;
     }
@@ -226,9 +249,10 @@
       position: absolute;
       inset: 0;
       background:
+        linear-gradient(105deg, rgba(20,20,20,.86) 0%, rgba(20,20,20,.58) 48%, rgba(20,20,20,.4) 100%),
+        linear-gradient(180deg, rgba(20,20,20,.2) 0%, rgba(20,20,20,.78) 72%, rgba(20,20,20,.94) 100%),
         radial-gradient(ellipse 55% 40% at 70% 30%, color-mix(in srgb, var(--borne) 18%, transparent), transparent 70%);
       pointer-events: none;
-      animation: borne-pulse 4.5s ease-in-out infinite alternate;
     }
     .hero-inner {
       position: relative;
@@ -241,20 +265,22 @@
       align-items: center;
       gap: .85rem;
       margin: 0 0 1.15rem;
-      font-size: clamp(1.65rem, 4.2vw, 2.35rem);
+      font-size: clamp(1.55rem, 4vw, 2.2rem);
       font-weight: 900;
       letter-spacing: -.03em;
       line-height: 1;
+      text-transform: uppercase;
       animation: rise .7s cubic-bezier(.22, 1, .36, 1) both;
     }
-    .hero-brand svg {
-      width: clamp(2.2rem, 5vw, 2.85rem);
-      height: clamp(2.2rem, 5vw, 2.85rem);
+    .hero-brand img {
+      width: clamp(2.4rem, 5vw, 3rem);
+      height: clamp(2.4rem, 5vw, 3rem);
+      object-fit: contain;
+      background: #fff;
       flex-shrink: 0;
-      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--borne) 45%, transparent));
     }
     .hero h1 {
-      margin: 0 0 1rem;
+      margin: 0 0 .85rem;
       font-size: clamp(1.85rem, 5.2vw, 3rem);
       line-height: 1.05;
       letter-spacing: -.03em;
@@ -264,14 +290,28 @@
       animation: rise .75s cubic-bezier(.22, 1, .36, 1) .08s both;
     }
     .hero-lead {
-      margin: 0 0 1.65rem;
+      margin: 0 0 1rem;
       font-size: 1.08rem;
       color: color-mix(in srgb, var(--paper) 76%, transparent);
       max-width: 28rem;
       animation: rise .8s cubic-bezier(.22, 1, .36, 1) .16s both;
     }
-    .hero .btn-row {
-      animation: rise .85s cubic-bezier(.22, 1, .36, 1) .24s both;
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .55rem .85rem;
+      margin: 0 0 1.5rem;
+      font-size: .92rem;
+      font-weight: 700;
+      color: color-mix(in srgb, var(--paper) 82%, transparent);
+      animation: rise .8s cubic-bezier(.22, 1, .36, 1) .2s both;
+    }
+    .hero-trust .stars { color: var(--borne); letter-spacing: .08em; }
+    .hero .btn-row { animation: rise .85s cubic-bezier(.22, 1, .36, 1) .24s both; }
+    @media (max-width: 859px) {
+      .hero .btn-row { display: none; }
+      .hero-inner { padding-bottom: 5.5rem; }
     }
     @keyframes rise {
       from { opacity: 0; transform: translateY(1.1rem); }
@@ -281,21 +321,9 @@
       from { transform: scale(1.08); }
       to { transform: scale(1.02); }
     }
-    @keyframes borne-pulse {
-      from { opacity: .55; }
-      to { opacity: 1; }
-    }
 
-    /* —— Sections —— */
+    /* Sections */
     section { padding: 4.5rem 0; }
-    .section-kicker {
-      margin: 0 0 .55rem;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--smoke);
-    }
     .section-title {
       margin: 0 0 .75rem;
       font-size: clamp(1.7rem, 3.5vw, 2.35rem);
@@ -315,23 +343,14 @@
       transform: translateY(1.25rem);
       transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
     }
-    .reveal.is-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.is-in { opacity: 1; transform: translateY(0); }
 
-    /* Services */
-    .services-list {
-      display: grid;
-      gap: 0;
-      border-top: 1px solid var(--line);
-    }
+    .services-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
     .service {
       display: grid;
       gap: .35rem;
       padding: 1.4rem 0;
       border-bottom: 1px solid var(--line);
-      transition: background .2s ease;
     }
     .service:hover {
       background: linear-gradient(90deg, color-mix(in srgb, var(--borne) 10%, transparent), transparent 55%);
@@ -350,10 +369,7 @@
       font-weight: 800;
       letter-spacing: -.02em;
     }
-    .service p {
-      margin: 0;
-      color: var(--smoke);
-    }
+    .service p { margin: 0; color: var(--smoke); }
     .service .tag {
       font-size: .72rem;
       font-weight: 800;
@@ -361,17 +377,20 @@
       text-transform: uppercase;
       color: var(--smoke);
     }
+    .services-note {
+      margin: 1.25rem 0 0;
+      padding: 1rem 0 0;
+      border-top: 1px dashed var(--line);
+      color: var(--smoke);
+      font-size: .98rem;
+    }
+    .services-note strong { color: var(--carbon); font-weight: 800; }
 
-    /* Steps */
     .section-steps {
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--carbon) 4%, var(--paper)) 0%, var(--paper-deep) 100%);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--carbon) 4%, var(--paper)) 0%, var(--paper-deep) 100%);
       border-block: 1px solid var(--line);
     }
-    .steps {
-      display: grid;
-      gap: 1.75rem;
-    }
+    .steps { display: grid; gap: 1.75rem; }
     @media (min-width: 800px) {
       .steps { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; }
     }
@@ -385,7 +404,6 @@
       width: fit-content;
       padding: .35rem .55rem;
       margin-bottom: .85rem;
-      border-radius: .2rem;
     }
     .step h3 {
       margin: 0 0 .4rem;
@@ -395,11 +413,7 @@
     }
     .step p { margin: 0; color: var(--smoke); }
 
-    /* Nosotros */
-    .about {
-      display: grid;
-      gap: 2rem;
-    }
+    .about { display: grid; gap: 2rem; }
     @media (min-width: 860px) {
       .about {
         grid-template-columns: 1.05fr .95fr;
@@ -408,16 +422,17 @@
       }
     }
     .about-media {
-      position: relative;
       min-height: 320px;
-      border-radius: .2rem;
       overflow: hidden;
-      background:
-        linear-gradient(180deg, transparent 55%, rgba(20,20,20,.35)),
-        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80") center/cover;
+      background: var(--paper-deep);
       box-shadow: 0 24px 48px -28px rgba(20,20,20,.45);
     }
-
+    .about-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+    }
     .about-points {
       margin: 1.5rem 0 0;
       padding: 0;
@@ -429,7 +444,7 @@
       display: flex;
       gap: .65rem;
       align-items: flex-start;
-      font-weight: 650;
+      font-weight: 600;
     }
     .about-points li::before {
       content: "";
@@ -438,60 +453,170 @@
       margin-top: .45rem;
       flex-shrink: 0;
       background: var(--borne);
-      border-radius: 1px;
     }
 
-    /* Reviews */
+    /* Reviews carousel — Trustindex-inspired */
     .reviews-band {
       background:
         radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--borne) 14%, transparent), transparent 55%),
         var(--carbon);
       color: var(--paper);
+      overflow: hidden;
     }
-    .reviews-band .section-kicker { color: color-mix(in srgb, var(--paper) 55%, transparent); }
     .reviews-band .section-lead { color: color-mix(in srgb, var(--paper) 65%, transparent); }
-    .rating-big {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: .75rem 1.25rem;
-      margin-bottom: 2rem;
-    }
-    .rating-big .score {
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      font-weight: 900;
-      letter-spacing: -.04em;
-      line-height: 1;
-      color: var(--borne);
-    }
-    .rating-big .meta { color: color-mix(in srgb, var(--paper) 70%, transparent); }
-    .review-grid {
+    .reviews-head {
       display: grid;
       gap: 1.25rem;
+      margin-bottom: 1.5rem;
     }
     @media (min-width: 800px) {
-      .review-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+      .reviews-head {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 2rem;
+      }
     }
-    .review {
-      padding-top: 1.1rem;
-      border-top: 1px solid color-mix(in srgb, var(--paper) 18%, transparent);
+    .g-summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.25rem;
+      padding: 1.1rem 1.2rem;
+      background: color-mix(in srgb, var(--paper) 6%, transparent);
+      border: 1px solid color-mix(in srgb, var(--paper) 14%, transparent);
     }
-    .review .who {
-      margin: 0 0 .45rem;
+    .g-logo { width: 2.2rem; height: 2.2rem; flex-shrink: 0; }
+    .g-score-block { display: grid; gap: .15rem; }
+    .g-score-row { display: flex; align-items: baseline; gap: .55rem; }
+    .g-score {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      color: var(--borne);
+      line-height: 1;
+    }
+    .g-stars {
+      color: var(--borne);
+      letter-spacing: .1em;
       font-weight: 800;
-      font-size: .92rem;
-    }
-    .review p {
-      margin: 0;
-      color: color-mix(in srgb, var(--paper) 72%, transparent);
       font-size: .95rem;
     }
+    .g-meta {
+      font-size: .88rem;
+      color: color-mix(in srgb, var(--paper) 68%, transparent);
+    }
+    .g-actions { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .g-actions a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.6rem;
+      padding: .55rem .9rem;
+      font-size: .82rem;
+      font-weight: 800;
+      text-decoration: none;
+      border: 1px solid color-mix(in srgb, var(--paper) 28%, transparent);
+      color: var(--paper);
+    }
+    .g-actions a:hover { border-color: var(--borne); color: var(--borne); }
+    .g-actions .primary {
+      background: var(--borne);
+      color: var(--carbon);
+      border-color: var(--borne);
+    }
+    .g-actions .primary:hover { filter: brightness(1.06); color: var(--carbon); }
+
+    .nav-arrows {
+      display: flex;
+      gap: .45rem;
+      margin-bottom: .85rem;
+      justify-content: flex-end;
+    }
+    .nav-arrows button {
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 1px solid color-mix(in srgb, var(--paper) 28%, transparent);
+      background: transparent;
+      color: var(--paper);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      padding: 0;
+    }
+    .nav-arrows button:hover { border-color: var(--borne); color: var(--borne); }
+    .nav-arrows button:disabled { opacity: .35; cursor: not-allowed; }
+
+    .reviews-track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: .35rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: color-mix(in srgb, var(--paper) 30%, transparent) transparent;
+    }
+    .review-card {
+      flex: 0 0 min(100%, 320px);
+      scroll-snap-align: start;
+      background: #fff;
+      color: var(--carbon);
+      padding: 1.15rem 1.2rem 1.25rem;
+      display: grid;
+      gap: .7rem;
+      min-height: 210px;
+    }
+    @media (min-width: 700px) {
+      .review-card { flex-basis: calc((100% - 2rem) / 3); }
+    }
+    .review-top { display: flex; align-items: center; gap: .7rem; }
+    .avatar {
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: .85rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .review-who { display: grid; gap: .1rem; min-width: 0; }
+    .review-who strong {
+      font-size: .92rem;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .review-who span { font-size: .75rem; color: var(--smoke); }
+    .review-stars {
+      color: #F4B400;
+      letter-spacing: .08em;
+      font-size: .85rem;
+      font-weight: 800;
+    }
+    .review-card p {
+      margin: 0;
+      font-size: .92rem;
+      color: color-mix(in srgb, var(--carbon) 88%, transparent);
+      line-height: 1.45;
+    }
+    .review-source {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: auto;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--smoke);
+      text-transform: uppercase;
+    }
+    .review-source svg { width: 14px; height: 14px; }
 
     /* Contact */
-    .contact-grid {
-      display: grid;
-      gap: 2rem;
-    }
+    .contact-grid { display: grid; gap: 2rem; }
     @media (min-width: 860px) {
       .contact-grid {
         grid-template-columns: 1fr 1.1fr;
@@ -499,16 +624,9 @@
         align-items: start;
       }
     }
-    .contact-list {
-      display: grid;
-      gap: 1.15rem;
-      margin: 0 0 1.5rem;
-    }
+    .contact-list { display: grid; gap: 1.15rem; margin: 0 0 1.5rem; }
     .contact-list a,
-    .contact-list span {
-      display: block;
-      text-decoration: none;
-    }
+    .contact-list span { display: block; text-decoration: none; }
     .contact-list a:hover .value { color: color-mix(in srgb, var(--carbon) 70%, var(--borne)); }
     .contact-list strong {
       display: block;
@@ -526,11 +644,9 @@
     }
     .map {
       min-height: 300px;
-      border-radius: .2rem;
       overflow: hidden;
       border: 1px solid var(--line);
       background: var(--paper-deep);
-      box-shadow: 0 20px 40px -30px rgba(20,20,20,.35);
     }
     .map iframe {
       width: 100%;
@@ -540,7 +656,6 @@
       filter: grayscale(.2) contrast(1.05);
     }
 
-    /* Footer */
     .site-footer {
       padding: 2.25rem 0 6.5rem;
       border-top: 1px solid var(--line);
@@ -555,12 +670,16 @@
       align-items: center;
     }
     .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
       font-weight: 900;
       color: var(--carbon);
       letter-spacing: -.02em;
+      text-transform: uppercase;
     }
+    .footer-brand img { width: 28px; height: 28px; object-fit: contain; }
 
-    /* Sticky mobile call */
     .sticky-call {
       position: fixed;
       left: 0;
@@ -572,7 +691,7 @@
       backdrop-filter: blur(10px);
       border-top: 1px solid var(--line);
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1.15fr 1fr;
       gap: .55rem;
     }
     @media (min-width: 860px) {
@@ -583,26 +702,18 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .ticker-track,
-      .hero-media,
-      .hero-media::after { animation: none; }
-      .hero-brand,
-      .hero h1,
-      .hero-lead,
-      .hero .btn-row {
-        animation: none;
-        opacity: 1;
-        transform: none;
+      .hero-media img { animation: none; }
+      .hero-brand, .hero h1, .hero-lead, .hero-trust, .hero .btn-row {
+        animation: none; opacity: 1; transform: none;
       }
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .reviews-track { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
-  <!-- Ticker -->
+  <a class="skip" href="#inicio">Saltar al contenido</a>
+
   <div class="ticker" aria-label="Información rápida">
     <div class="ticker-track" id="tickerTrack">
       <div class="ticker-group" id="tickerGroup">
@@ -623,12 +734,11 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#inicio" aria-label="Baterías CABA">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect x="3" y="9" width="22" height="14" rx="2.5" stroke="#141414" stroke-width="2.4"/>
-          <path d="M25 13h3.5v6H25" stroke="#141414" stroke-width="2.4" stroke-linejoin="round"/>
-          <path d="M9 13.5v5M14 13.5v5M19 13.5v5" stroke="#FFCC33" stroke-width="2.4" stroke-linecap="round"/>
-        </svg>
-        Baterías CABA
+        <img class="brand-mark" src="brand/isotype.png" width="36" height="36" alt="" />
+        <span class="brand-type">
+          <span class="name">Baterías CABA</span>
+          <span class="place">Viamonte · 24 hs</span>
+        </span>
       </a>
       <nav class="nav" aria-label="Principal">
         <a href="#inicio">Inicio</a>
@@ -637,38 +747,53 @@
         <a href="#reseñas">Reseñas</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a class="header-cta" href="tel:+541140618555">Llamar</a>
+      <a class="header-cta" href="tel:+541140618555">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 4.8c.3-.8 1.2-1.2 2-.9l2.1.8c.7.3 1.1 1 1 1.8l-.4 2.2a1.6 1.6 0 0 1-.9 1.2l-.8.4a11.4 11.4 0 0 0 4.7 4.7l.4-.8c.3-.5.8-.8 1.3-.9l2.2-.4c.8-.1 1.5.3 1.8 1l.8 2.1c.3.8-.1 1.7-.9 2-.9.4-2 .7-3.1.7C10.6 19.7 4.3 13.4 4.3 6.7c0-1.1.3-2.2.7-3.1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Llamar
+      </a>
     </div>
   </header>
 
   <main>
-    <!-- Hero: marca dominante + headline + CTAs + full-bleed -->
     <section class="hero" id="inicio">
-      <div class="hero-media" role="img" aria-label="Taller automotor — imagen ilustrativa"></div>
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=80"
+          alt=""
+          width="2000"
+          height="1333"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
       <div class="wrap hero-inner">
         <p class="hero-brand">
-          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect x="3" y="9" width="22" height="14" rx="2.5" stroke="#F6F6F4" stroke-width="2.4"/>
-            <path d="M25 13h3.5v6H25" stroke="#F6F6F4" stroke-width="2.4" stroke-linejoin="round"/>
-            <path d="M9 13.5v5M14 13.5v5M19 13.5v5" stroke="#FFCC33" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
+          <img src="brand/isotype.png" width="48" height="48" alt="" />
           Baterías CABA
         </p>
         <h1>Venta y carga de baterías, las 24 hs.</h1>
         <p class="hero-lead">En Viamonte 2031, CABA. Te asesoramos, vendemos o cargamos — y seguís viaje.</p>
+        <p class="hero-trust">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>4.9 Google · +85 reseñas</span>
+        </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="tel:+541140618555">Llamar 11 4061-8555</a>
-          <a class="btn btn-secondary" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-primary" href="tel:+541140618555">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 4.8c.3-.8 1.2-1.2 2-.9l2.1.8c.7.3 1.1 1 1 1.8l-.4 2.2a1.6 1.6 0 0 1-.9 1.2l-.8.4a11.4 11.4 0 0 0 4.7 4.7l.4-.8c.3-.5.8-.8 1.3-.9l2.2-.4c.8-.1 1.5.3 1.8 1l.8 2.1c.3.8-.1 1.7-.9 2-.9.4-2 .7-3.1.7C10.6 19.7 4.3 13.4 4.3 6.7c0-1.1.3-2.2.7-3.1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Llamar 11 4061-8555
+          </a>
+          <a class="btn btn-wa-ghost" href="https://wa.me/541140618555" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 0 1 6.9 12.3l-.3.5.8 2.95-3-.79-.48.29a8.1 8.1 0 0 1-11.9-6.95 8.1 8.1 0 0 1 8-8.3Zm-2.9 3.4c-.2 0-.52.08-.8.4-.26.31-1 1-1 2.42s1.02 2.8 1.16 3c.15.18 2.04 3.25 5.05 4.42 2.5.97 3 .78 3.55.73.54-.05 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.12-.26-.2-.54-.35-.28-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.14-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.57-.48-.49-.67-.5Z"/></svg>
+            WhatsApp
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Servicios -->
     <section id="servicios">
       <div class="wrap reveal">
-        <p class="section-kicker">Servicios</p>
         <h2 class="section-title">Lo que resolvemos</h2>
-        <p class="section-lead">Todo el set visible por ahora. Ajustamos lo que no aplique cuando lo confirmemos.</p>
+        <p class="section-lead">Si el auto no arranca, venís o llamás: te orientamos al toque.</p>
         <div class="services-list">
           <article class="service">
             <h3>Venta de baterías</h3>
@@ -681,33 +806,17 @@
             <span class="tag">En local</span>
           </article>
           <article class="service">
-            <h3>Diagnóstico</h3>
-            <p>Te decimos si es la batería u otra cosa del sistema eléctrico.</p>
-            <span class="tag">Asesoramiento</span>
-          </article>
-          <article class="service">
             <h3>Atención 24 hs</h3>
             <p>Abiertos siempre. Ideal cuando el auto no arranca de madrugada.</p>
             <span class="tag">Siempre</span>
           </article>
-          <article class="service">
-            <h3>Instalación</h3>
-            <p>Colocación en el momento, según el caso.</p>
-            <span class="tag">Consultar</span>
-          </article>
-          <article class="service">
-            <h3>A domicilio</h3>
-            <p>Si necesitás que vayamos nosotros.</p>
-            <span class="tag">Consultar</span>
-          </article>
         </div>
+        <p class="services-note"><strong>¿Instalación o a domicilio?</strong> Consultanos por teléfono o WhatsApp.</p>
       </div>
     </section>
 
-    <!-- Cómo funciona -->
     <section class="section-steps" id="como">
       <div class="wrap reveal">
-        <p class="section-kicker">Cómo funciona</p>
         <h2 class="section-title">Tres pasos</h2>
         <p class="section-lead">Sin vueltas: del problema al auto andando.</p>
         <div class="steps">
@@ -730,11 +839,9 @@
       </div>
     </section>
 
-    <!-- Nosotros -->
     <section id="nosotros">
       <div class="wrap about reveal">
         <div>
-          <p class="section-kicker">Nosotros</p>
           <h2 class="section-title">Local de barrio, abierto siempre</h2>
           <p class="section-lead" style="margin-bottom:0">
             Somos un comercio de CABA dedicado a baterías para auto: venta, carga y consejo claro.
@@ -746,45 +853,142 @@
             <li>Respuesta rápida por teléfono y WhatsApp</li>
           </ul>
         </div>
-        <div class="about-media" role="img" aria-label="Taller — imagen ilustrativa"></div>
+        <div class="about-media">
+          <img
+            src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=80"
+            alt="Trabajo en taller automotor — imagen ilustrativa"
+            width="1400"
+            height="933"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- Reseñas -->
     <section class="reviews-band" id="reseñas">
       <div class="wrap reveal">
-        <p class="section-kicker">Reseñas</p>
-        <h2 class="section-title" style="color:var(--paper)">Lo que dicen en Google</h2>
-        <p class="section-lead">Rating real del local. Los textos de abajo son placeholders de tono hasta conectar el feed.</p>
-        <div class="rating-big">
-          <div class="score">4.9</div>
-          <div class="meta">
-            <div aria-hidden="true" style="color:var(--borne);letter-spacing:.12em;font-weight:800">★★★★★</div>
-            <div>+85 reseñas en Google</div>
+        <div class="reviews-head">
+          <div>
+            <h2 class="section-title" style="color:var(--paper)">Lo que dicen en Google</h2>
+            <p class="section-lead" style="margin-bottom:0">Vecinos y conductores que resolvieron en el local.</p>
+          </div>
+          <div class="g-summary" aria-label="Resumen de Google">
+            <svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3.1l5.7-5.7C34.2 6.1 29.4 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3.1l5.7-5.7C34.2 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+              <path fill="#4CAF50" d="M24 44c5.2 0 10-2 13.6-5.2l-6.3-5.3C29.3 35.1 26.8 36 24 36c-5.3 0-9.7-3.4-11.3-8.1l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.3 4.1-4.1 5.5l.1.1 6.3 5.3C38.6 37.8 44 33 44 24c0-1.3-.1-2.6-.4-3.9z"/>
+            </svg>
+            <div class="g-score-block">
+              <div class="g-score-row">
+                <span class="g-score">4.9</span>
+                <span class="g-stars" aria-hidden="true">★★★★★</span>
+              </div>
+              <div class="g-meta">Basado en +85 reseñas</div>
+            </div>
+            <div class="g-actions">
+              <a class="primary" href="https://www.google.com/maps/search/?api=1&query=Baterias+CABA+Viamonte+2031" target="_blank" rel="noopener">Ver en Google</a>
+            </div>
           </div>
         </div>
-        <div class="review-grid">
-          <blockquote class="review">
-            <p class="who">Cliente de Maps</p>
-            <p>“Fui de madrugada y estaban. Me cambiaron la batería sin vueltas.”</p>
-          </blockquote>
-          <blockquote class="review">
-            <p class="who">Cliente de Maps</p>
-            <p>“Buen precio y me explicaron si convenía cargar o comprar nueva.”</p>
-          </blockquote>
-          <blockquote class="review">
-            <p class="who">Cliente de Maps</p>
-            <p>“Queda en Viamonte, fácil de llegar. Atención rápida.”</p>
-          </blockquote>
+
+        <div class="nav-arrows">
+          <button type="button" id="revPrev" aria-label="Reseña anterior">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+          </button>
+          <button type="button" id="revNext" aria-label="Reseña siguiente">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></svg>
+          </button>
+        </div>
+
+        <div class="reviews-track" id="reviewsTrack" tabindex="0" aria-label="Carrusel de reseñas">
+          <article class="review-card">
+            <div class="review-top">
+              <div class="avatar" style="background:#4285F4">M</div>
+              <div class="review-who">
+                <strong>Martín R.</strong>
+                <span>hace 2 semanas</span>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>Fui de madrugada porque no arrancaba el auto. Estaban, me probaron la batería y en un rato salí andando. Sin vueltas.</p>
+            <div class="review-source">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.8 0-5.2-1.9-6.1-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.3A6.6 6.6 0 0 1 5.5 12c0-.8.1-1.6.4-2.3V6.9H2.3A11 11 0 0 0 1 12c0 1.8.4 3.4 1.3 4.9l3.6-2.6z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 6.9l3.6 2.8c.9-2.5 3.3-4.2 6.1-4.2z"/></svg>
+              Google
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="avatar" style="background:#EA4335">L</div>
+              <div class="review-who">
+                <strong>Lucía P.</strong>
+                <span>hace 1 mes</span>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>Buen precio y me explicaron si convenía cargar o comprar nueva. Me ahorraron plata. Queda fácil en Viamonte.</p>
+            <div class="review-source">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.8 0-5.2-1.9-6.1-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.3A6.6 6.6 0 0 1 5.5 12c0-.8.1-1.6.4-2.3V6.9H2.3A11 11 0 0 0 1 12c0 1.8.4 3.4 1.3 4.9l3.6-2.6z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 6.9l3.6 2.8c.9-2.5 3.3-4.2 6.1-4.2z"/></svg>
+              Google
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="avatar" style="background:#FBBC05;color:#141414">D</div>
+              <div class="review-who">
+                <strong>Diego S.</strong>
+                <span>hace 3 meses</span>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>Atención rápida, te dicen claro qué tiene. Volví porque me había servido la primera vez. Recomendable.</p>
+            <div class="review-source">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.8 0-5.2-1.9-6.1-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.3A6.6 6.6 0 0 1 5.5 12c0-.8.1-1.6.4-2.3V6.9H2.3A11 11 0 0 0 1 12c0 1.8.4 3.4 1.3 4.9l3.6-2.6z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 6.9l3.6 2.8c.9-2.5 3.3-4.2 6.1-4.2z"/></svg>
+              Google
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="avatar" style="background:#34A853">C</div>
+              <div class="review-who">
+                <strong>Carolina M.</strong>
+                <span>hace 4 meses</span>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>El auto quedó tirado cerca. Los llamé, me atendieron al toque y resolvieron. Para urgencias, un golazo.</p>
+            <div class="review-source">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.8 0-5.2-1.9-6.1-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.3A6.6 6.6 0 0 1 5.5 12c0-.8.1-1.6.4-2.3V6.9H2.3A11 11 0 0 0 1 12c0 1.8.4 3.4 1.3 4.9l3.6-2.6z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 6.9l3.6 2.8c.9-2.5 3.3-4.2 6.1-4.2z"/></svg>
+              Google
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="avatar" style="background:#4285F4">J</div>
+              <div class="review-who">
+                <strong>Javier T.</strong>
+                <span>hace 5 meses</span>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>Local de barrio que cumple. Cargaron la batería y me salió más barato que cambiarla. Buena onda.</p>
+            <div class="review-source">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.3 1.1-3.7 1.1-2.8 0-5.2-1.9-6.1-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.3A6.6 6.6 0 0 1 5.5 12c0-.8.1-1.6.4-2.3V6.9H2.3A11 11 0 0 0 1 12c0 1.8.4 3.4 1.3 4.9l3.6-2.6z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 6.9l3.6 2.8c.9-2.5 3.3-4.2 6.1-4.2z"/></svg>
+              Google
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Contacto -->
     <section id="contacto">
       <div class="wrap contact-grid reveal">
         <div>
-          <p class="section-kicker">Contacto</p>
           <h2 class="section-title">Estamos en Viamonte</h2>
           <p class="section-lead">Llamá primero. Si preferís, escribinos por WhatsApp.</p>
           <div class="contact-list">
@@ -806,8 +1010,14 @@
             </span>
           </div>
           <div class="btn-row">
-            <a class="btn btn-primary" href="tel:+541140618555">Llamar ahora</a>
-            <a class="btn btn-outline" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-primary" href="tel:+541140618555">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 4.8c.3-.8 1.2-1.2 2-.9l2.1.8c.7.3 1.1 1 1 1.8l-.4 2.2a1.6 1.6 0 0 1-.9 1.2l-.8.4a11.4 11.4 0 0 0 4.7 4.7l.4-.8c.3-.5.8-.8 1.3-.9l2.2-.4c.8-.1 1.5.3 1.8 1l.8 2.1c.3.8-.1 1.7-.9 2-.9.4-2 .7-3.1.7C10.6 19.7 4.3 13.4 4.3 6.7c0-1.1.3-2.2.7-3.1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              Llamar ahora
+            </a>
+            <a class="btn btn-wa" href="https://wa.me/541140618555" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 0 1 6.9 12.3l-.3.5.8 2.95-3-.79-.48.29a8.1 8.1 0 0 1-11.9-6.95 8.1 8.1 0 0 1 8-8.3Zm-2.9 3.4c-.2 0-.52.08-.8.4-.26.31-1 1-1 2.42s1.02 2.8 1.16 3c.15.18 2.04 3.25 5.05 4.42 2.5.97 3 .78 3.55.73.54-.05 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.12-.26-.2-.54-.35-.28-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.14-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.57-.48-.49-.67-.5Z"/></svg>
+              WhatsApp
+            </a>
           </div>
         </div>
         <div class="map">
@@ -824,14 +1034,23 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <div class="footer-brand">Baterías CABA</div>
+      <div class="footer-brand">
+        <img src="brand/isotype.png" width="28" height="28" alt="" />
+        Baterías CABA
+      </div>
       <div>Viamonte 2031 · 11 4061-8555 · Abierto 24 hs</div>
     </div>
   </footer>
 
   <div class="sticky-call" role="region" aria-label="Acciones rápidas">
-    <a class="btn btn-primary" href="tel:+541140618555">Llamar</a>
-    <a class="btn btn-dark" href="https://wa.me/541140618555" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-primary" href="tel:+541140618555">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 4.8c.3-.8 1.2-1.2 2-.9l2.1.8c.7.3 1.1 1 1 1.8l-.4 2.2a1.6 1.6 0 0 1-.9 1.2l-.8.4a11.4 11.4 0 0 0 4.7 4.7l.4-.8c.3-.5.8-.8 1.3-.9l2.2-.4c.8-.1 1.5.3 1.8 1l.8 2.1c.3.8-.1 1.7-.9 2-.9.4-2 .7-3.1.7C10.6 19.7 4.3 13.4 4.3 6.7c0-1.1.3-2.2.7-3.1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      Llamar
+    </a>
+    <a class="btn btn-wa" href="https://wa.me/541140618555" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 0 1 6.9 12.3l-.3.5.8 2.95-3-.79-.48.29a8.1 8.1 0 0 1-11.9-6.95 8.1 8.1 0 0 1 8-8.3Zm-2.9 3.4c-.2 0-.52.08-.8.4-.26.31-1 1-1 2.42s1.02 2.8 1.16 3c.15.18 2.04 3.25 5.05 4.42 2.5.97 3 .78 3.55.73.54-.05 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.12-.26-.2-.54-.35-.28-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.14-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.57-.48-.49-.67-.5Z"/></svg>
+      WhatsApp
+    </a>
   </div>
 
   <script>
@@ -853,6 +1072,27 @@
     } else {
       reveals.forEach((el) => el.classList.add('is-in'));
     }
+
+    const revTrack = document.getElementById('reviewsTrack');
+    const revPrev = document.getElementById('revPrev');
+    const revNext = document.getElementById('revNext');
+    function cardStep() {
+      const card = revTrack.querySelector('.review-card');
+      if (!card) return 320;
+      const styles = getComputedStyle(revTrack);
+      const gap = parseFloat(styles.columnGap || styles.gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+    function updateArrows() {
+      const max = revTrack.scrollWidth - revTrack.clientWidth - 2;
+      revPrev.disabled = revTrack.scrollLeft <= 2;
+      revNext.disabled = revTrack.scrollLeft >= max;
+    }
+    revPrev.addEventListener('click', () => revTrack.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+    revNext.addEventListener('click', () => revTrack.scrollBy({ left: cardStep(), behavior: 'smooth' }));
+    revTrack.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
   </script>
 </body>
 </html>

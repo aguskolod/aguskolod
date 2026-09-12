@@ -37,10 +37,15 @@ Prototype: `brand/marquee.html` (variante borne).
 | `--paper` | `#F6F6F4` | Fondo página |
 | `--smoke` | `#5C5C5A` | Texto secundario |
 | `--line` | `#D8D8D4` | Bordes |
-| `--accent` / borne | `#FFCC33` | CTA + highlights ticker |
+| `--accent` / borne | `#FFCC33` | CTA primario (Llamar) + ticker |
 | `--accent-hot` | `#FFE566` | Hover / brillo |
+| `--wa` | `#25D366` | CTA secundario WhatsApp (verde real) |
 
-Hover CTA: brightness del borne. Mostaza `#C99800` descartada. Neón rojo/multicolor descartado como identidad.
+Hover CTA primario: brightness del borne. WhatsApp: verde `#25D366`. Mostaza `#C99800` descartada. Neón descartado.
+
+## Shape
+
+Botones y CTAs **rectangulares** (`border-radius: 0`). Sin pills ni radios suaves de UI genérica.
 
 ## Typography
 
@@ -49,7 +54,7 @@ Hover CTA: brightness del borne. Mostaza `#C99800` descartada. Neón rojo/multic
 
 ## Logo direction
 
-Wordmark **Baterías CABA** (Archivo Black) + **isotipo simple** (batería / borne geométrico, sin neón). El “24 hs” vive en el ticker.
+Wordmark tipográfico **Baterías CABA** (Archivo Black, stacked con subtítulo `Viamonte · 24 hs` en nav) + **isotipo generado** en `brand/isotype.png` (batería carbón + borne). El “24 hs” también vive en el ticker.
 
 ## Landing structure
 
