@@ -34,7 +34,7 @@ Nav sugerida: Inicio · Servicios · Nosotros · Reseñas · Contacto
 ## Hero — 3 direcciones para elegir
 
 ### H1 — Urgencia full-bleed
-Foto de taller/auto a sangre, overlay oscuro, headline grande (“Batería o carga, ahora”), **Llamar** enorme + WhatsApp al lado, trust “4.9 Google · 24 hs”.  
+Foto de taller/auto a sangre, overlay oscuro, headline **“Venta y carga de baterías, las 24 hs.”** (definido), **Llamar** enorme + WhatsApp al lado, trust “4.9 Google · 24 hs”.  
 *Inspo tip:* landings de emergencia (electricistas / roadside) — CTA de llamada dominante, mobile-first.
 
 ### H2 — Split local

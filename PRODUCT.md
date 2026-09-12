@@ -41,7 +41,7 @@ Comercio de barrio en CABA: **venta y carga de baterías para auto**, atención 
 - Nombre de trabajo: **Baterías CABA** (alineado al listing de Maps: “Baterias CABA Venta y carga de baterias para auto”).
 - Identidad deliberadamente **simple y minimalista** (no brand book elaborado).
 - Logo: wordmark **Baterías CABA** + isotipo simple.
-- Tagline de trabajo: “Venta y carga para tu auto”.
+- Headline / tagline de trabajo: **“Venta y carga de baterías, las 24 hs.”**
 - Promesa de trabajo: solución rápida en CABA, las 24 hs.
 - Tono: claro, útil, urgente-sin-histeria, porteño neutro (vos), sin marketing vacío.
 - Tipografía: **Archivo** (Omnibus-Type). El “24 hs” vive en un **ticker fino** arriba (borne + texto carbón).
