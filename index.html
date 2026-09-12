@@ -500,28 +500,16 @@
       display: block;
     }
     .service h3 {
-      margin-bottom: var(--space-2);
+      margin: 0;
       text-wrap: balance;
-    }
-    .service p {
-      color: var(--ink-dim);
-      font-size: var(--text-sm);
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 28ch;
-    }
-    .services-note {
-      margin-top: var(--space-5);
-      padding-top: var(--space-4);
-      border-top: 1px solid var(--line);
-      font-size: var(--text-sm);
-      color: var(--ink-faint);
-      max-width: none;
-      text-align: center;
     }
 
 
     /* —— About —— */
+    .about-grid--solo {
+      grid-template-columns: 1fr;
+      max-width: 40rem;
+    }
     .about-grid {
       display: grid;
       gap: var(--space-6);
@@ -554,27 +542,6 @@
       margin-top: 0.4rem;
       flex-shrink: 0;
       background: var(--signal);
-    }
-    .about-quote {
-      margin: 0;
-      padding: 0;
-    }
-    .about-quote blockquote {
-      margin: 0;
-      padding-top: var(--space-3);
-      border-top: 2px solid var(--signal);
-      font-family: var(--font-display);
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: var(--leading-snug);
-    }
-    .about-quote cite {
-      display: block;
-      margin-top: var(--space-3);
-      font-style: normal;
-      font-size: var(--text-sm);
-      color: var(--ink-dim);
     }
 
     /* —— Reviews —— */
@@ -1013,7 +980,6 @@
               </svg>
             </span>
             <h3>Venta de baterías</h3>
-            <p>Stock para autos y utilitarios. Te armamos según amperaje y modelo.</p>
           </article>
           <article class="service">
             <span class="service-icon" aria-hidden="true">
@@ -1022,7 +988,6 @@
               </svg>
             </span>
             <h3>Carga de baterías</h3>
-            <p>La medimos: si carga, la dejamos; si no agarra, te lo decimos y cambiás.</p>
           </article>
           <article class="service">
             <span class="service-icon" aria-hidden="true">
@@ -1032,16 +997,14 @@
               </svg>
             </span>
             <h3>Atención 24 horas</h3>
-            <p>Madrugada, domingo o feriado: el local está abierto. Llamá o escribinos.</p>
           </article>
         </div>
-        <p class="services-note reveal">Instalación o domicilio: consultá por teléfono o WhatsApp.</p>
       </div>
     </section>
 
 
     <section class="section" id="nosotros">
-      <div class="wrap about-grid">
+      <div class="wrap about-grid about-grid--solo">
         <div class="about-copy reveal">
           <h2>Taller en Viamonte 2031</h2>
           <p>Local de baterías en CABA. Abrimos las 24 horas: si se te quedó el auto de madrugada, acá estamos.</p>
@@ -1051,10 +1014,6 @@
             <li>85 reseñas en Google · promedio 4.9</li>
           </ul>
         </div>
-        <aside class="about-quote reveal">
-          <blockquote>“A las 3 AM también abrimos. Traé el auto o la batería y te atendemos.”</blockquote>
-          <cite>Baterías CABA · Viamonte 2031</cite>
-        </aside>
       </div>
     </section>
 
