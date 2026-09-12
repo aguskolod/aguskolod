@@ -42,8 +42,9 @@ Comercio de barrio en CABA: **venta y carga de baterías para auto**, atención 
 - Tagline de trabajo: “Venta y carga para tu auto”.
 - Promesa de trabajo: solución rápida en CABA, las 24 hs.
 - Tono: claro, útil, urgente-sin-histeria, porteño neutro (vos), sin marketing vacío.
-- Tipografía (dirección acordada, detalle en DESIGN.md / brand): sans industrial de Omnibus-Type (**Archivo**) + tipografía estilo reloj digital (**DSEG7**) solo para el cartelito **24 hs**.
-- Color (dirección acordada): carbón `#141414`, papel `#F6F6F4`, humo `#5C5C5A`, línea `#D8D8D4`, acento amarillo borne `#E8B40A` / `#C99800`, rojo urgencia opcional `#C62828` para 24 hs.
+- Tipografía: **Archivo** (Omnibus-Type). El “24 hs” vive en un **ticker fino** arriba de la página (no neón).
+- Color: carbón `#141414`, papel `#F6F6F4`, humo `#5C5C5A`, línea `#D8D8D4`, acento borne `#FFCC33` (hover = brightness; sin mostaza).
+- El “24 hs” se comunica en un ticker superior fino, no con cartel neón.
 
 ## Evidence on Hand
 
