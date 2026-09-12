@@ -454,29 +454,44 @@
     }
     .section-head p { color: var(--ink-dim); }
 
-    /* —— Services: lateral-border boxes + icons (no 01/02/03) —— */
+    /* —— Services: centered icons, orange column dividers only —— */
     .services-list {
       display: grid;
-      gap: var(--space-4);
+      gap: var(--space-5);
     }
     @media (min-width: 768px) {
       .services-list {
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-5);
+        gap: 0;
       }
     }
     .service {
-      padding: var(--space-4) var(--space-4) var(--space-5);
-      border-top: 0;
-      border-left: 2px solid var(--signal);
-      border-right: 2px solid rgba(242, 241, 236, 0.16);
+      padding: var(--space-4) 0 0;
+      text-align: center;
+      border: 0;
       background: transparent;
     }
+    @media (min-width: 768px) {
+      .service {
+        padding: var(--space-2) var(--space-5) 0;
+      }
+      .service + .service {
+        border-left: 2px solid var(--signal);
+      }
+    }
+    @media (max-width: 767px) {
+      .service + .service {
+        border-top: 2px solid var(--signal);
+        padding-top: var(--space-5);
+      }
+    }
     .service-icon {
-      display: block;
-      width: 1.85rem;
-      height: 1.85rem;
-      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      margin: 0 auto var(--space-3);
       color: var(--signal);
     }
     .service-icon svg {
@@ -484,8 +499,17 @@
       height: 100%;
       display: block;
     }
-    .service h3 { margin-bottom: var(--space-2); }
-    .service p { color: var(--ink-dim); font-size: var(--text-sm); }
+    .service h3 {
+      margin-bottom: var(--space-2);
+      text-wrap: balance;
+    }
+    .service p {
+      color: var(--ink-dim);
+      font-size: var(--text-sm);
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 28ch;
+    }
     .services-note {
       margin-top: var(--space-5);
       padding-top: var(--space-4);
@@ -493,51 +517,9 @@
       font-size: var(--text-sm);
       color: var(--ink-faint);
       max-width: none;
+      text-align: center;
     }
 
-    /* —— Steps: vertical process rail (distinct from services grid) —— */
-    .steps {
-      display: grid;
-      gap: 0;
-      max-width: 38rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      border-left: 2px solid rgba(242, 241, 236, 0.16);
-      counter-reset: none;
-    }
-    .step {
-      position: relative;
-      padding: 0 0 var(--space-5) var(--space-5);
-      border-top: 0;
-      background: transparent;
-    }
-    .step:last-child {
-      padding-bottom: 0;
-    }
-    .step::before {
-      content: "";
-      position: absolute;
-      left: -0.4rem;
-      top: 0.35rem;
-      width: 0.7rem;
-      height: 0.7rem;
-      background: var(--signal);
-      border: 2px solid var(--asphalt);
-      box-sizing: border-box;
-    }
-    .step-label {
-      display: block;
-      margin-bottom: 0.35rem;
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--signal);
-    }
-    .step h3 { font-size: 1.15rem; margin-bottom: var(--space-2); }
-    .step p { color: var(--ink-dim); font-size: var(--text-sm); max-width: 42ch; }
 
     /* —— About —— */
     .about-grid {
@@ -958,7 +940,6 @@
       <nav aria-label="Principal">
         <ul class="nav-links">
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#como">Cómo funciona</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#reseñas">Reseñas</a></li>
           <li><a href="#contacto">Contacto</a></li>
@@ -982,7 +963,6 @@
     <div class="wrap nav-panel" id="nav-panel" hidden>
       <ul>
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#como">Cómo funciona</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#reseñas">Reseñas</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -1059,31 +1039,6 @@
       </div>
     </section>
 
-    <section class="section section--tight" id="como">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <h2>Cómo es</h2>
-          <p>Llamás, pasás por el local, salís con batería.</p>
-        </div>
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step-label">Primero</span>
-            <h3>Llamás o escribís</h3>
-            <p>Marca, modelo y si no arranca. Te decimos si hay stock y qué traer.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-label">Después</span>
-            <h3>Pasás por Viamonte</h3>
-            <p>Viamonte 2031. Probamos la batería y te armamos venta o carga.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-label">Listo</span>
-            <h3>Salís andando</h3>
-            <p>Nueva o cargada. Listo para arrancar.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
 
     <section class="section" id="nosotros">
       <div class="wrap about-grid">
