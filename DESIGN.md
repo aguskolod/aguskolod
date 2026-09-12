@@ -23,11 +23,11 @@ Separadores sutiles (punto · o barra). Tap en teléfono / WhatsApp = link real.
 
 ### Look
 
-- Fondo: carbón `#141414` o acento borne `#FFCC33` (probar ambas; default carbón + texto borne/papel).
-- Alto ~32–40px, tipografía Archivo condensed/semibold, tracking amplio, uppercase.
-- Motion: scroll horizontal continuo lento; pausa en `prefers-reduced-motion`.
+- **Definido:** fondo borne `#FFCC33` + texto carbón `#141414`.
+- Alto ~36px, Archivo bold, tracking amplio, uppercase.
+- Motion: scroll horizontal continuo lento; pausa en hover; estático si `prefers-reduced-motion`.
 
-Prototype: `brand/marquee.html`
+Prototype: `brand/marquee.html` (variante borne).
 
 ## Color
 

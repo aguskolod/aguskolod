@@ -122,7 +122,7 @@
   </style>
 </head>
 <body>
-  <div class="ticker" id="ticker" data-variant="carbon">
+  <div class="ticker" id="ticker" data-variant="borne" style="background:#FFCC33;color:#141414;border-bottom-color:#e0b82e">
     <div class="ticker-track" id="track">
       <!-- duplicated in JS for seamless loop -->
       <div class="ticker-group" id="group">
@@ -148,13 +148,13 @@
     </p>
 
     <div class="variants">
-      <button type="button" class="active" data-v="carbon">
+      <button type="button" data-v="carbon">
         Carbón + texto borne
-        <small>Más sobrio, default</small>
+        <small>Alternativa</small>
       </button>
-      <button type="button" data-v="borne">
+      <button type="button" class="active" data-v="borne">
         Borne + texto carbón
-        <small>Más visible / “abierto”</small>
+        <small>Definido</small>
       </button>
     </div>
 
