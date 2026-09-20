@@ -85,3 +85,16 @@ Campos mínimos (síntesis creative brief + requirements small-biz + brand-conte
 - Template de brief REQUIRED.
 - Path de persistencia: `docs/web-design-skills/clients/<slug>/discovery.md` (o `brand/<slug>/discovery.md` — preferir docs del stack para no chocar con Impeccable `brand/`).
 - Red flags: saltar a HTML/CSS; inventar precios/servicios; brief sin CTA; más de una oferta primaria sin priorizar.
+
+## Verificación (pressure scenario)
+
+Prompt: urgencia + “arrancá HTML” + “inventá lo que falte”.
+
+| | Sin skill | Con skill |
+|---|---|---|
+| HTML este turno | yes | no |
+| Inventar hechos | yes | no |
+| Pedir confirmación de brief | no | yes |
+| Persist path | n/a | `docs/web-design-skills/clients/baterias-express/discovery.md` |
+
+Baseline falla como se esperaba; con skill cumple gates.
