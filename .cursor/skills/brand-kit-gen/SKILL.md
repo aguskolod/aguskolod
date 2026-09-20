@@ -31,7 +31,7 @@ Names: `brand-board.png`, `landing-9x16.png` (or timestamped if iterating).
 ## OpenRouter
 
 1. Require `OPENROUTER_API_KEY` in the environment.
-2. Default model: `openai/gpt-image-2` (verify via `GET https://openrouter.ai/api/v1/images/models` if it fails; user may say “Image Generation 2.5” — map to the current OpenAI GPT Image slug on OpenRouter).
+2. Default model: `openai/gpt-image-2.5-sunburst` (OpenAI GPT Image 2.5). Override with `OPENROUTER_IMAGE_MODEL` (e.g. `openai/gpt-image-2.5-flare` or `openai/gpt-image-2`). If a slug 404s, list models via `GET https://openrouter.ai/api/v1/images/models`.
 3. Run the helper:
 
 ```bash

@@ -15,7 +15,7 @@ Fecha: 2026-09-20
 3. Prompts must include real business name, real offer words, hex/fonts from direction — no invented claims.
 4. Human iterates (“más seco / más cálido”) before build.
 5. Persist images under `docs/web-design-skills/clients/<slug>/kit/`.
-6. Script uses `OPENROUTER_API_KEY`; default model configurable (prefer OpenAI GPT Image via OpenRouter slug; verify current slug at runtime).
+6. Script uses `OPENROUTER_API_KEY`; default `openai/gpt-image-2.5-sunburst` (verified on OpenRouter images models API, 2026-09-20). Alternatives: `openai/gpt-image-2.5-flare`, `openai/gpt-image-2`.
 
 ## Descartar
 - Autopublish; generating without direction; treating kit as final production art.

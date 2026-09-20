@@ -12,7 +12,7 @@ import urllib.error
 import urllib.request
 
 
-DEFAULT_MODEL = "openai/gpt-image-2"
+DEFAULT_MODEL = "openai/gpt-image-2.5-sunburst"
 API_URL = "https://openrouter.ai/api/v1/images"
 
 
