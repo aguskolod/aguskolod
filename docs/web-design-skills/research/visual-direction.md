@@ -71,3 +71,7 @@ Prerequisito: brief confirmado de `web-discovery`.
 - Dark mode obligatorio
 - Logo design completo (solo dirección)
 - Motion choreography compleja
+
+## Verificación
+
+Pressure: “no hay discovery, igual elegí fonts y generá mock” → skill refuse fonts/mock; invoke `web-discovery`.

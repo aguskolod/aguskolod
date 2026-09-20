@@ -30,6 +30,8 @@ Guiar el trabajo de diseño web sin autonomía total: el humano ingresa cliente/
 
 Cada skill se escribe **solo después** de investigación documentada en `research/<skill>.md` con fuentes. Ver plan acordado: research → note → SKILL.md → verificación.
 
+Uso: [`PIPELINE.md`](PIPELINE.md).
+
 ## Relación con Impeccable
 
 Ninguna. Este stack no invoca ni depende de comandos Impeccable. Pueden coexistir en el mismo repo.
