@@ -1,20 +1,14 @@
-Design a clean brand board / style tile for a local café website identity — NOT a full website screenshot, NOT a bento-grid AI landing template.
+Brand board / style tile for Mesal Café (Esquel). The FIRST attached reference image is the OFFICIAL Instagram logo — use it VERBATIM as the brand mark on the board. Do not redraw, restyle, or replace it with another wordmark or leaf/berry icon.
 
-Brand: Mesal Café (Esquel, Patagonia Argentina). Personality: warm, contemporary, artisan, neighborhood, welcoming. Differentiate from generic tourist Patagonia brochure and from classic confitería clichés.
+Personality: warm, contemporary, artisan, neighborhood, welcoming.
 
-Show clearly labeled sections on one 16:9 board:
-1) Color palette swatches with exact hex labels visible:
-   - Primary CTA #4A2C20 (cacao)
-   - On-primary #F7F4EF
-   - Text #1C2420
-   - Text muted #5C675F
-   - Background #EEF1EC (cool mist / stone morning light)
-   - Surface #E2E7E1
-   - Border #C5CEC6
-   - Accent #6B8F71 (sage, details only — not the CTA)
-2) Typography specimens: display face Bricolage Grotesque showing the wordmark "Mesal Café"; body face Source Sans 3 showing a Spanish sentence: "Café & bistró de todo el día, para quedarte." Name both fonts on the board.
-3) Component samples: a filled primary button labeled "Menú" with soft-medium ~12px corner radius (NOT a pill); an outline secondary button labeled "Cómo llegar".
-4) Icon symbology row (almost no text): three simple custom line icons representing gluten-free / sin TACC, pet friendly, and coworking-reading space — no pill chips, no emoji, no long labels.
-5) Imagery mood: one small real-feeling photo crop of artisan pastry or coffee on a table — natural light, no stock cabin/glacier postcard, no purple glow, no terracotta-on-cream AI look, no neon.
+Show on one 16:9 board:
+1) Official logo placed large and clear (exact artwork from reference).
+2) Color swatches with hex labels derived from that logo:
+   Primary CTA #3D2A1F, On-primary #FFFDF9, Text #3D2A1F, Text muted #6B5E52, Background #FFFDF9, Surface #F3EEE6, Border #D9D0C4, Gold #B8954A, Star orange #D4783A.
+3) Typography note: brand mark = official logo; section headlines Source Serif 4; body Source Sans 3. Show specimen text: "Café & bistró de todo el día."
+4) Buttons: filled "Menú" (#3D2A1F, ~12px radius, not pill) and outline "Cómo llegar".
+5) Three near-textless line icons (sin TACC / pet / coworking) in cacao or gold stroke — no chips, no emoji.
+6) Optional small mood crop from café photography — natural food/interior, no glacier brochure, no purple glow, no mist-green AI palette.
 
-Flat honest presentation, airy-moderate density, muted mist background #EEF1EC. Professional design-system board, not a marketing poster.
+Flat honest style tile, not a website screenshot, not a bento AI template.

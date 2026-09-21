@@ -1,26 +1,14 @@
-Mobile-first UI design sketch (9:16) of a local café landing page — cohesive art-directed mock, NOT a generic AI café template, NOT bento grids, NOT pill clusters, NOT purple glow, NOT cream+terracotta+serif cliché, NOT Patagonia tourism brochure.
+Mobile 9:16 UI sketch for Mesal Café landing. The FIRST attached reference is the OFFICIAL logo — place that exact logo in the hero (do not invent a new wordmark, leaf icon, or Bricolage-style title). Preserve logo colors and lettering.
 
-Brand: Mesal Café. City: Esquel, Chubut. Personality: warm, contemporary, artisan, neighborhood, welcoming.
+Brand system:
+- Background #FFFDF9, surface #F3EEE6, text #3D2A1F, muted #6B5E52
+- Primary CTA #3D2A1F label #FFFDF9, radius ~12px
+- Secondary outline "Cómo llegar"
+- Gold #B8954A / orange #D4783A only as tiny accents
+- Headlines Source Serif 4 character; UI Source Sans 3
 
-Visual system (must match):
-- Background #EEF1EC, text #1C2420, muted #5C675F
-- Primary CTA fill #4A2C20 with label color #F7F4EF, button radius ~12px (soft-medium, not pill)
-- Secondary CTA outline "Cómo llegar" in #1C2420
-- Accent sage #6B8F71 only for tiny icon strokes, never as big CTA
-- Display typography character of Bricolage Grotesque; body like Source Sans 3
-- Flat honest UI, airy-moderate spacing, subtle elevation only
+Hero must show: official logo, one line "Café & bistró de todo el día.", hours 08:00–00:00, CTAs Menú + Cómo llegar, and a small row of near-textless icons (sin TACC / pet / coworking).
 
-First viewport (hero) must include:
-- Brand name "Mesal Café" as hero-level wordmark (not tiny nav-only)
-- One short offer line in Spanish: "Café & bistró de todo el día, para quedarte."
-- Hours hint: 08:00–00:00
-- Two CTAs: primary "Menú", secondary "Cómo llegar"
-- A small row of near-textless line icons (sin TACC / pet / coworking) — symbology only, no chip labels
+Below: "el día" (mañana/mediodía/noche), Menú block, reviews SLIDER (not a static "Prueba" wall), Cómo llegar with Av. Fontana 769.
 
-Below the fold (hint only, scrolled peek):
-- A section suggesting "el día" (morning coffee / pastry / night) with real food photography mood
-- A Menú section block
-- A horizontal reviews SLIDER (carousel cards with short Spanish review snippets) — not a static testimonial wall titled "Prueba"
-- A Cómo llegar block with "Av. Fontana 769"
-
-Do NOT invent prices, WhatsApp, discounts, or fake awards. Do NOT invent a "Para quedarte" amenities section. Real photography mood of café food/interior — no stock glacier cabins.
+No invented prices/WhatsApp. No "Para quedarte" section. No AI-sloppy café template look. No mist-green palette.

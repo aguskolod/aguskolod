@@ -25,6 +25,12 @@ def main() -> int:
     parser.add_argument("--aspect", default="9:16", help="Aspect ratio, e.g. 9:16, 16:9, 1:1")
     parser.add_argument("--quality", default="high", choices=["auto", "low", "medium", "high"])
     parser.add_argument("--resolution", default=None, help="Optional tier: 1K, 2K, 4K")
+    parser.add_argument(
+        "--ref",
+        action="append",
+        default=[],
+        help="Local image path or http(s) URL as input_references (repeatable)",
+    )
     args = parser.parse_args()
 
     key = os.environ.get("OPENROUTER_API_KEY")
@@ -51,6 +57,26 @@ def main() -> int:
     }
     if args.resolution:
         body["resolution"] = args.resolution
+
+    refs: list[dict] = []
+    for ref in args.ref:
+        if ref.startswith("http://") or ref.startswith("https://") or ref.startswith("data:"):
+            url = ref
+        else:
+            with open(ref, "rb") as rf:
+                raw = rf.read()
+            ext = os.path.splitext(ref)[1].lower()
+            mime = {
+                ".png": "image/png",
+                ".jpg": "image/jpeg",
+                ".jpeg": "image/jpeg",
+                ".webp": "image/webp",
+                ".gif": "image/gif",
+            }.get(ext, "image/jpeg")
+            url = f"data:{mime};base64,{base64.b64encode(raw).decode('ascii')}"
+        refs.append({"type": "image_url", "image_url": {"url": url}})
+    if refs:
+        body["input_references"] = refs
 
     req = urllib.request.Request(
         API_URL,

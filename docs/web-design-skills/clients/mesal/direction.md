@@ -2,90 +2,92 @@
 
 ## Status
 - Discovery source: docs/web-design-skills/clients/mesal/discovery.md
-- Confirmed by human: **yes** (2026-09-21)
-- Stack: web-design-skills · skill `visual-direction`
-- Date proposed: 2026-09-21
-- Confirmed with: estructura sin Prueba/Para quedarte; reseñas en slider; amenities por simbología en hero
+- Confirmed by human: **yes** (2026-09-21) — estructura / CTAs / amenities
+- **Identity revision (2026-09-21):** anclar al **logo IG actual**. Se descarta Bricolage + mist verde por no coincidir con la marca viva.
+- Stack: web-design-skills · skill `visual-direction` → `brand-kit-gen`
+- Confirmed with: sin secciones Prueba/Para quedarte; reseñas en slider; amenities por simbología en hero
+
+## Brand mark (source of truth)
+- Asset: `docs/web-design-skills/clients/mesal/kit/refs/logo-instagram.jpg` (avatar IG `@mesalcafe`)
+- Wordmark serif ornamentado **MESAL** + taza oro/bronce + “20 / 25” + tres estrellas naranjas + arco **CAFÉ Y BISTRÓ**
+- En web: usar el **logo real** (PNG/JPG ahora; SVG si aparece). No inventar monograma hoja/baya ni reemplazar el wordmark con otra display font.
 
 ## Personality
 - Adjectives (3–5): **cálida**, **contemporánea**, **artesanal**, **vecinal**, **acogedora**
 - Feeling we want visitors to have: “puedo venir seguido, quedarme un rato, y se siente de Esquel — no un brochure de turismo ni la confitería de siempre”
 - Differentiate from local norm by:
-  - vs María Castaña: más nueva, limpia y de “producción propia”, sin vibe de clásico saturado
-  - vs Charlá: menos specialty-café cerrado; más **todo el día + quedarse**
-  - vs brochure patagónico: montaña como contexto, no como postcard; comida y gente reales primero
+  - vs María Castaña: más nueva y de producción propia
+  - vs Charlá: más todo el día + quedarse
+  - vs brochure patagónico: comida/gente reales primero
+  - vs kit inventado: **extender el logo existente**, no reinventar marca
 
 ## Typography
-Sans humanista / grotesque con carácter = cercana y actual; evita la serif “café premium IA” sobre crema.
+El display de marca **es el logo**. Titulares HTML: serif cercana al wordmark; body/UI: sans limpia (como “CAFÉ Y BISTRÓ”).
 
 ### Recommended
-- Display: **Bricolage Grotesque** (Google Fonts) — títulos, wordmark tipográfico “Mesal Café”
-- Body: **Source Sans 3** (Google Fonts) — UI, párrafos, menú meta
-- Why (adjectives → category → this pick): cálida + contemporánea + artesanal → grotesque con irregularidad suave (Bricolage) + humanist sans legible en español (Source Sans 3). Buen soporte `ñ`/tildes; licencia libre web.
-- Weights to use: Display 600–800; Body 400/600; evitar thin
-- Mental test: *“Café & bistró de todo el día, para quedarte.”* / *“Av. Fontana 769 · 08:00–00:00 · sin TACC · pet friendly”*
+- Brand mark: logo IG (no tipografía sustituta)
+- Display (titulares de sección): **Source Serif 4** (Google Fonts)
+- Body / UI: **Source Sans 3** (Google Fonts)
+- Why: el logo ya aporta el serif ornamentado; Source Serif 4 + Source Sans 3 lo acompañan sin pelear. **No** Bricolage Grotesque como voz de marca.
+- Weights: Display 600–700; Body 400/600
+- Mental test: logo MESAL + “Café & bistró de todo el día.” + botones Menú / Cómo llegar
 
 ### Alternatives (1–2)
-1. **Más editorial / suave:** Display **Fraunces** (soft) + body **Source Sans 3** — si preferís más “carta de café”, a costa de acercarte al clúster serif-cálido (usamos piedra fría + cacao, no terracota).
-2. **Más limpia / menos carácter:** Display **Manrope** + body **Source Sans 3** — más genérica; solo si Bricolage se siente demasiado “diseño”.
+1. Display **Libre Baskerville** + body Source Sans 3 — más clásica.
+2. Display solo logo + body **Nunito Sans** — más redonda; solo si Source Sans se siente fría.
 
 ## Color roles
-Luz de mañana en Esquel (niebla/piedra) + cacao (café / chocolate comunitario) — no naranja de urgencia, no purple glow, no terracota-on-cream default.
+Del logo: cacao + oro/bronce + naranja estrella, sobre blanco cálido.
 
 | Role | Hex | Usage |
 |---|---|---|
-| Primary (CTA) | `#4A2C20` | Botón **Menú**, links de acción fuerte |
-| Primary hover | `#3A2219` | Hover/active del CTA |
-| On-primary | `#F7F4EF` | Texto sobre primary |
-| Text | `#1C2420` | Titulares y cuerpo |
-| Text muted | `#5C675F` | Meta, horarios, captions |
-| Background | `#EEF1EC` | Fondo página (niebla / piedra fría) |
-| Surface / muted | `#E2E7E1` | Bandas, cards de prueba, bloques menú |
-| Border | `#C5CEC6` | Separadores suaves |
-| Accent | `#6B8F71` | Detalles (chips sin TACC / pet / coworking), no CTA |
-| Accent soft | `#D7E3D8` | Fondos de chips |
-| Map / secondary action | `#1C2420` outline | Botón **Cómo llegar** (ghost/outline sobre fondo) |
+| Primary (CTA) | `#3D2A1F` | Botón **Menú**, links fuertes |
+| Primary hover | `#2E1F17` | Hover/active |
+| On-primary | `#FFFDF9` | Texto sobre primary |
+| Text | `#3D2A1F` | Titulares y cuerpo |
+| Text muted | `#6B5E52` | Meta, horarios |
+| Background | `#FFFDF9` | Fondo página |
+| Surface / muted | `#F3EEE6` | Bandas, cards slider, bloques menú |
+| Border | `#D9D0C4` | Separadores |
+| Gold | `#B8954A` | Acentos finos, icon strokes opcionales (no CTA fill) |
+| Star orange | `#D4783A` | Detalle puntual (estrellas / bullets), no CTA |
+| Map / secondary | outline `#3D2A1F` | Botón **Cómo llegar** |
 
-- Contrast notes (CTA label on primary): `#F7F4EF` sobre `#4A2C20` ≈ alto contraste (objetivo AA 4.5:1+). Texto muted `#5C675F` sobre `#EEF1EC` revisar en build; si falla, subir a `#4A554E`.
+- Contrast notes: `#FFFDF9` sobre `#3D2A1F` OK para CTA. Evitar mist-verde `#EEF1EC` / sage `#6B8F71` del kit anterior.
 
 ## Expression
-- Radius / buttons: **soft-medium** (~10–12px) — cercana, no pill, no 0 sharp industrial
-- Density: **airy-moderado** — aire para “quedarse”; no dashboard apretado ni luxury vacío
-- Borders / elevation: **flat honest** — bordes suaves, poca sombra; elevación mínima solo en hover de CTAs
-- Motion level: **sutil** — fade/slide leve en secciones; respetar `prefers-reduced-motion` en build
-- Imagery direction: **fotos reales** del local, platos, pastelería, gente/equipo, Fontana/Esquel; Choco Fest como prueba social puntual, no hero permanente. Evitar stock de cabaña/nieve/mate genérico.
-- Icon style (amenities): **simbología casi sin texto** — iconos custom/lineales (sin TACC, pet, coworking/lectura, etc.), legibles por forma; tooltip/`aria-label` para a11y; **no** chips con copy, **no** fila de pills, **no** emoji como sistema
+- Radius / buttons: **soft-medium** (~10–12px) — cercana, no pill
+- Density: **airy-moderado**
+- Borders / elevation: **flat honest**
+- Motion level: **sutil** (+ `prefers-reduced-motion` en build)
+- Imagery: fotos reales del local/platos/gente; Choco Fest como prueba puntual, no hero permanente
+- Icon style (amenities): **simbología casi sin texto** — lineales; stroke cacao o gold; no chips, no emoji system
+- Logo treatment: claro sobre fondo claro; respetar proporciones; no recolorear a verde
 
 ## Section structure
-Orden de mensaje (no layout pixel). **Sin** secciones “Prueba” ni “Para quedarte” (rechazadas 2026-09-21).
+Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.
 
-1. **Hero** — marca **Mesal Café** + oferta en una línea + CTAs **Menú** / **Cómo llegar** + horario 08–00  
-   - En el mismo hero (o franja inmediata): **fila de iconos** sin TACC / pet / coworking·lectura — simbología, casi sin texto
-2. **La oferta del día** — café, pastelería artesanal, almuerzo, noche (coctelería/tapeo) — elaboración propia
-3. **Menú** — preview / CTA fuerte a la carta (asset Open hasta que entreguen PDF/URL)
-4. **Reseñas (slider)** — prueba como **carrusel/slider** de reseñas (Google u otro), no bloque estático de “4,9★ + frase”; el score puede ir como meta del slider, no como sección de marketing
-5. **Cómo llegar** — dirección Fontana 769 + mapa/link + teléfono secundario
-6. **Footer** — IG, horario, NAP (+ repetir iconos amenity solo si hace falta, sin inventar sección)
+1. **Hero** — logo Mesal + oferta + CTAs **Menú** / **Cómo llegar** + horario 08–00 + fila de iconos (sin TACC / pet / coworking)
+2. **La oferta del día** — mañana → tarde → noche, elaboración propia
+3. **Menú** — preview / CTA a la carta
+4. **Reseñas (slider)** — carrusel de reseñas
+5. **Cómo llegar** — Av. Fontana 769 + Maps
+6. **Footer** — IG, horario, NAP
 
-- Primary CTA placement intent: **Menú** visible en hero y repetido en sección Menú; **Cómo llegar** a la par (secundario visual, igual de claro).
-- Amenities: **nunca** como sección titulada ni chips con labels largos; solo iconografía anclada al hero (o al pie del menú si el humano lo pide después).
+- Primary CTA: **Menú** en hero + sección Menú; **Cómo llegar** a la par.
+- Amenities: solo iconografía en hero, nunca sección titulada ni chips.
 
 ## Anti-patterns for this brand
+- Reemplazar el logo IG por wordmark tipográfico inventado (Bricolage, hoja, etc.)
+- Paleta mist/sage inventada que ignore cacao/oro/naranja del logo
 - Inter / Roboto / Arial / system como display
-- Pills + glow + púrpura; naranja “urgencia”; borne/amarillo ferretería
-- Crema + serif alto contraste + terracota (clúster IA)
-- Landings café “AI sloppy” (bento grids genéricos, chips de amenities, testimonials template)
-- Sección “Para quedarte” / “Lo que nos hace únicos” con pills
-- Sección “Prueba” estática tipo quote wall; la prueba es **slider de reseñas**
-- Brochure patagónico (glaciar, cabaña stock) como hero
-- Clonar look “confitería clásica” de María Castaña
+- Pills + glow + púrpura; brochure patagónico stock
+- Landings café “AI sloppy” (bento, chips amenities, testimonials template)
+- Sección “Para quedarte” / “Prueba” estática
 - Inventar precios o WhatsApp
 - Hero solo Choco Fest
-- Usar PRODUCT.md / DESIGN.md de Baterías CABA
-
-## Alternative (si querés más “café clásico”)
-Misma estructura y roles de color, pero tipografía **Fraunces + Source Sans 3** y radius un poco más suave (14px). Feeling más carta de domingo; menos contemporáneo.
+- PRODUCT.md / DESIGN.md de Baterías CABA
 
 ## Handoff
-- Ready for `brand-kit-gen`: **yes**
+- Ready for `brand-kit-gen`: **yes** (regenerar con logo como `input_references`)
 - Persist path: `docs/web-design-skills/clients/mesal/direction.md`
