@@ -120,7 +120,7 @@ a {
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 1rem;
   min-height: var(--header-h);
   padding-block: 0.75rem;
@@ -129,7 +129,6 @@ a {
 .nav {
   display: none;
   gap: 1.25rem;
-  margin-right: auto;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -148,12 +147,7 @@ a {
   text-underline-offset: 0.25em;
 }
 
-.header-cta {
-  flex-shrink: 0;
-}
-
 @media (max-width: 799px) {
-  /* Mobile: sin Menú en la esquina — el CTA vive en el hero */
   .site-header {
     display: none;
   }
