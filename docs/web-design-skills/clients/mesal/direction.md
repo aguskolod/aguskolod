@@ -125,6 +125,7 @@ Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.
 - PRODUCT.md / DESIGN.md de otro cliente
 
 ## Handoff
-- Ready for `brand-kit-gen`: **yes** (confirmado 2026-09-21 — sharp + hero full-bleed + desktop)
-- Kit: brand-board 16:9 + **landing-16x9** (desktop). Refs: logo + Maps salón + plato + chaqueta. Hex + Bodoni Moda / DM Sans + radius 0–4px.
+- Ready for `brand-kit-gen`: **yes** — kit aprobado humano (2026-09-21)
+- Kit: `kit/brand-board.png` + `kit/landing-16x9.png`
+- Build: `docs/web-design-skills/clients/mesal/site/` (landing HTML)
 - Persist path: `docs/web-design-skills/clients/mesal/direction.md`
