@@ -1,13 +1,14 @@
-# Discovery — Mesal Café y Bistró
+# Discovery — Mesal Café
 
 ## Status
-- Confirmed by human: no
+- Confirmed by human: **yes** (2026-09-21)
 - Stack: web-design-skills · skill `web-discovery`
 - Research date: 2026-09-21
 - Sources: Instagram `@mesalcafe`, Google Maps place, prensa local (Red43, Caras/Perfil, Canal 4 Esquel, En Esquel), guía Turismo Esquel, audit lean de 5 competidores locales
+- Human confirmations (2026-09-21): nombre canónico **Mesal Café**; CTAs **Menú** + **Cómo llegar**; claims **sin TACC**, pet friendly, coworking/lectura confirmados para copy web
 
 ## Business
-- Name: Mesal Café y Bistró (marca corta en IG: **Mesal**)
+- Name: **Mesal Café** (canónico H1/title; legado prensa “Mesal Café y Bistró”; Maps “Mesal café”; IG “Mesal”)
 - Category / trade: Café + bistró (cafetería, confitería/pastelería artesanal, almuerzo/cena liviana, coctelería y tapeo)
 - Area (city / barrios): Esquel, Chubut — centro (Av. Fontana 769)
 - One-line offer (primary): Café & bistró de todo el día para el vecino de Esquel — elaboración propia, horario largo, un lugar donde quedarse (café, trabajo, familia o noche)
@@ -28,45 +29,51 @@
   - Que hay elaboración propia y calidad sin precio de “ciudad grande”
   - Que el horario alcanza (abierto de mañana a medianoche)
   - Que el espacio es amplio / agradable / bien atendido
+  - Que hay opciones sin TACC, pet friendly y espacio para trabajar/leer
 - Objections that stop them:
   - “Otro café más / igual que María Castaña”
   - Duda de precio (categoría local sensible al bolsillo)
-  - No saber si hay opciones sin TACC / pet / wifi (si no está visible)
-  - Open: menú público y precios no confirmados en web propia
+  - No ver el menú antes de ir
+  - Open: precios exactos no confirmados en web propia
 
 ## Conversion
-- Primary CTA (one): **Cómo llegar** (Google Maps) — el link activo del negocio hoy es Maps desde IG; la decisión típica es ir al local
-- Secondary CTA (optional): **Llamar** `2945 41-3194`
+- Primary CTA (one): **Menú** — ver carta / oferta antes de ir
+- Secondary CTA: **Cómo llegar** (Google Maps) — `https://maps.app.goo.gl/Gbn8euUCuPqtYvEeA`
+- Tertiary (opcional, no primario): Llamar `2945 41-3194`
 - Contact facts (phone, WhatsApp, address, hours) — confirmed only:
   - Dirección: Av. Fontana 769, Esquel, Chubut
   - Teléfono: +54 2945 41-3194 (coincide prensa + Maps)
   - Horario Maps / bio IG: todos los días **08:00–00:00**
   - Instagram: https://www.instagram.com/mesalcafe (verificada, ~3.984 seguidores, 44 posts, business)
   - Link en bio: Maps `https://maps.app.goo.gl/Gbn8euUCuPqtYvEeA`
-  - WhatsApp / delivery / reserva online: **Open:** no confirmado en fuentes públicas revisadas
-  - Sitio web propio: **Open:** no aparece en Maps ni en guía turística (solo IG)
+  - WhatsApp / delivery / reserva online: **Open:** no confirmado
+  - Sitio web propio: en construcción (este stack)
+  - Menú digital: **Open:** asset aún no entregado — la landing necesita sección/CTA Menú (PDF, página o embed) cuando exista
 
 ## Confirmed facts
+- Nombre canónico web: **Mesal Café** (confirmado humano 2026-09-21)
 - Apertura: 3 enero 2026 (prensa Caras); ~5 meses después ya se posicionaba como punto de encuentro (Perfil, jun 2026)
 - Propietaria: Ailen Anchordoqui (prensa)
 - Empleo: ~17 personas (prensa)
 - Producción propia / artesanal (panadería-pastelería) como eje de costo/calidad (Red43)
-- Propuesta día completo: cafetería + confitería + coctelería + tapeo; sin TACC; pet friendly; espacios para coworking/lectura (Caras)
+- Propuesta día completo: cafetería + confitería + coctelería + tapeo
+- **Sin TACC** — confirmado humano para copy web
+- **Pet friendly** — confirmado humano para copy web
+- **Espacios para coworking / lectura** — confirmado humano para copy web
 - Posicionamiento declarado: apuesta al **vecino** + accesible + “ciudad grande / ventana a la montaña” (Red43)
-- Google Maps: **4,9★ / 281 reseñas** (scrape 2026-09-21); categoría Cafetería; sin website en ficha
+- Google Maps: **4,9★ / 281 reseñas** (scrape 2026-09-21); categoría Cafetería
 - IG bio: “Café & Bistró · Sabores que enamoran · Pastelería artesanal · Abierto 08:00–00:00”
 - Evento comunitario fuerte: **Choco Fest** (13 sep 2026) — barra ~60 m de chocolate, feria, música; cobertura local masiva; socios (Quimera, Kabir, FeriArte, Red43)
 - Listada en Turismo Esquel (gastronomía) con IG
 
 ## Open / unknowns
 - WhatsApp / canal de mensajes preferido
-- Menú público, precios, carta sin TACC documentada
+- Archivo o URL del **menú** (precios, secciones, sin TACC marcado en carta)
 - Delivery / takeaway formal
-- Wi‑Fi confirmado en ficha (prensa habla de trabajo remoto; no verificado en Maps attributes)
+- Wi‑Fi como claim explícito en ficha (prensa habla de trabajo remoto; no verificado en Maps attributes) — coworking/lectura sí confirmados
 - Facebook / otras redes
 - Fotos “oficiales” liberadas para uso web (hay mucho material en IG/prensa — pedir permiso)
 - Nombre legal / razón social / CUIT si hace falta en footer
-- Si el CTA preferido del dueño es Llamar vs WhatsApp vs Reservar vs Cómo llegar
 
 ## Presence audit (redes / GBP / site)
 - Channels reviewed (URLs):
@@ -75,18 +82,18 @@
   - Prensa: Red43, Caras, Perfil, Canal 4 Esquel, En Esquel
   - Guía: https://www.esquel.tur.ar/… (listado gastronomía)
 - Consistency (NAP, hours, offer):
-  - Nombre: “Mesal” / “Mesal Café y Bistró” / Maps “Mesal café” — leve variación de naming; unificar en web
+  - Nombre: unificar a **Mesal Café** en web (legado prensa/Maps/IG documentado arriba)
   - Dirección Fontana 769 + teléfono 2945 41-3194: **consistente** prensa ↔ Maps
   - Horario 08–00: consistente bio IG ↔ Maps (todos los días)
-  - Oferta: IG enfatiza café/pastelería; prensa suma coctelería, coworking, sin TACC, pet — la landing debería volcar lo que IG resume poco
+  - Oferta: IG enfatiza café/pastelería; claims sin TACC / pet / coworking confirmados para landing
 - Visual/tone clues (facts only — no system yet):
   - Contenido IG: comida real (wraps, pastelería), familia/equipo, eventos comunitarios, reels
   - Colaboraciones locales frecuentes (productoras, feria, medios)
   - Tono cercano, agradecido, “Esquel” como protagonista
-  - Sin sitio web: la marca vive en IG + Maps + prensa
+  - Sin sitio web previo: la marca vive en IG + Maps + prensa
 - Assets available vs missing:
   - Disponibles: feed IG, foto de perfil, cobertura Choco Fest, nota Caras con galería
-  - Faltantes para landing: menú, logo vectorial/oficial, fotos liberadas del salón, WhatsApp, claim de Wi‑Fi/pet/sin TACC en copy solo si se confirman para web
+  - Faltantes para landing: archivo/URL de menú, logo vectorial/oficial, fotos liberadas del salón, WhatsApp
 - Review themes (own listing):
   - Volumen fuerte para negocio nuevo: **281 reseñas @ 4,9★**
   - Open: sample textual de reseñas Google no scrapeado en esta pasada (solo score/volumen). VoC cualitativo hoy viene de prensa + captions propios + reseñas de competidores
@@ -101,11 +108,10 @@
 | **Guía Turismo Esquel (categoría)** | Listados café/heladería/fast | Teléfono + IG | Oficial | Confirma que el canal turístico existe; Mesal ya está listada vía IG |
 
 ## Opportunities & gaps
-- **No hay web propia** mientras competidores viven de IG + boca en boca — landing puede ser el hub NAP + oferta + prueba (4,9★) + Cómo llegar
-- Diferenciadores claros vs Charlá (horario partido) y María Castaña (clásico masivo): **nuevo, elaboración propia, accesible al vecino, 08–00, espacio para quedarse, eventos de ciudad**
+- **No hay web propia** — landing = hub NAP + oferta + prueba (4,9★) + **Menú** + **Cómo llegar**
+- Diferenciadores claros vs Charlá (horario partido) y María Castaña (clásico masivo): **nuevo, elaboración propia, accesible al vecino, 08–00, espacio para quedarse, sin TACC / pet / coworking, eventos de ciudad**
 - Prueba social fuerte (4,9★ + prensa + Choco Fest) poco empaquetada fuera de IG
-- Ofertas “sin TACC / pet / coworking” están en prensa pero poco visibles en bio — oportunidad de claridad en la landing **si se confirman**
-- Naming inconsistente (Mesal vs Mesal Café y Bistró vs Mesal café) — elegir uno en H1/title
+- CTA Menú prioriza transparencia de oferta; falta el asset de carta para cablear el botón
 
 ## Voice of Customer (phrases)
 - Praise language (propios / prensa / posicionamiento):
@@ -126,15 +132,17 @@
   - “Sabores que enamoran” (bio — soft; verificar si quieren mantenerlo)
   - “producción propia” / “elaboración propia”
   - “para el vecino de Esquel”
+  - “sin TACC” / “pet friendly” (confirmados)
 
 ## Anti-goals
 - What this landing must not feel like / not claim:
   - Clonar María Castaña o “confitería de siempre”
   - Luxury resort / cabaña turística genérica de brochure patagónico
-  - Inventar menú, precios, WhatsApp o delivery
+  - Inventar precios, WhatsApp o delivery
   - Vender solo Choco Fest (es prueba, no la oferta diaria)
   - Mezclar con identidad de otro cliente del repo (Baterías CABA / Impeccable root)
 
 ## Handoff
-- Ready for `visual-direction`: **no** (pending human confirm)
+- Ready for `visual-direction`: **yes**
 - Persist path: `docs/web-design-skills/clients/mesal/discovery.md`
+- Next skill: `.cursor/skills/visual-direction/`
