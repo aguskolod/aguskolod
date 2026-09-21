@@ -23,11 +23,10 @@ Una sola página. Secciones apiladas, full width. Sin “El día”. Sin “Prue
 
 1. **Nav**
 2. **Hero**
-3. **El lugar** (una foto, una frase)
-4. **Menú**
-5. **Google** (prueba, sin citas inventadas)
-6. **Cómo llegar**
-7. **Footer**
+3. **Menú**
+4. **Google** (prueba, sin citas inventadas)
+5. **Cómo llegar**
+6. **Footer**
 
 ### 1. Nav
 
@@ -50,25 +49,21 @@ Encima, alineado al centro en mobile y un poco a la izquierda en desktop (no un 
 
 El hero ocupa el viewport. En mobile el logo es más chico para que título y botones entren sin cortar los iconos.
 
-### 3. El lugar
+### 3. Menú
 
-No es una sección con título de marketing. Es una foto ancha del salón (distinta a la del hero) y, encima o al lado en desktop, una frase:
+La carta ya existe. En Instagram, el destacado **Menús del día** (31 piezas, menú del día en video):
 
-> Elaboración propia, en el centro de Esquel.
+https://www.instagram.com/stories/highlights/18010815119854340/
 
-Sin grilla de tres. Sin mañana/mediodía/noche. Sin cards.
-
-### 4. Menú
-
-Trabajo de la sección: que la persona vea que hay carta y sepa dónde está.
+El link de la bio es otro: se llama **Dirección** y abre Maps. No es la carta.
 
 - Título: **La carta**
 - Una línea: café, pastelería y platos del día. Sin párrafo de brochure.
-- Foto de un plato, distinta a cualquier otra de la página. En desktop, foto a un lado y texto al otro, sin parecer un split de template (la foto puede ir al ras del borde).
-- Botón **Menú**: hoy no hay archivo de carta. El botón no debe fingir que Instagram es la carta. Baja a esta sección, y acá el estado es honesto: “La carta digital la publicamos acá. Mientras tanto, está en el local.” Link de texto a Instagram, no botón primario.
-- Cuando exista el PDF o la URL, el botón Menú del hero y el de esta sección abren eso.
+- Foto de un plato, distinta a cualquier otra de la página. En desktop, foto a un lado y texto al otro, al ras del borde.
+- Botón **Menú** (hero, nav y esta sección): abre el destacado en una pestaña nueva. Mismo destino en los tres.
+- El perfil `@mesalcafe` queda en el footer, como link de texto. No reemplaza al botón Menú.
 
-### 5. Google
+### 4. Google
 
 Trabajo: prueba, no un widget de testimonios.
 
@@ -77,7 +72,7 @@ Trabajo: prueba, no un widget de testimonios.
 - Sin quotes. Sin slider. Sin “VoC”, “prensa”, “posicionamiento”.
 - Si más adelante hay 2–3 textos reales copiados de Maps, se agregan como frases sueltas, sin card, sin estrellas decorativas por cita, sin flechas.
 
-### 6. Cómo llegar
+### 5. Cómo llegar
 
 Trabajo: ir o llamar.
 
@@ -87,7 +82,7 @@ Trabajo: ir o llamar.
 - Un solo botón fill: **Cómo llegar** (abre Maps).
 - Teléfono como link de texto: **2945 41-3194**. No compite como segundo botón primario.
 
-### 7. Footer
+### 6. Footer
 
 Fondo cacao. Logo, dirección, horario, Instagram, teléfono, Maps. Sin repetir los CTAs grandes.
 
@@ -104,6 +99,7 @@ Permitido, porque está confirmado:
 - 4,9 y 281 en Google
 - Teléfono 2945 41-3194
 - Instagram @mesalcafe
+- Carta: destacado **Menús del día** `https://www.instagram.com/stories/highlights/18010815119854340/`
 
 Prohibido en la página:
 
@@ -121,7 +117,6 @@ Cada imagen se usa una sola vez.
 | Lugar | Foto |
 |---|---|
 | Hero | Salón / barra (`maps-01` o equivalente en `public/assets`) |
-| El lugar | Otra toma del salón o el letrero, no la del hero |
 | Menú | Un plato, no repetido |
 
 Si una foto no muestra lo que dice el bloque, no se usa. La de “noche” actual (mesa de día) no entra.
@@ -130,7 +125,8 @@ Si una foto no muestra lo que dice el bloque, no se usa. La de “noche” actua
 
 - Sección **El día** completa (markup, fotos de esa grilla, copy mañana/mediodía/noche).
 - Slider de reseñas y sus tres citas.
-- Botón “Ver en Instagram” tratado como menú.
+- Sección **El lugar**.
+- Botón “Ver en Instagram” genérico. El botón Menú abre el destacado Menús del día.
 - Cejas en mayúsculas en cada sección.
 - Iconos de amenities dentro de cuadrados.
 - Nav sin logo.
@@ -138,7 +134,8 @@ Si una foto no muestra lo que dice el bloque, no se usa. La de “noche” actua
 
 ## Hecho cuando
 
-- No existe “El día”.
+- No existe “El día” ni “El lugar”.
+- El botón Menú abre el destacado Menús del día.
 - Un visitante nuevo entiende en el primer pantallazo: qué es, hasta qué hora, cómo ver la carta y cómo llegar.
 - Ningún texto parece de un generador de landings.
 - Ninguna foto está repetida.
