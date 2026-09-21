@@ -38,6 +38,7 @@ Cada skill tiene notas con fuentes en [`research/`](research/).
 
 | Skill | Path |
 |---|---|
+| web-design-pipeline | `.cursor/skills/web-design-pipeline/` |
 | web-discovery | `.cursor/skills/web-discovery/` |
 | visual-direction | `.cursor/skills/visual-direction/` |
 | brand-kit-gen | `.cursor/skills/brand-kit-gen/` |
