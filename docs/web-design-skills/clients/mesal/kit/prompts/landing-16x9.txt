@@ -1,18 +1,17 @@
-DESKTOP website mockup, wide 16:9 browser viewport (1920-class landing page), NOT a phone/mobile screenshot, NOT a tall 9:16 app frame.
+Desktop 16:9 website mock for Mesal Café, Esquel, Fontana 769. FIRST ref = official logo exact. Other refs = real café interior for hero photo.
 
-Mesal Café landing — Esquel, Av. Fontana 769. FIRST attached reference = OFFICIAL logo (use exact mark in header/hero). Other refs = real salón interior and food photography to match for the hero background — reuse that interior look as a full-bleed photo, do not invent a different café.
+HERO (keep immersive full-bleed — user approved):
+Full-bleed interior photo background. Logo + "Café & bistró de todo el día." + 08:00–00:00 + sharp CTAs + amenity icons. Primary button Menú fill #533B32. Secondary Cómo llegar fill #E4D2BC (brownish) NOT white/transparent white. No Reservar.
 
-HERO (first viewport, modern):
-- Full-bleed edge-to-edge PHOTO of the café interior as the entire background (barra / salón), covering 100% of the first screen width and height.
-- Soft dark/cacao scrim or gradient only where needed for text contrast — no floating cards, no inset media, no side-panel image, no rounded photo tiles.
-- Over the photo: official logo, one short line "Café & bistró de todo el día.", hours 08:00–00:00, primary CTA "Menú" (filled #533B32) + secondary "Cómo llegar" (outline), plus a small row of near-textless icons (sin TACC / pet / coworking).
-- Text over hero: cream/off-white readable on the photo. Headlines feel like Bodoni Moda; UI like DM Sans.
+PAGE COLORS below hero: background #EFE4D6 warm brownish tan — NOT white, NOT #F6F3EE. Surfaces #E2D2C0.
 
-UI system:
-- Background page #F7F3EC, text #533B32, surface #E9E6DE, gold #A47A33 / terracotta #D85931 accents only.
-- Buttons SHARP rectangular, 0–4px corner radius (almost square). No pills. No soft rounded corners.
-- Flat honest, contemporary café site — not brochure Patagonia stock, not purple glow, not mist-green AI template.
+LAYOUT BELOW HERO — MANDATORY:
+Vertical stack of FULL-WIDTH sections only. One section per row, full browser width, clear separation.
+Show in order scrolling down:
+1) Section "El día" alone full width (mañana / mediodía / noche)
+2) Section "Menú" alone full width (food image + Ver menú)
+3) Top of section "Reseñas" starting (slider)
 
-Below the fold (hint only, still desktop width): "el día" mañana/mediodía/noche; Menú block; reviews as a horizontal SLIDER; Cómo llegar with Av. Fontana 769, Esquel.
+FORBIDDEN: four columns side-by-side under the hero; dashboard grid; white page background.
 
-No invented prices/WhatsApp/city. No "Para quedarte" or static "Prueba" wall. No mobile-centered narrow column.
+Sharp 0–4px corners. Bodoni Moda / DM Sans feel. Desktop browser chrome optional.

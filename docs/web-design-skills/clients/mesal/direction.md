@@ -54,21 +54,23 @@ Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
 |---|---|---|---|
 | Primary (CTA) | `#533B32` | Letras MESAL (median) | Botón **Menú**, links fuertes |
 | Primary hover | `#3F2C25` | darken cacao | Hover/active |
-| On-primary | `#FFFDF8` | campo logo | Texto sobre primary |
+| On-primary | `#F6EDE3` | crema marrón clara | Texto sobre primary (no blanco puro) |
+| Secondary | `#E4D2BC` | madera/crema salón | Fill del botón outline **Cómo llegar**, paneles suaves — **marroncito**, no blanco |
+| Secondary hover | `#D9C4AA` | — | Hover secondary |
 | Text | `#533B32` | cacao logo | Titulares y cuerpo |
 | Text muted | `#6F645C` | — | Meta, horarios |
-| Background | `#F7F3EC` | pared/crema salón | Fondo página (cálido, no brochure cream flat) |
-| Surface | `#E9E6DE` | neutrales salón | Bandas, track del slider, bloques menú |
+| Background | `#EFE4D6` | crema más marrón | Fondo página (menos “blanco”, más cacao claro) |
+| Surface | `#E2D2C0` | — | Bandas de sección, track slider, bloques menú |
 | Interior sage | `#8A877A` | listones / mostrador Maps | Superficie ocasional / icon wells — **del local**, no inventado |
-| Border | `#D4CBC0` | — | Separadores |
+| Border | `#C9B59E` | — | Separadores |
 | Gold | `#A47A33` | taza del logo | Acentos finos, strokes, underline — **no** CTA fill |
 | Star terracotta | `#D85931` | estrellas logo | Bullets / detalle puntual |
 | Jacket orange | `#F4400B` | chaqueta IG | Energía de marca / hover spark / event — **no** CTA fill |
 | Wood (cue) | `#C3A283` | letrero / mesas | Solo en foto o textura sutil, no fill UI masivo |
 
-- Contrast: `#FFFDF8` sobre `#533B32` OK para CTA AA.
-- Regla CTA: **solo cacao**. Oro / terracotta / jacket = acento. Sage = superficie del salón, no “marca verde”.
-- Descartar del kit v1/v2: mist `#EEF1EC` inventado sin evidencia; Bricolage; primary verde; cream genérico sin madera/sage del local.
+- Contrast: `#F6EDE3` sobre `#533B32` OK para CTA AA; texto cacao sobre Secondary `#E4D2BC` OK.
+- Regla CTA: **solo cacao**. Secondary = marrón claro (no blanco). Oro / terracotta / jacket = acento. Sage = superficie del salón, no “marca verde”.
+- Descartar: blanco/off-white `#FFFDF8` / `#F7F3EC` como secundario o fondo de página; mist inventado; Bricolage.
 
 ## Expression
 - Radius / buttons: **sharp** — rectangulares, **0–4px** max (casi sin redondeo). No soft-medium, no pill.
@@ -90,16 +92,19 @@ Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
 ## Section structure
 Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.
 
+**Layout debajo del hero: secciones apiladas a full-width**, una debajo de la otra — **no** grilla de 4 columnas en una sola banda.
+
 1. **Hero (full-bleed)** — foto salón edge-to-edge; encima: logo Mesal + una línea de oferta + CTAs **Menú** / **Cómo llegar** + horario 08–00 + fila de iconos (sin TACC / pet / coworking)
-2. **La oferta del día** — mañana → tarde → noche, elaboración propia
-3. **Menú** — preview / CTA a la carta
-4. **Reseñas (slider)** — carrusel de reseñas (4,9★ / 281)
-5. **Cómo llegar** — Av. Fontana 769 + Maps
+2. **La oferta del día** — sección propia; mañana → tarde → noche, elaboración propia
+3. **Menú** — sección propia; preview / CTA a la carta
+4. **Reseñas (slider)** — sección propia; carrusel de reseñas (4,9★ / 281)
+5. **Cómo llegar** — sección propia; Av. Fontana 769 + Maps
 6. **Footer** — IG, horario, NAP
 
-- Primary CTA: **Menú** en hero + sección Menú; **Cómo llegar** a la par (outline sharp).
+- Primary CTA: **Menú** en hero + sección Menú; secondary **Cómo llegar** = fill `#E4D2BC` + borde/texto cacao (sharp), no blanco.
 - Amenities: solo iconografía en hero, nunca sección titulada ni chips con labels largos.
 - Copy: **Esquel**, Fontana 769 — no inventar ciudad ni claims no confirmados.
+- Anti: mock con 4 columnas iguales bajo el hero; nav “Reservar” inventado.
 
 
 ## Anti-patterns for this brand
@@ -109,6 +114,8 @@ Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.
 - Usar jacket orange / gold como fill del CTA (roba al cacao del logo)
 - Pills + glow + púrpura; botones redondeados / soft radius
 - Hero inset, card de foto, collage, o layout “mobile centered” cuando el deliverable es desktop
+- Debajo del hero: **4 columnas en una sola fila** en lugar de secciones stacked
+- Secundario / fondos en blanco puro o cream casi blanco
 - Brochure patagónico stock; Japandi genérico sin foto del local
 - Landings café “AI sloppy” (bento, chips amenities, testimonials template, ciudad inventada)
 
