@@ -144,6 +144,13 @@ a {
   flex-shrink: 0;
 }
 
+@media (max-width: 799px) {
+  /* Mobile: sin Menú en la esquina — el CTA vive en el hero */
+  .site-header {
+    display: none;
+  }
+}
+
 @media (min-width: 800px) {
   .nav {
     display: flex;
@@ -155,6 +162,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   min-height: 44px;
   padding: 0.7rem 1.25rem;
   border: 1px solid transparent;
@@ -166,6 +174,11 @@ a {
   text-decoration: none;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn svg {
+  flex-shrink: 0;
+  display: block;
 }
 
 .btn-sm {
@@ -210,7 +223,9 @@ a {
 /* Hero */
 .hero {
   position: relative;
+  height: 100svh;
   min-height: 100svh;
+  max-height: 100svh;
   display: grid;
   place-items: center;
   color: var(--on-primary);
@@ -232,9 +247,9 @@ a {
 .hero-scrim {
   background: linear-gradient(
     180deg,
-    rgba(63, 44, 37, 0.45) 0%,
-    rgba(63, 44, 37, 0.55) 45%,
-    rgba(63, 44, 37, 0.72) 100%
+    rgba(32, 20, 14, 0.62) 0%,
+    rgba(32, 20, 14, 0.68) 45%,
+    rgba(32, 20, 14, 0.82) 100%
   );
 }
 
@@ -244,23 +259,92 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: calc(var(--header-h) + 2rem) 0 3rem;
-  gap: 1rem;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 1.5rem 0 2rem;
+  gap: 0.85rem;
+}
+
+@media (min-width: 800px) {
+  .hero-content {
+    padding: calc(var(--header-h) + 1.5rem) 0 2.5rem;
+  }
+}
+
+.hero-brand {
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+/* Soft frost vignette — glass blur that fades out (no hard plate). */
+.hero-brand-frost {
+  position: absolute;
+  inset: -6% -14%;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(40, 28, 22, 0.32);
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 28%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 28%, transparent 72%);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .hero-brand-frost {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(40, 28, 22, 0.55);
+  }
 }
 
 .hero-logo {
-  width: clamp(200px, 34vw, 340px);
+  position: relative;
+  z-index: 1;
+  width: clamp(210px, 36vw, 360px);
   height: auto;
   border-radius: 0;
   padding: 0;
   background: none;
-  /* contraste natural: halo crema difuminado que sigue la forma del mark, sin placa lisa */
-  filter:
-    drop-shadow(0 0 1px rgba(246, 237, 227, 1))
-    drop-shadow(0 0 8px rgba(246, 237, 227, 0.85))
-    drop-shadow(0 0 22px rgba(246, 237, 227, 0.55))
-    drop-shadow(0 8px 24px rgba(32, 20, 14, 0.35));
+  filter: drop-shadow(0 6px 18px rgba(20, 12, 8, 0.4));
+}
+
+/* Soft living glow — subtle breathe, not a flashy loop */
+.hero-logo-glow {
+  position: absolute;
+  inset: 8% 12%;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(246, 237, 227, 0.28) 0%,
+    rgba(220, 185, 110, 0.12) 42%,
+    transparent 70%
+  );
+  animation: logo-glow-breathe 5.5s ease-in-out infinite;
+}
+
+@keyframes logo-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-glow {
+    animation: none;
+    opacity: 0.7;
+  }
 }
 
 .hero-title {
