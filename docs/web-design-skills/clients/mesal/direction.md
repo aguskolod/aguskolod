@@ -2,9 +2,10 @@
 
 ## Status
 - Discovery source: docs/web-design-skills/clients/mesal/discovery.md
-- Confirmed by human: no
+- Confirmed by human: **yes** (2026-09-21)
 - Stack: web-design-skills · skill `visual-direction`
 - Date proposed: 2026-09-21
+- Confirmed with: estructura sin Prueba/Para quedarte; reseñas en slider; amenities por simbología en hero
 
 ## Personality
 - Adjectives (3–5): **cálida**, **contemporánea**, **artesanal**, **vecinal**, **acogedora**
@@ -86,5 +87,5 @@ Orden de mensaje (no layout pixel). **Sin** secciones “Prueba” ni “Para qu
 Misma estructura y roles de color, pero tipografía **Fraunces + Source Sans 3** y radius un poco más suave (14px). Feeling más carta de domingo; menos contemporáneo.
 
 ## Handoff
-- Ready for `brand-kit-gen`: no (pending confirm)
+- Ready for `brand-kit-gen`: **yes**
 - Persist path: `docs/web-design-skills/clients/mesal/direction.md`
