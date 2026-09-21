@@ -96,8 +96,8 @@
 |---|---|---|---|---|
 | **Charlá Café** (25 de Mayo; 4,5★ / 617) | Café specialty-feeling; merienda, sándwiches, pastelería; horario partido (cierra domingo) | IG como “web”; no sitio propio claro | Muchas reseñas; #1 en listados tipo Restaurant Guru | **Match:** calidad café/merienda. **Avoid:** horarios cortados; Mesal gana en “todo el día + noche” |
 | **María Castaña** (25 de Mayo 609; 4,2★ / ~3.7k) | Clásico confitería-restobar todo el día → noche; waffles/café + minutas | Llamar / IG; muy asentado | Volumen enorme de reseñas | **Match:** amplitud horaria. **Avoid:** “clásico saturado / ruidoso / caro” de algunas reseñas; Mesal debe sentirse más nuevo, propio y de vecino |
-| **PilPil – Sabores de la Patagonia** (Rivadavia 1005; ~4,3★) | Café + desayuno/almuerzo + postres; ángulo patagónico | IG / Maps | Menos volumen | **Avoid:** copiar framing “sabores patagónicos” genérico; Mesal tiene historia de producción propia + comunidad |
-| **Dulzuras de Esquel** (chocolate/artesanal) | Especialista dulce / chocolate | Local / producto | Nicho chocolate | **Match** solo en eventos chocolate; **no** competir como chocolatería — Choco Fest es prueba de comunidad, no el core diario |
+| **PilPil – Sabores de la Patagonia** (Sarmiento 799; 4,3★ / 1.050) | Restaurante/café día–noche; ángulo patagónico; FB como web | Facebook / Maps | Alto volumen de reseñas | **Avoid:** framing “sabores patagónicos” genérico; Mesal tiene producción propia + comunidad |
+| **Dulzuras de Esquel** (Sarmiento 590; 4,3★ / 496) | Chocolatería artesanal + pastelería; sí tiene sitio web | Web propia | Nicho chocolate | **Match** solo en eventos chocolate; **no** competir como chocolatería — Choco Fest es prueba de comunidad, no el core diario. Nota: es de los pocos del rubro con web |
 | **Guía Turismo Esquel (categoría)** | Listados café/heladería/fast | Teléfono + IG | Oficial | Confirma que el canal turístico existe; Mesal ya está listada vía IG |
 
 ## Opportunities & gaps
