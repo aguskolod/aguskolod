@@ -1,0 +1,22 @@
+---
+description: Route local-business client landings to the web-design-skills stack, not Impeccable
+alwaysApply: true
+---
+
+# Web-design-skills stack (not Impeccable)
+
+When the user is working on a **client landing / local business site** (Instagram/Maps discovery, brand direction, fonts/colors, brand kit, build, QA) — including names like Mesal, Baterías, or “nuevo cliente” — use the **web-design-skills** stack:
+
+`web-discovery` → `visual-direction` → `brand-kit-gen` → `landing-build` (+ `landing-craft`) → `landing-qa`
+
+Guide: `docs/web-design-skills/PIPELINE.md`  
+Client briefs live only under `docs/web-design-skills/clients/<slug>/`.
+
+## Hard rules
+
+1. **Do not use Impeccable** for this pipeline unless the user explicitly says `/impeccable` or “usá Impeccable”.
+2. **Do not treat root `PRODUCT.md` / `DESIGN.md` as the current client.** Those may belong to another project (e.g. Baterías CABA). For Mesal (or any new client), only read `docs/web-design-skills/clients/<slug>/`.
+3. After discovery is confirmed, the next skill is **`visual-direction`** (`.cursor/skills/visual-direction/`), **not** Impeccable `new-work` / concept-seed / decision page.
+4. Brand kits use **`brand-kit-gen`** + OpenRouter — not Higgsfield / Impeccable visualize — unless the user asks otherwise.
+
+If unsure which stack: ask once — “¿Seguimos con web-design-skills o con Impeccable?” — default answer for client landings is **web-design-skills**.

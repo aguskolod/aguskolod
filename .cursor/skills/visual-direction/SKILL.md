@@ -1,6 +1,6 @@
 ---
 name: visual-direction
-description: Use when a confirmed discovery brief exists and the user needs visual direction for a local-business landing — typography, color roles, button radius, motion, imagery style, and section structure. Also use when choosing fonts or a brand look from audience/personality, when the brand has weak or no identity guidelines, or before generating a brand kit or writing page HTML/CSS.
+description: Use in the web-design-skills stack when docs/web-design-skills/clients/<slug>/discovery.md is confirmed and the user needs visual direction for that client landing — typography, fonts, color roles, button radius, motion, imagery, section structure. Also use after Instagram/Maps discovery when they ask what comes next, or before brand-kit-gen. This is NOT Impeccable new-work, concept-seed, or decision page; do not read root PRODUCT.md/DESIGN.md for a different client.
 ---
 
 # Visual Direction
@@ -9,7 +9,9 @@ description: Use when a confirmed discovery brief exists and the user needs visu
 
 **REQUIRED BACKGROUND:** Confirmed `docs/web-design-skills/clients/<slug>/discovery.md`. If missing or unconfirmed → run `web-discovery` first.
 
-**REQUIRED NEXT:** After human confirms direction → `brand-kit-gen` (visualize) then `landing-build`.
+**NOT Impeccable:** Do not run Impeccable `init`, `new-work`, concept-seed, or decision page. Do not use root `PRODUCT.md` / `DESIGN.md` unless they belong to this same `<slug>`.
+
+**REQUIRED NEXT:** After human confirms direction → `brand-kit-gen` (OpenRouter) then `landing-build`.
 
 ## When to use
 

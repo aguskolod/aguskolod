@@ -1,6 +1,6 @@
 ---
 name: landing-craft
-description: Use while building or creatively editing a local-business landing page — hierarchy, primary CTA, spacing, mobile tap targets, anti-patterns, and Nielsen-style usability. Also use when the user asks to move buttons, add sections, or polish layout and you must avoid nonsensical placement or competing CTAs.
+description: Use with the web-design-skills stack while building or creatively editing a local-business client landing — hierarchy, primary CTA, spacing, mobile tap targets, anti-patterns, Nielsen-style usability. Also use when the user asks to move buttons, add sections, or polish layout without nonsensical placement or competing CTAs.
 ---
 
 # Landing Craft

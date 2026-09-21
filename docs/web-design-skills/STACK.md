@@ -19,6 +19,7 @@ Guiar el trabajo de diseño web sin autonomía total: el humano ingresa cliente/
 
 | Skill | Rol |
 |---|---|
+| `web-design-pipeline` | Router: qué skill sigue; bloquea Impeccable en este flujo |
 | `web-discovery` | Discovery / competitive + social audit |
 | `visual-direction` | Brand → web system (type, color, radius, motion, assets, IA) |
 | `brand-kit-gen` | Visualizar dirección con image gen |

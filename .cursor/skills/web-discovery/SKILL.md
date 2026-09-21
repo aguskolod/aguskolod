@@ -1,6 +1,6 @@
 ---
 name: web-discovery
-description: Use when starting a new local-business website or landing, when the user provides a client name plus social/Maps links, or when visual/brand work is requested but there is no confirmed discovery brief yet. Also use when the user says they do not know where to start, need competitor or review research, or asks to analyze a client's Instagram, Facebook, or Google Business Profile before designing.
+description: Use when starting or continuing the web-design-skills stack for a local-business client landing (e.g. Mesal), when the user provides a client name plus Instagram/Facebook/Maps links, or when visual/brand work is requested but docs/web-design-skills/clients/<slug>/discovery.md is missing or unconfirmed. Also use for competitor or review research before designing. Prefer this over Impeccable for client landings; do not use Impeccable init or PRODUCT.md from another client.
 ---
 
 # Web Discovery

@@ -1,6 +1,6 @@
 ---
 name: brand-kit-gen
-description: Use after a confirmed visual-direction brief when the user wants a brand board, style tile, or 9:16 landing sketch via OpenRouter image generation (GPT Image). Also use when iterating mockups from an approved direction before writing HTML/CSS.
+description: Use in the web-design-skills stack after confirmed direction.md when the user wants a brand board, style tile, or 9:16 landing sketch via OpenRouter GPT Image. Also use when iterating those mocks before HTML/CSS. Prefer this over Impeccable visualize or Higgsfield for this pipeline unless the user asks otherwise.
 ---
 
 # Brand Kit Gen

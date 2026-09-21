@@ -1,6 +1,6 @@
 ---
 name: landing-build
-description: Use when implementing a local-business landing in HTML/CSS (or the project stack) after discovery and visual direction are confirmed, preferably after an approved brand kit. Also use when turning an approved direction into a working page without inventing new brand rules.
+description: Use in the web-design-skills stack when implementing a local-business client landing in HTML/CSS after discovery and direction are confirmed under docs/web-design-skills/clients/<slug>/, preferably after an approved brand kit. Prefer this over Impeccable craft/new-work for that client pipeline.
 ---
 
 # Landing Build

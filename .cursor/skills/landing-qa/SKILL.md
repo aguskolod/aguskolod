@@ -1,6 +1,6 @@
 ---
 name: landing-qa
-description: Use before presenting or shipping a local-business landing — responsive checks, CTA/link verification, basic accessibility contrast and headings, and fidelity to the confirmed visual direction. Also use when the user asks for QA, launch checklist, or a final pass.
+description: Use in the web-design-skills stack before presenting or shipping a local-business client landing — responsive checks, CTA/links, basic a11y, and fidelity to docs/web-design-skills/clients/<slug>/direction.md. Also use for QA, launch checklist, or a final pass on that stack.
 ---
 
 # Landing QA
