@@ -12,8 +12,15 @@ Guiar el trabajo de diseño web sin autonomía total: el humano ingresa cliente/
 2. **`web-discovery`**: brief de cliente/audiencia/oferta/CTA + insights.
 3. **`visual-direction`**: sistema visual + expression rules + estructura de secciones.
 4. **`brand-kit-gen`**: brand board + boceto 9:16 (OpenRouter / GPT Image).
-5. **`landing-build`**: implementar la web (con **`landing-craft`** activo en edits).
+5. **`landing-build`**: implementar en **Astro** (CSS variables desde direction; con **`landing-craft`** en edits).
 6. **`landing-qa`**: checklist técnico + fidelidad a la dirección.
+
+## Build default
+
+- **Framework:** Astro (static)
+- **Style:** CSS + tokens de `direction.md` (no Tailwind por defecto)
+- **Path:** `docs/web-design-skills/clients/<slug>/site/`
+- Override solo si el humano lo pide.
 
 ## Skills
 
@@ -24,7 +31,7 @@ Guiar el trabajo de diseño web sin autonomía total: el humano ingresa cliente/
 | `visual-direction` | Brand → web system (type, color, radius, motion, assets, IA) |
 | `brand-kit-gen` | Visualizar dirección con image gen |
 | `landing-craft` | Guidelines de craft durante build/correcciones |
-| `landing-build` | Implementación fiel al brief + kit |
+| `landing-build` | Implementación Astro fiel al brief + kit |
 | `landing-qa` | QA de cierre |
 
 ## Autoría

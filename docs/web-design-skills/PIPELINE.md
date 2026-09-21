@@ -19,7 +19,7 @@ Hay una regla always-on en `.cursor/rules/web-design-skills.mdc` que fuerza este
 2. **`web-discovery`** — brief en `docs/web-design-skills/clients/<slug>/discovery.md` → **vos confirmás**.
 3. **`visual-direction`** — tipografía, color, expression, estructura → `direction.md` → **vos confirmás**. **No** es Impeccable new-work.
 4. **`brand-kit-gen`** — brand board + boceto 9:16 (OpenRouter). Requiere `OPENROUTER_API_KEY`. Modelo default: `openai/gpt-image-2.5-sunburst` (override: `OPENROUTER_IMAGE_MODEL`). → **vos aprobás o pedís cambios**.
-5. **`landing-build`** (+ **`landing-craft`** en cada edit) — HTML/CSS fiel al brief.
+5. **`landing-build`** (+ **`landing-craft`** en cada edit) — **Astro** + CSS variables desde `direction.md`, en `clients/<slug>/site/`.
 6. **`landing-qa`** — checklist → `qa.md`.
 
 ## Gates
