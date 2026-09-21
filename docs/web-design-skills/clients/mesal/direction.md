@@ -86,7 +86,12 @@ Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
   5. Choco Fest = prueba comunitaria puntual, **no** hero permanente
 - Texturas opcionales (sutiles): listones verticales; piso geométrico semicircular — como atmósfera, no patrón ruidoso
 - Icon style (amenities): iconos claros + **label corto** (Sin TACC / Pet friendly / Cowork) — lineales; no chips
-- Logo treatment: **PNG** transparente (`logo.png`), más grande en hero; contraste con **halo crema difuminado** (`drop-shadow` que sigue la forma) — sin círculo ni placa lisa; no en el nav
+- Logo treatment (premium):
+  - Asset: `logo-light.png` — **knockout claro** del mark (cacao → crema) para heroes oscuros; patrón editorial de marca sobre foto
+  - Contraste: **frost vignette** (`backdrop-filter: blur` + máscara radial que se desvanece) — no placa lisa ni círculo duro
+  - Refs: [MDN backdrop-filter](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter), [Chrome frosted glass / prefers-reduced-transparency](https://developer.chrome.com/blog/css-prefers-reduced-transparency)
+  - Tamaño hero grande; no logo en el nav
+  - Fallback cacao: `logo.png` (oscuro) para fondos claros (footer)
 - Nav: **fixed**; transparente sobre el hero; fondo crema al scrollear (`is-scrolled`). Sin logo en la barra.
 
 ## Section structure
