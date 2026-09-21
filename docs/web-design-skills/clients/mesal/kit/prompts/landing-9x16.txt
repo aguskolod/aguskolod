@@ -1,0 +1,26 @@
+Mobile-first UI design sketch (9:16) of a local café landing page — cohesive art-directed mock, NOT a generic AI café template, NOT bento grids, NOT pill clusters, NOT purple glow, NOT cream+terracotta+serif cliché, NOT Patagonia tourism brochure.
+
+Brand: Mesal Café. City: Esquel, Chubut. Personality: warm, contemporary, artisan, neighborhood, welcoming.
+
+Visual system (must match):
+- Background #EEF1EC, text #1C2420, muted #5C675F
+- Primary CTA fill #4A2C20 with label color #F7F4EF, button radius ~12px (soft-medium, not pill)
+- Secondary CTA outline "Cómo llegar" in #1C2420
+- Accent sage #6B8F71 only for tiny icon strokes, never as big CTA
+- Display typography character of Bricolage Grotesque; body like Source Sans 3
+- Flat honest UI, airy-moderate spacing, subtle elevation only
+
+First viewport (hero) must include:
+- Brand name "Mesal Café" as hero-level wordmark (not tiny nav-only)
+- One short offer line in Spanish: "Café & bistró de todo el día, para quedarte."
+- Hours hint: 08:00–00:00
+- Two CTAs: primary "Menú", secondary "Cómo llegar"
+- A small row of near-textless line icons (sin TACC / pet / coworking) — symbology only, no chip labels
+
+Below the fold (hint only, scrolled peek):
+- A section suggesting "el día" (morning coffee / pastry / night) with real food photography mood
+- A Menú section block
+- A horizontal reviews SLIDER (carousel cards with short Spanish review snippets) — not a static testimonial wall titled "Prueba"
+- A Cómo llegar block with "Av. Fontana 769"
+
+Do NOT invent prices, WhatsApp, discounts, or fake awards. Do NOT invent a "Para quedarte" amenities section. Real photography mood of café food/interior — no stock glacier cabins.

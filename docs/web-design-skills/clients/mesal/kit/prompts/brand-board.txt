@@ -1,0 +1,20 @@
+Design a clean brand board / style tile for a local café website identity — NOT a full website screenshot, NOT a bento-grid AI landing template.
+
+Brand: Mesal Café (Esquel, Patagonia Argentina). Personality: warm, contemporary, artisan, neighborhood, welcoming. Differentiate from generic tourist Patagonia brochure and from classic confitería clichés.
+
+Show clearly labeled sections on one 16:9 board:
+1) Color palette swatches with exact hex labels visible:
+   - Primary CTA #4A2C20 (cacao)
+   - On-primary #F7F4EF
+   - Text #1C2420
+   - Text muted #5C675F
+   - Background #EEF1EC (cool mist / stone morning light)
+   - Surface #E2E7E1
+   - Border #C5CEC6
+   - Accent #6B8F71 (sage, details only — not the CTA)
+2) Typography specimens: display face Bricolage Grotesque showing the wordmark "Mesal Café"; body face Source Sans 3 showing a Spanish sentence: "Café & bistró de todo el día, para quedarte." Name both fonts on the board.
+3) Component samples: a filled primary button labeled "Menú" with soft-medium ~12px corner radius (NOT a pill); an outline secondary button labeled "Cómo llegar".
+4) Icon symbology row (almost no text): three simple custom line icons representing gluten-free / sin TACC, pet friendly, and coworking-reading space — no pill chips, no emoji, no long labels.
+5) Imagery mood: one small real-feeling photo crop of artisan pastry or coffee on a table — natural light, no stock cabin/glacier postcard, no purple glow, no terracotta-on-cream AI look, no neon.
+
+Flat honest presentation, airy-moderate density, muted mist background #EEF1EC. Professional design-system board, not a marketing poster.
