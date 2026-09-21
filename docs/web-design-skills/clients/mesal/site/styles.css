@@ -250,11 +250,17 @@ a {
 }
 
 .hero-logo {
-  width: clamp(148px, 22vw, 220px);
+  width: clamp(200px, 34vw, 340px);
   height: auto;
   border-radius: 0;
-  padding: 0.65rem 0.85rem;
-  background-color: rgba(246, 237, 227, 0.92);
+  padding: 0;
+  background: none;
+  /* contraste natural: halo crema difuminado que sigue la forma del mark, sin placa lisa */
+  filter:
+    drop-shadow(0 0 1px rgba(246, 237, 227, 1))
+    drop-shadow(0 0 8px rgba(246, 237, 227, 0.85))
+    drop-shadow(0 0 22px rgba(246, 237, 227, 0.55))
+    drop-shadow(0 8px 24px rgba(32, 20, 14, 0.35));
 }
 
 .hero-title {
