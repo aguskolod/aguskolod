@@ -86,7 +86,7 @@ Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
   5. Choco Fest = prueba comunitaria puntual, **no** hero permanente
 - Texturas opcionales (sutiles): listones verticales; piso geométrico semicircular — como atmósfera, no patrón ruidoso
 - Icon style (amenities): iconos claros + **label corto** (Sin TACC / Pet friendly / Cowork) — lineales; no chips
-- Logo treatment: **PNG** (`logo.png` / `logo-on-cream.png`) sobre disco crema para contraste en hero full-bleed; no en el nav
+- Logo treatment: **PNG** transparente (`logo.png`) sobre placa crema rectangular sharp (no círculo) para contraste en hero; no en el nav
 - Nav: **fixed**; transparente sobre el hero; fondo crema al scrollear (`is-scrolled`). Sin logo en la barra.
 
 ## Section structure
