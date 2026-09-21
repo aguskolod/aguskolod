@@ -253,10 +253,7 @@ a {
   width: clamp(148px, 22vw, 220px);
   height: auto;
   border-radius: 0;
-  background: transparent;
   padding: 0.65rem 0.85rem;
-  /* contraste sin círculo: placa crema rectangular sharp */
-  box-shadow: none;
   background-color: rgba(246, 237, 227, 0.92);
 }
 
@@ -547,10 +544,11 @@ a {
 }
 
 .footer-brand img {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  width: 64px;
+  height: auto;
+  border-radius: 0;
   background: var(--on-primary);
+  padding: 0.25rem 0.35rem;
 }
 
 .footer-brand strong {
