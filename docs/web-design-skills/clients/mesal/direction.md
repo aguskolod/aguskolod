@@ -37,15 +37,15 @@ El display de marca **es el logo**. Titulares HTML: Didone cercana al wordmark. 
 
 ### Recommended
 - Brand mark: logo IG (no tipografía sustituta del nombre)
-- Display (H1/H2 de sección): **Bodoni Moda** (Google Fonts) — Didone real, alto contraste; acompaña MESAL sin pelear
-- Body / UI / botones: **DM Sans** (Google Fonts) — geométrica limpia, buena ñ, cercana al arco del logo
-- Why: Source Serif 4 es *transitional*, no Didone → se veía “otra marca”. Bodoni Moda = misma categoría que el mark. DM Sans = UI moderna del salón (menú board sans del local).
+- Display (H1/H2 de sección): **Source Serif 4** (Google Fonts) — serif legible; Bodoni Moda descartada por legibilidad en web
+- Body / UI / botones: **DM Sans** (Google Fonts)
+- Why: el logo sigue siendo el Didone de marca; en HTML preferimos lectura clara sobre contraste tipográfico extremo.
 - Weights: Display 600–700; Body 400/500/600
 - Mental test: logo MESAL + “Café & bistró de todo el día.” + botones **Menú** / **Cómo llegar**
 
 ### Alternatives (1–2)
-1. Display **Libre Bodoni** + body DM Sans — Didone más compacta.
-2. Display Bodoni Moda + body **Montserrat** — más “café menú board”; solo si DM Sans se siente fría.
+1. Display **Lora** + body DM Sans — un poco más redonda.
+2. Display **Libre Baskerville** + body DM Sans — más clásica.
 
 ## Color roles
 Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
@@ -85,9 +85,9 @@ Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
   4. **Gente / chaqueta** — vecinal, proceso (post-1, post-3)
   5. Choco Fest = prueba comunitaria puntual, **no** hero permanente
 - Texturas opcionales (sutiles): listones verticales; piso geométrico semicircular — como atmósfera, no patrón ruidoso
-- Icon style (amenities): **simbología casi sin texto** — lineales; stroke cacao/cream sobre foto o gold; no chips, no emoji
-- Logo treatment: logo real sobre el hero (claro sobre scrim o versión legible); proporciones intactas; no recolorear
-- Viewport de kit: boceto principal **desktop 16:9** (navegador ancho); mobile solo si se pide aparte
+- Icon style (amenities): iconos claros + **label corto** (Sin TACC / Pet friendly / Cowork) — lineales; no chips
+- Logo treatment: **PNG** (`logo.png` / `logo-on-cream.png`) sobre disco crema para contraste en hero full-bleed; no en el nav
+- Nav: **fixed**; transparente sobre el hero; fondo crema al scrollear (`is-scrolled`). Sin logo en la barra.
 
 ## Section structure
 Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.

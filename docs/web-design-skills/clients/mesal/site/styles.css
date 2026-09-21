@@ -13,7 +13,7 @@
   --gold: #a47a33;
   --terracotta: #d85931;
   --radius: 2px;
-  --font-display: "Bodoni Moda", Georgia, serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --wrap: min(1120px, calc(100% - 2.5rem));
   --header-h: 4rem;
@@ -94,32 +94,34 @@ a {
 
 /* Header */
 .site-header {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
-  z-index: 20;
+  z-index: 40;
   color: var(--on-primary);
+  background: transparent;
+  transition: background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(239, 228, 214, 0.94);
+  color: var(--text);
+  box-shadow: 0 1px 0 var(--border);
+  backdrop-filter: blur(8px);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 1rem;
   min-height: var(--header-h);
   padding-block: 0.75rem;
 }
 
-.header-brand img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  background: var(--on-primary);
-}
-
 .nav {
   display: none;
   gap: 1.25rem;
-  margin-left: auto;
+  margin-right: auto;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -128,7 +130,7 @@ a {
 
 .nav a {
   text-decoration: none;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .nav a:hover,
@@ -139,15 +141,12 @@ a {
 }
 
 .header-cta {
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 @media (min-width: 800px) {
   .nav {
     display: flex;
-  }
-  .header-cta {
-    margin-left: 0;
   }
 }
 
@@ -251,21 +250,24 @@ a {
 }
 
 .hero-logo {
-  width: clamp(112px, 18vw, 160px);
+  width: clamp(128px, 20vw, 176px);
   height: auto;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(246, 237, 227, 0.25);
+  background: #f6ede3;
+  padding: 0.35rem;
+  box-shadow:
+    0 0 0 3px rgba(246, 237, 227, 0.55),
+    0 12px 32px rgba(32, 20, 14, 0.35);
 }
 
 .hero-title {
   margin: 0.5rem 0 0;
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  max-width: 14ch;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  max-width: 16ch;
 }
 
 .hero-hours {
@@ -286,20 +288,42 @@ a {
 .amenities {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
-  margin: 1.25rem 0 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem 1.75rem;
+  margin: 1.5rem 0 0;
   padding: 0;
   color: var(--on-primary);
 }
 
 .amenities li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 4.5rem;
+}
+
+.amenities .amenity-icon {
   display: grid;
   place-items: center;
-  opacity: 0.92;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(246, 237, 227, 0.55);
+  border-radius: var(--radius);
+  background: rgba(63, 44, 37, 0.28);
 }
 
 .amenities svg {
   display: block;
+}
+
+.amenities span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.95;
 }
 
 /* Sections */
