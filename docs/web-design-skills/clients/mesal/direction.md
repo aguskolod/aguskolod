@@ -3,9 +3,10 @@
 ## Status
 - Discovery source: `docs/web-design-skills/clients/mesal/discovery.md`
 - Confirmed by human (estructura / CTAs / amenities): **yes** (2026-09-21)
-- **Identity rebuild (2026-09-21):** reescrito desde logo IG medido + posts IG + fotos Google Maps del local. **Pendiente confirmación** antes de regenerar kit/mockup.
-- Stack: web-design-skills · skill `visual-direction` → (luego) `brand-kit-gen`
-- Confirmed with: sin secciones Prueba/Para quedarte; reseñas en slider; amenities por simbología en hero
+- **Identity rebuild (2026-09-21):** reescrito desde logo IG medido + posts IG + fotos Google Maps del local. **Confirmado humano** (+ ajustes expression/hero).
+- Stack: web-design-skills · skill `visual-direction` → `brand-kit-gen`
+- Confirmed with: sin secciones Prueba/Para quedarte; reseñas en slider; amenities por simbología en hero; **UI sharp** (botones rectangulares); **hero full-bleed** foto + texto encima; mock **desktop 16:9** (no mobile-first sketch)
+
 
 ## Evidence (fuentes de identidad)
 | Fuente | Path / id | Qué aporta |
@@ -70,47 +71,53 @@ Medidos del logo (Pillow, regiones) + chaqueta IG + materiales Maps.
 - Descartar del kit v1/v2: mist `#EEF1EC` inventado sin evidencia; Bricolage; primary verde; cream genérico sin madera/sage del local.
 
 ## Expression
-- Radius / buttons: **soft-medium** (~10–12px) — como mesas/marco menú del salón; no pill
+- Radius / buttons: **sharp** — rectangulares, **0–4px** max (casi sin redondeo). No soft-medium, no pill.
 - Density: **airy-moderado**
 - Borders / elevation: **flat honest**; luz cálida en fotos, no glow UI
 - Motion: **sutil** (+ `prefers-reduced-motion` en build) — fade/slide del slider de reseñas; hover CTA suave
+- Hero layout: **full-bleed photo background** + texto/CTAs encima (overlay moderno). Gradiente/scrim oscuro o cacao suave solo para legibilidad — no cards flotantes, no hero inset, no media en columna lateral.
 - Imagery (prioridad):
-  1. **Salón Maps** — barra + máquina + vitrina + menú backlight (maps-01)
+  1. **Salón Maps** — barra + máquina + vitrina + menú backlight (maps-01) — preferido como fondo de hero
   2. **Platos** — brunch/café (maps-04, maps-06, maps-03)
   3. **Letrero / logo físico** — madera + backlight (post-2, maps-05, maps-07)
   4. **Gente / chaqueta** — vecinal, proceso (post-1, post-3)
   5. Choco Fest = prueba comunitaria puntual, **no** hero permanente
 - Texturas opcionales (sutiles): listones verticales; piso geométrico semicircular — como atmósfera, no patrón ruidoso
-- Icon style (amenities): **simbología casi sin texto** — lineales; stroke cacao o gold; no chips, no emoji
-- Logo treatment: claro sobre fondo claro; proporciones intactas; no recolorear
+- Icon style (amenities): **simbología casi sin texto** — lineales; stroke cacao/cream sobre foto o gold; no chips, no emoji
+- Logo treatment: logo real sobre el hero (claro sobre scrim o versión legible); proporciones intactas; no recolorear
+- Viewport de kit: boceto principal **desktop 16:9** (navegador ancho); mobile solo si se pide aparte
 
 ## Section structure
 Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.
 
-1. **Hero** — logo Mesal + oferta + CTAs **Menú** / **Cómo llegar** + horario 08–00 + fila de iconos (sin TACC / pet / coworking) + ancla visual salón o plato real
+1. **Hero (full-bleed)** — foto salón edge-to-edge; encima: logo Mesal + una línea de oferta + CTAs **Menú** / **Cómo llegar** + horario 08–00 + fila de iconos (sin TACC / pet / coworking)
 2. **La oferta del día** — mañana → tarde → noche, elaboración propia
 3. **Menú** — preview / CTA a la carta
 4. **Reseñas (slider)** — carrusel de reseñas (4,9★ / 281)
 5. **Cómo llegar** — Av. Fontana 769 + Maps
 6. **Footer** — IG, horario, NAP
 
-- Primary CTA: **Menú** en hero + sección Menú; **Cómo llegar** a la par.
+- Primary CTA: **Menú** en hero + sección Menú; **Cómo llegar** a la par (outline sharp).
 - Amenities: solo iconografía en hero, nunca sección titulada ni chips con labels largos.
 - Copy: **Esquel**, Fontana 769 — no inventar ciudad ni claims no confirmados.
+
 
 ## Anti-patterns for this brand
 - Reemplazar el logo IG por wordmark tipográfico inventado (Bricolage, hoja, etc.)
 - Display **transitional** (Source Serif 4) o Inter/Roboto/Arial como voz de marca
 - Paleta mist/sage **inventada** sin anclar al salón; o al revés: teñir toda la web de verde
 - Usar jacket orange / gold como fill del CTA (roba al cacao del logo)
-- Pills + glow + púrpura; brochure patagónico stock; Japandi genérico sin foto del local
+- Pills + glow + púrpura; botones redondeados / soft radius
+- Hero inset, card de foto, collage, o layout “mobile centered” cuando el deliverable es desktop
+- Brochure patagónico stock; Japandi genérico sin foto del local
 - Landings café “AI sloppy” (bento, chips amenities, testimonials template, ciudad inventada)
+
 - Sección “Para quedarte” / “Prueba” estática
 - Inventar precios o WhatsApp
 - Hero solo Choco Fest / barra de chocolate
 - PRODUCT.md / DESIGN.md de otro cliente
 
 ## Handoff
-- Ready for `brand-kit-gen`: **no** — esperar confirmación humana de este rebuild
-- Cuando confirmes: regenerar brand-board + landing-9x16 con `input_references` = logo + ≥1 Maps salón + ≥1 plato + post chaqueta; prompts deben citar hex y Bodoni Moda / DM Sans
+- Ready for `brand-kit-gen`: **yes** (confirmado 2026-09-21 — sharp + hero full-bleed + desktop)
+- Kit: brand-board 16:9 + **landing-16x9** (desktop). Refs: logo + Maps salón + plato + chaqueta. Hex + Bodoni Moda / DM Sans + radius 0–4px.
 - Persist path: `docs/web-design-skills/clients/mesal/direction.md`

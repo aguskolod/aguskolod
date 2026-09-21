@@ -1,14 +1,14 @@
-Brand board / style tile for Mesal Café (Esquel). The FIRST attached reference image is the OFFICIAL Instagram logo — use it VERBATIM as the brand mark on the board. Do not redraw, restyle, or replace it with another wordmark or leaf/berry icon.
+Brand board / style tile for Mesal Café (Esquel, Chubut). FIRST attached reference = OFFICIAL Instagram logo — place it VERBATIM. Do not redraw or replace with another wordmark.
 
-Personality: warm, contemporary, artisan, neighborhood, welcoming.
+Personality: warm, contemporary, artisan, neighborhood, welcoming. Sharp modern UI (not soft/rounded).
 
 Show on one 16:9 board:
-1) Official logo placed large and clear (exact artwork from reference).
-2) Color swatches with hex labels derived from that logo:
-   Primary CTA #3D2A1F, On-primary #FFFDF9, Text #3D2A1F, Text muted #6B5E52, Background #FFFDF9, Surface #F3EEE6, Border #D9D0C4, Gold #B8954A, Star orange #D4783A.
-3) Typography note: brand mark = official logo; section headlines Source Serif 4; body Source Sans 3. Show specimen text: "Café & bistró de todo el día."
-4) Buttons: filled "Menú" (#3D2A1F, ~12px radius, not pill) and outline "Cómo llegar".
-5) Three near-textless line icons (sin TACC / pet / coworking) in cacao or gold stroke — no chips, no emoji.
-6) Optional small mood crop from café photography — natural food/interior, no glacier brochure, no purple glow, no mist-green AI palette.
+1) Official logo large and clear (exact artwork from reference).
+2) Color swatches with hex labels:
+   Primary CTA #533B32, On-primary #FFFDF8, Text #533B32, Text muted #6F645C, Background #F7F3EC, Surface #E9E6DE, Interior sage #8A877A, Border #D4CBC0, Gold #A47A33, Star terracotta #D85931, Jacket orange #F4400B (accent only).
+3) Typography: brand mark = official logo; section headlines Bodoni Moda (Didone); body/UI DM Sans. Specimen: "Café & bistró de todo el día."
+4) Buttons SHARP rectangular (0–4px radius, almost square corners): filled "Menú" (#533B32 / #FFFDF8) and outline "Cómo llegar". NO pills, NO soft 12px radius.
+5) Three near-textless line icons (sin TACC / pet / coworking) — cacao or gold stroke, no chips.
+6) Small mood crops: café interior / food — natural, no glacier brochure, no purple glow.
 
-Flat honest style tile, not a website screenshot, not a bento AI template.
+Flat honest style tile, not a website screenshot, not AI bento template.

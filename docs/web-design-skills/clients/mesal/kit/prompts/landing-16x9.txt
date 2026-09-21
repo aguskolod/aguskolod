@@ -1,0 +1,18 @@
+DESKTOP website mockup, wide 16:9 browser viewport (1920-class landing page), NOT a phone/mobile screenshot, NOT a tall 9:16 app frame.
+
+Mesal Café landing — Esquel, Av. Fontana 769. FIRST attached reference = OFFICIAL logo (use exact mark in header/hero). Other refs = real salón interior and food photography to match for the hero background — reuse that interior look as a full-bleed photo, do not invent a different café.
+
+HERO (first viewport, modern):
+- Full-bleed edge-to-edge PHOTO of the café interior as the entire background (barra / salón), covering 100% of the first screen width and height.
+- Soft dark/cacao scrim or gradient only where needed for text contrast — no floating cards, no inset media, no side-panel image, no rounded photo tiles.
+- Over the photo: official logo, one short line "Café & bistró de todo el día.", hours 08:00–00:00, primary CTA "Menú" (filled #533B32) + secondary "Cómo llegar" (outline), plus a small row of near-textless icons (sin TACC / pet / coworking).
+- Text over hero: cream/off-white readable on the photo. Headlines feel like Bodoni Moda; UI like DM Sans.
+
+UI system:
+- Background page #F7F3EC, text #533B32, surface #E9E6DE, gold #A47A33 / terracotta #D85931 accents only.
+- Buttons SHARP rectangular, 0–4px corner radius (almost square). No pills. No soft rounded corners.
+- Flat honest, contemporary café site — not brochure Patagonia stock, not purple glow, not mist-green AI template.
+
+Below the fold (hint only, still desktop width): "el día" mañana/mediodía/noche; Menú block; reviews as a horizontal SLIDER; Cómo llegar with Av. Fontana 769, Esquel.
+
+No invented prices/WhatsApp/city. No "Para quedarte" or static "Prueba" wall. No mobile-centered narrow column.
