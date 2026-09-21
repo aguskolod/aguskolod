@@ -132,5 +132,6 @@ Orden de mensaje. **Sin** “Prueba” ni “Para quedarte”.
 ## Handoff
 - Ready for `brand-kit-gen`: **yes** — kit aprobado humano (2026-09-21)
 - Kit: `kit/brand-board.png` + `kit/landing-16x9.png`
-- Build: `docs/web-design-skills/clients/mesal/site/` (landing HTML)
+- Build: **Astro** en `docs/web-design-skills/clients/mesal/web/` (`npm run dev` / `npm run build`)
+- Legacy HTML reference: `docs/web-design-skills/clients/mesal/site-legacy/`
 - Persist path: `docs/web-design-skills/clients/mesal/direction.md`
