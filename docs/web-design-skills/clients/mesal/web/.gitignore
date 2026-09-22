@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+dist/
+.astro/
+
+# Local tunnel helpers
+.tunnel-url
+.tunnel.log
+.env
+.env.*

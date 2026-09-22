@@ -45,10 +45,10 @@
   - Teléfono: +54 2945 41-3194 (coincide prensa + Maps)
   - Horario Maps / bio IG: todos los días **08:00–00:00**
   - Instagram: https://www.instagram.com/mesalcafe (verificada, ~3.984 seguidores, 44 posts, business)
-  - Link en bio: Maps `https://maps.app.goo.gl/Gbn8euUCuPqtYvEeA`
+  - Link en bio: se llama **Dirección** y abre Maps `https://maps.app.goo.gl/Gbn8euUCuPqtYvEeA`
   - WhatsApp / delivery / reserva online: **Open:** no confirmado
   - Sitio web propio: en construcción (este stack)
-  - Menú digital: **Open:** asset aún no entregado — la landing necesita sección/CTA Menú (PDF, página o embed) cuando exista
+  - Menú: destacado de Instagram **Menús del día** — `https://www.instagram.com/stories/highlights/18010815119854340/` (visto 2026-09-21). No hay PDF aparte.
 
 ## Confirmed facts
 - Nombre canónico web: **Mesal Café** (confirmado humano 2026-09-21)
@@ -68,7 +68,7 @@
 
 ## Open / unknowns
 - WhatsApp / canal de mensajes preferido
-- Archivo o URL del **menú** (precios, secciones, sin TACC marcado en carta)
+- Precios y secciones de la carta (viven en el destacado Menús del día, no en un PDF)
 - Delivery / takeaway formal
 - Wi‑Fi como claim explícito en ficha (prensa habla de trabajo remoto; no verificado en Maps attributes) — coworking/lectura sí confirmados
 - Facebook / otras redes
@@ -111,7 +111,7 @@
 - **No hay web propia** — landing = hub NAP + oferta + prueba (4,9★) + **Menú** + **Cómo llegar**
 - Diferenciadores claros vs Charlá (horario partido) y María Castaña (clásico masivo): **nuevo, elaboración propia, accesible al vecino, 08–00, espacio para quedarse, sin TACC / pet / coworking, eventos de ciudad**
 - Prueba social fuerte (4,9★ + prensa + Choco Fest) poco empaquetada fuera de IG
-- CTA Menú prioriza transparencia de oferta; falta el asset de carta para cablear el botón
+- CTA Menú abre el destacado de Instagram **Menús del día**
 
 ## Voice of Customer (phrases)
 - Praise language (propios / prensa / posicionamiento):

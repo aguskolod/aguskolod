@@ -1,14 +1,13 @@
-Brand board / style tile for Mesal Café (Esquel). The FIRST attached reference image is the OFFICIAL Instagram logo — use it VERBATIM as the brand mark on the board. Do not redraw, restyle, or replace it with another wordmark or leaf/berry icon.
+Brand board for Mesal Café. FIRST image = official logo — use EXACTLY.
 
-Personality: warm, contemporary, artisan, neighborhood, welcoming.
+CRITICAL COLOR CHANGE (do not use white or near-white #FFF / #F7F3EC / #FFFDF8 as page or secondary):
+- Background MUST be warm brownish tan #EFE4D6
+- Secondary button fill MUST be #E4D2BC (light brown) with text #533B32
+- On-primary text on dark CTA: #F6EDE3 (warm, not pure white)
+- Surface #E2D2C0, Border #C9B59E
+- Primary CTA fill #533B32
+- Also show: muted #6F645C, sage #8A877A, gold #A47A33, terracotta #D85931, jacket #F4400B
 
-Show on one 16:9 board:
-1) Official logo placed large and clear (exact artwork from reference).
-2) Color swatches with hex labels derived from that logo:
-   Primary CTA #3D2A1F, On-primary #FFFDF9, Text #3D2A1F, Text muted #6B5E52, Background #FFFDF9, Surface #F3EEE6, Border #D9D0C4, Gold #B8954A, Star orange #D4783A.
-3) Typography note: brand mark = official logo; section headlines Source Serif 4; body Source Sans 3. Show specimen text: "Café & bistró de todo el día."
-4) Buttons: filled "Menú" (#3D2A1F, ~12px radius, not pill) and outline "Cómo llegar".
-5) Three near-textless line icons (sin TACC / pet / coworking) in cacao or gold stroke — no chips, no emoji.
-6) Optional small mood crop from café photography — natural food/interior, no glacier brochure, no purple glow, no mist-green AI palette.
+Typography: Bodoni Moda + DM Sans. Sharp rectangular buttons 0–4px radius: "Menú" (cacao) and "Cómo llegar" (secondary brown fill #E4D2BC — NOT white outline-on-white).
 
-Flat honest style tile, not a website screenshot, not a bento AI template.
+Logo verbatim. Mood photos of café. Style tile 16:9. The whole board background is tan/brown cream, never paper white.

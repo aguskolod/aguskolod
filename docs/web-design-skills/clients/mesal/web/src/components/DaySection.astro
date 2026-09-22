@@ -1,0 +1,44 @@
+---
+const base = import.meta.env.BASE_URL;
+const days = [
+  {
+    img: `${base}assets/day-coffee.jpg`,
+    alt: 'Café y medialunas en Mesal',
+    title: 'Mañana',
+    text: 'Café y pastelería artesanal para arrancar el día.',
+  },
+  {
+    img: `${base}assets/menu-food.jpg`,
+    alt: 'Brunch en Mesal Café',
+    title: 'Mediodía',
+    text: 'Platos reales para almorzar sin apuro.',
+  },
+  {
+    img: `${base}assets/day-table.jpg`,
+    alt: 'Salón de Mesal Café',
+    title: 'Noche',
+    text: 'Coctelería y tapeo hasta las 00:00.',
+  },
+];
+---
+
+<section class="section section-day" id="el-dia">
+  <div class="wrap">
+    <p class="eyebrow">El día</p>
+    <h2>Mañana. Mediodía. Noche.</h2>
+    <p class="lede">
+      Elaboración propia de la mañana a la medianoche — café, pastelería y bistró para el vecino de Esquel.
+    </p>
+    <div class="day-grid">
+      {
+        days.map((d) => (
+          <article class="day-item">
+            <img src={d.img} alt={d.alt} width="800" height="600" loading="lazy" />
+            <p class="day-item-title">{d.title}</p>
+            <p>{d.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
