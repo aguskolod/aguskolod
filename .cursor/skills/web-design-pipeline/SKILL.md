@@ -16,6 +16,7 @@ description: Use when the user starts or continues a local-business client landi
 | Direction confirmed; mock / brand board / 9:16 | `brand-kit-gen` |
 | Building or editing the page | `landing-build` + `landing-craft` (Astro default) |
 | Final pass | `landing-qa` |
+| Psychology / Laws of UX correction | `laws-of-ux-correct` |
 
 Read `docs/web-design-skills/PIPELINE.md`.
 

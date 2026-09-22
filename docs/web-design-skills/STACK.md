@@ -33,6 +33,7 @@ Guiar el trabajo de diseño web sin autonomía total: el humano ingresa cliente/
 | `landing-craft` | Guidelines de craft durante build/correcciones |
 | `landing-build` | Implementación Astro fiel al brief + kit |
 | `landing-qa` | QA de cierre |
+| `laws-of-ux-correct` | Corrección vs Laws of UX (código + visual) |
 
 ## Autoría
 

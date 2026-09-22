@@ -19,5 +19,6 @@ Client briefs live only under `docs/web-design-skills/clients/<slug>/`.
 3. After discovery is confirmed, the next skill is **`visual-direction`** (`.cursor/skills/visual-direction/`), **not** Impeccable `new-work` / concept-seed / decision page.
 4. Brand kits use **`brand-kit-gen`** + OpenRouter — not Higgsfield / Impeccable visualize — unless the user asks otherwise.
 5. **Build default is Astro** (+ CSS variables from `direction.md`) under `docs/web-design-skills/clients/<slug>/site/`. Do not default to raw `index.html` unless the user waives Astro.
+6. For psychology-law correction of an existing page, use **`laws-of-ux-correct`** (code + visual). Do not confuse it with Impeccable critique.
 
 If unsure which stack: ask once — “¿Seguimos con web-design-skills o con Impeccable?” — default answer for client landings is **web-design-skills**.
