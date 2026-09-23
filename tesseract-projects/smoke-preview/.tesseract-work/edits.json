@@ -1,0 +1,71 @@
+[
+  {
+    "type": "createFxRectLayer",
+    "compositionId": "main",
+    "layerId": 1,
+    "name": "Background",
+    "insertIndex": 0,
+    "activeRange": {"start": 0, "duration": 3000},
+    "transform": {"anchorPoint": [0, 0], "position": [0, 0], "scale": [100, 100], "rotation": 0, "opacity": 100},
+    "rect": {"size": [1920, 1080], "fillColor": [0.06, 0.09, 0.16, 1]}
+  },
+  {
+    "type": "createFxRectLayer",
+    "compositionId": "main",
+    "layerId": 2,
+    "name": "Accent bar",
+    "insertIndex": 0,
+    "activeRange": {"start": 0, "duration": 3000},
+    "transform": {"anchorPoint": [0, 0], "position": [120, 420], "scale": [100, 100], "rotation": 0, "opacity": 100},
+    "rect": {"size": [12, 180], "fillColor": [0.2, 0.75, 0.85, 1]}
+  },
+  {
+    "type": "createFxTextLayer",
+    "compositionId": "main",
+    "layerId": 3,
+    "name": "Title",
+    "insertIndex": 0,
+    "activeRange": {"start": 0, "duration": 3000},
+    "transform": {"anchorPoint": [0, 0], "position": [160, 430], "scale": [100, 100], "rotation": 0, "opacity": 100},
+    "sourceText": {
+      "text": "Tesseract ready",
+      "fontFamily": "Inter",
+      "fontStyle": "Bold",
+      "fontSize": 96,
+      "fillColor": [0.95, 0.96, 0.98, 1],
+      "justification": "left",
+      "boxText": true,
+      "boxPosition": [0, 0],
+      "boxSize": [1500, 160]
+    }
+  },
+  {
+    "type": "createFxTextLayer",
+    "compositionId": "main",
+    "layerId": 4,
+    "name": "Subtitle",
+    "insertIndex": 0,
+    "activeRange": {"start": 200, "duration": 2800},
+    "transform": {"anchorPoint": [0, 0], "position": [160, 560], "scale": [100, 100], "rotation": 0, "opacity": 100},
+    "sourceText": {
+      "text": "Smoke preview · CLI 0.2.0",
+      "fontFamily": "Inter",
+      "fontStyle": "Bold",
+      "fontSize": 36,
+      "fillColor": [0.55, 0.62, 0.72, 1],
+      "justification": "left",
+      "boxText": true,
+      "boxPosition": [0, 0],
+      "boxSize": [1200, 80]
+    }
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {"layerId": 3, "propertyType": "opacity"},
+    "keyframes": [
+      {"id": "title-in-0", "layerTime": 0, "value": {"type": "float", "value": 0}, "easing": {"type": "linear"}},
+      {"id": "title-in-1", "layerTime": 400, "value": {"type": "float", "value": 100}, "easing": {"type": "cubicBezier", "x1": 0.2, "y1": 0, "x2": 0.2, "y2": 1}}
+    ]
+  }
+]
