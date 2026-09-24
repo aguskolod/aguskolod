@@ -1,0 +1,48 @@
+{
+  "$schema": "https://jerboa.dev/schemas/fx-composition/editable/v1/document.schema.json",
+  "formatVersion": 1,
+  "dimensions": {
+    "width": 1920,
+    "height": 1080
+  },
+  "duration": 48.0,
+  "composition": {
+    "dynamics": {
+      "entries": []
+    },
+    "id": "main",
+    "layers": [
+      {
+        "type": "Image",
+        "id": 1,
+        "name": "WorldTest",
+        "blendMode": "normal",
+        "activeRange": {
+          "start": 0,
+          "duration": 48000
+        },
+        "transform": {
+          "anchorPoint": [
+            960,
+            540
+          ],
+          "position": [
+            960,
+            540
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation": 0,
+          "opacity": 100
+        },
+        "source": {
+          "assetId": "world-matrix",
+          "fit": "cover"
+        }
+      }
+    ],
+    "name": "Main"
+  }
+}
